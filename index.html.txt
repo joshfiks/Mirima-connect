@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mirima Connect | Guest Services Portal</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo-area">
+
+<div class="forest-logo">
+
+🌲
+
+</div>
+
+<h1>Mirima Connect</h1>
+
+<p>Guest Services Portal</p>
+
+<span class="tagline">
+Experience Nature • Comfort • Luxury
+</span>
+
+</div>
+
+</header>
+
+<main>
+
+<div class="portal">
+
+<h2 id="welcomeTitle">Welcome to Mirima Connect</h2>
+
+<p id="welcomeMessage">
+Your personal guest services portal.
+Everything you need during your stay is just one tap away.
+</p>
+
+<div class="menu">
+
+<div class="card">
+<div class="icon">🍽️</div>
+<h3>Food & Drinks</h3>
+<p>Order meals, drinks and snacks delivered directly to your cottage.</p>
+</div>
+
+<div class="card">
+<div class="icon">🛏️</div>
+<h3>Housekeeping</h3>
+<p>Request cleaning, towels, pillows and toiletries.</p>
+</div>
+
+<div class="card">
+<div class="icon">📞</div>
+<h3>Reception</h3>
+<p>Request assistance, transport or extend your stay.</p>
+</div>
+
+<div class="card">
+<div class="icon">🌿</div>
+<h3>Explore</h3>
+<p>Discover activities, nature walks and nearby attractions.</p>
+</div>
+
+<div class="card">
+<div class="icon">⭐</div>
+<h3>Feedback</h3>
+<p>Rate our services and help us improve your experience.</p>
+</div>
+
+<div class="card">
+<div class="icon">💳</div>
+<h3>My Bill</h3>
+<p>View your current charges and request your final bill.</p>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
