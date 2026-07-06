@@ -1,624 +1,256 @@
-/* ===================================
+/* ==========================================
    MIRIMA CONNECT
-   Luxury Forest Guest Portal
-=================================== */
-
-:root{
-    --forest:#1F4D36;
-    --olive:#6E8B3D;
-    --wood:#6B4F35;
-    --cream:#F7F3EB;
-    --gold:#C8A96A;
-    --white:#ffffff;
-}
+   Luxury Eco Lodge Theme
+========================================== */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(rgba(31,77,54,.75),rgba(31,77,54,.75)),
-    url("images/forest.jpg");
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-    color:white;
-    min-height:100vh;
+font-family:'Poppins',sans-serif;
+background:#08160F;
+overflow-x:hidden;
+color:white;
 }
 
-/* HEADER */
+/* ================= HERO ================= */
 
-header{
-    text-align:center;
-    padding:40px 20px;
+.hero{
+position:relative;
+width:100%;
+height:100vh;
+background:url("images/forest.jpg") center center/cover no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
 }
 
-header h1{
-    font-size:55px;
-    color:var(--gold);
-    text-shadow:3px 3px 10px black;
-    letter-spacing:2px;
-}
+/* Dark Overlay */
 
-header p{
-    font-size:20px;
-    margin-top:12px;
-    color:#f5f5f5;
-}
-
-/* MAIN */
-
-main{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:40px 20px;
-}
-
-/* WOODEN CARD */
-
-.portal{
-    width:100%;
-    max-width:900px;
-    background:rgba(107,79,53,.93);
-    border:4px solid var(--gold);
-    border-radius:25px;
-    padding:40px;
-    box-shadow:0 0 35px rgba(0,0,0,.6);
-}
-
-/* WELCOME */
-
-.portal h2{
-    text-align:center;
-    font-size:40px;
-    color:var(--gold);
-    margin-bottom:15px;
-}
-
-.portal p{
-    text-align:center;
-    font-size:18px;
-    margin-bottom:35px;
-}
-
-/* BUTTON GRID */
-
-.menu{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:linear-gradient(#7a5a3d,#5c412b);
-    border:2px solid var(--gold);
-    border-radius:18px;
-    padding:30px;
-    text-align:center;
-    cursor:pointer;
-    transition:.35s;
-}
-
-.card:hover{
-    transform:translateY(-8px) scale(1.03);
-    background:linear-gradient(#8d6948,#6B4F35);
-}
-
-.card h3{
-    font-size:24px;
-    margin-top:10px;
-}
-
-.card p{
-    margin-top:10px;
-    font-size:15px;
-}
-
-.icon{
-    font-size:55px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-header h1{
-font-size:38px;
-}
-
-.portal{
-padding:25px;
-}
-
-.portal h2{
-font-size:30px;
-}
-
-}
-/* ===========================================
-   MIRIMA CONNECT PREMIUM EFFECTS
-===========================================*/
-
-/* Floating Background */
-
-body::before{
-content:"";
-position:fixed;
+.overlay{
+position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
 background:
-radial-gradient(circle at 20% 20%,rgba(255,255,255,.08),transparent 25%),
-radial-gradient(circle at 80% 40%,rgba(255,255,255,.05),transparent 30%),
-radial-gradient(circle at 50% 80%,rgba(255,255,255,.08),transparent 20%);
-animation:moveBackground 18s linear infinite;
-pointer-events:none;
+linear-gradient(
+to bottom,
+rgba(0,0,0,.25),
+rgba(0,0,0,.45),
+rgba(6,18,12,.78)
+);
+z-index:1;
 }
 
-@keyframes moveBackground{
+/* Mist */
+
+.mist{
+position:absolute;
+bottom:0;
+left:-20%;
+width:140%;
+height:45%;
+background:
+radial-gradient(circle,
+rgba(255,255,255,.18),
+transparent 70%);
+filter:blur(45px);
+animation:fogMove 18s linear infinite alternate;
+z-index:2;
+}
+
+@keyframes fogMove{
 
 0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-30px);
+transform:translateX(-60px);
 }
 
 100%{
-transform:translateY(0px);
+transform:translateX(60px);
 }
 
 }
 
-/* Glass Header */
+/* ================= CONTENT ================= */
 
-header{
+.hero-content{
+position:relative;
+z-index:5;
+text-align:center;
+padding:20px;
+}
 
+.logo-circle{
+
+width:140px;
+height:140px;
+margin:auto;
+border-radius:50%;
+background:rgba(255,255,255,.12);
 backdrop-filter:blur(8px);
 
-background:rgba(255,255,255,.08);
+display:flex;
+align-items:center;
+justify-content:center;
 
-border-bottom:1px solid rgba(255,255,255,.2);
+border:3px solid rgba(200,169,106,.8);
+
+box-shadow:
+0 0 30px rgba(200,169,106,.35);
+
+margin-bottom:25px;
 
 }
 
-/* Beautiful Logo */
+.logo-circle img{
 
-header h1{
+width:75%;
+height:75%;
+object-fit:contain;
 
-font-size:65px;
+}
 
-font-weight:900;
+.hero h1{
 
-text-transform:uppercase;
+font-family:'Cinzel',serif;
+
+font-size:72px;
 
 letter-spacing:3px;
 
-background:linear-gradient(45deg,#ffffff,#C8A96A,#6E8B3D,#ffffff);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-animation:logoGlow 4s infinite;
-
-}
-
-@keyframes logoGlow{
-
-0%{
-
-filter:drop-shadow(0 0 5px gold);
-
-}
-
-50%{
-
-filter:drop-shadow(0 0 18px gold);
-
-}
-
-100%{
-
-filter:drop-shadow(0 0 5px gold);
-
-}
-
-}
-
-/* Wooden Portal */
-
-.portal{
-
-backdrop-filter:blur(15px);
-
-background:rgba(107,79,53,.82);
-
-}
-
-/* Cards */
-
-.card{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.card::before{
-
-content:"";
-
-position:absolute;
-
-top:-120%;
-
-left:-120%;
-
-width:250%;
-
-height:250%;
-
-background:linear-gradient(
-
-45deg,
-
-transparent,
-
-rgba(255,255,255,.18),
-
-transparent
-
-);
-
-transform:rotate(35deg);
-
-transition:.8s;
-
-}
-
-.card:hover::before{
-
-top:120%;
-
-left:120%;
-
-}
-
-/* Floating */
-
-.card{
-
-animation:floatCard 5s ease-in-out infinite;
-
-}
-
-.card:nth-child(2){
-
-animation-delay:.4s;
-
-}
-
-.card:nth-child(3){
-
-animation-delay:.8s;
-
-}
-
-.card:nth-child(4){
-
-animation-delay:1.2s;
-
-}
-
-.card:nth-child(5){
-
-animation-delay:1.6s;
-
-}
-
-.card:nth-child(6){
-
-animation-delay:2s;
-
-}
-
-@keyframes floatCard{
-
-0%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-8px);
-
-}
-
-100%{
-
-transform:translateY(0);
-
-}
-
-}
-
-/* Icons */
-
-.icon{
-
-transition:.5s;
-
-}
-
-.card:hover .icon{
-
-transform:scale(1.25) rotate(8deg);
-
-}
-
-/* Smooth */
-
-html{
-
-scroll-behavior:smooth;
-
-}
-/*==========================================
- MIRIMA CONNECT PREMIUM HEADER
-==========================================*/
-
-.logo-area{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:12px;
-}
-
-.forest-logo{
-width:110px;
-height:110px;
-border-radius:50%;
-background:linear-gradient(145deg,#6B4F35,#8b6746);
-border:4px solid #C8A96A;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:55px;
-box-shadow:
-0 0 25px rgba(0,0,0,.5),
-0 0 15px rgba(200,169,106,.6);
-animation:logoFloat 5s ease-in-out infinite;
-}
-
-.tagline{
-margin-top:8px;
-font-size:18px;
-letter-spacing:2px;
-color:#F7F3EB;
-opacity:.95;
-text-align:center;
-}
-
-@keyframes logoFloat{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-10px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-/* Luxury Welcome */
-
-.portal h2{
-
-font-size:42px;
+color:#F5D28A;
 
 text-shadow:
-0 0 15px rgba(200,169,106,.7);
+0 0 25px rgba(0,0,0,.8);
 
 }
 
-/* Premium Buttons */
+.hero p{
 
-.card{
+margin-top:15px;
 
-border-radius:22px;
+font-size:22px;
 
-box-shadow:
-0 12px 25px rgba(0,0,0,.35);
+letter-spacing:5px;
 
-}
-
-.card h3{
+text-transform:uppercase;
 
 color:#F7F3EB;
 
-margin-bottom:10px;
-
 }
 
-.card p{
+/* ================= BUTTON ================= */
 
-color:#ece7df;
+#enterButton{
 
-line-height:1.6;
+margin-top:45px;
 
-}
+padding:18px 55px;
 
-.card:hover{
+font-size:20px;
+
+font-family:'Cinzel',serif;
+
+background:
+linear-gradient(#7b5735,#5e3f26);
+
+color:#fff;
+
+border:2px solid #C8A96A;
+
+border-radius:50px;
+
+cursor:pointer;
+
+transition:.4s;
 
 box-shadow:
-0 20px 40px rgba(0,0,0,.45);
+0 10px 25px rgba(0,0,0,.45);
 
 }
 
-/* Golden Border Animation */
+#enterButton:hover{
 
-.portal{
+transform:translateY(-6px);
 
-position:relative;
-
-overflow:hidden;
+box-shadow:
+0 15px 35px rgba(0,0,0,.6);
 
 }
 
-.portal::before{
+/* ================= LANTERNS ================= */
 
-content:"";
+.lantern{
 
 position:absolute;
 
-top:-50%;
+bottom:35px;
 
-left:-50%;
+width:110px;
 
-width:200%;
+z-index:6;
 
-height:200%;
+animation:flicker 3s infinite;
 
-background:conic-gradient(
-transparent,
-rgba(200,169,106,.35),
-transparent,
-transparent
+filter:
+drop-shadow(0 0 18px gold);
+
+}
+
+.lantern img{
+
+width:100%;
+
+}
+
+.lantern-left{
+
+left:45px;
+
+}
+
+.lantern-right{
+
+right:45px;
+
+}
+
+@keyframes flicker{
+
+0%{opacity:.9;}
+
+25%{opacity:1;}
+
+50%{opacity:.82;}
+
+75%{opacity:1;}
+
+100%{opacity:.92;}
+
+}
+
+/* ================= PORTAL ================= */
+
+#portal{
+
+min-height:100vh;
+
+background:
+linear-gradient(
+180deg,
+#10281C,
+#0A1812
 );
 
-animation:borderSpin 10s linear infinite;
-
-}
-
-.portal>*{
-
-position:relative;
-
-z-index:2;
-
-}
-
-@keyframes borderSpin{
-
-100%{
-
-transform:rotate(360deg);
-
-}
-
-}
-/*==========================
-CINEMATIC BACKGROUND
-==========================*/
-
-body{
-overflow-x:hidden;
-}
-
-.background{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url("images/forest.jpg") center center/cover no-repeat;
-z-index:-5;
-animation:zoomScene 35s ease-in-out infinite alternate;
-}
-
-.background::after{
-content:"";
-position:absolute;
-left:0;
-bottom:0;
-width:100%;
-height:28%;
-background:
-radial-gradient(circle at 50% 50%,rgba(255,255,255,.12),transparent 70%);
-animation:lakeWater 5s ease-in-out infinite;
-opacity:.7;
-}
-
-@keyframes lakeWater{
-
-0%{
-transform:translateX(-10px) scaleX(1);
-}
-
-50%{
-transform:translateX(10px) scaleX(1.03);
-}
-
-100%{
-transform:translateX(-10px) scaleX(1);
-}
-
-}
-
-@keyframes zoomScene{
-
-0%{
-transform:scale(1);
-}
-
-100%{
-transform:scale(1.08);
-}
-
-}
-
-/* Moving Mist */
-
-.mist{
-
-position:fixed;
-
-top:0;
-
-left:-20%;
-
-width:140%;
-
-height:100%;
-
-background:
-linear-gradient(90deg,
-transparent,
-rgba(255,255,255,.05),
-transparent);
-
-animation:fog 30s linear infinite;
-
-pointer-events:none;
-
-z-index:-4;
-
-}
-
-@keyframes fog{
-
-0%{
-transform:translateX(-15%);
-}
-
-100%{
-transform:translateX(15%);
-}
+padding:80px;
 
 }
