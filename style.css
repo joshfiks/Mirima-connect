@@ -468,7 +468,7 @@ border:2px solid #C8A96A;
 
 background:
 
-url("textures/wood.jpg");
+url("texture/wood.jpg");
 
 background-size:cover;
 
@@ -510,7 +510,7 @@ padding:60px;
 
 background:
 
-url("textures/wood-dark.jpg");
+url("texture/wood-dark.jpg");
 
 background-size:cover;
 
