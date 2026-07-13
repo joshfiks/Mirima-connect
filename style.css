@@ -672,3 +672,50 @@ transform:translate(40px,110vh) rotate(-360deg);
 }
 
 }
+/*==========================================
+LANTERNS
+==========================================*/
+
+.lantern{
+    position:absolute;
+    width:80px;
+    z-index:5;
+    animation:swing 5s ease-in-out infinite;
+}
+
+.lantern img{
+    width:100%;
+}
+
+.lantern::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:60%;
+    transform:translateX(-50%);
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+        rgba(255,210,120,.55),
+        rgba(255,210,120,.18),
+        transparent 70%);
+    filter:blur(12px);
+    z-index:-1;
+}
+
+.lantern.left{
+    top:80px;
+    left:60px;
+}
+
+.lantern.right{
+    top:80px;
+    right:60px;
+}
+
+@keyframes swing{
+    0%{transform:rotate(-3deg);}
+    50%{transform:rotate(3deg);}
+    100%{transform:rotate(-3deg);}
+}
