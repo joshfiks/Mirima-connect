@@ -605,3 +605,70 @@ font-weight:600;
 color:#fff;
 
 }
+/*==========================================
+FLOATING LEAVES
+==========================================*/
+
+.leaves{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:2;
+}
+
+.leaves::before,
+.leaves::after{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    background:url("images/leaf.png") no-repeat center;
+    background-size:contain;
+    opacity:.45;
+}
+
+.leaves::before{
+    left:15%;
+    animation:leafFall1 16s linear infinite;
+}
+
+.leaves::after{
+    left:75%;
+    animation:leafFall2 20s linear infinite;
+}
+
+@keyframes leafFall1{
+
+0%{
+transform:translateY(-120px) rotate(0deg);
+}
+
+50%{
+transform:translate(50px,50vh) rotate(180deg);
+}
+
+100%{
+transform:translate(-40px,110vh) rotate(360deg);
+}
+
+}
+
+@keyframes leafFall2{
+
+0%{
+transform:translateY(-120px) rotate(0deg);
+}
+
+50%{
+transform:translate(-60px,45vh) rotate(-180deg);
+}
+
+100%{
+transform:translate(40px,110vh) rotate(-360deg);
+}
+
+}
