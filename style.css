@@ -955,3 +955,12 @@ body.night .birds{
 display:none;
 
 }
+
+body.night .birds{
+
+opacity:0 !important;
+
+visibility:hidden !important;
+
+}
+
