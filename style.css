@@ -844,11 +844,19 @@ animation:birdFly2 42s linear infinite;
 
 top:7%;
 
-left:-300px;
+right:-300px;
 
 animation:birdFly3 50s linear infinite;
 
 }
+```css
+.birds3 img{
+
+transform:scaleX(-1);
+
+}
+```
+
 
 .birds4{
 
