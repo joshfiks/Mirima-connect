@@ -48,6 +48,8 @@ z-index:-10;
 animation:
 cameraZoom 35s ease-in-out infinite alternate;
 
+transition:background-image 2s ease;
+
 }
 
 @keyframes cameraZoom{
