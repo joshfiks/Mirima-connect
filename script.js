@@ -76,7 +76,6 @@ document.getElementById("welcomeTitle").innerHTML=
 
 });
 
-javascript
 const background = document.querySelector(".background");
 
 function updateTheme(){
