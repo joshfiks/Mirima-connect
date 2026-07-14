@@ -802,7 +802,6 @@ LANTERNS
 FLYING BIRDS
 ==========================================*/
 
-```css
 .birds{
 
 position:fixed;
@@ -818,7 +817,6 @@ z-index:2;
 width:170px;
 
 }
-```
 
 .birds img{
 
@@ -860,7 +858,6 @@ animation:birdFly3 45s linear infinite;
 
 }
 
-```css
 .birds3{
 
 position:fixed;
@@ -900,7 +897,6 @@ left:-250px;
 }
 
 }
-```
 
 .birds4{
 
