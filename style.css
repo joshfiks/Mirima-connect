@@ -325,7 +325,11 @@ z-index:10;
 
 .hero-content{
 
+max-width:900px;
+
 margin-top:-40px;
+
+animation:fadeUp 1.8s ease;
 
 }
 
