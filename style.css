@@ -947,3 +947,11 @@ transform:translateX(calc(100vw + 800px));
 }
 
 }
+
+/* Hide birds at night */
+
+body.night .birds{
+
+display:none;
+
+}
