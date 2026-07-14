@@ -75,3 +75,34 @@ document.getElementById("welcomeTitle").innerHTML=
 `${greeting}, ${guestName}!`;
 
 });
+
+javascript
+const background = document.querySelector(".background");
+
+function updateTheme(){
+
+    const hour = new Date().getHours();
+
+    if(hour >= 18 || hour < 6){
+
+        background.style.backgroundImage =
+        'url("images/forest-night.png")';
+
+        document.body.classList.add("night");
+
+    }else{
+
+        background.style.backgroundImage =
+        'url("images/forest.png")';
+
+        document.body.classList.remove("night");
+
+    }
+
+}
+
+updateTheme();
+
+/* Check every minute */
+setInterval(updateTheme,60000);
+
