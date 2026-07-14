@@ -862,22 +862,6 @@ animation:birdFly3 45s linear infinite;
 
 }
 
-.birds3{
-
-position:fixed;
-
-top:7%;
-
-left:100vw;
-
-z-index:2;
-
-pointer-events:none;
-
-animation:bird3Fly 30s linear infinite;
-
-}
-
 .birds3 img{
 
 width:170px;
