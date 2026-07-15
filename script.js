@@ -159,3 +159,49 @@ document.getElementById("enter").addEventListener("click",()=>{
     updateAmbience();
 
 });
+
+// ==========================================
+// AMBIENT AUDIO
+// ==========================================
+
+const dayForest = document.getElementById("dayForest");
+const dayBirds = document.getElementById("dayBirds");
+const nightForest = document.getElementById("nightForest");
+
+// Medium volume
+dayForest.volume = 0.30;
+dayBirds.volume = 0.25;
+nightForest.volume = 0.30;
+
+function playAmbience(){
+
+    const hour = new Date().getHours();
+
+    // Stop all sounds first
+    dayForest.pause();
+    dayBirds.pause();
+    nightForest.pause();
+
+    dayForest.currentTime = 0;
+    dayBirds.currentTime = 0;
+    nightForest.currentTime = 0;
+
+    if(hour >= 18 || hour < 6){
+
+        nightForest.play();
+
+    }else{
+
+        dayForest.play();
+        dayBirds.play();
+
+    }
+
+}
+
+// Start audio when guest clicks ENTER
+document.getElementById("enter").addEventListener("click", ()=>{
+
+    playAmbience();
+
+});
