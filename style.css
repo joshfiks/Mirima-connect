@@ -410,28 +410,23 @@ TITLE
 
 font-family:'Cinzel',serif;
 
-font-size:92px;
+font-size:90px;
 
 font-weight:800;
 
 letter-spacing:3px;
 
-background:linear-gradient(
-180deg,
-#FFF8D6 0%,
-#F7E4A4 25%,
-#D4AF37 50%,
-#B8860B 75%,
-#FFF4B0 100%
-);
+background:url("images/gold.png") center center/cover;
 
 -webkit-background-clip:text;
+background-clip:text;
+
 -webkit-text-fill-color:transparent;
 
+color:transparent;
+
 text-shadow:
-0 2px 2px rgba(255,255,255,.15),
-0 5px 20px rgba(0,0,0,.6),
-0 0 20px rgba(212,175,55,.25);
+0 3px 8px rgba(0,0,0,.45);
 
 }
 
