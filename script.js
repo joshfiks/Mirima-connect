@@ -173,24 +173,23 @@ dayForest.volume = 0.30;
 dayBirds.volume = 0.25;
 nightForest.volume = 0.30;
 
-function playAmbience(){
+window.playAmbience = function(){
 
     const hour = new Date().getHours();
 
-    // Stop all sounds first
     dayForest.pause();
     dayBirds.pause();
     nightForest.pause();
 
-    dayForest.currentTime = 0;
-    dayBirds.currentTime = 0;
-    nightForest.currentTime = 0;
-
     if(hour >= 18 || hour < 6){
 
+        nightForest.currentTime = 0;
         nightForest.play();
 
     }else{
+
+        dayForest.currentTime = 0;
+        dayBirds.currentTime = 0;
 
         dayForest.play();
         dayBirds.play();
