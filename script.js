@@ -34,17 +34,48 @@ document.addEventListener("DOMContentLoaded", () => {
     dayBirds.volume = 0.25;
     nightForest.volume = 0.30;
 
-    function stopAllAudio(){
+function fadeOut(audio){
 
-        dayForest.pause();
-        dayBirds.pause();
-        nightForest.pause();
+    let fade = setInterval(()=>{
 
-        dayForest.currentTime = 0;
-        dayBirds.currentTime = 0;
-        nightForest.currentTime = 0;
+        if(audio.volume > 0.02){
 
-    }
+            audio.volume -= 0.02;
+
+        }else{
+
+            audio.pause();
+            audio.currentTime = 0;
+            clearInterval(fade);
+
+        }
+
+    },100);
+
+}
+
+function fadeIn(audio,targetVolume){
+
+    audio.volume = 0;
+
+    audio.play();
+
+    let fade = setInterval(()=>{
+
+        if(audio.volume < targetVolume){
+
+            audio.volume += 0.02;
+
+        }else{
+
+            audio.volume = targetVolume;
+            clearInterval(fade);
+
+        }
+
+    },100);
+
+}
 
     function updateTheme(){
 
