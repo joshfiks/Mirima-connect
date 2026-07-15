@@ -1,216 +1,100 @@
 // ==========================================
 // MIRIMA CONNECT
-// Guest Services Portal
+// Main Script
 // ==========================================
-
-// ---------------------------
-// Personalized Welcome
-// ---------------------------
-
-const guestName = "Guest";
-const cottageNumber = 7;
 
 document.addEventListener("DOMContentLoaded", () => {
 
-const title = document.getElementById("welcomeTitle");
-const message = document.getElementById("welcomeMessage");
+    // Background
+    const background = document.querySelector(".background");
 
-title.innerHTML = `Welcome, ${guestName}!`;
+    // Audio
+    const dayForest = document.getElementById("dayForest");
+    const dayBirds = document.getElementById("dayBirds");
+    const nightForest = document.getElementById("nightForest");
 
-message.innerHTML =
-`
-You are staying in <strong>Cottage ${cottageNumber}</strong>.<br><br>
-Order food, request housekeeping, contact reception and explore Mirima Kibale Lounge with just one tap.
-`;
+    // Enter Button
+    const enterButton = document.getElementById("enter");
 
-});
+    // Card Animation
+    document.querySelectorAll(".card").forEach(card => {
 
-// ---------------------------
-// Card Animation
-// ---------------------------
+        card.addEventListener("mouseenter", () => {
+            card.style.transform = "translateY(-12px) scale(1.04)";
+        });
 
-const cards = document.querySelectorAll(".card");
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "";
+        });
 
-cards.forEach(card=>{
+    });
 
-card.addEventListener("mouseenter",()=>{
+    // Audio Volume
+    dayForest.volume = 0.30;
+    dayBirds.volume = 0.25;
+    nightForest.volume = 0.30;
 
-card.style.transform="translateY(-12px) scale(1.04)";
-
-});
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform="";
-
-});
-
-});
-
-// ---------------------------
-// Time Greeting
-// ---------------------------
-
-const hour=new Date().getHours();
-
-let greeting="Welcome";
-
-if(hour<12){
-
-greeting="Good Morning";
-
-}else if(hour<18){
-
-greeting="Good Afternoon";
-
-}else{
-
-greeting="Good Evening";
-
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-document.getElementById("welcomeTitle").innerHTML=
-`${greeting}, ${guestName}!`;
-
-});
-
-const background = document.querySelector(".background");
-
-function updateTheme(){
-
-    const hour = new Date().getHours();
-
-    if(hour >= 18 || hour < 6){
-
-        background.style.backgroundImage =
-        'url("images/forest-night.png")';
-
-        document.body.classList.add("night");
-
-    }else{
-
-        background.style.backgroundImage =
-        'url("images/forest.png")';
-
-        document.body.classList.remove("night");
-
-    }
-
-}
-
-updateTheme();
-
-/* Check every minute */
-setInterval(updateTheme,60000);
-
-// ==========================================
-// Ambient Sounds
-// ==========================================
-
-const dayForest = document.getElementById("dayForest");
-const dayBirds = document.getElementById("dayBirds");
-const nightForest = document.getElementById("nightForest");
-
-// Fixed volume
-
-dayForest.volume = 0.30;
-dayBirds.volume = 0.25;
-nightForest.volume = 0.30;
-
-function updateAmbience(){
-
-    const hour = new Date().getHours();
-
-    if(hour >= 18 || hour < 6){
+    function stopAllAudio(){
 
         dayForest.pause();
         dayBirds.pause();
-
-        dayForest.currentTime = 0;
-        dayBirds.currentTime = 0;
-
-        nightForest.play();
-
-    }else{
-
         nightForest.pause();
 
-        nightForest.currentTime = 0;
-
-        dayForest.play();
-        dayBirds.play();
-
-    }
-
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-    updateAmbience();
-
-    setInterval(updateAmbience,60000);
-
-});
-
-document.getElementById("enter").addEventListener("click", async () => {
-
-    try{
-
-        await dayForest.play();
-
-        console.log("Day forest playing");
-
-    }catch(error){
-
-        console.error(error);
-
-    }
-
-});
-
-// ==========================================
-// AMBIENT AUDIO
-// ==========================================
-
-const dayForest = document.getElementById("dayForest");
-const dayBirds = document.getElementById("dayBirds");
-const nightForest = document.getElementById("nightForest");
-
-// Medium volume
-dayForest.volume = 0.30;
-dayBirds.volume = 0.25;
-nightForest.volume = 0.30;
-
-window.playAmbience = function(){
-
-    const hour = new Date().getHours();
-
-    dayForest.pause();
-    dayBirds.pause();
-    nightForest.pause();
-
-    if(hour >= 18 || hour < 6){
-
-        nightForest.currentTime = 0;
-        nightForest.play();
-
-    }else{
-
         dayForest.currentTime = 0;
         dayBirds.currentTime = 0;
-
-        dayForest.play();
-        dayBirds.play();
+        nightForest.currentTime = 0;
 
     }
 
-}
+    function updateTheme(){
 
-// Start audio when guest clicks ENTER
-document.getElementById("enter").addEventListener("click", ()=>{
+        const hour = new Date().getHours();
 
-    playAmbience();
+        if(hour >= 18 || hour < 6){
+
+            background.style.backgroundImage =
+            'url("images/forest-night.png")';
+
+            document.body.classList.add("night");
+
+        }else{
+
+            background.style.backgroundImage =
+            'url("images/forest.png")';
+
+            document.body.classList.remove("night");
+
+        }
+
+    }
+
+    function playAmbience(){
+
+        stopAllAudio();
+
+        const hour = new Date().getHours();
+
+        if(hour >= 18 || hour < 6){
+
+            nightForest.play();
+
+        }else{
+
+            dayForest.play();
+            dayBirds.play();
+
+        }
+
+    }
+
+    updateTheme();
+
+    setInterval(updateTheme,60000);
+
+    enterButton.addEventListener("click", () => {
+
+        playAmbience();
+
+    });
 
 });
