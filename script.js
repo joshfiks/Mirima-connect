@@ -154,9 +154,19 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 });
 
-document.getElementById("enter").addEventListener("click",()=>{
+document.getElementById("enter").addEventListener("click", async () => {
 
-    updateAmbience();
+    try{
+
+        await dayForest.play();
+
+        console.log("Day forest playing");
+
+    }catch(error){
+
+        console.error(error);
+
+    }
 
 });
 
