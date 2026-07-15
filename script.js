@@ -77,9 +77,13 @@ function fadeIn(audio,targetVolume){
 
 }
 
-    function updateTheme(){
+ function updateTheme(){
 
-        const hour = new Date().getHours();
+    const hour = new Date().getHours();
+
+    background.style.opacity = 0;
+
+    setTimeout(() => {
 
         if(hour >= 18 || hour < 6){
 
@@ -97,7 +101,11 @@ function fadeIn(audio,targetVolume){
 
         }
 
-    }
+        background.style.opacity = 1;
+
+    },1500);
+
+}
     
     function playAmbience(){
 
