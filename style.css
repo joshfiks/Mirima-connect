@@ -410,19 +410,28 @@ TITLE
 
 font-family:'Cinzel',serif;
 
-font-size:88px;
+font-size:92px;
 
-font-weight:700;
+font-weight:800;
 
-letter-spacing:4px;
+letter-spacing:3px;
 
-color:#F7E4A4;
+background:linear-gradient(
+180deg,
+#FFF8D6 0%,
+#F7E4A4 25%,
+#D4AF37 50%,
+#B8860B 75%,
+#FFF4B0 100%
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 
 text-shadow:
-
-0 0 25px rgba(0,0,0,.8),
-
-0 0 15px rgba(200,169,106,.4);
+0 2px 2px rgba(255,255,255,.15),
+0 5px 20px rgba(0,0,0,.6),
+0 0 20px rgba(212,175,55,.25);
 
 }
 
