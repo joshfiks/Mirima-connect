@@ -105,3 +105,51 @@ updateTheme();
 /* Check every minute */
 setInterval(updateTheme,60000);
 
+// ==========================================
+// Ambient Sounds
+// ==========================================
+
+const dayForest = document.getElementById("dayForest");
+const dayBirds = document.getElementById("dayBirds");
+const nightForest = document.getElementById("nightForest");
+
+// Fixed volume
+
+dayForest.volume = 0.30;
+dayBirds.volume = 0.25;
+nightForest.volume = 0.30;
+
+function updateAmbience(){
+
+    const hour = new Date().getHours();
+
+    if(hour >= 18 || hour < 6){
+
+        dayForest.pause();
+        dayBirds.pause();
+
+        dayForest.currentTime = 0;
+        dayBirds.currentTime = 0;
+
+        nightForest.play();
+
+    }else{
+
+        nightForest.pause();
+
+        nightForest.currentTime = 0;
+
+        dayForest.play();
+        dayBirds.play();
+
+    }
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    updateAmbience();
+
+    setInterval(updateAmbience,60000);
+
+});
