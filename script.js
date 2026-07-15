@@ -153,3 +153,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     setInterval(updateAmbience,60000);
 
 });
+
+document.getElementById("enter").addEventListener("click",()=>{
+
+    updateAmbience();
+
+});
