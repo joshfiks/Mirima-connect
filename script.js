@@ -98,25 +98,28 @@ function fadeIn(audio,targetVolume){
         }
 
     }
-
+    
     function playAmbience(){
 
-        stopAllAudio();
+    const hour = new Date().getHours();
 
-        const hour = new Date().getHours();
+    if(hour >= 18 || hour < 6){
 
-        if(hour >= 18 || hour < 6){
+        fadeOut(dayForest);
+        fadeOut(dayBirds);
 
-            nightForest.play();
+        fadeIn(nightForest,0.30);
 
-        }else{
+    }else{
 
-            dayForest.play();
-            dayBirds.play();
+        fadeOut(nightForest);
 
-        }
+        fadeIn(dayForest,0.30);
+        fadeIn(dayBirds,0.25);
 
     }
+
+}
 
     updateTheme();
 
