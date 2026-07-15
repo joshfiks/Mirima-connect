@@ -439,15 +439,20 @@ text-shadow:
 
 margin-top:18px;
 
-font-size:28px;
+font-family:'Cormorant Garamond',serif;
 
-font-weight:400;
+font-size:36px;
 
-letter-spacing:8px;
+font-weight:500;
 
-text-transform:uppercase;
+font-style:italic;
 
-color:#F7F3EB;
+letter-spacing:4px;
+
+color:#F5E9C8;
+
+text-shadow:
+0 2px 10px rgba(0,0,0,.5);
 
 }
 
