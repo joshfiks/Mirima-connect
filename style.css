@@ -1049,13 +1049,13 @@ pointer-events:none;
 
 position:absolute;
 
-top:-110px;
+top:-100px;
 
 left:50%;
 
 transform:translateX(-50%);
 
-width:1000px;
+width:1200px;
 
 height:auto;
 
