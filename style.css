@@ -1045,13 +1045,15 @@ pointer-events:none;
 
 position:absolute;
 
-top:60px;
+top:-70px;
 
-left:20px;
+left:-70px;
 
-width:130px;
+width:620px;
 
-z-index:24;
+height:auto;
+
+z-index:15;
 
 pointer-events:none;
 
