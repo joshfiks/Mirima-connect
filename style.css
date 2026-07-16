@@ -578,7 +578,11 @@ grid-template-columns:repeat(3,1fr);
 gap:30px;
 
 margin-top:40px;
-
+            
+position:relative;
+            
+z-index:20;
+            
 }
 
 @media(max-width:900px){
@@ -1079,7 +1083,7 @@ pointer-events:none;
 
 position:absolute;
 
-bottom:-25px;
+bottom:-20px;
 
 left:50%;
 
@@ -1087,7 +1091,7 @@ transform:translateX(-50%);
 
 width:420px;
 
-z-index:23;
+z-index:1;
 
 pointer-events:none;
 
