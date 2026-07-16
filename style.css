@@ -634,7 +634,9 @@ box-shadow .45s;
 .card{
 
 position:relative;
-
+            
+z-index:30;
+            
 padding:35px 20px;
 
 text-align:center;
@@ -1059,7 +1061,7 @@ width:1100px;
 
 height:auto;
 
-z-index:8;
+z-index:5;
 
 pointer-events:none;
 
@@ -1093,7 +1095,7 @@ transform:translateX(-50%);
 
 width:420px;
 
-z-index:1;
+z-index:5;
 
 pointer-events:none;
 
