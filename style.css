@@ -1102,3 +1102,8 @@ transition:opacity 1s;
 pointer-events:none;
 
 }
+.background.fade{
+
+opacity:0;
+
+}
