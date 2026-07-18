@@ -163,10 +163,23 @@ enterButton.addEventListener("click", () => {
 
 });
 
-// When the video ends
 introVideo.addEventListener("ended", () => {
 
     introScreen.style.display = "none";
+
+    const hour = new Date().getHours();
+
+    if(hour >= 18 || hour < 6){
+
+        background.style.backgroundImage =
+        'url("images/lake-night.png")';
+
+    }else{
+
+        background.style.backgroundImage =
+        'url("images/lake-day.png")';
+
+    }
 
     document.querySelector(".hero").style.display = "flex";
     document.querySelector(".portal").style.display = "block";
