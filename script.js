@@ -169,6 +169,8 @@ enterButton.addEventListener("click", () => {
 });
 
 introVideo.addEventListener("ended", () => {
+    
+    portalOpened = true;
 
     introScreen.style.display = "none";
 
