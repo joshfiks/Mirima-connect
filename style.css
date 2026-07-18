@@ -48,11 +48,11 @@ z-index:-10;
 animation:
 cameraZoom 35s ease-in-out infinite alternate;
             
-transition:opacity 3s ease;
+transition:
+opacity 3s ease,
+background-image 2s ease;
 
 opacity:1;
-
-transition:background-image 2s ease;
 
 }
 
