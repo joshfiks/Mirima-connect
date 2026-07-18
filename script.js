@@ -80,7 +80,9 @@ function fadeIn(audio,targetVolume){
 }
 
  function updateTheme(){
-
+     
+if(portalOpened) return;
+     
     const hour = new Date().getHours();
 
     background.style.opacity = 0;
