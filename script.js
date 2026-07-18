@@ -140,3 +140,35 @@ function fadeIn(audio,targetVolume){
     });
 
 });
+
+// ==========================================
+// INTRO VIDEO
+// ==========================================
+
+const enterButton = document.getElementById("enter");
+const introScreen = document.getElementById("introScreen");
+const introVideo = document.getElementById("introVideo");
+
+enterButton.addEventListener("click", () => {
+
+    // Hide the homepage
+    document.querySelector(".hero").style.display = "none";
+    document.querySelector(".portal").style.display = "none";
+
+    // Show intro video
+    introScreen.style.display = "flex";
+
+    // Play video
+    introVideo.play();
+
+});
+
+// When the video ends
+introVideo.addEventListener("ended", () => {
+
+    introScreen.style.display = "none";
+
+    document.querySelector(".hero").style.display = "flex";
+    document.querySelector(".portal").style.display = "block";
+
+});
