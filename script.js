@@ -148,6 +148,7 @@ function fadeIn(audio,targetVolume){
 const enterButton = document.getElementById("enter");
 const introScreen = document.getElementById("introScreen");
 const introVideo = document.getElementById("introVideo");
+const background = document.querySelector(".background");
 
 enterButton.addEventListener("click", () => {
 
