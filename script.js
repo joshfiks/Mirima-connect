@@ -167,21 +167,29 @@ introVideo.addEventListener("ended", () => {
 
     introScreen.style.display = "none";
 
-    const hour = new Date().getHours();
+    background.classList.add("fade");
 
-    if(hour >= 18 || hour < 6){
+    setTimeout(() => {
 
-        background.style.backgroundImage =
-        'url("images/lake-night.png")';
+        const hour = new Date().getHours();
 
-    }else{
+        if(hour >= 18 || hour < 6){
 
-        background.style.backgroundImage =
-        'url("images/lake-day.png")';
+            background.style.backgroundImage =
+            'url("images/lake-night.png")';
 
-    }
+        }else{
 
-    document.querySelector(".hero").style.display = "flex";
-    document.querySelector(".portal").style.display = "block";
+            background.style.backgroundImage =
+            'url("images/lake-day.png")';
+
+        }
+
+        background.classList.remove("fade");
+
+        document.querySelector(".hero").style.display = "flex";
+        document.querySelector(".portal").style.display = "block";
+
+    },1200);
 
 });
