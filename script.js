@@ -189,7 +189,12 @@ introVideo.addEventListener("ended", () => {
         background.classList.remove("fade");
 
         document.querySelector(".hero").style.display = "none";
+      
+      const welcomeScreen = document.getElementById("welcomeScreen");
+const typingText = document.getElementById("typingText");
 
+welcomeScreen.style.display = "flex";
+     
     },1200);
 
 });
