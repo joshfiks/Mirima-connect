@@ -207,47 +207,72 @@ introVideo.addEventListener("ended", () => {
         if(hour >= 18 || hour < 6){
 
             background.style.backgroundImage =
-            'url("images/lake-night.png")';
+            'url("images/lake-night.png");
 
         }else{
 
             background.style.backgroundImage =
-            'url("images/lake-day.png")';
+            'url("images/lake-day.png");
 
         }
 
         background.classList.remove("fade");
 
         document.querySelector(".hero").style.display = "none";
-      
-     const welcomeScreen = document.getElementById("welcomeScreen");
 
-welcomeScreen.style.display = "flex";
-      
-     (async () => {
+        const welcomeScreen = document.getElementById("welcomeScreen");
 
-    await typeMessage("Welcome to Mirima Kibale Lodge.");
+        welcomeScreen.style.display = "flex";
 
-    await typeMessage("Where luxury meets nature.");
+        (async () => {
 
-    await typeMessage("We're delighted to have you as our guest.");
+            await typeMessage("Welcome to Mirima Kibale Lodge.");
+
+            document.getElementById("guestNameBox").style.display = "block";
+
+        })();
+
+    },1200);
+
+});
+
+const continueBtn = document.getElementById("continueBtn");
+
+continueBtn.addEventListener("click", async () => {
+
+    const guestName = document.getElementById("guestName").value.trim();
+
+    if(guestName === ""){
+
+        alert("Please enter your name.");
+
+        return;
+
+    }
+
+    document.getElementById("guestNameBox").style.display = "none";
+
+    const welcomeScreen = document.getElementById("welcomeScreen");
+
+    await typeMessage(`Welcome, ${guestName}.`);
+
+    await typeMessage("We're delighted to host your stay.");
 
     await typeMessage("Please choose a service below.");
 
     welcomeScreen.style.display = "none";
 
-   const portal = document.querySelector(".portal");
+    const portal = document.querySelector(".portal");
 
-portal.classList.remove("show");   // Reset animation
-portal.style.display = "block";
+    portal.classList.remove("show");
 
-setTimeout(() => {
-    portal.classList.add("show");
-}, 100);
-       
-})();
-      
-    },1200);
+    portal.style.display = "block";
+
+    setTimeout(() => {
+
+        portal.classList.add("show");
+
+    },100);
 
 });
 
