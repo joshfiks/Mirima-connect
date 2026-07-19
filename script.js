@@ -137,11 +137,7 @@ if(portalOpened) return;
 
     setInterval(updateTheme,60000);
 
-    enterButton.addEventListener("click", () => {
-
-        playAmbience();
-      
-      });
+         });
       
 // ==========================================
 // INTRO VIDEO
