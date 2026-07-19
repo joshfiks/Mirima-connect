@@ -1013,6 +1013,22 @@ position:relative;
 
 overflow:visible;
 
+transform:translateY(120px);
+
+opacity:0;
+
+display:none;
+
+}
+
+.portal.show{
+
+transform:translateY(0);
+
+opacity:1;
+
+transition:transform 1.2s ease, opacity 1.2s ease;
+
 }
 
 .roots-bottom{
