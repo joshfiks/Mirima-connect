@@ -1148,12 +1148,21 @@ pointer-events:none;
 }
 
 #typingText{
-    font-family: "Cormorant Garamond", serif;
-    font-size: 56px;
-    font-weight: 600;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 58px;
+
+    font-weight: 700;
+
     color: #d4af37;
+
     text-shadow: 0 4px 20px rgba(0,0,0,.8);
+
     line-height: 1.5;
+
     max-width: 900px;
+
     text-align: center;
+
 }
