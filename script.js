@@ -140,7 +140,9 @@ if(portalOpened) return;
     enterButton.addEventListener("click", () => {
 
         playAmbience();
- 
+      
+      });
+      
 // ==========================================
 // INTRO VIDEO
 // ==========================================
