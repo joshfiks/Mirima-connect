@@ -132,7 +132,37 @@ if(portalOpened) return;
     }
 
 }
-        
+  
+  function typeMessage(message, speed = 60) {
+
+    return new Promise(resolve => {
+
+        const typingText = document.getElementById("typingText");
+
+        typingText.textContent = "";
+
+        let i = 0;
+
+        const timer = setInterval(() => {
+
+            typingText.textContent += message.charAt(i);
+
+            i++;
+
+            if(i >= message.length){
+
+                clearInterval(timer);
+
+                setTimeout(resolve,1500);
+
+            }
+
+        },speed);
+
+    });
+
+}    
+  
     updateTheme();
 
     setInterval(updateTheme,60000);
