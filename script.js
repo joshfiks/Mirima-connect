@@ -111,9 +111,27 @@ if(portalOpened) return;
 
 }
     
-    function playAmbience(){
+    function playAmbience(){         
+
+    const hour = new Date().getHours();
+
+    if(hour >= 18 || hour < 6){
+
+        fadeOut(dayForest);
+        fadeOut(dayBirds);
+
+        fadeIn(nightForest,0.30);
+
+    }else{
+
+        fadeOut(nightForest);
+
+        fadeIn(dayForest,0.30);
+        fadeIn(dayBirds,0.25);
+
+    }
       
-       function typeMessage(message, speed = 60) {
+ function typeMessage(message, speed = 60) {
 
     return new Promise(resolve => {
 
@@ -142,25 +160,6 @@ if(portalOpened) return;
     });
 
 }
-
-    const hour = new Date().getHours();
-
-    if(hour >= 18 || hour < 6){
-
-        fadeOut(dayForest);
-        fadeOut(dayBirds);
-
-        fadeIn(nightForest,0.30);
-
-    }else{
-
-        fadeOut(nightForest);
-
-        fadeIn(dayForest,0.30);
-        fadeIn(dayBirds,0.25);
-
-    }
-
 }
 
     updateTheme();
