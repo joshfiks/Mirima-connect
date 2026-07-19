@@ -160,7 +160,6 @@ if(portalOpened) return;
     });
 
 }
-}
 
     updateTheme();
 
