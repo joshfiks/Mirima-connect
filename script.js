@@ -236,7 +236,9 @@ welcomeScreen.style.display = "flex";
 
     welcomeScreen.style.display = "none";
 
-    const portal = document.querySelector(".portal");
+   const portal = document.querySelector(".portal");
+
+portal.classList.remove("show");   // Reset animation
 portal.style.display = "block";
 
 setTimeout(() => {
