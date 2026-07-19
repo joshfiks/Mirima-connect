@@ -224,7 +224,23 @@ introVideo.addEventListener("ended", () => {
 const typingText = document.getElementById("typingText");
 
 welcomeScreen.style.display = "flex";
-     
+      
+     (async () => {
+
+    await typeMessage("Welcome to Mirima Kibale Lodge.");
+
+    await typeMessage("Where luxury meets nature.");
+
+    await typeMessage("We're delighted to have you as our guest.");
+
+    await typeMessage("Please choose a service below.");
+
+    welcomeScreen.style.display = "none";
+
+    document.querySelector(".portal").style.display = "block";
+
+})();
+      
     },1200);
 
 });
