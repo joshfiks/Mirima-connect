@@ -220,8 +220,7 @@ introVideo.addEventListener("ended", () => {
 
         document.querySelector(".hero").style.display = "none";
       
-      const welcomeScreen = document.getElementById("welcomeScreen");
-const typingText = document.getElementById("typingText");
+     const welcomeScreen = document.getElementById("welcomeScreen");
 
 welcomeScreen.style.display = "flex";
       
