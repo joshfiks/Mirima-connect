@@ -111,9 +111,9 @@ if(portalOpened) return;
 
 }
     
-    function playAmbience(){   
-   
-  const hour = new Date().getHours();
+ function playAmbience(){
+
+    const hour = new Date().getHours();
 
     if(hour >= 18 || hour < 6){
 
@@ -128,6 +128,10 @@ if(portalOpened) return;
 
         fadeIn(dayForest,0.30);
         fadeIn(dayBirds,0.25);
+
+    }
+
+}
         
     updateTheme();
 
