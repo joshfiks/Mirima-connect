@@ -137,8 +137,7 @@ if(portalOpened) return;
 
     setInterval(updateTheme,60000);
 
-         });
-      
+            
 // ==========================================
 // INTRO VIDEO
 // ==========================================
@@ -164,7 +163,7 @@ enterButton.addEventListener("click", () => {
 });
 
 introVideo.addEventListener("ended", () => {
-    
+
     portalOpened = true;
 
     introScreen.style.display = "none";
@@ -193,5 +192,7 @@ introVideo.addEventListener("ended", () => {
         document.querySelector(".portal").style.display = "block";
 
     },1200);
+
+});
 
 });
