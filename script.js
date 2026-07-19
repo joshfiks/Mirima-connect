@@ -147,10 +147,12 @@ if(portalOpened) return;
 // INTRO VIDEO
 // ==========================================
 
-const enterButton = document.getElementById("enter");
 const introScreen = document.getElementById("introScreen");
 const introVideo = document.getElementById("introVideo");
-const background = document.querySelector(".background");
+
+enterButton.addEventListener("click", () => {
+
+    playAmbience();
 
     // Hide the homepage
     document.querySelector(".hero").style.display = "none";
@@ -160,6 +162,7 @@ const background = document.querySelector(".background");
     introScreen.style.display = "flex";
 
     // Play video
+    introVideo.currentTime = 0;
     introVideo.play();
 
 });
