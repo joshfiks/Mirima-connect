@@ -112,6 +112,36 @@ if(portalOpened) return;
 }
     
     function playAmbience(){
+      
+       function typeMessage(message, speed = 60) {
+
+    return new Promise(resolve => {
+
+        const typingText = document.getElementById("typingText");
+
+        typingText.textContent = "";
+
+        let i = 0;
+
+        const timer = setInterval(() => {
+
+            typingText.textContent += message.charAt(i);
+
+            i++;
+
+            if(i >= message.length){
+
+                clearInterval(timer);
+
+                setTimeout(resolve,1500);
+
+            }
+
+        },speed);
+
+    });
+
+}
 
     const hour = new Date().getHours();
 
@@ -148,37 +178,7 @@ const introVideo = document.getElementById("introVideo");
 enterButton.addEventListener("click", () => {
 
     playAmbience();
-
-  function typeMessage(message, speed = 60) {
-
-    return new Promise(resolve => {
-
-        const typingText = document.getElementById("typingText");
-
-        typingText.textContent = "";
-
-        let i = 0;
-
-        const timer = setInterval(() => {
-
-            typingText.textContent += message.charAt(i);
-
-            i++;
-
-            if(i >= message.length){
-
-                clearInterval(timer);
-
-                setTimeout(resolve,1500);
-
-            }
-
-        },speed);
-
-    });
-
-}
-
+ 
     // Hide the homepage
     document.querySelector(".hero").style.display = "none";
     document.querySelector(".portal").style.display = "none";
