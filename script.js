@@ -1,3 +1,5 @@
+let portalOpened = false;
+
 // ==========================================
 // MIRIMA CONNECT
 // Main Script
