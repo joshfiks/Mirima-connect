@@ -152,10 +152,6 @@ const introScreen = document.getElementById("introScreen");
 const introVideo = document.getElementById("introVideo");
 const background = document.querySelector(".background");
 
-enterButton.addEventListener("click", () => {
-
-    playAmbience();
-
     // Hide the homepage
     document.querySelector(".hero").style.display = "none";
     document.querySelector(".portal").style.display = "none";
