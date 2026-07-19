@@ -160,7 +160,7 @@ if(portalOpened) return;
     });
 
 }
-
+}
     updateTheme();
 
     setInterval(updateTheme,60000);
