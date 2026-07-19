@@ -7,8 +7,7 @@ let portalOpened = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   
-  let portalOpened = false;
-      
+     
     // Background
     const background = document.querySelector(".background");
 
