@@ -236,8 +236,13 @@ welcomeScreen.style.display = "flex";
 
     welcomeScreen.style.display = "none";
 
-    document.querySelector(".portal").style.display = "block";
+    const portal = document.querySelector(".portal");
+portal.style.display = "block";
 
+setTimeout(() => {
+    portal.classList.add("show");
+}, 100);
+       
 })();
       
     },1200);
