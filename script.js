@@ -188,8 +188,7 @@ introVideo.addEventListener("ended", () => {
 
         background.classList.remove("fade");
 
-        document.querySelector(".hero").style.display = "flex";
-        document.querySelector(".portal").style.display = "block";
+        document.querySelector(".hero").style.display = "none";
 
     },1200);
 
