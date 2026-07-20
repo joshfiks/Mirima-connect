@@ -284,7 +284,9 @@ setTimeout(() => {
             card.classList.add("show");
 
         },index*300);
+ });
 
+},1500);
       // ==========================================
 // ROOM SERVICE POPUP
 // ==========================================
@@ -311,11 +313,9 @@ roomServicePopup.addEventListener("click", (e) => {
 
         roomServicePopup.style.display = "none";
 
-   
-    });
+    }
 
-},1500);
-
+ 
 });
 
 });
