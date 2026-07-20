@@ -164,8 +164,7 @@ typingSound.play();
     setTimeout(resolve,1500);
 
 }
-
-            }
+          
 
         },speed);
 
