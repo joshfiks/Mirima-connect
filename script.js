@@ -321,4 +321,20 @@ roomServicePopup.addEventListener("click", (e) => {
 
 });
 
+// ==========================================
+// MENU ITEM SELECTION
+// ==========================================
+
+const menuItems = document.querySelectorAll(".menuItem");
+
+menuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        item.classList.toggle("selected");
+
+    });
+
+});
+
 });
