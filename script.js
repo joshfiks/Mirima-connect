@@ -256,17 +256,29 @@ continueBtn.addEventListener("click", async () => {
 
     welcomeScreen.style.display = "none";
 
-    const portal = document.querySelector(".portal");
+   const portal = document.querySelector(".portal");
 
-    portal.classList.remove("show");
+portal.classList.remove("show");
 
-    portal.style.display = "block";
+portal.style.display = "block";
 
-    setTimeout(() => {
+setTimeout(() => {
 
-        portal.classList.add("show");
+    portal.classList.add("show");
 
-    },100);
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach((card,index)=>{
+
+        setTimeout(()=>{
+
+            card.classList.add("show");
+
+        },index*300);
+
+    });
+
+},100);
 
 });
 
