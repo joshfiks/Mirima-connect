@@ -207,40 +207,47 @@ introVideo.addEventListener("ended", () => {
         if(hour >= 18 || hour < 6){
 
             background.style.backgroundImage =
-            'url("images/lake-night.png")';
+            'url("images/lake-night.png");
 
         }else{
 
             background.style.backgroundImage =
-            'url("images/lake-day.png")';
+            'url("images/lake-day.png");
 
         }
-      });
 
         background.classList.remove("fade");
 
         document.querySelector(".hero").style.display = "none";
-      
-     const welcomeScreen = document.getElementById("welcomeScreen");
 
-welcomeScreen.style.display = "flex";
-      
-    (async () => {
+        const welcomeScreen = document.getElementById("welcomeScreen");
 
-    await typeMessage("Welcome to Mirima Kibale Lodge.");
+        welcomeScreen.style.display = "flex";
 
-    document.getElementById("guestNameBox").style.display = "block";
+        (async () => {
 
+            await typeMessage("Welcome to Mirima Kibale Lodge.");
 
-      const continueBtn = document.getElementById("continueBtn");
+            document.getElementById("guestNameBox").style.display = "block";
+
+        })();
+
+    },1200);
+
+});
+
+const continueBtn = document.getElementById("continueBtn");
 
 continueBtn.addEventListener("click", async () => {
 
     const guestName = document.getElementById("guestName").value.trim();
 
-    if (guestName === "") {
+    if(guestName === ""){
+
         alert("Please enter your name.");
+
         return;
+
     }
 
     document.getElementById("guestNameBox").style.display = "none";
@@ -248,7 +255,9 @@ continueBtn.addEventListener("click", async () => {
     const welcomeScreen = document.getElementById("welcomeScreen");
 
     await typeMessage(`Welcome, ${guestName}.`);
+
     await typeMessage("We're delighted to host your stay.");
+
     await typeMessage("Please choose a service below.");
 
     welcomeScreen.style.display = "none";
@@ -256,15 +265,14 @@ continueBtn.addEventListener("click", async () => {
     const portal = document.querySelector(".portal");
 
     portal.classList.remove("show");
+
     portal.style.display = "block";
 
-        setTimeout(() => {
+    setTimeout(() => {
+
         portal.classList.add("show");
-    }, 100);
 
-});
-
-    },1200);
+    },100);
 
 });
 
