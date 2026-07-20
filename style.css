@@ -1457,3 +1457,20 @@ transform:translateY(0);
 }
 
 }
+/*==========================================
+SELECTED MENU ITEM
+==========================================*/
+
+.menuItem.selected{
+
+background:#d4af37;
+
+color:#111;
+
+font-weight:600;
+
+transform:translateX(8px);
+
+box-shadow:0 0 20px rgba(212,175,55,.5);
+
+}
