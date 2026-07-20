@@ -138,6 +138,7 @@ if(portalOpened) return;
     return new Promise(resolve => {
 
         const typingText = document.getElementById("typingText");
+      const typingSound = document.getElementById("typingSound");
 
         typingText.textContent = "";
 
