@@ -1239,3 +1239,20 @@ transition:.3s;
 transform:scale(1.05);
 
 }
+.card{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:opacity .8s ease, transform .8s ease;
+
+}
+
+.card.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
