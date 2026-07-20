@@ -174,19 +174,17 @@ if(portalOpened) return;
 
 const introScreen = document.getElementById("introScreen");
 const introVideo = document.getElementById("introVideo");
+const continueBtn = document.getElementById("continueBtn");
 
 enterButton.addEventListener("click", () => {
 
     playAmbience();
- 
-    // Hide the homepage
+
     document.querySelector(".hero").style.display = "none";
     document.querySelector(".portal").style.display = "none";
 
-    // Show intro video
     introScreen.style.display = "flex";
 
-    // Play video
     introVideo.currentTime = 0;
     introVideo.play();
 
@@ -207,18 +205,16 @@ introVideo.addEventListener("ended", () => {
         if(hour >= 18 || hour < 6){
 
             background.style.backgroundImage =
-            'url("images/lake-night.png");
+            'url("images/lake-night.png")';
 
         }else{
 
             background.style.backgroundImage =
-            'url("images/lake-day.png");
+            'url("images/lake-day.png")';
 
         }
 
         background.classList.remove("fade");
-
-        document.querySelector(".hero").style.display = "none";
 
         const welcomeScreen = document.getElementById("welcomeScreen");
 
@@ -235,8 +231,6 @@ introVideo.addEventListener("ended", () => {
     },1200);
 
 });
-
-const continueBtn = document.getElementById("continueBtn");
 
 continueBtn.addEventListener("click", async () => {
 
