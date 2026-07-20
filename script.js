@@ -245,7 +245,7 @@ continueBtn.addEventListener("click", async () => {
 
     const guestName = document.getElementById("guestName").value.trim();
 
-    if(guestName === ""){
+    if (guestName === "") {
 
         alert("Please enter your name.");
 
@@ -265,29 +265,31 @@ continueBtn.addEventListener("click", async () => {
 
     welcomeScreen.style.display = "none";
 
-   const portal = document.querySelector(".portal");
+    const portal = document.querySelector(".portal");
 
-portal.classList.remove("show");
+    portal.classList.remove("show");
 
-portal.style.display = "block";
-
-setTimeout(() => {
-
-    portal.classList.add("show");
-
-   const cards = document.querySelectorAll(".card");
-
-cards.forEach((card, index) => {
+    portal.style.display = "block";
 
     setTimeout(() => {
 
-        card.classList.add("show");
+        portal.classList.add("show");
 
-    }, index * 300);
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach((card, index) => {
+
+            setTimeout(() => {
+
+                card.classList.add("show");
+
+            }, index * 300);
+
+        });
+
+    }, 1500);
 
 });
-
-}, 1500);
 
 // ==========================================
 // ROOM SERVICE POPUP
