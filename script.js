@@ -285,6 +285,33 @@ setTimeout(() => {
 
         },index*300);
 
+      // ==========================================
+// ROOM SERVICE POPUP
+// ==========================================
+
+const roomServiceCard = document.getElementById("roomServiceCard");
+const roomServicePopup = document.getElementById("roomServicePopup");
+const closePopup = document.querySelector(".closePopup");
+
+roomServiceCard.addEventListener("click", () => {
+
+    roomServicePopup.style.display = "flex";
+
+});
+
+closePopup.addEventListener("click", () => {
+
+    roomServicePopup.style.display = "none";
+
+});
+
+roomServicePopup.addEventListener("click", (e) => {
+
+    if(e.target === roomServicePopup){
+
+        roomServicePopup.style.display = "none";
+
+   
     });
 
 },1500);
