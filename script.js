@@ -244,6 +244,7 @@ introVideo.addEventListener("ended", () => {
 continueBtn.addEventListener("click", async () => {
 
     const guestName = document.getElementById("guestName").value.trim();
+  localStorage.setItem("guestName", guestName);
 
     if (guestName === "") {
 
@@ -334,6 +335,24 @@ menuItems.forEach(item => {
         item.classList.toggle("selected");
 
     });
+
+});
+
+// ==========================================
+// PLACE ORDER
+// ==========================================
+
+const placeOrder = document.getElementById("placeOrder");
+
+placeOrder.addEventListener("click", () => {
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    alert(
+        `Thank you, ${guestName}!\n\n` +
+        `Your room service request has been sent to our kitchen.\n\n` +
+        `Estimated delivery time:\n25–30 minutes.`
+    );
 
 });
 
