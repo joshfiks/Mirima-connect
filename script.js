@@ -275,19 +275,21 @@ setTimeout(() => {
 
     portal.classList.add("show");
 
-    const cards = document.querySelectorAll(".card");
+   const cards = document.querySelectorAll(".card");
 
-    cards.forEach((card,index)=>{
+cards.forEach((card, index) => {
 
-        setTimeout(()=>{
+    setTimeout(() => {
 
-            card.classList.add("show");
+        card.classList.add("show");
 
-        },index*300);
- });
+    }, index * 300);
 
-},1500);
-      // ==========================================
+});
+
+}, 1500);
+
+// ==========================================
 // ROOM SERVICE POPUP
 // ==========================================
 
@@ -309,13 +311,12 @@ closePopup.addEventListener("click", () => {
 
 roomServicePopup.addEventListener("click", (e) => {
 
-    if(e.target === roomServicePopup){
+    if (e.target === roomServicePopup) {
 
         roomServicePopup.style.display = "none";
 
     }
 
- 
 });
 
 });
