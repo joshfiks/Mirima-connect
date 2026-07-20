@@ -258,15 +258,12 @@ continueBtn.addEventListener("click", async () => {
     portal.classList.remove("show");
     portal.style.display = "block";
 
-    setTimeout(() => {
+        setTimeout(() => {
         portal.classList.add("show");
     }, 100);
 
 });
-})();
-       
-})();
-      
+
     },1200);
 
 });
