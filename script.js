@@ -144,6 +144,10 @@ if(portalOpened) return;
 
         let i = 0;
 
+      typingSound.currentTime = 0;
+typingSound.loop = true;
+typingSound.play();
+
         const timer = setInterval(() => {
 
             typingText.textContent += message.charAt(i);
@@ -152,9 +156,14 @@ if(portalOpened) return;
 
             if(i >= message.length){
 
-                clearInterval(timer);
+    clearInterval(timer);
 
-                setTimeout(resolve,1500);
+    typingSound.pause();
+    typingSound.currentTime = 0;
+
+    setTimeout(resolve,1500);
+
+}
 
             }
 
