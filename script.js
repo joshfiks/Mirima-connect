@@ -348,11 +348,14 @@ placeOrder.addEventListener("click", () => {
 
     const guestName = localStorage.getItem("guestName") || "Guest";
 
-    alert(
-        `Thank you, ${guestName}!\n\n` +
-        `Your room service request has been sent to our kitchen.\n\n` +
-        `Estimated delivery time:\n25–30 minutes.`
-    );
+    const orderConfirmation = document.getElementById("orderConfirmation");
+    const confirmTitle = document.getElementById("confirmTitle");
+
+    confirmTitle.textContent = `Thank you, ${guestName}!`;
+
+    roomServicePopup.style.display = "none";
+
+    orderConfirmation.style.display = "flex";
 
 });
 
