@@ -359,7 +359,7 @@ placeOrder.addEventListener("click", () => {
 
     confirmTitle.textContent = `Thank you, ${guestName}!`;
 
-    roomServicePopup.style.display = "none";
+    ServicePopup.style.display = "none";
 
     orderConfirmation.style.display = "flex";
 
