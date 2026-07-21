@@ -292,36 +292,44 @@ continueBtn.addEventListener("click", async () => {
 
 });
 
+
 // ==========================================
-// ROOM SERVICE POPUP
+// SERVICE POPUP
 // ==========================================
 
 const roomServiceCard = document.getElementById("roomServiceCard");
-const roomServicePopup = document.getElementById("roomServicePopup");
-const closePopup = document.querySelector(".closePopup");
+
+const servicePopup = document.getElementById("servicePopup");
+
+const popupTitle = servicePopup.querySelector("h2");
+
+const popupContent = servicePopup.querySelector(".popup-content");
+
+const closePopup = servicePopup.querySelector(".closePopup");
 
 roomServiceCard.addEventListener("click", () => {
 
-    roomServicePopup.style.display = "flex";
+    popupTitle.textContent = "🛎️ Room Service";
+
+    servicePopup.style.display = "flex";
 
 });
 
 closePopup.addEventListener("click", () => {
 
-    roomServicePopup.style.display = "none";
+    servicePopup.style.display = "none";
 
 });
 
-roomServicePopup.addEventListener("click", (e) => {
+servicePopup.addEventListener("click", (e) => {
 
-    if (e.target === roomServicePopup) {
+    if (e.target === servicePopup) {
 
-        roomServicePopup.style.display = "none";
+        servicePopup.style.display = "none";
 
     }
 
 });
-
 // ==========================================
 // MENU ITEM SELECTION
 // ==========================================
