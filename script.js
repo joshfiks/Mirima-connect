@@ -342,8 +342,6 @@ menuItems.forEach(item => {
 // PLACE ORDER
 // ==========================================
 
-const placeOrder = document.getElementById("placeOrder");
-
 placeOrder.addEventListener("click", () => {
 
     const guestName = localStorage.getItem("guestName") || "Guest";
@@ -356,6 +354,14 @@ placeOrder.addEventListener("click", () => {
     roomServicePopup.style.display = "none";
 
     orderConfirmation.style.display = "flex";
+
+});
+
+const closeConfirmation = document.getElementById("closeConfirmation");
+
+closeConfirmation.addEventListener("click", () => {
+
+    document.getElementById("orderConfirmation").style.display = "none";
 
 });
 
