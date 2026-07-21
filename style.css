@@ -1474,3 +1474,98 @@ transform:translateX(8px);
 box-shadow:0 0 20px rgba(212,175,55,.5);
 
 }
+/*==========================================
+ORDER CONFIRMATION
+==========================================*/
+
+.confirmationBox{
+
+max-width:600px;
+
+text-align:center;
+
+padding:45px;
+
+}
+
+.checkmark{
+
+font-size:90px;
+
+color:#d4af37;
+
+margin-bottom:20px;
+
+animation:pop .6s ease;
+
+}
+
+.confirmationBox p{
+
+font-family:"Cormorant Garamond", serif;
+
+font-size:28px;
+
+color:white;
+
+line-height:1.6;
+
+margin:20px 0;
+
+}
+
+#closeConfirmation{
+
+margin-top:30px;
+
+padding:16px 40px;
+
+border:none;
+
+border-radius:12px;
+
+background:#d4af37;
+
+color:#111;
+
+font-size:20px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+#closeConfirmation:hover{
+
+transform:scale(1.05);
+
+}
+
+@keyframes pop{
+
+0%{
+
+transform:scale(0);
+
+opacity:0;
+
+}
+
+70%{
+
+transform:scale(1.2);
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
