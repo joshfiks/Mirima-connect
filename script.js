@@ -314,16 +314,6 @@ const popupBody = document.getElementById("popupBody");
 const popupContent = servicePopup.querySelector(".popup-content");
 
 const closePopup = servicePopup.querySelector(".closePopup");
-  
-  const receptionCard = document.getElementById("receptionCard");
-
-roomServiceCard.addEventListener("click", () => {
-  
-    popupTitle.textContent = "🛎️ Room Service";
-
-    servicePopup.style.display = "flex";
-
-});
 
  roomServiceCard.addEventListener("click", () => {
 
