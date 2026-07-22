@@ -305,6 +305,12 @@ const receptionPopup = document.getElementById("receptionPopup");
 
 const closeReception = document.querySelector(".closeReception");
 
+const housekeepingCard = document.getElementById("housekeepingCard");
+
+const housekeepingPopup = document.getElementById("housekeepingPopup");
+
+const closeHousekeeping = document.querySelector(".closeHousekeeping");
+
 const servicePopup = document.getElementById("servicePopup");
 
 const popupTitle = servicePopup.querySelector("h2");
@@ -403,6 +409,48 @@ receptionPopup.addEventListener("click", (e) => {
 const receptionItems = receptionPopup.querySelectorAll(".menuItem");
 
 receptionItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        item.classList.toggle("selected");
+
+    });
+
+});
+
+  // ==========================================
+// HOUSEKEEPING POPUP
+// ==========================================
+
+housekeepingCard.addEventListener("click", () => {
+
+    housekeepingPopup.style.display = "flex";
+
+});
+
+closeHousekeeping.addEventListener("click", () => {
+
+    housekeepingPopup.style.display = "none";
+
+});
+
+housekeepingPopup.addEventListener("click", (e) => {
+
+    if (e.target === housekeepingPopup) {
+
+        housekeepingPopup.style.display = "none";
+
+    }
+
+});
+
+// ==========================================
+// HOUSEKEEPING MENU SELECTION
+// ==========================================
+
+const housekeepingItems = housekeepingPopup.querySelectorAll(".menuItem");
+
+housekeepingItems.forEach(item => {
 
     item.addEventListener("click", () => {
 
