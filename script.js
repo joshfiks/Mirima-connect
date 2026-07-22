@@ -299,6 +299,12 @@ continueBtn.addEventListener("click", async () => {
 
 const roomServiceCard = document.getElementById("roomServiceCard");
 
+const receptionCard = document.getElementById("receptionCard");
+
+const receptionPopup = document.getElementById("receptionPopup");
+
+const closeReception = document.querySelector(".closeReception");
+
 const servicePopup = document.getElementById("servicePopup");
 
 const popupTitle = servicePopup.querySelector("h2");
@@ -374,6 +380,32 @@ menuItems.forEach(item => {
 
 });
 
+  // ==========================================
+// RECEPTION POPUP
+// ==========================================
+
+receptionCard.addEventListener("click", () => {
+
+    receptionPopup.style.display = "flex";
+
+});
+
+closeReception.addEventListener("click", () => {
+
+    receptionPopup.style.display = "none";
+
+});
+
+receptionPopup.addEventListener("click", (e) => {
+
+    if (e.target === receptionPopup) {
+
+        receptionPopup.style.display = "none";
+
+    }
+
+});
+  
 // ==========================================
 // PLACE ORDER
 // ==========================================
