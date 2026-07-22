@@ -302,7 +302,9 @@ const roomServiceCard = document.getElementById("roomServiceCard");
 const servicePopup = document.getElementById("servicePopup");
 
 const popupTitle = servicePopup.querySelector("h2");
-
+  
+const popupBody = document.getElementById("popupBody");
+  
 const popupContent = servicePopup.querySelector(".popup-content");
 
 const closePopup = servicePopup.querySelector(".closePopup");
@@ -317,9 +319,25 @@ roomServiceCard.addEventListener("click", () => {
 
 });
 
-  receptionCard.addEventListener("click", () => {
+ roomServiceCard.addEventListener("click", () => {
 
-    popupTitle.textContent = "🛎️ Reception";
+    popupTitle.textContent = "🛎️ Room Service";
+
+    popupBody.innerHTML = `
+        <h3>🍳 Breakfast</h3>
+
+        <div class="menuItem">English Breakfast</div>
+        <div class="menuItem">Continental Breakfast</div>
+        <div class="menuItem">Pancakes & Honey</div>
+
+        <h3>🍽️ Main Meals</h3>
+
+        <div class="menuItem">Grilled Chicken</div>
+        <div class="menuItem">Beef Steak</div>
+        <div class="menuItem">Tilapia Fish</div>
+
+        <button id="placeOrder">Place Order</button>
+    `;
 
     servicePopup.style.display = "flex";
 
