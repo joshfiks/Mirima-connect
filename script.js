@@ -491,7 +491,28 @@ billingPopup.addEventListener("click", (e) => {
     }
 
 });
-  
+
+  // ==========================================
+// BILLING OPTION SELECTION
+// ==========================================
+
+const billingOptions = billingPopup.querySelectorAll(".service-option");
+
+billingOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        billingOptions.forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    });
+
+});
 // ==========================================
 // PLACE ORDER
 // ==========================================
