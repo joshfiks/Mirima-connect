@@ -405,6 +405,22 @@ receptionPopup.addEventListener("click", (e) => {
     }
 
 });
+
+  // ==========================================
+// RECEPTION MENU SELECTION
+// ==========================================
+
+const receptionItems = receptionPopup.querySelectorAll(".menuItem");
+
+receptionItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        item.classList.toggle("selected");
+
+    });
+
+});
   
 // ==========================================
 // PLACE ORDER
