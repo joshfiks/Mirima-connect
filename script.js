@@ -306,10 +306,20 @@ const popupTitle = servicePopup.querySelector("h2");
 const popupContent = servicePopup.querySelector(".popup-content");
 
 const closePopup = servicePopup.querySelector(".closePopup");
+  
+  const receptionCard = document.getElementById("receptionCard");
 
 roomServiceCard.addEventListener("click", () => {
-
+  
     popupTitle.textContent = "🛎️ Room Service";
+
+    servicePopup.style.display = "flex";
+
+});
+
+  receptionCard.addEventListener("click", () => {
+
+    popupTitle.textContent = "🛎️ Reception";
 
     servicePopup.style.display = "flex";
 
