@@ -311,6 +311,12 @@ const housekeepingPopup = document.getElementById("housekeepingPopup");
 
 const closeHousekeeping = document.querySelector(".closeHousekeeping");
 
+const billingCard = document.getElementById("billingCard");
+
+const billingPopup = document.getElementById("billingPopup");
+
+const closeBilling = document.querySelector(".closeBilling");
+
 const servicePopup = document.getElementById("servicePopup");
 
 const popupTitle = servicePopup.querySelector("h2");
@@ -457,6 +463,32 @@ housekeepingItems.forEach(item => {
         item.classList.toggle("selected");
 
     });
+
+});
+
+  // ==========================================
+// BILLING POPUP
+// ==========================================
+
+billingCard.addEventListener("click", () => {
+
+    billingPopup.style.display = "flex";
+
+});
+
+closeBilling.addEventListener("click", () => {
+
+    billingPopup.style.display = "none";
+
+});
+
+billingPopup.addEventListener("click", (e) => {
+
+    if (e.target === billingPopup) {
+
+        billingPopup.style.display = "none";
+
+    }
 
 });
   
