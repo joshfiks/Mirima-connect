@@ -399,6 +399,18 @@ Place Order
 
 });
 
+  const menuItems = popupBody.querySelectorAll(".menuItem");
+
+menuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        item.classList.toggle("selected");
+
+    });
+
+});
+
 closePopup.addEventListener("click", () => {
 
     servicePopup.style.display = "none";
@@ -412,21 +424,6 @@ servicePopup.addEventListener("click", (e) => {
         servicePopup.style.display = "none";
 
     }
-
-});
-// ==========================================
-// MENU ITEM SELECTION
-// ==========================================
-
-const menuItems = document.querySelectorAll(".menuItem");
-
-menuItems.forEach(item => {
-
-    item.addEventListener("click", () => {
-
-        item.classList.toggle("selected");
-
-    });
 
 });
 
