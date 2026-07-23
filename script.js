@@ -343,22 +343,58 @@ const closePopup = servicePopup.querySelector(".closePopup");
 
     popupTitle.textContent = "🛎️ Room Service";
 
-    popupBody.innerHTML = `
-        <h3>🍳 Breakfast</h3>
+   popupBody.innerHTML = `
 
-        <div class="menuItem">English Breakfast</div>
-        <div class="menuItem">Continental Breakfast</div>
-        <div class="menuItem">Pancakes & Honey</div>
+<h3>🍳 Breakfast</h3>
 
-        <h3>🍽️ Main Meals</h3>
+<div class="menuItem">🍽️ Full English Breakfast</div>
+<div class="menuItem">🥞 Pancakes & Honey</div>
+<div class="menuItem">🍳 Chef's Omelette</div>
+<div class="menuItem">🍉 Fresh Tropical Fruit Platter</div>
+<div class="menuItem">🥣 African Breakfast</div>
 
-        <div class="menuItem">Grilled Chicken</div>
-        <div class="menuItem">Beef Steak</div>
-        <div class="menuItem">Tilapia Fish</div>
+<h3>🍽️ Main Meals</h3>
 
-        <button id="placeOrder">Place Order</button>
-    `;
+<div class="menuItem">🐟 Grilled Nile Tilapia</div>
+<div class="menuItem">🍗 Roast Chicken</div>
+<div class="menuItem">🥩 Beef Fillet</div>
+<div class="menuItem">🍖 Goat Muchomo</div>
+<div class="menuItem">🥬 Vegetarian Curry</div>
 
+<h3>🥗 Light Meals</h3>
+
+<div class="menuItem">🥪 Club Sandwich</div>
+<div class="menuItem">🥗 Garden Salad</div>
+<div class="menuItem">🍟 French Fries</div>
+<div class="menuItem">🍕 Chef's Pizza</div>
+
+<h3>🥤 Drinks</h3>
+
+<div class="menuItem">🍹 Fresh Passion Juice</div>
+<div class="menuItem">🥭 Fresh Mango Juice</div>
+<div class="menuItem">☕ African Tea</div>
+<div class="menuItem">☕ Espresso</div>
+<div class="menuItem">🥛 Cappuccino</div>
+<div class="menuItem">💧 Mineral Water</div>
+
+<h3>🍰 Desserts</h3>
+
+<div class="menuItem">🍰 Chocolate Cake</div>
+<div class="menuItem">🍨 Vanilla Ice Cream</div>
+<div class="menuItem">🍓 Seasonal Fruit Salad</div>
+
+<h3>📝 Special Instructions</h3>
+
+<textarea
+placeholder="Any allergies, dietary requirements or special requests?"></textarea>
+
+<button id="placeOrder">
+
+Place Order
+
+</button>
+
+`;
     servicePopup.style.display = "flex";
 
 });
