@@ -323,6 +323,12 @@ const explorePopup = document.getElementById("explorePopup");
 
 const closeExplore = document.querySelector(".closeExplore");
 
+const feedbackCard = document.getElementById("feedbackCard");
+
+const feedbackPopup = document.getElementById("feedbackPopup");
+
+const closeFeedback = document.querySelector(".closeFeedback");
+
 const servicePopup = document.getElementById("servicePopup");
 
 const popupTitle = servicePopup.querySelector("h2");
@@ -557,6 +563,54 @@ exploreOptions.forEach(option => {
     option.addEventListener("click", () => {
 
         exploreOptions.forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    });
+
+});
+
+  // ==========================================
+// FEEDBACK POPUP
+// ==========================================
+
+feedbackCard.addEventListener("click", () => {
+
+    feedbackPopup.style.display = "flex";
+
+});
+
+closeFeedback.addEventListener("click", () => {
+
+    feedbackPopup.style.display = "none";
+
+});
+
+feedbackPopup.addEventListener("click", (e) => {
+
+    if (e.target === feedbackPopup) {
+
+        feedbackPopup.style.display = "none";
+
+    }
+
+});
+
+// ==========================================
+// FEEDBACK SELECTION
+// ==========================================
+
+const feedbackOptions = feedbackPopup.querySelectorAll(".service-option");
+
+feedbackOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        feedbackOptions.forEach(item => {
 
             item.classList.remove("selected");
 
