@@ -1703,3 +1703,51 @@ font-weight:600;
 font-family:"Cinzel",serif;
 
 }
+
+/*==========================================
+LUXURY BUTTONS
+==========================================*/
+
+.popup button{
+
+width:100%;
+
+padding:16px;
+
+margin-top:25px;
+
+border:none;
+
+border-radius:50px;
+
+background:linear-gradient(135deg,#d4af37,#f4d06f);
+
+color:#1b1b1b;
+
+font-size:18px;
+
+font-weight:bold;
+
+font-family:"Cinzel",serif;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 8px 25px rgba(212,175,55,.35);
+
+}
+
+.popup button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 15px 35px rgba(212,175,55,.5);
+
+}
+
+.popup button:active{
+
+transform:scale(.97);
+
+}
