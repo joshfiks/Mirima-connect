@@ -316,6 +316,12 @@ const billingCard = document.getElementById("billingCard");
 const billingPopup = document.getElementById("billingPopup");
 
 const closeBilling = document.querySelector(".closeBilling");
+  
+const exploreCard = document.getElementById("exploreCard");
+
+const explorePopup = document.getElementById("explorePopup");
+
+const closeExplore = document.querySelector(".closeExplore");
 
 const servicePopup = document.getElementById("servicePopup");
 
@@ -503,6 +509,54 @@ billingOptions.forEach(option => {
     option.addEventListener("click", () => {
 
         billingOptions.forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    });
+
+});
+
+  // ==========================================
+// EXPLORE POPUP
+// ==========================================
+
+exploreCard.addEventListener("click", () => {
+
+    explorePopup.style.display = "flex";
+
+});
+
+closeExplore.addEventListener("click", () => {
+
+    explorePopup.style.display = "none";
+
+});
+
+explorePopup.addEventListener("click", (e) => {
+
+    if (e.target === explorePopup) {
+
+        explorePopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// EXPLORE OPTION SELECTION
+// ==========================================
+
+const exploreOptions = explorePopup.querySelectorAll(".service-option");
+
+exploreOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        exploreOptions.forEach(item => {
 
             item.classList.remove("selected");
 
