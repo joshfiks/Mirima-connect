@@ -662,6 +662,38 @@ feedbackOptions.forEach(option => {
 
 });
 
+  // ==========================================
+// CONFIRMATION FUNCTION
+// ==========================================
+
+function showConfirmation(message) {
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    const orderConfirmation = document.getElementById("orderConfirmation");
+    const confirmTitle = document.getElementById("confirmTitle");
+    const confirmMessage = document.getElementById("confirmMessage");
+
+    confirmTitle.textContent = `Thank you, ${guestName}!`;
+
+    confirmMessage.textContent = message;
+
+    servicePopup.style.display = "none";
+
+    receptionPopup.style.display = "none";
+
+    housekeepingPopup.style.display = "none";
+
+    billingPopup.style.display = "none";
+
+    explorePopup.style.display = "none";
+
+    feedbackPopup.style.display = "none";
+
+    orderConfirmation.style.display = "flex";
+
+}
+
 const closeConfirmation = document.getElementById("closeConfirmation");
 
 closeConfirmation.addEventListener("click", () => {
