@@ -339,12 +339,11 @@ const popupContent = servicePopup.querySelector(".popup-content");
 
 const closePopup = servicePopup.querySelector(".closePopup");
 
- roomServiceCard.addEventListener("click", () => {
+roomServiceCard.addEventListener("click", () => {
 
     popupTitle.textContent = "🛎️ Room Service";
 
-   popupBody.innerHTML = `
-
+    popupBody.innerHTML = `
 <h3>🍳 Breakfast</h3>
 
 <div class="menuItem">🍽️ Full English Breakfast</div>
@@ -385,32 +384,40 @@ const closePopup = servicePopup.querySelector(".closePopup");
 
 <h3>📝 Special Instructions</h3>
 
-<textarea
-placeholder="Any allergies, dietary requirements or special requests?"></textarea>
+<textarea placeholder="Any allergies, dietary requirements or special requests?"></textarea>
 
-<button id="placeOrder">
-
-Place Order
-
-</button>
-
+<button id="placeOrder">Place Order</button>
 `;
+
     servicePopup.style.display = "flex";
 
-});
+    // Enable selecting menu items
+    popupBody.querySelectorAll(".menuItem").forEach(item => {
 
-  const menuItems = popupBody.querySelectorAll(".menuItem");
+        item.addEventListener("click", () => {
 
-menuItems.forEach(item => {
+            item.classList.toggle("selected");
 
-    item.addEventListener("click", () => {
+        });
 
-        item.classList.toggle("selected");
+    });
+
+    // Place Order button
+    document.getElementById("placeOrder").addEventListener("click", () => {
+
+        const guestName = localStorage.getItem("guestName") || "Guest";
+
+        document.getElementById("confirmTitle").textContent =
+            `Thank you, ${guestName}!`;
+
+        servicePopup.style.display = "none";
+
+        document.getElementById("orderConfirmation").style.display = "flex";
 
     });
 
 });
-
+  
 closePopup.addEventListener("click", () => {
 
     servicePopup.style.display = "none";
@@ -652,24 +659,6 @@ feedbackOptions.forEach(option => {
         option.classList.add("selected");
 
     });
-
-});
-// ==========================================
-// PLACE ORDER
-// ==========================================
-
-placeOrder.addEventListener("click", () => {
-
-    const guestName = localStorage.getItem("guestName") || "Guest";
-
-    const orderConfirmation = document.getElementById("orderConfirmation");
-    const confirmTitle = document.getElementById("confirmTitle");
-
-    confirmTitle.textContent = `Thank you, ${guestName}!`;
-
-    servicePopup.style.display = "none";
-
-    orderConfirmation.style.display = "flex";
 
 });
 
