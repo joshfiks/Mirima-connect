@@ -405,7 +405,7 @@ roomServiceCard.addEventListener("click", () => {
     // Place Order button
     document.getElementById("placeOrder").addEventListener("click", () => {
 
-        const guestName = localStorage.getItem("guestName") || "Guest";
+     const guestName = localStorage.getItem("guestName") || "Guest";
 
 const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
 
@@ -413,16 +413,53 @@ let estimate = "5–10 minutes";
 
 if (selectedItems.length > 0) {
 
-    estimate = selectedItems[0].dataset.time + " minutes";
+    let longest = 0;
+    let estimateText = "5–10";
+
+    selectedItems.forEach(item => {
+
+        const time = item.dataset.time;
+
+        if (time === "0") {
+
+            return;
+
+        }
+
+        const highest = parseInt(time.split("–")[1]);
+
+        if (highest > longest) {
+
+            longest = highest;
+
+            estimateText = time;
+
+        }
+
+    });
+
+    if (longest === 0) {
+
+        estimate = "Immediate";
+
+    } else {
+
+        estimate = estimateText + " minutes";
+
+    }
 
 }
 
 servicePopup.style.display = "none";
 
 showConfirmation(
+
     `Thank you, ${guestName}!`,
+
     "Your room service order has been sent to our kitchen.",
+
     `Estimated preparation: ${estimate}`
+
 );
 
 });
