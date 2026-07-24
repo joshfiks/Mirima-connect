@@ -407,14 +407,13 @@ roomServiceCard.addEventListener("click", () => {
 
         const guestName = localStorage.getItem("guestName") || "Guest";
 
-        document.getElementById("confirmTitle").textContent =
-            `Thank you, ${guestName}!`;
+servicePopup.style.display = "none";
 
-        servicePopup.style.display = "none";
-
-        document.getElementById("orderConfirmation").style.display = "flex";
-
-    });
+showConfirmation(
+    `Thank you, ${guestName}!`,
+    "Your room service order has been sent to our kitchen.",
+    "Estimated preparation: 20–30 minutes"
+);
 
 });
   
@@ -662,38 +661,49 @@ feedbackOptions.forEach(option => {
 
 });
 
-  // ==========================================
+ // ==========================================
 // CONFIRMATION FUNCTION
 // ==========================================
 
-function showConfirmation(message) {
-
-    const guestName = localStorage.getItem("guestName") || "Guest";
+function showConfirmation(title, message, time = "") {
 
     const orderConfirmation = document.getElementById("orderConfirmation");
-    const confirmTitle = document.getElementById("confirmTitle");
-    const confirmMessage = document.getElementById("confirmMessage");
 
-    confirmTitle.textContent = `Thank you, ${guestName}!`;
+    document.getElementById("confirmTitle").textContent = title;
 
-    confirmMessage.textContent = message;
+    document.getElementById("confirmMessage").textContent = message;
+
+    document.getElementById("confirmTime").innerHTML =
+        time ? `<strong>${time}</strong>` : "";
 
     servicePopup.style.display = "none";
-
     receptionPopup.style.display = "none";
-
     housekeepingPopup.style.display = "none";
-
     billingPopup.style.display = "none";
-
     explorePopup.style.display = "none";
-
     feedbackPopup.style.display = "none";
 
     orderConfirmation.style.display = "flex";
 
 }
 
+  // ==========================================
+// SHOW CONFIRMATION
+// ==========================================
+
+function showConfirmation(title, message, time = "") {
+
+    document.getElementById("confirmTitle").textContent = title;
+
+    document.getElementById("confirmMessage").textContent = message;
+
+    document.getElementById("confirmTime").innerHTML =
+        time ? `<strong>${time}</strong>` : "";
+
+    document.getElementById("orderConfirmation").style.display = "flex";
+
+}
+  
 const closeConfirmation = document.getElementById("closeConfirmation");
 
 closeConfirmation.addEventListener("click", () => {
