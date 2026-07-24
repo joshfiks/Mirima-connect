@@ -850,3 +850,5 @@ closeConfirmation.addEventListener("click", () => {
     document.getElementById("orderConfirmation").style.display = "none";
 
 });
+
+});
