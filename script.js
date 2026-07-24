@@ -480,6 +480,8 @@ servicePopup.addEventListener("click", (e) => {
 
 });
 
+});
+
   // ==========================================
 // RECEPTION POPUP
 // ==========================================
@@ -748,23 +750,6 @@ function showConfirmation(title, message, time = "") {
     feedbackPopup.style.display = "none";
 
     orderConfirmation.style.display = "flex";
-
-}
-
-  // ==========================================
-// SHOW CONFIRMATION
-// ==========================================
-
-function showConfirmation(title, message, time = "") {
-
-    document.getElementById("confirmTitle").textContent = title;
-
-    document.getElementById("confirmMessage").textContent = message;
-
-    document.getElementById("confirmTime").innerHTML =
-        time ? `<strong>${time}</strong>` : "";
-
-    document.getElementById("orderConfirmation").style.display = "flex";
 
 }
 
