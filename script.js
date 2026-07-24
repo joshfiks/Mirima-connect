@@ -300,50 +300,39 @@ continueBtn.addEventListener("click", async () => {
 const roomServiceCard = document.getElementById("roomServiceCard");
 
 const receptionCard = document.getElementById("receptionCard");
-
 const receptionPopup = document.getElementById("receptionPopup");
-
 const closeReception = document.querySelector(".closeReception");
 
 const housekeepingCard = document.getElementById("housekeepingCard");
-
 const housekeepingPopup = document.getElementById("housekeepingPopup");
-
 const closeHousekeeping = document.querySelector(".closeHousekeeping");
 
 const billingCard = document.getElementById("billingCard");
-
 const billingPopup = document.getElementById("billingPopup");
-
 const closeBilling = document.querySelector(".closeBilling");
-  
+
 const exploreCard = document.getElementById("exploreCard");
-
 const explorePopup = document.getElementById("explorePopup");
-
 const closeExplore = document.querySelector(".closeExplore");
 
 const feedbackCard = document.getElementById("feedbackCard");
-
 const feedbackPopup = document.getElementById("feedbackPopup");
-
 const closeFeedback = document.querySelector(".closeFeedback");
 
 const servicePopup = document.getElementById("servicePopup");
-
 const popupTitle = servicePopup.querySelector("h2");
-  
 const popupBody = document.getElementById("popupBody");
-  
-const popupContent = servicePopup.querySelector(".popup-content");
-
 const closePopup = servicePopup.querySelector(".closePopup");
+
+// ==========================================
+// ROOM SERVICE
+// ==========================================
 
 roomServiceCard.addEventListener("click", () => {
 
     popupTitle.textContent = "🛎️ Room Service";
 
-  popupBody.innerHTML = `
+    popupBody.innerHTML = `
 <h3>🍳 Breakfast</h3>
 
 <div class="menuItem" data-time="20–25">🍽️ Full English Breakfast <small>(20–25 min)</small></div>
@@ -388,10 +377,9 @@ roomServiceCard.addEventListener("click", () => {
 
 <button id="placeOrder">Place Order</button>
 `;
-  
+
     servicePopup.style.display = "flex";
 
-    // Enable selecting menu items
     popupBody.querySelectorAll(".menuItem").forEach(item => {
 
         item.addEventListener("click", () => {
@@ -402,68 +390,54 @@ roomServiceCard.addEventListener("click", () => {
 
     });
 
-    // Place Order button
     document.getElementById("placeOrder").addEventListener("click", () => {
 
-     const guestName = localStorage.getItem("guestName") || "Guest";
+        const guestName = localStorage.getItem("guestName") || "Guest";
 
-const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
+        const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
 
-let estimate = "5–10 minutes";
+        let estimate = "5–10 minutes";
 
-if (selectedItems.length > 0) {
+        if (selectedItems.length > 0) {
 
-    let longest = 0;
-    let estimateText = "5–10";
+            let longest = 0;
+            let estimateText = "5–10";
 
-    selectedItems.forEach(item => {
+            selectedItems.forEach(item => {
 
-        const time = item.dataset.time;
+                const time = item.dataset.time;
 
-        if (time === "0") {
+                if (time === "0") return;
 
-            return;
+                const highest = parseInt(time.split("–")[1]);
 
+                if (highest > longest) {
+
+                    longest = highest;
+                    estimateText = time;
+
+                }
+
+            });
+
+            estimate = longest === 0
+                ? "Immediate"
+                : estimateText + " minutes";
         }
 
-        const highest = parseInt(time.split("–")[1]);
+        servicePopup.style.display = "none";
 
-        if (highest > longest) {
-
-            longest = highest;
-
-            estimateText = time;
-
-        }
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your room service order has been sent to our kitchen.",
+            `Estimated preparation: ${estimate}`
+        );
 
     });
 
-    if (longest === 0) {
-
-        estimate = "Immediate";
-
-    } else {
-
-        estimate = estimateText + " minutes";
-
-    }
-
-}
-
-servicePopup.style.display = "none";
-
-showConfirmation(
-
-    `Thank you, ${guestName}!`,
-
-    "Your room service order has been sent to our kitchen.",
-
-    `Estimated preparation: ${estimate}`
-
-);
-
 });
-  
+
+// Close popup
 closePopup.addEventListener("click", () => {
 
     servicePopup.style.display = "none";
@@ -478,256 +452,99 @@ servicePopup.addEventListener("click", (e) => {
 
     }
 
-});
-
-});
-
-  // ==========================================
+}); 
+  
+// ==========================================
 // RECEPTION POPUP
 // ==========================================
 
 receptionCard.addEventListener("click", () => {
-
     receptionPopup.style.display = "flex";
-
 });
 
 closeReception.addEventListener("click", () => {
-
     receptionPopup.style.display = "none";
-
 });
 
 receptionPopup.addEventListener("click", (e) => {
-
     if (e.target === receptionPopup) {
-
         receptionPopup.style.display = "none";
-
     }
-
 });
-  // ==========================================
-// RECEPTION REQUEST
+
 // ==========================================
-
-document.getElementById("sendReceptionRequest").addEventListener("click", () => {
-
-    const guestName = localStorage.getItem("guestName") || "Guest";
-
-    receptionPopup.style.display = "none";
-
-    showConfirmation(
-        `Thank you, ${guestName}!`,
-        "Reception has received your request.",
-        "Estimated response: 5–10 minutes"
-    );
-
-});
-
-  // ==========================================
-// RECEPTION MENU SELECTION
-// ==========================================
-
-const receptionItems = receptionPopup.querySelectorAll(".menuItem");
-
-receptionItems.forEach(item => {
-
-    item.addEventListener("click", () => {
-
-        item.classList.toggle("selected");
-
-    });
-
-});
-
-  // ==========================================
 // HOUSEKEEPING POPUP
 // ==========================================
 
 housekeepingCard.addEventListener("click", () => {
-
     housekeepingPopup.style.display = "flex";
-
 });
 
 closeHousekeeping.addEventListener("click", () => {
-
     housekeepingPopup.style.display = "none";
-
 });
 
 housekeepingPopup.addEventListener("click", (e) => {
-
     if (e.target === housekeepingPopup) {
-
         housekeepingPopup.style.display = "none";
-
     }
-
 });
 
 // ==========================================
-// HOUSEKEEPING MENU SELECTION
-// ==========================================
-
-const housekeepingItems = housekeepingPopup.querySelectorAll(".menuItem");
-
-housekeepingItems.forEach(item => {
-
-    item.addEventListener("click", () => {
-
-        item.classList.toggle("selected");
-
-    });
-
-});
-
-  // ==========================================
 // BILLING POPUP
 // ==========================================
 
 billingCard.addEventListener("click", () => {
-
     billingPopup.style.display = "flex";
-
 });
 
 closeBilling.addEventListener("click", () => {
-
     billingPopup.style.display = "none";
-
 });
 
 billingPopup.addEventListener("click", (e) => {
-
     if (e.target === billingPopup) {
-
         billingPopup.style.display = "none";
-
     }
-
 });
 
-  // ==========================================
-// BILLING OPTION SELECTION
 // ==========================================
-
-const billingOptions = billingPopup.querySelectorAll(".service-option");
-
-billingOptions.forEach(option => {
-
-    option.addEventListener("click", () => {
-
-        billingOptions.forEach(item => {
-
-            item.classList.remove("selected");
-
-        });
-
-        option.classList.add("selected");
-
-    });
-
-});
-
-  // ==========================================
 // EXPLORE POPUP
 // ==========================================
 
 exploreCard.addEventListener("click", () => {
-
     explorePopup.style.display = "flex";
-
 });
 
 closeExplore.addEventListener("click", () => {
-
     explorePopup.style.display = "none";
-
 });
 
 explorePopup.addEventListener("click", (e) => {
-
     if (e.target === explorePopup) {
-
         explorePopup.style.display = "none";
-
     }
-
 });
 
-  // ==========================================
-// EXPLORE OPTION SELECTION
 // ==========================================
-
-const exploreOptions = explorePopup.querySelectorAll(".service-option");
-
-exploreOptions.forEach(option => {
-
-    option.addEventListener("click", () => {
-
-        exploreOptions.forEach(item => {
-
-            item.classList.remove("selected");
-
-        });
-
-        option.classList.add("selected");
-
-    });
-
-});
-
-  // ==========================================
 // FEEDBACK POPUP
 // ==========================================
 
 feedbackCard.addEventListener("click", () => {
-
     feedbackPopup.style.display = "flex";
-
 });
 
 closeFeedback.addEventListener("click", () => {
-
     feedbackPopup.style.display = "none";
-
 });
 
 feedbackPopup.addEventListener("click", (e) => {
-
     if (e.target === feedbackPopup) {
-
         feedbackPopup.style.display = "none";
-
     }
-
 });
 
 // ==========================================
-// FEEDBACK SELECTION
-// ==========================================
-
-const feedbackOptions = feedbackPopup.querySelectorAll(".service-option");
-
-feedbackOptions.forEach(option => {
-
-    option.addEventListener("click", () => {
-
-        feedbackOptions.forEach(item => {
-
-            item.classList.remove("selected");
-
-        });
-
-        option.classList.add("selected");
-
-    });
-
-});
-
- // ==========================================
 // CONFIRMATION FUNCTION
 // ==========================================
 
@@ -736,9 +553,7 @@ function showConfirmation(title, message, time = "") {
     const orderConfirmation = document.getElementById("orderConfirmation");
 
     document.getElementById("confirmTitle").textContent = title;
-
     document.getElementById("confirmMessage").textContent = message;
-
     document.getElementById("confirmTime").innerHTML =
         time ? `<strong>${time}</strong>` : "";
 
@@ -750,27 +565,7 @@ function showConfirmation(title, message, time = "") {
     feedbackPopup.style.display = "none";
 
     orderConfirmation.style.display = "flex";
-
 }
-
-  // ==========================================
-// RECEPTION REQUEST
-// ==========================================
-
-document.getElementById("sendReceptionRequest").addEventListener("click", () => {
-
-    const guestName = localStorage.getItem("guestName") || "Guest";
-
-    receptionPopup.style.display = "none";
-
-    showConfirmation(
-        `Thank you, ${guestName}!`,
-        "Reception has received your request.",
-        "Estimated response: 5–10 minutes"
-    );
-
-});
-
 // ==========================================
 // HOUSEKEEPING REQUEST
 // ==========================================
@@ -842,13 +637,15 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
     );
 
 });
-  
+
+// ==========================================
+// CLOSE CONFIRMATION
+// ==========================================
+
 const closeConfirmation = document.getElementById("closeConfirmation");
 
 closeConfirmation.addEventListener("click", () => {
 
     document.getElementById("orderConfirmation").style.display = "none";
-
-});
 
 });
