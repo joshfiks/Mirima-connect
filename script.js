@@ -767,6 +767,96 @@ function showConfirmation(title, message, time = "") {
     document.getElementById("orderConfirmation").style.display = "flex";
 
 }
+
+  // ==========================================
+// RECEPTION REQUEST
+// ==========================================
+
+document.getElementById("sendReceptionRequest").addEventListener("click", () => {
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    receptionPopup.style.display = "none";
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Reception has received your request.",
+        "Estimated response: 5–10 minutes"
+    );
+
+});
+
+// ==========================================
+// HOUSEKEEPING REQUEST
+// ==========================================
+
+document.getElementById("sendHousekeepingRequest").addEventListener("click", () => {
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    housekeepingPopup.style.display = "none";
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Housekeeping has received your request.",
+        "Estimated response: 10–20 minutes"
+    );
+
+});
+
+// ==========================================
+// BILLING REQUEST
+// ==========================================
+
+document.getElementById("sendBillingRequest").addEventListener("click", () => {
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    billingPopup.style.display = "none";
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Your billing request has been received.",
+        "Estimated response: 5–10 minutes"
+    );
+
+});
+
+// ==========================================
+// EXPLORE REQUEST
+// ==========================================
+
+document.getElementById("bookActivity").addEventListener("click", () => {
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    explorePopup.style.display = "none";
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Your booking request has been received.",
+        "Our activities team will contact you shortly."
+    );
+
+});
+
+// ==========================================
+// FEEDBACK SUBMISSION
+// ==========================================
+
+document.getElementById("submitFeedback").addEventListener("click", () => {
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    feedbackPopup.style.display = "none";
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "We appreciate your feedback.",
+        "Your comments help us improve."
+    );
+
+});
   
 const closeConfirmation = document.getElementById("closeConfirmation");
 
