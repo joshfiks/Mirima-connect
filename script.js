@@ -343,44 +343,44 @@ roomServiceCard.addEventListener("click", () => {
 
     popupTitle.textContent = "🛎️ Room Service";
 
-    popupBody.innerHTML = `
+  popupBody.innerHTML = `
 <h3>🍳 Breakfast</h3>
 
-<div class="menuItem">🍽️ Full English Breakfast</div>
-<div class="menuItem">🥞 Pancakes & Honey</div>
-<div class="menuItem">🍳 Chef's Omelette</div>
-<div class="menuItem">🍉 Fresh Tropical Fruit Platter</div>
-<div class="menuItem">🥣 African Breakfast</div>
+<div class="menuItem" data-time="20–25">🍽️ Full English Breakfast <small>(20–25 min)</small></div>
+<div class="menuItem" data-time="15–20">🥞 Pancakes & Honey <small>(15–20 min)</small></div>
+<div class="menuItem" data-time="10–15">🍳 Chef's Omelette <small>(10–15 min)</small></div>
+<div class="menuItem" data-time="5–8">🍉 Fresh Tropical Fruit Platter <small>(5–8 min)</small></div>
+<div class="menuItem" data-time="20–25">🥣 African Breakfast <small>(20–25 min)</small></div>
 
 <h3>🍽️ Main Meals</h3>
 
-<div class="menuItem">🐟 Grilled Nile Tilapia</div>
-<div class="menuItem">🍗 Roast Chicken</div>
-<div class="menuItem">🥩 Beef Fillet</div>
-<div class="menuItem">🍖 Goat Muchomo</div>
-<div class="menuItem">🥬 Vegetarian Curry</div>
+<div class="menuItem" data-time="25–30">🐟 Grilled Nile Tilapia <small>(25–30 min)</small></div>
+<div class="menuItem" data-time="25–30">🍗 Roast Chicken <small>(25–30 min)</small></div>
+<div class="menuItem" data-time="30–35">🥩 Beef Fillet <small>(30–35 min)</small></div>
+<div class="menuItem" data-time="35–45">🍖 Goat Muchomo <small>(35–45 min)</small></div>
+<div class="menuItem" data-time="20–25">🥬 Vegetarian Curry <small>(20–25 min)</small></div>
 
 <h3>🥗 Light Meals</h3>
 
-<div class="menuItem">🥪 Club Sandwich</div>
-<div class="menuItem">🥗 Garden Salad</div>
-<div class="menuItem">🍟 French Fries</div>
-<div class="menuItem">🍕 Chef's Pizza</div>
+<div class="menuItem" data-time="10–15">🥪 Club Sandwich <small>(10–15 min)</small></div>
+<div class="menuItem" data-time="5–10">🥗 Garden Salad <small>(5–10 min)</small></div>
+<div class="menuItem" data-time="10–15">🍟 French Fries <small>(10–15 min)</small></div>
+<div class="menuItem" data-time="20–25">🍕 Chef's Pizza <small>(20–25 min)</small></div>
 
 <h3>🥤 Drinks</h3>
 
-<div class="menuItem">🍹 Fresh Passion Juice</div>
-<div class="menuItem">🥭 Fresh Mango Juice</div>
-<div class="menuItem">☕ African Tea</div>
-<div class="menuItem">☕ Espresso</div>
-<div class="menuItem">🥛 Cappuccino</div>
-<div class="menuItem">💧 Mineral Water</div>
+<div class="menuItem" data-time="3–5">🍹 Fresh Passion Juice <small>(3–5 min)</small></div>
+<div class="menuItem" data-time="3–5">🥭 Fresh Mango Juice <small>(3–5 min)</small></div>
+<div class="menuItem" data-time="5–7">☕ African Tea <small>(5–7 min)</small></div>
+<div class="menuItem" data-time="2–4">☕ Espresso <small>(2–4 min)</small></div>
+<div class="menuItem" data-time="4–6">🥛 Cappuccino <small>(4–6 min)</small></div>
+<div class="menuItem" data-time="0">💧 Mineral Water <small>(Immediate)</small></div>
 
 <h3>🍰 Desserts</h3>
 
-<div class="menuItem">🍰 Chocolate Cake</div>
-<div class="menuItem">🍨 Vanilla Ice Cream</div>
-<div class="menuItem">🍓 Seasonal Fruit Salad</div>
+<div class="menuItem" data-time="3–5">🍰 Chocolate Cake <small>(3–5 min)</small></div>
+<div class="menuItem" data-time="0">🍨 Vanilla Ice Cream <small>(Immediate)</small></div>
+<div class="menuItem" data-time="5–8">🍓 Seasonal Fruit Salad <small>(5–8 min)</small></div>
 
 <h3>📝 Special Instructions</h3>
 
@@ -388,7 +388,7 @@ roomServiceCard.addEventListener("click", () => {
 
 <button id="placeOrder">Place Order</button>
 `;
-
+  
     servicePopup.style.display = "flex";
 
     // Enable selecting menu items
