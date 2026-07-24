@@ -407,12 +407,22 @@ roomServiceCard.addEventListener("click", () => {
 
         const guestName = localStorage.getItem("guestName") || "Guest";
 
+const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
+
+let estimate = "5–10 minutes";
+
+if (selectedItems.length > 0) {
+
+    estimate = selectedItems[0].dataset.time + " minutes";
+
+}
+
 servicePopup.style.display = "none";
 
 showConfirmation(
     `Thank you, ${guestName}!`,
     "Your room service order has been sent to our kitchen.",
-    "Estimated preparation: 20–30 minutes"
+    `Estimated preparation: ${estimate}`
 );
 
 });
