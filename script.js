@@ -459,7 +459,19 @@ servicePopup.addEventListener("click", (e) => {
 // ==========================================
 
 receptionCard.addEventListener("click", () => {
+
     receptionPopup.style.display = "flex";
+
+    receptionPopup.querySelectorAll(".menuItem").forEach(item => {
+
+        item.onclick = () => {
+
+            item.classList.toggle("selected");
+
+        };
+
+    });
+
 });
 
 closeReception.addEventListener("click", () => {
@@ -476,8 +488,20 @@ receptionPopup.addEventListener("click", (e) => {
 // HOUSEKEEPING POPUP
 // ==========================================
 
-housekeepingCard.addEventListener("click", () => {
+housekeepingcard.addEventListener("click", () => {
+
     housekeepingPopup.style.display = "flex";
+
+    housekeepingPopup.querySelectorAll(".menuItem").forEach(item => {
+
+        item.onclick = () => {
+
+            item.classList.toggle("selected");
+
+        };
+
+    });
+
 });
 
 closeHousekeeping.addEventListener("click", () => {
@@ -495,7 +519,19 @@ housekeepingPopup.addEventListener("click", (e) => {
 // ==========================================
 
 billingCard.addEventListener("click", () => {
+
     billingPopup.style.display = "flex";
+
+    billingPopup.querySelectorAll(".menuItem").forEach(item => {
+
+        item.onclick = () => {
+
+            item.classList.toggle("selected");
+
+        };
+
+    });
+
 });
 
 closeBilling.addEventListener("click", () => {
@@ -513,7 +549,19 @@ billingPopup.addEventListener("click", (e) => {
 // ==========================================
 
 exploreCard.addEventListener("click", () => {
+
     explorePopup.style.display = "flex";
+
+    explorePopup.querySelectorAll(".menuItem").forEach(item => {
+
+        item.onclick = () => {
+
+            item.classList.toggle("selected");
+
+        };
+
+    });
+
 });
 
 closeExplore.addEventListener("click", () => {
@@ -531,7 +579,19 @@ explorePopup.addEventListener("click", (e) => {
 // ==========================================
 
 feedbackCard.addEventListener("click", () => {
+
     feedbackPopup.style.display = "flex";
+
+    feedbackPopup.querySelectorAll(".menuItem").forEach(item => {
+
+        item.onclick = () => {
+
+            item.classList.toggle("selected");
+
+        };
+
+    });
+
 });
 
 closeFeedback.addEventListener("click", () => {
