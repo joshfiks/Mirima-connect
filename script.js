@@ -505,6 +505,23 @@ receptionPopup.addEventListener("click", (e) => {
     }
 
 });
+  // ==========================================
+// RECEPTION REQUEST
+// ==========================================
+
+document.getElementById("sendReceptionRequest").addEventListener("click", () => {
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    receptionPopup.style.display = "none";
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Reception has received your request.",
+        "Estimated response: 5–10 minutes"
+    );
+
+});
 
   // ==========================================
 // RECEPTION MENU SELECTION
