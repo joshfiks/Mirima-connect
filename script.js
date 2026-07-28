@@ -462,7 +462,7 @@ receptionCard.addEventListener("click", () => {
 
     receptionPopup.style.display = "flex";
 
-    receptionPopup.querySelectorAll(".menuItem").forEach(item => {
+    receptionPopup.querySelectorAll(".service-option").forEach(item => {
 
         item.onclick = () => {
 
@@ -492,7 +492,7 @@ housekeepingCard.addEventListener("click", () => {
 
     housekeepingPopup.style.display = "flex";
 
-    housekeepingPopup.querySelectorAll(".menuItem").forEach(item => {
+    housekeepingPopup.querySelectorAll(".service-option").forEach(item => {
 
         item.onclick = () => {
 
@@ -517,16 +517,15 @@ housekeepingPopup.addEventListener("click", (e) => {
 // ==========================================
 // BILLING POPUP
 // ==========================================
-
 billingCard.addEventListener("click", () => {
 
     billingPopup.style.display = "flex";
 
-    billingPopup.querySelectorAll(".menuItem").forEach(item => {
+    billingPopup.querySelectorAll(".service-option").forEach(option => {
 
-        item.onclick = () => {
+        option.onclick = () => {
 
-            item.classList.toggle("selected");
+            option.classList.toggle("selected");
 
         };
 
@@ -552,7 +551,7 @@ exploreCard.addEventListener("click", () => {
 
     explorePopup.style.display = "flex";
 
-    explorePopup.querySelectorAll(".menuItem").forEach(item => {
+    explorePopup.querySelectorAll(".service-option").forEach(item => {
 
         item.onclick = () => {
 
@@ -582,7 +581,7 @@ feedbackCard.addEventListener("click", () => {
 
     feedbackPopup.style.display = "flex";
 
-    feedbackPopup.querySelectorAll(".menuItem").forEach(item => {
+    feedbackPopup.querySelectorAll(".service-option").forEach(item => {
 
         item.onclick = () => {
 
@@ -632,6 +631,18 @@ function showConfirmation(title, message, time = "") {
 
 document.getElementById("sendHousekeepingRequest").addEventListener("click", () => {
 
+    // Find all selected housekeeping services
+    const selectedItems = housekeepingPopup.querySelectorAll(".menuItem.selected");
+
+    // Stop if nothing is selected
+    if (selectedItems.length === 0) {
+
+        alert("Please select at least one housekeeping service.");
+
+        return;
+
+    }
+
     const guestName = localStorage.getItem("guestName") || "Guest";
 
     housekeepingPopup.style.display = "none";
@@ -643,12 +654,23 @@ document.getElementById("sendHousekeepingRequest").addEventListener("click", () 
     );
 
 });
-
 // ==========================================
 // BILLING REQUEST
 // ==========================================
 
 document.getElementById("sendBillingRequest").addEventListener("click", () => {
+
+    // Find every selected billing option
+    const selectedItems = billingPopup.querySelectorAll(".service-option.selected");
+
+    // Stop if nothing is selected
+    if (selectedItems.length === 0) {
+
+        alert("Please select at least one billing service.");
+
+        return;
+
+    }
 
     const guestName = localStorage.getItem("guestName") || "Guest";
 
@@ -668,6 +690,18 @@ document.getElementById("sendBillingRequest").addEventListener("click", () => {
 
 document.getElementById("bookActivity").addEventListener("click", () => {
 
+    // Find all selected activities
+    const selectedItems = explorePopup.querySelectorAll(".service-option.selected");
+
+    // Stop if nothing is selected
+    if (selectedItems.length === 0) {
+
+        alert("Please select at least one activity.");
+
+        return;
+
+    }
+
     const guestName = localStorage.getItem("guestName") || "Guest";
 
     explorePopup.style.display = "none";
@@ -685,6 +719,18 @@ document.getElementById("bookActivity").addEventListener("click", () => {
 // ==========================================
 
 document.getElementById("submitFeedback").addEventListener("click", () => {
+
+    // Find all selected feedback options
+    const selectedItems = feedbackPopup.querySelectorAll(".service-option.selected");
+
+    // Stop if nothing is selected
+    if (selectedItems.length === 0) {
+
+        alert("Please select at least one feedback option.");
+
+        return;
+
+    }
 
     const guestName = localStorage.getItem("guestName") || "Guest";
 
