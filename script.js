@@ -462,7 +462,7 @@ receptionCard.addEventListener("click", () => {
 
     receptionPopup.style.display = "flex";
 
-    receptionPopup.querySelectorAll(".service-option").forEach(item => {
+    receptionPopup.querySelectorAll(".menuItem").forEach(item => {
 
         item.onclick = () => {
 
