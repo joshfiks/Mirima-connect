@@ -551,11 +551,11 @@ exploreCard.addEventListener("click", () => {
 
     explorePopup.style.display = "flex";
 
-    explorePopup.querySelectorAll(".service-option").forEach(item => {
+    explorePopup.querySelectorAll(".service-option").forEach(option => {
 
-        item.onclick = () => {
+        option.onclick = () => {
 
-            item.classList.toggle("selected");
+            option.classList.toggle("selected");
 
         };
 
@@ -581,18 +581,17 @@ feedbackCard.addEventListener("click", () => {
 
     feedbackPopup.style.display = "flex";
 
-    feedbackPopup.querySelectorAll(".service-option").forEach(item => {
+    feedbackPopup.querySelectorAll(".service-option").forEach(option => {
 
-        item.onclick = () => {
+        option.onclick = () => {
 
-            item.classList.toggle("selected");
+            option.classList.toggle("selected");
 
         };
 
     });
 
 });
-
 closeFeedback.addEventListener("click", () => {
     feedbackPopup.style.display = "none";
 });
