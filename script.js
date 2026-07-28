@@ -488,7 +488,7 @@ receptionPopup.addEventListener("click", (e) => {
 // HOUSEKEEPING POPUP
 // ==========================================
 
-housekeepingcard.addEventListener("click", () => {
+housekeepingCard.addEventListener("click", () => {
 
     housekeepingPopup.style.display = "flex";
 
