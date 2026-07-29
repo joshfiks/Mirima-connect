@@ -624,6 +624,32 @@ function showConfirmation(title, message, time = "") {
 
     orderConfirmation.style.display = "flex";
 }
+
+  // ==========================================
+// RECEPTION REQUEST
+// ==========================================
+
+document.getElementById("sendReceptionRequest").addEventListener("click", () => {
+
+    const selected = receptionPopup.querySelectorAll(".menuItem.selected");
+
+    if (selected.length === 0) {
+        alert("Please choose at least one service.");
+        return;
+    }
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    receptionPopup.style.display = "none";
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Reception has received your request.",
+        "Estimated response: 5–10 minutes"
+    );
+
+});
+  
 // ==========================================
 // HOUSEKEEPING REQUEST
 // ==========================================
