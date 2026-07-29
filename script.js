@@ -662,13 +662,11 @@ document.getElementById("sendReceptionRequest").addEventListener("click", () => 
 
 document.getElementById("sendHousekeepingRequest").addEventListener("click", () => {
 
-    // Find all selected housekeeping services
-    const selectedItems = housekeepingPopup.querySelectorAll(".menuItem.selected");
+    const selected = housekeepingPopup.querySelectorAll(".menuItem.selected");
 
-    // Stop if nothing is selected
-    if (selectedItems.length === 0) {
+    if (selected.length === 0) {
 
-        alert("Please select at least one housekeeping service.");
+        alert("Please choose at least one service.");
 
         return;
 
@@ -685,6 +683,7 @@ document.getElementById("sendHousekeepingRequest").addEventListener("click", () 
     );
 
 });
+  
 // ==========================================
 // BILLING REQUEST
 // ==========================================
