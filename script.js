@@ -492,7 +492,7 @@ housekeepingCard.addEventListener("click", () => {
 
     housekeepingPopup.style.display = "flex";
 
-    housekeepingPopup.querySelectorAll(".service-option").forEach(item => {
+    housekeepingPopup.querySelectorAll(".menuItem").forEach(item => {
 
         item.onclick = () => {
 
@@ -505,13 +505,19 @@ housekeepingCard.addEventListener("click", () => {
 });
 
 closeHousekeeping.addEventListener("click", () => {
+
     housekeepingPopup.style.display = "none";
+
 });
 
 housekeepingPopup.addEventListener("click", (e) => {
+
     if (e.target === housekeepingPopup) {
+
         housekeepingPopup.style.display = "none";
+
     }
+
 });
 
 // ==========================================
