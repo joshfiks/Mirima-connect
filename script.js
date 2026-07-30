@@ -671,6 +671,38 @@ function showConfirmation(title, message, time = "") {
 }
 
   // ==========================================
+// WARNING FUNCTION
+// ==========================================
+
+function showWarning(title, message) {
+
+    document.getElementById("warningTitle").textContent = title;
+
+    document.getElementById("warningMessage").textContent = message;
+
+    document.getElementById("warningPopup").style.display = "flex";
+
+}
+
+const closeWarning = document.getElementById("closeWarning");
+
+closeWarning.addEventListener("click", () => {
+
+    document.getElementById("warningPopup").style.display = "none";
+
+});
+
+warningPopup.addEventListener("click", (e) => {
+
+    if (e.target === warningPopup) {
+
+        warningPopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
 // RECEPTION REQUEST
 // ==========================================
 
@@ -679,8 +711,11 @@ document.getElementById("sendReceptionRequest").addEventListener("click", () => 
     const selected = receptionPopup.querySelectorAll(".menuItem.selected");
 
     if (selected.length === 0) {
-        alert("Please choose at least one service.");
-        return;
+       showWarning(
+    "No Service Selected",
+    "Please choose at least one service before sending your request."
+);
+return;
     }
 
     const guestName = localStorage.getItem("guestName") || "Guest";
@@ -705,9 +740,11 @@ document.getElementById("sendHousekeepingRequest").addEventListener("click", () 
 
     if (selected.length === 0) {
 
-        alert("Please choose at least one service.");
-
-        return;
+        showWarning(
+    "No Service Selected",
+    "Please choose at least one service before sending your request."
+);
+return;
 
     }
 
@@ -735,9 +772,11 @@ document.getElementById("sendBillingRequest").addEventListener("click", () => {
     // Stop if nothing is selected
     if (selectedItems.length === 0) {
 
-        alert("Please select at least one billing service.");
-
-        return;
+       showWarning(
+    "No Service Selected",
+    "Please select at least one billing option before sending your request."
+);
+return;
 
     }
 
@@ -765,9 +804,11 @@ document.getElementById("bookActivity").addEventListener("click", () => {
     // Stop if nothing is selected
     if (selectedItems.length === 0) {
 
-        alert("Please select at least one activity.");
-
-        return;
+       showWarning(
+    "No Service Selected",
+    "Please select at least one activity before sending your request."
+);
+return;;
 
     }
 
