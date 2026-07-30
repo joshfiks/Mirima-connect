@@ -292,7 +292,20 @@ continueBtn.addEventListener("click", async () => {
 
 });
 
+// ==========================================
+// CLEAR SELECTED ITEMS
+// ==========================================
 
+function clearSelections(popup, selector) {
+
+    popup.querySelectorAll(selector).forEach(item => {
+
+        item.classList.remove("selected");
+
+    });
+
+}
+  
 // ==========================================
 // SERVICE POPUP
 // ==========================================
