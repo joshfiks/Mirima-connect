@@ -392,7 +392,17 @@ roomServiceCard.addEventListener("click", () => {
 
     document.getElementById("placeOrder").addEventListener("click", () => {
 
-        const guestName = localStorage.getItem("guestName") || "Guest";
+    const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
+
+    if (selectedItems.length === 0) {
+
+        alert("Please choose at least one menu item.");
+
+        return;
+
+    }
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
 
         const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
 
