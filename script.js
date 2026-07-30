@@ -403,9 +403,7 @@ roomServiceCard.addEventListener("click", () => {
     }
 
     const guestName = localStorage.getItem("guestName") || "Guest";
-
-        const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
-
+       
         let estimate = "5–10 minutes";
 
         if (selectedItems.length > 0) {
