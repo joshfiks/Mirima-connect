@@ -493,10 +493,10 @@ receptionCard.addEventListener("click", () => {
 
 closeReception.addEventListener("click", () => {
 
-    receptionPopup.style.display = "none";
+        clearSelections(receptionPopup, ".menuItem");
 
-    clearSelections(receptionPopup, ".menuItem");
-
+  receptionPopup.style.display = "none";
+  
 });
 
 receptionPopup.addEventListener("click", (e) => {
@@ -530,9 +530,9 @@ housekeepingCard.addEventListener("click", () => {
 
 closeHousekeeping.addEventListener("click", () => {
 
-    housekeepingPopup.style.display = "none";
-
-    clearSelections(housekeepingPopup, ".menuItem");
+       clearSelections(housekeepingPopup, ".menuItem");
+  
+   housekeepingPopup.style.display = "none";
 
 });
 
@@ -566,11 +566,11 @@ billingCard.addEventListener("click", () => {
 });
 
 closeBilling.addEventListener("click", () => {
-
-    billingPopup.style.display = "none";
-
-    clearSelections(billingPopup, ".service-option");
-
+   
+   clearSelections(billingPopup, ".service-option");
+  
+ billingPopup.style.display = "none";
+  
 });
 
 billingPopup.addEventListener("click", (e) => {
@@ -603,10 +603,10 @@ exploreCard.addEventListener("click", () => {
 });
 
 closeExplore.addEventListener("click", () => {
-
-    explorePopup.style.display = "none";
-
+   
     clearSelections(explorePopup, ".service-option");
+
+  explorePopup.style.display = "none";
 
 });
 
@@ -641,9 +641,9 @@ feedbackCard.addEventListener("click", () => {
 
 closeFeedback.addEventListener("click", () => {
 
-    feedbackPopup.style.display = "none";
-
-    clearSelections(feedbackPopup, ".service-option");
+      clearSelections(feedbackPopup, ".service-option");
+  
+  feedbackPopup.style.display = "none";
 
 });
 
