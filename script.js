@@ -474,25 +474,32 @@ receptionCard.addEventListener("click", () => {
 
     receptionPopup.querySelectorAll(".menuItem").forEach(item => {
 
-        item.onclick = () => {
-
-            item.classList.toggle("selected");
-
-        };
+        item.onclick = () => item.classList.toggle("selected");
 
     });
 
 });
 
 closeReception.addEventListener("click", () => {
+
     receptionPopup.style.display = "none";
+
+    clearSelections(receptionPopup, ".menuItem");
+
 });
 
 receptionPopup.addEventListener("click", (e) => {
+
     if (e.target === receptionPopup) {
+
         receptionPopup.style.display = "none";
+
+        clearSelections(receptionPopup, ".menuItem");
+
     }
+
 });
+
 
 // ==========================================
 // HOUSEKEEPING POPUP
@@ -504,11 +511,7 @@ housekeepingCard.addEventListener("click", () => {
 
     housekeepingPopup.querySelectorAll(".menuItem").forEach(item => {
 
-        item.onclick = () => {
-
-            item.classList.toggle("selected");
-
-        };
+        item.onclick = () => item.classList.toggle("selected");
 
     });
 
@@ -518,6 +521,8 @@ closeHousekeeping.addEventListener("click", () => {
 
     housekeepingPopup.style.display = "none";
 
+    clearSelections(housekeepingPopup, ".menuItem");
+
 });
 
 housekeepingPopup.addEventListener("click", (e) => {
@@ -526,38 +531,49 @@ housekeepingPopup.addEventListener("click", (e) => {
 
         housekeepingPopup.style.display = "none";
 
+        clearSelections(housekeepingPopup, ".menuItem");
+
     }
 
 });
 
+
 // ==========================================
 // BILLING POPUP
 // ==========================================
+
 billingCard.addEventListener("click", () => {
 
     billingPopup.style.display = "flex";
 
     billingPopup.querySelectorAll(".service-option").forEach(option => {
 
-        option.onclick = () => {
-
-            option.classList.toggle("selected");
-
-        };
+        option.onclick = () => option.classList.toggle("selected");
 
     });
 
 });
 
 closeBilling.addEventListener("click", () => {
+
     billingPopup.style.display = "none";
+
+    clearSelections(billingPopup, ".service-option");
+
 });
 
 billingPopup.addEventListener("click", (e) => {
+
     if (e.target === billingPopup) {
+
         billingPopup.style.display = "none";
+
+        clearSelections(billingPopup, ".service-option");
+
     }
+
 });
+
 
 // ==========================================
 // EXPLORE POPUP
@@ -569,25 +585,32 @@ exploreCard.addEventListener("click", () => {
 
     explorePopup.querySelectorAll(".service-option").forEach(option => {
 
-        option.onclick = () => {
-
-            option.classList.toggle("selected");
-
-        };
+        option.onclick = () => option.classList.toggle("selected");
 
     });
 
 });
 
 closeExplore.addEventListener("click", () => {
+
     explorePopup.style.display = "none";
+
+    clearSelections(explorePopup, ".service-option");
+
 });
 
 explorePopup.addEventListener("click", (e) => {
+
     if (e.target === explorePopup) {
+
         explorePopup.style.display = "none";
+
+        clearSelections(explorePopup, ".service-option");
+
     }
+
 });
+
 
 // ==========================================
 // FEEDBACK POPUP
@@ -599,25 +622,31 @@ feedbackCard.addEventListener("click", () => {
 
     feedbackPopup.querySelectorAll(".service-option").forEach(option => {
 
-        option.onclick = () => {
-
-            option.classList.toggle("selected");
-
-        };
+        option.onclick = () => option.classList.toggle("selected");
 
     });
 
 });
+
 closeFeedback.addEventListener("click", () => {
+
     feedbackPopup.style.display = "none";
+
+    clearSelections(feedbackPopup, ".service-option");
+
 });
 
 feedbackPopup.addEventListener("click", (e) => {
-    if (e.target === feedbackPopup) {
-        feedbackPopup.style.display = "none";
-    }
-});
 
+    if (e.target === feedbackPopup) {
+
+        feedbackPopup.style.display = "none";
+
+        clearSelections(feedbackPopup, ".service-option");
+
+    }
+
+});
 // ==========================================
 // CONFIRMATION FUNCTION
 // ==========================================
