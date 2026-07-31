@@ -735,6 +735,8 @@ return;
     }
 
     const guestName = localStorage.getItem("guestName") || "Guest";
+  
+  clearSelections(receptionPopup, ".menuItem");
 
     receptionPopup.style.display = "none";
 
