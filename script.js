@@ -828,7 +828,7 @@ document.getElementById("bookActivity").addEventListener("click", () => {
     "No Service Selected",
     "Please select at least one activity before sending your request."
 );
-return;;
+return;
 
     }
 
