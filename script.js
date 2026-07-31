@@ -458,8 +458,9 @@ roomServiceCard.addEventListener("click", () => {
 
 });
 
-// Close popup
 closePopup.addEventListener("click", () => {
+
+    clearSelections(servicePopup, ".menuItem");
 
     servicePopup.style.display = "none";
 
@@ -469,11 +470,13 @@ servicePopup.addEventListener("click", (e) => {
 
     if (e.target === servicePopup) {
 
+        clearSelections(servicePopup, ".menuItem");
+
         servicePopup.style.display = "none";
 
     }
 
-}); 
+});
   
 // ==========================================
 // RECEPTION POPUP
@@ -579,7 +582,7 @@ billingPopup.addEventListener("click", (e) => {
 
     if (e.target === billingPopup) {
 
-      clearSelections(billingPopup, ".menuItem");
+    clearSelections(billingPopup, ".service-option");
       
         billingPopup.style.display = "none";
 
@@ -617,7 +620,7 @@ explorePopup.addEventListener("click", (e) => {
 
     if (e.target === explorePopup) {
 
-    clearSelections(explorePopup, ".menuItem");
+   clearSelections(explorePopup, ".service-option");
       
         explorePopup.style.display = "none";
              
@@ -654,8 +657,7 @@ feedbackPopup.addEventListener("click", (e) => {
 
     if (e.target === feedbackPopup) {
 
-      clearSelections(feedbackPopup, ".menuItem");
-      
+      clearSelections(feedbackPopup, ".service-option");      
         feedbackPopup.style.display = "none";
         
     }
@@ -850,9 +852,11 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
     // Stop if nothing is selected
     if (selectedItems.length === 0) {
 
-        alert("Please select at least one feedback option.");
-
-        return;
+    showWarning(
+    "No Feedback Selected",
+    "Please select at least one feedback option before submitting."
+);
+ return;
 
     }
 
