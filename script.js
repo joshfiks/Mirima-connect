@@ -798,13 +798,15 @@ return;
 
     const guestName = localStorage.getItem("guestName") || "Guest";
 
-    billingPopup.style.display = "none";
+    clearSelections(billingPopup, ".service-option");
 
-    showConfirmation(
-        `Thank you, ${guestName}!`,
-        "Your billing request has been received.",
-        "Estimated response: 5–10 minutes"
-    );
+billingPopup.style.display = "none";
+
+showConfirmation(
+    `Thank you, ${guestName}!`,
+    "Your billing request has been received.",
+    "Estimated response: 5–10 minutes"
+);
 
 });
 
