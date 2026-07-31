@@ -503,10 +503,11 @@ receptionPopup.addEventListener("click", (e) => {
 
     if (e.target === receptionPopup) {
 
+   clearSelections(receptionPopup, ".menuItem");
+
         receptionPopup.style.display = "none";
 
-        clearSelections(receptionPopup, ".menuItem");
-
+        
     }
 
 });
@@ -540,10 +541,11 @@ housekeepingPopup.addEventListener("click", (e) => {
 
     if (e.target === housekeepingPopup) {
 
+      clearSelections(housekeepingPopup, ".menuItem");
+      
         housekeepingPopup.style.display = "none";
 
-        clearSelections(housekeepingPopup, ".menuItem");
-
+        
     }
 
 });
@@ -577,10 +579,11 @@ billingPopup.addEventListener("click", (e) => {
 
     if (e.target === billingPopup) {
 
+      clearSelections(billingPopup, ".menuItem");
+      
         billingPopup.style.display = "none";
 
-        clearSelections(billingPopup, ".service-option");
-
+        
     }
 
 });
@@ -614,10 +617,10 @@ explorePopup.addEventListener("click", (e) => {
 
     if (e.target === explorePopup) {
 
+    clearSelections(explorePopup, ".menuItem");
+      
         explorePopup.style.display = "none";
-
-        clearSelections(explorePopup, ".service-option");
-
+             
     }
 
 });
@@ -651,10 +654,10 @@ feedbackPopup.addEventListener("click", (e) => {
 
     if (e.target === feedbackPopup) {
 
+      clearSelections(feedbackPopup, ".menuItem");
+      
         feedbackPopup.style.display = "none";
-
-        clearSelections(feedbackPopup, ".service-option");
-
+        
     }
 
 });
