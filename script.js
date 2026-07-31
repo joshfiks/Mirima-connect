@@ -766,6 +766,8 @@ return;
 
     const guestName = localStorage.getItem("guestName") || "Guest";
 
+  clearSelections(housekeepingPopup, ".menuItem");
+  
     housekeepingPopup.style.display = "none";
 
     showConfirmation(
@@ -832,6 +834,8 @@ return;;
 
     const guestName = localStorage.getItem("guestName") || "Guest";
 
+  clearSelections(explorePopup, ".service-option");
+  
     explorePopup.style.display = "none";
 
     showConfirmation(
@@ -864,6 +868,8 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
 
     const guestName = localStorage.getItem("guestName") || "Guest";
 
+  clearSelections(feedbackPopup, ".service-option");
+  
     feedbackPopup.style.display = "none";
 
     showConfirmation(
