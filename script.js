@@ -409,11 +409,14 @@ roomServiceCard.addEventListener("click", () => {
 
     if (selectedItems.length === 0) {
 
-        alert("Please choose at least one menu item.");
+    showWarning(
+        "No Menu Item Selected",
+        "Please choose at least one menu item before placing your order."
+    );
 
-        return;
+    return;
 
-    }
+}
 
     const guestName = localStorage.getItem("guestName") || "Guest";
        
