@@ -567,9 +567,19 @@ billingCard.addEventListener("click", () => {
 
     billingPopup.querySelectorAll(".service-option").forEach(option => {
 
-        option.onclick = () => option.classList.toggle("selected");
+    option.onclick = () => {
 
-    });
+        billingPopup.querySelectorAll(".service-option").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    };
+
+});
 
 });
 
@@ -603,11 +613,21 @@ exploreCard.addEventListener("click", () => {
 
     explorePopup.style.display = "flex";
 
-    explorePopup.querySelectorAll(".service-option").forEach(option => {
+   explorePopup.querySelectorAll(".service-option").forEach(option => {
 
-        option.onclick = () => option.classList.toggle("selected");
+    option.onclick = () => {
 
-    });
+        explorePopup.querySelectorAll(".service-option").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    };
+
+});
 
 });
 
@@ -642,9 +662,19 @@ feedbackCard.addEventListener("click", () => {
 
     feedbackPopup.querySelectorAll(".service-option").forEach(option => {
 
-        option.onclick = () => option.classList.toggle("selected");
+    option.onclick = () => {
 
-    });
+        feedbackPopup.querySelectorAll(".service-option").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    };
+
+});
 
 });
 
