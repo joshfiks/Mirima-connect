@@ -763,7 +763,7 @@ function showLoading(message, callback, button = null){
 
         }
 
-    },200);
+    },300);
 
 }
   
