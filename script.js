@@ -451,14 +451,20 @@ roomServiceCard.addEventListener("click", () => {
 
         servicePopup.style.display = "none";
 
-        showConfirmation(
-            `Thank you, ${guestName}!`,
-            "Your room service order has been sent to our kitchen.",
-            `Estimated preparation: ${estimate}`
-        );
+        const btn = document.getElementById("placeOrder");
 
-    });
+showLoading("Contacting Room Service...", () => {
 
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Your order has been received.",
+        estimate
+    );
+
+}, btn);
+      
+ });
+  
 });
 
 closePopup.addEventListener("click", () => {
@@ -757,7 +763,7 @@ function showLoading(message, callback, button = null){
 
         }
 
-    },75);
+    },200);
 
 }
   
