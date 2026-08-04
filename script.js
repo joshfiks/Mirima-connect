@@ -696,6 +696,27 @@ feedbackPopup.addEventListener("click", (e) => {
     }
 
 });
+
+  // ==========================================
+// LOADING FUNCTION
+// ==========================================
+
+function showLoading(callback){
+
+    const loadingPopup = document.getElementById("loadingPopup");
+
+    loadingPopup.style.display = "flex";
+
+    setTimeout(() => {
+
+        loadingPopup.style.display = "none";
+
+        callback();
+
+    },1500);
+
+}
+  
 // ==========================================
 // CONFIRMATION FUNCTION
 // ==========================================
@@ -773,6 +794,8 @@ return;
 
     receptionPopup.style.display = "none";
 
+  showLoading(() => {
+
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Reception has received your request.",
@@ -804,6 +827,8 @@ return;
   clearSelections(housekeepingPopup, ".menuItem");
   
     housekeepingPopup.style.display = "none";
+  
+  showLoading(() => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -839,6 +864,8 @@ return;
 
 billingPopup.style.display = "none";
 
+  showLoading(() => {
+    
 showConfirmation(
     `Thank you, ${guestName}!`,
     "Your billing request has been received.",
@@ -873,6 +900,8 @@ return;
   
     explorePopup.style.display = "none";
 
+  showLoading(() => {
+    
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Your booking request has been received.",
@@ -906,6 +935,8 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
   clearSelections(feedbackPopup, ".service-option");
   
     feedbackPopup.style.display = "none";
+
+  showLoading(() => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
