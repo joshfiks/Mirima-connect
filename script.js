@@ -701,7 +701,7 @@ feedbackPopup.addEventListener("click", (e) => {
 // LOADING FUNCTION
 // ==========================================
 
-function showLoading(message, callback){
+function showLoading(message, callback, button = null){
 
     const loadingPopup = document.getElementById("loadingPopup");
 
@@ -709,13 +709,31 @@ function showLoading(message, callback){
 
     loadingPopup.style.display = "flex";
 
+    if(button){
+
+        button.disabled = true;
+
+        button.dataset.originalText = button.innerHTML;
+
+        button.innerHTML = "⏳ Sending...";
+
+    }
+
     setTimeout(() => {
 
         loadingPopup.style.display = "none";
 
+        if(button){
+
+            button.disabled = false;
+
+            button.innerHTML = button.dataset.originalText;
+
+        }
+
         callback();
 
-    }, 1500);
+    },1500);
 
 }
   
@@ -796,6 +814,8 @@ return;
 
     receptionPopup.style.display = "none";
 
+const btn = document.getElementById("sendReceptionRequest");
+
 showLoading("Connecting to Reception...", () => {
 
     showConfirmation(
@@ -804,7 +824,7 @@ showLoading("Connecting to Reception...", () => {
         "Estimated response: 2–5 minutes"
     );
 
-});
+}, btn);
   
 // ==========================================
 // HOUSEKEEPING REQUEST
@@ -830,7 +850,9 @@ return;
   
     housekeepingPopup.style.display = "none";
   
- showLoading("Notifying Housekeeping...", () => {
+const btn = document.getElementById("sendHousekeepingRequest");
+
+showLoading("Notifying Housekeeping...", () => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -838,7 +860,7 @@ return;
         "Estimated response: 10–20 minutes"
     );
 
-});
+}, btn);
   
 // ==========================================
 // BILLING REQUEST
@@ -866,7 +888,9 @@ return;
 
 billingPopup.style.display = "none";
 
- showLoading("Processing Billing Request...", () => {
+const btn = document.getElementById("sendBillingRequest");
+
+showLoading("Processing Billing Request...", () => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -874,7 +898,8 @@ billingPopup.style.display = "none";
         "Estimated response: 5–10 minutes"
     );
 
-});
+}, btn);
+  
 // ==========================================
 // EXPLORE REQUEST
 // ==========================================
@@ -901,7 +926,9 @@ return;
   
     explorePopup.style.display = "none";
 
- showLoading("Booking Your Activity...", () => {
+const btn = document.getElementById("bookActivity");
+
+showLoading("Booking Your Activity...", () => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -909,7 +936,7 @@ return;
         "Our activities team will contact you shortly."
     );
 
-});
+}, btn);
 
 // ==========================================
 // FEEDBACK SUBMISSION
@@ -937,7 +964,9 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
   
     feedbackPopup.style.display = "none";
 
- showLoading("Submitting Your Feedback...", () => {
+const btn = document.getElementById("submitFeedback");
+
+showLoading("Submitting Your Feedback...", () => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -945,7 +974,8 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
         "Your comments help us improve."
     );
 
-});
+}, btn);
+  
 // ==========================================
 // CLOSE CONFIRMATION
 // ==========================================
