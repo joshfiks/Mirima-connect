@@ -207,15 +207,23 @@ ROOM SERVICE POPUP
 </div>
 
 
-  <div id="loadingPopup" class="popup">
+ <div id="loadingPopup" class="popup">
 
     <div class="popup-content loadingBox">
 
         <div class="loader"></div>
 
-        <h2>Sending Request...</h2>
+        <h2 id="loadingTitle">Sending Request...</h2>
 
         <p>Please wait while we contact our team.</p>
+
+        <div class="progressContainer">
+
+            <div id="loadingProgress"></div>
+
+        </div>
+
+        <span id="loadingPercent">0%</span>
 
     </div>
 
