@@ -849,6 +849,8 @@ showLoading("Connecting to Reception...", () => {
     );
 
 }, btn);
+
+  });
   
 // ==========================================
 // HOUSEKEEPING REQUEST
@@ -885,6 +887,8 @@ showLoading("Notifying Housekeeping...", () => {
     );
 
 }, btn);
+
+  });
   
 // ==========================================
 // BILLING REQUEST
@@ -923,6 +927,8 @@ showLoading("Processing Billing Request...", () => {
     );
 
 }, btn);
+
+  });
   
 // ==========================================
 // EXPLORE REQUEST
@@ -962,6 +968,7 @@ showLoading("Booking Your Activity...", () => {
 
 }, btn);
 
+  });
 // ==========================================
 // FEEDBACK SUBMISSION
 // ==========================================
@@ -999,6 +1006,8 @@ showLoading("Submitting Your Feedback...", () => {
     );
 
 }, btn);
+
+  });
   
 // ==========================================
 // CLOSE CONFIRMATION
