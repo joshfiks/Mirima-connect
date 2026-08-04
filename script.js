@@ -705,9 +705,19 @@ function showLoading(message, callback, button = null){
 
     const loadingPopup = document.getElementById("loadingPopup");
 
-    loadingPopup.querySelector("h2").textContent = message;
+    const title = document.getElementById("loadingTitle");
+
+    const progress = document.getElementById("loadingProgress");
+
+    const percent = document.getElementById("loadingPercent");
+
+    title.textContent = message;
 
     loadingPopup.style.display = "flex";
+
+    progress.style.width = "0%";
+
+    percent.textContent = "0%";
 
     if(button){
 
@@ -719,21 +729,35 @@ function showLoading(message, callback, button = null){
 
     }
 
-    setTimeout(() => {
+    let value = 0;
 
-        loadingPopup.style.display = "none";
+    const interval = setInterval(() => {
 
-        if(button){
+        value += 5;
 
-            button.disabled = false;
+        progress.style.width = value + "%";
 
-            button.innerHTML = button.dataset.originalText;
+        percent.textContent = value + "%";
+
+        if(value >= 100){
+
+            clearInterval(interval);
+
+            loadingPopup.style.display = "none";
+
+            if(button){
+
+                button.disabled = false;
+
+                button.innerHTML = button.dataset.originalText;
+
+            }
+
+            callback();
 
         }
 
-        callback();
-
-    },1500);
+    },75);
 
 }
   
