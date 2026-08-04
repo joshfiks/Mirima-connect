@@ -1995,3 +1995,67 @@ HERO MOBILE
 }
 
 }
+
+/*==========================================
+LOADING POPUP
+==========================================*/
+
+.loadingBox{
+
+text-align:center;
+
+max-width:420px;
+
+padding:45px;
+
+}
+
+.loader{
+
+width:80px;
+
+height:80px;
+
+margin:auto auto 25px;
+
+border:8px solid rgba(212,175,55,.2);
+
+border-top:8px solid #d4af37;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+}
+
+.loadingBox h2{
+
+color:#d4af37;
+
+margin-bottom:15px;
+
+}
+
+.loadingBox p{
+
+color:white;
+
+font-size:18px;
+
+}
+
+@keyframes spin{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
