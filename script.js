@@ -697,13 +697,15 @@ feedbackPopup.addEventListener("click", (e) => {
 
 });
 
-  // ==========================================
+// ==========================================
 // LOADING FUNCTION
 // ==========================================
 
-function showLoading(callback){
+function showLoading(message, callback){
 
     const loadingPopup = document.getElementById("loadingPopup");
+
+    loadingPopup.querySelector("h2").textContent = message;
 
     loadingPopup.style.display = "flex";
 
@@ -713,7 +715,7 @@ function showLoading(callback){
 
         callback();
 
-    },1500);
+    }, 1500);
 
 }
   
@@ -794,12 +796,12 @@ return;
 
     receptionPopup.style.display = "none";
 
-  showLoading(() => {
+showLoading("Connecting to Reception...", () => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Reception has received your request.",
-        "Estimated response: 5–10 minutes"
+        "Estimated response: 2–5 minutes"
     );
 
 });
@@ -828,7 +830,7 @@ return;
   
     housekeepingPopup.style.display = "none";
   
-  showLoading(() => {
+ showLoading("Notifying Housekeeping...", () => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -864,16 +866,15 @@ return;
 
 billingPopup.style.display = "none";
 
-  showLoading(() => {
-    
-showConfirmation(
-    `Thank you, ${guestName}!`,
-    "Your billing request has been received.",
-    "Estimated response: 5–10 minutes"
-);
+ showLoading("Processing Billing Request...", () => {
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Your billing request has been received.",
+        "Estimated response: 5–10 minutes"
+    );
 
 });
-
 // ==========================================
 // EXPLORE REQUEST
 // ==========================================
@@ -900,8 +901,8 @@ return;
   
     explorePopup.style.display = "none";
 
-  showLoading(() => {
-    
+ showLoading("Booking Your Activity...", () => {
+
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Your booking request has been received.",
@@ -936,7 +937,7 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
   
     feedbackPopup.style.display = "none";
 
-  showLoading(() => {
+ showLoading("Submitting Your Feedback...", () => {
 
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -945,7 +946,6 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
     );
 
 });
-
 // ==========================================
 // CLOSE CONFIRMATION
 // ==========================================
