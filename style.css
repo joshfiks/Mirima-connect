@@ -577,19 +577,106 @@ box-shadow:
 
 }
 
+/*==========================================
+PANEL HEADER
+==========================================*/
+
+.panel-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+}
+
+/*==========================================
+MY REQUESTS BUTTON
+==========================================*/
+
+.requestsBtn{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 20px;
+
+background:linear-gradient(135deg,#D4AF37,#F5D97A);
+
+border:none;
+
+border-radius:50px;
+
+font-family:'Poppins',sans-serif;
+
+font-size:15px;
+
+font-weight:600;
+
+color:#2d1b00;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0 8px 18px rgba(212,175,55,.35);
+
+}
+
+.requestsBtn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 12px 25px rgba(212,175,55,.45);
+
+}
+
+#requestBadge{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+min-width:22px;
+
+height:22px;
+
+padding:0 6px;
+
+background:#C62828;
+
+color:#fff;
+
+font-size:12px;
+
+font-weight:bold;
+
+border-radius:50%;
+
+}
 .wood-panel h3{
 
 font-family:'Cinzel',serif;
 
 font-size:42px;
 
-text-align:center;
-
-margin-bottom:45px;
-
 color:#F7E4A4;
 
 letter-spacing:2px;
+
+margin:0;
 
 }
 
