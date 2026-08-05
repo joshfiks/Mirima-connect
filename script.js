@@ -807,31 +807,19 @@ function showLoading(message, callback, button = null){
 
 function addRequest(service, status){
 
-  console.log("addRequest is working");
-  
     const requestsList = document.getElementById("requestsList");
-
     const badge = document.getElementById("requestBadge");
 
-    if(requestsList.textContent.includes("You haven't made any requests yet")){
+    alert("addRequest() was called");
 
-        requestsList.innerHTML = "";
-
-    }
-
-    const request = document.createElement("div");
-
-    request.className = "requestItem";
-
-    request.innerHTML = `
-        <strong>${service}</strong><br>
-        Status: <span class="requestStatus">${status}</span>
-        <hr>
+    requestsList.innerHTML += `
+        <div class="requestItem">
+            <strong>${service}</strong><br>
+            Status: ${status}
+        </div>
     `;
 
-    requestsList.prepend(request);
-
-    badge.textContent = requestsList.querySelectorAll(".requestItem").length;
+    badge.textContent = "1";
 
 }
   
