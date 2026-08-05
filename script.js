@@ -703,6 +703,38 @@ feedbackPopup.addEventListener("click", (e) => {
 
 });
 
+  // ==========================================
+// MY REQUESTS POPUP
+// ==========================================
+
+const myRequestsBtn = document.getElementById("myRequestsBtn");
+
+const requestsPopup = document.getElementById("requestsPopup");
+
+const closeRequests = document.getElementById("closeRequests");
+
+myRequestsBtn.addEventListener("click", () => {
+
+    requestsPopup.style.display = "flex";
+
+});
+
+closeRequests.addEventListener("click", () => {
+
+    requestsPopup.style.display = "none";
+
+});
+
+requestsPopup.addEventListener("click", (e) => {
+
+    if(e.target === requestsPopup){
+
+        requestsPopup.style.display = "none";
+
+    }
+
+});
+
 // ==========================================
 // LOADING FUNCTION
 // ==========================================
