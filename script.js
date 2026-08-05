@@ -455,6 +455,8 @@ roomServiceCard.addEventListener("click", () => {
 
 showLoading("Contacting Room Service...", () => {
 
+  addRequest("🍽️ Room Service", "Preparing");
+  
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Your order has been received.",
@@ -798,6 +800,38 @@ function showLoading(message, callback, button = null){
     },300);
 
 }
+
+  // ==========================================
+// SAVE REQUEST
+// ==========================================
+
+function addRequest(service, status){
+
+    const requestsList = document.getElementById("requestsList");
+
+    const badge = document.getElementById("requestBadge");
+
+    if(requestsList.textContent.includes("You haven't made any requests yet")){
+
+        requestsList.innerHTML = "";
+
+    }
+
+    const request = document.createElement("div");
+
+    request.className = "requestItem";
+
+    request.innerHTML = `
+        <strong>${service}</strong><br>
+        Status: <span class="requestStatus">${status}</span>
+        <hr>
+    `;
+
+    requestsList.prepend(request);
+
+    badge.textContent = requestsList.querySelectorAll(".requestItem").length;
+
+}
   
 // ==========================================
 // CONFIRMATION FUNCTION
@@ -880,6 +914,8 @@ const btn = document.getElementById("sendReceptionRequest");
 
 showLoading("Connecting to Reception...", () => {
 
+  addRequest("🛎️ Reception", "Waiting");
+
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Reception has received your request.",
@@ -918,6 +954,8 @@ const btn = document.getElementById("sendHousekeepingRequest");
 
 showLoading("Notifying Housekeeping...", () => {
 
+  addRequest("🧹 Housekeeping", "Received");
+  
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Housekeeping has received your request.",
@@ -957,6 +995,8 @@ billingPopup.style.display = "none";
 const btn = document.getElementById("sendBillingRequest");
 
 showLoading("Processing Billing Request...", () => {
+
+  addRequest("💳 Billing", "Processing");
 
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -998,6 +1038,8 @@ const btn = document.getElementById("bookActivity");
 
 showLoading("Booking Your Activity...", () => {
 
+  addRequest("🗺️ Explore", "Booking");
+
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Your booking request has been received.",
@@ -1036,6 +1078,8 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
 const btn = document.getElementById("submitFeedback");
 
 showLoading("Submitting Your Feedback...", () => {
+
+  addRequest("⭐ Feedback", "Submitted");
 
     showConfirmation(
         `Thank you, ${guestName}!`,
