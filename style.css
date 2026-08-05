@@ -532,6 +532,49 @@ box-shadow:
 }
 
 /*==========================================
+WEATHER BAR
+==========================================*/
+
+.weatherBar{
+
+max-width:1250px;
+
+margin:30px auto;
+
+padding:18px 30px;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:20px;
+
+color:#fff;
+
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.weatherItem{
+
+font-size:18px;
+
+font-weight:600;
+
+}
+/*==========================================
 PORTAL
 ==========================================*/
 
