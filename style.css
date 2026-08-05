@@ -1448,6 +1448,76 @@ opacity:1;
 transform:translateY(0);
 
 }
+
+/*==========================================
+LIVE NOTIFICATION
+==========================================*/
+
+.notification{
+
+position:fixed;
+
+top:25px;
+
+right:25px;
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:18px 22px;
+
+background:#10381F;
+
+color:white;
+
+border-left:5px solid #D4AF37;
+
+border-radius:16px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+transform:translateX(450px);
+
+transition:.45s;
+
+z-index:99999;
+
+max-width:350px;
+
+}
+
+.notification.show{
+
+transform:translateX(0);
+
+}
+
+#notificationIcon{
+
+font-size:30px;
+
+}
+
+#notification h4{
+
+margin:0;
+
+font-size:18px;
+
+}
+
+#notification p{
+
+margin-top:5px;
+
+font-size:14px;
+
+opacity:.9;
+
+}
 /*==========================================
 ROOM SERVICE POPUP
 ==========================================*/
