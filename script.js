@@ -807,6 +807,8 @@ function showLoading(message, callback, button = null){
 
 function addRequest(service, status){
 
+  console.log("addRequest is working");
+  
     const requestsList = document.getElementById("requestsList");
 
     const badge = document.getElementById("requestBadge");
