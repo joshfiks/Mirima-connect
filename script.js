@@ -856,6 +856,30 @@ function showConfirmation(title, message, time = "") {
     orderConfirmation.style.display = "flex";
 }
 
+
+  // ==========================================
+// LIVE NOTIFICATION
+// ==========================================
+
+function showNotification(icon, title, message){
+
+    const notification = document.getElementById("notification");
+
+    document.getElementById("notificationIcon").textContent = icon;
+
+    document.getElementById("notificationTitle").textContent = title;
+
+    document.getElementById("notificationMessage").textContent = message;
+
+    notification.classList.add("show");
+
+    setTimeout(() => {
+
+        notification.classList.remove("show");
+
+    },4000);
+
+}
   // ==========================================
 // WARNING FUNCTION
 // ==========================================
