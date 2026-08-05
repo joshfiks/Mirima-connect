@@ -801,25 +801,35 @@ function showLoading(message, callback, button = null){
 
 }
 
-  // ==========================================
+// ==========================================
 // SAVE REQUEST
 // ==========================================
 
 function addRequest(service, status){
 
     const requestsList = document.getElementById("requestsList");
+
     const badge = document.getElementById("requestBadge");
 
-    alert("addRequest() was called");
+    if(requestsList.textContent.includes("You haven't made any requests yet")){
 
-    requestsList.innerHTML += `
-        <div class="requestItem">
-            <strong>${service}</strong><br>
-            Status: ${status}
-        </div>
+        requestsList.innerHTML = "";
+
+    }
+
+    const request = document.createElement("div");
+
+    request.className = "requestItem";
+
+    request.innerHTML = `
+        <strong>${service}</strong><br>
+        Status: <span class="requestStatus">${status}</span>
+        <hr>
     `;
 
-    badge.textContent = "1";
+    requestsList.prepend(request);
+
+    badge.textContent = requestsList.querySelectorAll(".requestItem").length;
 
 }
   
