@@ -618,46 +618,6 @@ billingPopup.addEventListener("click", (e) => {
 
 });
 
-  // ==========================================
-// AIRPORT TRANSFER POPUP
-// ==========================================
-
-const transferBtn = document.getElementById("transferBtn");
-
-const transferPopup = document.getElementById("transferPopup");
-
-const closeTransfer = document.querySelector(".closeTransfer");
-
-transferBtn.addEventListener("click", () => {
-
-    transferPopup.style.display = "flex";
-
-});
-
-closeTransfer.addEventListener("click", () => {
-
-    clearSelections(transferPopup, ".service-option");
-
-    transferPopup.style.display = "none";
-
-});
-
-transferPopup.querySelectorAll(".service-option").forEach(option => {
-
-    option.onclick = () => {
-
-        transferPopup.querySelectorAll(".service-option").forEach(item => {
-
-            item.classList.remove("selected");
-
-        });
-
-        option.classList.add("selected");
-
-    };
-
-});
-
 // ==========================================
 // EXPLORE POPUP
 // ==========================================
@@ -1046,52 +1006,7 @@ showLoading("Notifying Housekeeping...", () => {
 }, btn);
 
   });
-  // ==========================================
-// AIRPORT TRANSFER REQUEST
-// ==========================================
-
-document.getElementById("sendTransferRequest").addEventListener("click", () => {
-
-    const selectedItems = transferPopup.querySelectorAll(".service-option.selected");
-
-    if(selectedItems.length === 0){
-
-        showWarning(
-            "No Transfer Selected",
-            "Please select one transfer option before sending your request."
-        );
-
-        return;
-
-    }
-
-    const guestName = localStorage.getItem("guestName") || "Guest";
-
-    clearSelections(transferPopup, ".service-option");
-
-    transferPopup.style.display = "none";
-
-    const btn = document.getElementById("sendTransferRequest");
-
-    showLoading("Booking Airport Transfer...", () => {
-
-        addRequest("🚗 Airport Transfer", "Pending");
-
-        showNotification(
-            "🚗",
-            "Airport Transfer",
-            "Your transfer request has been received."
-        );
-
-        showConfirmation(
-            `Thank you, ${guestName}!`,
-            "Your airport transfer has been booked.",
-            "Estimated confirmation: 5–10 minutes"
-        );
-
-    }, btn);
-
-});
+  
 // ==========================================
 // BILLING REQUEST
 // ==========================================
