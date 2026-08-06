@@ -503,9 +503,19 @@ receptionCard.addEventListener("click", () => {
 
     receptionPopup.style.display = "flex";
 
-    receptionPopup.querySelectorAll(".menuItem").forEach(item => {
+    receptionPopup.querySelectorAll(".service-option").forEach(item => {
 
-        item.onclick = () => item.classList.toggle("selected");
+        item.onclick = () => {
+
+            receptionPopup.querySelectorAll(".service-option").forEach(i => {
+
+                i.classList.remove("selected");
+
+            });
+
+            item.classList.add("selected");
+
+        };
 
     });
 
@@ -513,25 +523,23 @@ receptionCard.addEventListener("click", () => {
 
 closeReception.addEventListener("click", () => {
 
-        clearSelections(receptionPopup, ".menuItem");
+    clearSelections(receptionPopup, ".service-option");
 
-  receptionPopup.style.display = "none";
-  
+    receptionPopup.style.display = "none";
+
 });
 
 receptionPopup.addEventListener("click", (e) => {
 
     if (e.target === receptionPopup) {
 
-   clearSelections(receptionPopup, ".menuItem");
+        clearSelections(receptionPopup, ".service-option");
 
         receptionPopup.style.display = "none";
 
-        
     }
 
 });
-
 
 // ==========================================
 // HOUSEKEEPING POPUP
