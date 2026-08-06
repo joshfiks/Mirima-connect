@@ -456,6 +456,12 @@ roomServiceCard.addEventListener("click", () => {
 showLoading("Contacting Room Service...", () => {
 
   addRequest("🍽️ Room Service", "Preparing");
+
+  showNotification(
+    "🍽️",
+    "Room Service",
+    "Your order has been received."
+);
   
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -940,6 +946,12 @@ showLoading("Connecting to Reception...", () => {
 
   addRequest("🛎️ Reception", "Waiting");
 
+  showNotification(
+    "🛎️",
+    "Reception",
+    "Reception has received your request."
+);
+
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Reception has received your request.",
@@ -979,6 +991,12 @@ const btn = document.getElementById("sendHousekeepingRequest");
 showLoading("Notifying Housekeeping...", () => {
 
   addRequest("🧹 Housekeeping", "Received");
+
+  showNotification(
+    "🧹",
+    "Housekeeping",
+    "Your request has been received."
+);
   
     showConfirmation(
         `Thank you, ${guestName}!`,
@@ -1022,6 +1040,12 @@ showLoading("Processing Billing Request...", () => {
 
   addRequest("💳 Billing", "Processing");
 
+  showNotification(
+    "💳",
+    "Billing",
+    "Your billing request has been received."
+);
+
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Your billing request has been received.",
@@ -1064,6 +1088,11 @@ showLoading("Booking Your Activity...", () => {
 
   addRequest("🗺️ Explore", "Booking");
 
+  showNotification(
+    "🗺️",
+    "Explore",
+    "Your activity booking has been received."
+);
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Your booking request has been received.",
@@ -1105,6 +1134,11 @@ showLoading("Submitting Your Feedback...", () => {
 
   addRequest("⭐ Feedback", "Submitted");
 
+  showNotification(
+    "⭐",
+    "Feedback",
+    "Thank you for sharing your feedback."
+);
     showConfirmation(
         `Thank you, ${guestName}!`,
         "We appreciate your feedback.",
