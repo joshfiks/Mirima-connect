@@ -975,7 +975,7 @@ warningPopup.addEventListener("click", (e) => {
 document.getElementById("sendReceptionRequest").addEventListener("click", () => {
 
     const selected = receptionPopup.querySelectorAll(".service-option.selected");
-
+const selectedTitle = selected[0].querySelector(".title").textContent;
     if (selected.length === 0) {
        showWarning(
     "No Service Selected",
@@ -984,6 +984,17 @@ document.getElementById("sendReceptionRequest").addEventListener("click", () => 
 return;
     }
 
+  if (selectedTitle === "Airport Transfer") {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(receptionPopup, ".service-option");
+
+    transferPopup.style.display = "flex";
+
+    return;
+
+}
     const guestName = localStorage.getItem("guestName") || "Guest";
   
   clearSelections(receptionPopup, ".service-option");
