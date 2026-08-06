@@ -503,19 +503,19 @@ receptionCard.addEventListener("click", () => {
 
     receptionPopup.style.display = "flex";
 
-    receptionPopup.querySelectorAll(".service-option").forEach(item => {
+});
 
-        item.onclick = () => {
+receptionPopup.querySelectorAll(".service-option").forEach(item => {
 
-            receptionPopup.querySelectorAll(".service-option").forEach(i => {
+    item.addEventListener("click", () => {
 
-                i.classList.remove("selected");
+        receptionPopup.querySelectorAll(".service-option").forEach(i => {
 
-            });
+            i.classList.remove("selected");
 
-            item.classList.add("selected");
+        });
 
-        };
+        item.classList.add("selected");
 
     });
 
@@ -540,7 +540,6 @@ receptionPopup.addEventListener("click", (e) => {
     }
 
 });
-
 // ==========================================
 // HOUSEKEEPING POPUP
 // ==========================================
