@@ -923,7 +923,7 @@ warningPopup.addEventListener("click", (e) => {
 
 document.getElementById("sendReceptionRequest").addEventListener("click", () => {
 
-    const selected = receptionPopup.querySelectorAll(".menuItem.selected");
+    const selected = receptionPopup.querySelectorAll(".service-option.selected");
 
     if (selected.length === 0) {
        showWarning(
@@ -935,7 +935,7 @@ return;
 
     const guestName = localStorage.getItem("guestName") || "Guest";
   
-  clearSelections(receptionPopup, ".menuItem");
+  clearSelections(receptionPopup, ".service-option");
 
     receptionPopup.style.display = "none";
 
