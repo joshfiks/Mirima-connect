@@ -1520,48 +1520,6 @@ opacity:.9;
 }
 
 /*==========================================
-AIRPORT TRANSFER BUTTON
-==========================================*/
-
-.floatingTransfer{
-
-position:fixed;
-
-bottom:30px;
-
-right:30px;
-
-padding:16px 24px;
-
-border:none;
-
-border-radius:50px;
-
-background:linear-gradient(135deg,#D4AF37,#F5D97A);
-
-color:#2b1a00;
-
-font-weight:600;
-
-font-size:16px;
-
-cursor:pointer;
-
-box-shadow:0 12px 30px rgba(0,0,0,.35);
-
-transition:.3s;
-
-z-index:999;
-
-}
-
-.floatingTransfer:hover{
-
-transform:translateY(-5px);
-
-}
-
-/*==========================================
 ROOM SERVICE POPUP
 ==========================================*/
 
