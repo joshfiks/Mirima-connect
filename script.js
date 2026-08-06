@@ -316,6 +316,9 @@ const receptionCard = document.getElementById("receptionCard");
 const receptionPopup = document.getElementById("receptionPopup");
 const closeReception = document.querySelector(".closeReception");
 
+const transferPopup = document.getElementById("transferPopup");
+const closeTransfer = document.querySelector(".closeTransfer");
+  
 const housekeepingCard = document.getElementById("housekeepingCard");
 const housekeepingPopup = document.getElementById("housekeepingPopup");
 const closeHousekeeping = document.querySelector(".closeHousekeeping");
@@ -540,6 +543,47 @@ receptionPopup.addEventListener("click", (e) => {
     }
 
 });
+
+  // ==========================================
+// AIRPORT TRANSFER POPUP
+// ==========================================
+
+closeTransfer.addEventListener("click", () => {
+
+    clearSelections(transferPopup, ".service-option");
+
+    transferPopup.style.display = "none";
+
+});
+
+transferPopup.addEventListener("click", (e) => {
+
+    if (e.target === transferPopup) {
+
+        clearSelections(transferPopup, ".service-option");
+
+        transferPopup.style.display = "none";
+
+    }
+
+});
+
+transferPopup.querySelectorAll(".service-option").forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        transferPopup.querySelectorAll(".service-option").forEach(i => {
+
+            i.classList.remove("selected");
+
+        });
+
+        item.classList.add("selected");
+
+    });
+
+});
+  
 // ==========================================
 // HOUSEKEEPING POPUP
 // ==========================================
