@@ -987,19 +987,23 @@ document.getElementById("sendReceptionRequest").addEventListener("click", () => 
 
     }
 
-    const selectedTitle = selected[0].querySelector(".title").textContent.trim();
+    const airportTransfer = selected[0].querySelector(".title");
 
-    if (selectedTitle.includes("Airport Transfer")) {
+if (airportTransfer && airportTransfer.textContent.trim() === "Airport Transfer") {
 
-        receptionPopup.style.display = "none";
+    receptionPopup.style.display = "none";
 
-        clearSelections(receptionPopup, ".service-option");
+    clearSelections(receptionPopup, ".service-option");
+
+    setTimeout(() => {
 
         transferPopup.style.display = "flex";
 
-        return;
+    }, 150);
 
-    }
+    return;
+
+}
 
    const guestName = localStorage.getItem("guestName") || "Guest";
   
