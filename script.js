@@ -1108,6 +1108,53 @@ document.getElementById("sendTransferRequest").addEventListener("click", () => {
     }, btn);
 
 });
+
+  // ==========================================
+// CAMPFIRE REQUEST
+// ==========================================
+
+document.getElementById("sendCampfireRequest").addEventListener("click", () => {
+
+    const type = document.getElementById("campfireType").value;
+    const date = document.getElementById("campfireDate").value;
+    const time = document.getElementById("campfireTime").value;
+
+    if (type === "" || date === "" || time === "") {
+
+        showWarning(
+            "Incomplete Information",
+            "Please complete all required campfire details."
+        );
+
+        return;
+
+    }
+
+    const guestName = document.getElementById("campfireName").value;
+
+    const btn = document.getElementById("sendCampfireRequest");
+
+    showLoading("Preparing Your Campfire...", () => {
+
+        addRequest("🔥 Campfire Experience", "Waiting");
+
+        showNotification(
+            "🔥",
+            "Camp Activities",
+            "Your campfire reservation has been received."
+        );
+
+        campfirePopup.style.display = "none";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your campfire has been reserved.",
+            "Estimated confirmation: 5–10 minutes"
+        );
+
+    }, btn);
+
+});
   
 // ==========================================
 // HOUSEKEEPING REQUEST
