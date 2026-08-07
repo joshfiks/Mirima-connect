@@ -373,59 +373,59 @@ AIRPORT TRANSFER POPUP
 
 <div id="transferPopup" class="popup">
 
-    <div class="popup-content">
+   <div class="popup-content">
 
-        <span class="closeTransfer">&times;</span>
+    <span class="closeTransfer">&times;</span>
 
-        <h2>🚖 Airport Transfer</h2>
+    <h2>🚖 Airport Transfer</h2>
 
-        <p>Select your transfer requirements.</p>
+    <p>Please complete the form below.</p>
 
-        <div class="service-grid">
+    <input type="text" id="transferName" placeholder="👤 Full Name">
 
-            <div class="service-option">
-                <span class="icon">✈️</span>
-                <span class="title">Airport Pickup</span>
-            </div>
+    <input type="text" id="transferRoom" placeholder="🏡 Cottage / Room Number">
 
-            <div class="service-option">
-                <span class="icon">🛫</span>
-                <span class="title">Airport Drop-off</span>
-            </div>
+    <select id="transferType">
 
-            <div class="service-option">
-                <span class="icon">👤</span>
-                <span class="title">1–2 Guests</span>
-            </div>
+        <option value="">🚖 Select Transfer Type</option>
 
-            <div class="service-option">
-                <span class="icon">👨‍👩‍👧</span>
-                <span class="title">3–5 Guests</span>
-            </div>
+        <option>Airport Pickup</option>
 
-            <div class="service-option">
-                <span class="icon">🧳</span>
-                <span class="title">Extra Luggage</span>
-            </div>
+        <option>Airport Drop-off</option>
 
-            <div class="service-option">
-                <span class="icon">⭐</span>
-                <span class="title">VIP Transfer</span>
-            </div>
+    </select>
 
-        </div>
+    <input type="date" id="transferDate">
 
-        <button id="sendTransferRequest">
+    <input type="time" id="transferTime">
 
-            Request Transfer
+    <input type="text" id="flightNumber" placeholder="✈️ Flight Number">
 
-        </button>
+    <input type="text" id="airline" placeholder="🛫 Airline">
 
-    </div>
+    <input type="number" id="adults" placeholder="👨 Adults">
+
+    <input type="number" id="children" placeholder="👶 Children">
+
+    <input type="number" id="bags" placeholder="🧳 Number of Bags">
+
+    <input type="text" id="pickupLocation" placeholder="📍 Pickup / Destination">
+
+    <textarea id="transferNotes"
+        placeholder="📝 Special Requests"
+        rows="4"></textarea>
+
+    <button id="sendTransferRequest">
+
+        Request Transfer
+
+    </button>
+
+</div>
 
 </div>
   
-  <!-- ==========================================
+<!-- ==========================================
 HOUSEKEEPING POPUP
 ========================================== -->
 
