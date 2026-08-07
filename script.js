@@ -997,16 +997,18 @@ if (airportTransfer && airportTransfer.textContent.trim() === "Airport Transfer"
 
     setTimeout(() => {
 
-        transferPopup.style.display = "flex";
+    const guestName = localStorage.getItem("guestName") || "";
 
-    }, 150);
+    document.getElementById("transferName").value = guestName;
+
+    transferPopup.style.display = "flex";
+
+}, 150);
 
     return;
 
 }
-
-   const guestName = localStorage.getItem("guestName") || "Guest";
-  
+   
   clearSelections(receptionPopup, ".service-option");
 
     receptionPopup.style.display = "none";
