@@ -1034,6 +1034,57 @@ showLoading("Connecting to Reception...", () => {
 }, btn);
 
   });
+
+  // ==========================================
+// AIRPORT TRANSFER REQUEST
+// ==========================================
+
+document.getElementById("sendTransferRequest").addEventListener("click", () => {
+
+    const transferType = document.getElementById("transferType").value;
+    const transferDate = document.getElementById("transferDate").value;
+    const transferTime = document.getElementById("transferTime").value;
+
+    if (
+        transferType === "" ||
+        transferDate === "" ||
+        transferTime === ""
+    ) {
+
+        showWarning(
+            "Incomplete Information",
+            "Please complete all required transfer details."
+        );
+
+        return;
+
+    }
+
+    const guestName = document.getElementById("transferName").value;
+
+    const btn = document.getElementById("sendTransferRequest");
+
+    showLoading("Booking Airport Transfer...", () => {
+
+        addRequest("🚖 Airport Transfer", "Waiting");
+
+        showNotification(
+            "🚖",
+            "Transport Team",
+            "Your airport transfer request has been received."
+        );
+
+        transferPopup.style.display = "none";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your airport transfer has been booked.",
+            "Estimated confirmation: 5–10 minutes"
+        );
+
+    }, btn);
+
+});
   
 // ==========================================
 // HOUSEKEEPING REQUEST
