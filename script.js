@@ -318,6 +318,9 @@ const closeReception = document.querySelector(".closeReception");
 
 const transferPopup = document.getElementById("transferPopup");
 const closeTransfer = document.querySelector(".closeTransfer");
+
+const campfirePopup = document.getElementById("campfirePopup");
+const closeCampfire = document.querySelector(".closeCampfire");
   
 const housekeepingCard = document.getElementById("housekeepingCard");
 const housekeepingPopup = document.getElementById("housekeepingPopup");
@@ -581,6 +584,26 @@ transferPopup.querySelectorAll(".service-option").forEach(item => {
         item.classList.add("selected");
 
     });
+
+});
+
+  // ==========================================
+// CAMPFIRE POPUP
+// ==========================================
+
+closeCampfire.addEventListener("click", () => {
+
+    campfirePopup.style.display = "none";
+
+});
+
+campfirePopup.addEventListener("click", (e) => {
+
+    if (e.target === campfirePopup) {
+
+        campfirePopup.style.display = "none";
+
+    }
 
 });
   
@@ -1186,26 +1209,45 @@ showLoading("Processing Billing Request...", () => {
 
 document.getElementById("bookActivity").addEventListener("click", () => {
 
-    // Find all selected activities
-    const selectedItems = explorePopup.querySelectorAll(".service-option.selected");
+ // Find all selected activities
+const selectedItems = explorePopup.querySelectorAll(".service-option.selected");
 
-    // Stop if nothing is selected
-    if (selectedItems.length === 0) {
+// Stop if nothing is selected
+if (selectedItems.length === 0) {
 
-       showWarning(
-    "No Service Selected",
-    "Please select at least one activity before sending your request."
-);
-return;
+    showWarning(
+        "No Service Selected",
+        "Please select at least one activity before sending your request."
+    );
 
-    }
+    return;
 
-    const guestName = localStorage.getItem("guestName") || "Guest";
+}
 
-  clearSelections(explorePopup, ".service-option");
-  
+// Get the selected activity
+const selectedTitle = selectedItems[0].querySelector(".title").textContent.trim();
+
+if (selectedTitle === "Campfire Experience") {
+
     explorePopup.style.display = "none";
 
+    clearSelections(explorePopup, ".service-option");
+
+    document.getElementById("campfireName").value =
+        localStorage.getItem("guestName") || "";
+
+    campfirePopup.style.display = "flex";
+
+    return;
+
+}
+
+const guestName = localStorage.getItem("guestName") || "Guest";
+
+clearSelections(explorePopup, ".service-option");
+
+explorePopup.style.display = "none";
+  
 const btn = document.getElementById("bookActivity");
 
 showLoading("Booking Your Activity...", () => {
