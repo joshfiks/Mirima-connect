@@ -1249,6 +1249,59 @@ showLoading("Processing Billing Request...", () => {
 }, btn);
 
   });
+
+  // ==========================================
+// CAMPFIRE REQUEST
+// ==========================================
+
+document.getElementById("sendCampfireRequest").addEventListener("click", () => {
+
+    const type = document.getElementById("campfireType").value;
+    const date = document.getElementById("campfireDate").value;
+    const time = document.getElementById("campfireTime").value;
+    const guests = document.getElementById("campfireGuests").value;
+
+    if (type === "" || date === "" || time === "" || guests === "") {
+
+        showWarning(
+            "Incomplete Information",
+            "Please complete the campfire type, date, time, and number of guests."
+        );
+
+        return;
+
+    }
+
+    const guestName =
+        document.getElementById("campfireName").value || "Guest";
+
+    const btn =
+        document.getElementById("sendCampfireRequest");
+
+    showLoading("Preparing Your Campfire...", () => {
+
+        addRequest(
+            "🔥 Campfire Experience",
+            "Waiting"
+        );
+
+        showNotification(
+            "🔥",
+            "Camp Activities",
+            "Your campfire reservation has been received."
+        );
+
+        campfirePopup.style.display = "none";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your campfire reservation has been received.",
+            "Our activities team will confirm the arrangements shortly."
+        );
+
+    }, btn);
+
+});
   
 // ==========================================
 // EXPLORE REQUEST
