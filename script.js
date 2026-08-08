@@ -609,6 +609,26 @@ campfirePopup.addEventListener("click", (e) => {
     }
 
 });
+
+// ==========================================
+// SPA POPUP
+// ==========================================
+
+closeSpa.addEventListener("click", () => {
+
+    spaPopup.style.display = "none";
+
+});
+
+spaPopup.addEventListener("click", (e) => {
+
+    if (e.target === spaPopup) {
+
+        spaPopup.style.display = "none";
+
+    }
+
+});
   
 // ==========================================
 // HOUSEKEEPING POPUP
@@ -1340,6 +1360,21 @@ if (selectedTitle.includes("Campfire")) {
         localStorage.getItem("guestName") || "";
 
     campfirePopup.style.display = "flex";
+
+    return;
+
+}
+
+  if (selectedTitle.includes("Spa")) {
+
+    explorePopup.style.display = "none";
+
+    clearSelections(explorePopup, ".service-option");
+
+    document.getElementById("spaName").value =
+        localStorage.getItem("guestName") || "";
+
+    spaPopup.style.display = "flex";
 
     return;
 
