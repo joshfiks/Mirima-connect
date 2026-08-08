@@ -1325,6 +1325,59 @@ document.getElementById("sendCampfireRequest").addEventListener("click", () => {
     }, btn);
 
 });
+
+  // ==========================================
+// SPA REQUEST
+// ==========================================
+
+document.getElementById("sendSpaRequest").addEventListener("click", () => {
+
+    const service = document.getElementById("spaService").value;
+    const date = document.getElementById("spaDate").value;
+    const time = document.getElementById("spaTime").value;
+    const guests = document.getElementById("spaGuests").value;
+
+    if (service === "" || date === "" || time === "" || guests === "") {
+
+        showWarning(
+            "Incomplete Information",
+            "Please complete the treatment, date, time, and number of guests."
+        );
+
+        return;
+
+    }
+
+    const guestName =
+        document.getElementById("spaName").value || "Guest";
+
+    const btn =
+        document.getElementById("sendSpaRequest");
+
+    showLoading("Preparing Your Spa Experience...", () => {
+
+        addRequest(
+            "💆 Spa & Wellness",
+            "Waiting"
+        );
+
+        showNotification(
+            "💆",
+            "Spa & Wellness",
+            "Your spa request has been received."
+        );
+
+        spaPopup.style.display = "none";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your spa request has been received.",
+            "Our wellness team will confirm your appointment shortly."
+        );
+
+    }, btn);
+
+});
   
 // ==========================================
 // EXPLORE REQUEST
