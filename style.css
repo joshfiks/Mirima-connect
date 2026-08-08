@@ -1699,6 +1699,60 @@ CAMPFIRE FORM FIELDS
 
 }
 
+/*==========================================
+SPA & WELLNESS FORM
+==========================================*/
+
+#spaPopup input,
+#spaPopup select,
+#spaPopup textarea{
+
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+
+    padding:14px 16px;
+    margin:8px 0;
+
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:14px;
+
+    background:rgba(255,255,255,.08);
+    color:#fff;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+#spaPopup input:focus,
+#spaPopup select:focus,
+#spaPopup textarea:focus{
+
+    border-color:#D4AF37;
+
+    box-shadow:0 0 12px rgba(212,175,55,.3);
+
+}
+
+#spaPopup textarea{
+
+    min-height:100px;
+    resize:vertical;
+
+}
+
+#spaPopup button{
+
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+
+    margin-top:15px;
+
+}
+
 .popup-content h3{
 
 font-family:"Cormorant Garamond",serif;
