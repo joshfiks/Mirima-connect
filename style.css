@@ -1649,6 +1649,84 @@ margin-top:20px;
 
 }
 
+/*==========================================
+CAMPFIRE EXPERIENCE FORM
+==========================================*/
+
+#campfirePopup .popup-content{
+
+max-width:750px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:16px;
+
+}
+
+#campfirePopup input,
+#campfirePopup select,
+#campfirePopup textarea{
+
+width:100%;
+
+box-sizing:border-box;
+
+padding:15px 18px;
+
+margin:0;
+
+border:1px solid rgba(212,175,55,.35);
+
+border-radius:14px;
+
+background:rgba(255,255,255,.08);
+
+color:#fff;
+
+font-size:16px;
+
+font-family:"Poppins",sans-serif;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+#campfirePopup input:focus,
+#campfirePopup select:focus,
+#campfirePopup textarea:focus{
+
+border-color:#D4AF37;
+
+box-shadow:0 0 15px rgba(212,175,55,.3);
+
+}
+
+#campfirePopup select{
+
+cursor:pointer;
+
+}
+
+#campfirePopup textarea{
+
+min-height:110px;
+
+resize:vertical;
+
+}
+
+#campfirePopup button{
+
+width:100%;
+
+margin-top:5px;
+
+}
+
 .popup-content h3{
 
 font-family:"Cormorant Garamond",serif;
