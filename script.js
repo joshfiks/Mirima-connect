@@ -321,6 +321,9 @@ const closeTransfer = document.querySelector(".closeTransfer");
 
 const campfirePopup = document.getElementById("campfirePopup");
 const closeCampfire = document.querySelector(".closeCampfire");
+
+const spaPopup = document.getElementById("spaPopup");
+const closeSpa = document.querySelector(".closeSpa");
   
 const housekeepingCard = document.getElementById("housekeepingCard");
 const housekeepingPopup = document.getElementById("housekeepingPopup");
