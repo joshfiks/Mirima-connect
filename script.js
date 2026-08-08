@@ -629,6 +629,49 @@ spaPopup.addEventListener("click", (e) => {
     }
 
 });
+
+  // ==========================================
+// NATURE WALK POPUP
+// ==========================================
+
+const natureWalkPopup = document.getElementById("natureWalkPopup");
+const closeNatureWalk = document.querySelector(".closeNatureWalk");
+
+closeNatureWalk.addEventListener("click", () => {
+
+    clearSelections(natureWalkPopup, ".nature-card");
+
+    natureWalkPopup.style.display = "none";
+
+});
+
+natureWalkPopup.addEventListener("click", (e) => {
+
+    if (e.target === natureWalkPopup) {
+
+        clearSelections(natureWalkPopup, ".nature-card");
+
+        natureWalkPopup.style.display = "none";
+
+    }
+
+});
+
+natureWalkPopup.querySelectorAll(".nature-card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        natureWalkPopup.querySelectorAll(".nature-card").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        card.classList.add("selected");
+
+    });
+
+});
   
 // ==========================================
 // HOUSEKEEPING POPUP
@@ -1378,6 +1421,66 @@ document.getElementById("sendSpaRequest").addEventListener("click", () => {
     }, btn);
 
 });
+
+  // ==========================================
+// NATURE WALK REQUEST
+// ==========================================
+
+document.getElementById("sendNatureWalkRequest").addEventListener("click", () => {
+
+    const selectedWalk =
+        natureWalkPopup.querySelector(".nature-card.selected");
+
+    const date = document.getElementById("natureWalkDate").value;
+    const time = document.getElementById("natureWalkTime").value;
+    const guests = document.getElementById("natureWalkGuests").value;
+
+    if (!selectedWalk || date === "" || time === "" || guests === "") {
+
+        showWarning(
+            "Incomplete Information",
+            "Please select a nature experience and complete the date, time, and number of guests."
+        );
+
+        return;
+
+    }
+
+    const walkName =
+        selectedWalk.querySelector("strong").textContent.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("sendNatureWalkRequest");
+
+    showLoading("Arranging Your Nature Walk...", () => {
+
+        addRequest(
+            "🌿 Forest Nature Walk",
+            "Waiting"
+        );
+
+        showNotification(
+            "🌿",
+            "Nature Activities",
+            `${walkName} request has been received.`
+        );
+
+        natureWalkPopup.style.display = "none";
+
+        clearSelections(natureWalkPopup, ".nature-card");
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            `${walkName} has been requested.`,
+            "Our nature activities team will confirm the arrangements shortly."
+        );
+
+    }, btn);
+
+});
   
 // ==========================================
 // EXPLORE REQUEST
@@ -1428,6 +1531,18 @@ if (selectedTitle.includes("Campfire")) {
         localStorage.getItem("guestName") || "";
 
     spaPopup.style.display = "flex";
+
+    return;
+
+}
+
+  if (selectedTitle.includes("Forest Nature Walk")) {
+
+    explorePopup.style.display = "none";
+
+    clearSelections(explorePopup, ".service-option");
+
+    natureWalkPopup.style.display = "flex";
 
     return;
 
