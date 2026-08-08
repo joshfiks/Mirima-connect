@@ -1274,8 +1274,8 @@ if (selectedItems.length === 0) {
 // Get the selected activity
 const selectedTitle = selectedItems[0].querySelector(".title").textContent.trim();
 
-if (selectedTitle === "Campfire Experience") {
-
+if (selectedTitle.includes("Campfire")) {
+  
     explorePopup.style.display = "none";
 
     clearSelections(explorePopup, ".service-option");
