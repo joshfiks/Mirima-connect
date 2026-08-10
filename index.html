@@ -809,6 +809,131 @@ MAKE PAYMENT POPUP
     </div>
 
 </div>
+
+<!-- ==========================================
+MOBILE MONEY POPUP
+========================================== -->
+
+<div id="mobileMoneyPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeMobileMoney">&times;</span>
+
+        <h2>📱 Mobile Money</h2>
+
+        <p>Select your mobile money network.</p>
+
+        <div class="mobile-money-options">
+
+            <!-- MTN MOBILE MONEY -->
+
+            <div class="mobile-money-card">
+
+                <img
+                    src="images/mtn-logo.png"
+                    alt="MTN Mobile Money"
+                    class="mobile-money-logo"
+                >
+
+                <strong>MTN Mobile Money</strong>
+
+            </div>
+
+
+            <!-- AIRTEL MONEY -->
+
+            <div class="mobile-money-card">
+
+                <img
+                    src="images/airtel-logo.png"
+                    alt="Airtel Money"
+                    class="mobile-money-logo"
+                >
+
+                <strong>Airtel Money</strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT INSTRUCTIONS -->
+
+        <div id="mobileMoneyInstructions" style="display:none;">
+
+            <h3>How to Pay</h3>
+
+            <p id="mobileMoneyGuide"></p>
+
+
+            <div class="merchant-box">
+
+                <div>
+
+                    <small>Merchant Code</small>
+
+                    <strong id="merchantCode">
+                        YOUR MERCHANT CODE
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>Lodge Name</small>
+
+                    <strong id="merchantName">
+                        YOUR LODGE NAME
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT NUMBER -->
+
+            <input
+                type="tel"
+                id="paymentPhone"
+                placeholder="Number used for payment"
+                inputmode="numeric"
+            >
+
+
+            <!-- TRANSACTION ID -->
+
+            <input
+                type="text"
+                id="transactionId"
+                placeholder="Enter transaction ID"
+                autocomplete="off"
+            >
+
+
+            <!-- ACCOUNT NAME -->
+
+            <input
+                type="text"
+                id="paymentAccountName"
+                placeholder="Name registered on the account"
+                autocomplete="name"
+            >
+
+
+            <button id="submitMobileMoney">
+
+                Submit Payment Details
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
   
 <!-- ==========================================
 MY REQUESTS POPUP
