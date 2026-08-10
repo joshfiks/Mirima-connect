@@ -1334,6 +1334,49 @@ showLoading("Processing Billing Request...", () => {
 
   });
 
+// ==========================================
+// PAYMENT POPUP
+// ==========================================
+
+const paymentPopup = document.getElementById("paymentPopup");
+const closePayment = document.querySelector(".closePayment");
+
+closePayment.addEventListener("click", () => {
+
+    clearSelections(paymentPopup, ".payment-card");
+
+    paymentPopup.style.display = "none";
+
+});
+
+paymentPopup.addEventListener("click", (e) => {
+
+    if (e.target === paymentPopup) {
+
+        clearSelections(paymentPopup, ".payment-card");
+
+        paymentPopup.style.display = "none";
+
+    }
+
+});
+
+paymentPopup.querySelectorAll(".payment-card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        paymentPopup.querySelectorAll(".payment-card").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        card.classList.add("selected");
+
+    });
+
+});
+  
   // ==========================================
 // CAMPFIRE REQUEST
 // ==========================================
