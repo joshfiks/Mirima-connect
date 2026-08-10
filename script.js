@@ -1338,9 +1338,6 @@ showLoading("Processing Billing Request...", () => {
 // PAYMENT POPUP
 // ==========================================
 
-const paymentPopup = document.getElementById("paymentPopup");
-const closePayment = document.querySelector(".closePayment");
-
 closePayment.addEventListener("click", () => {
 
     clearSelections(paymentPopup, ".payment-card");
