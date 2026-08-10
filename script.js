@@ -1519,6 +1519,65 @@ cardPaymentPopup.addEventListener("click", (e) => {
 
 });
 
+  // ==========================================
+// PAY AT RECEPTION POPUP
+// ==========================================
+
+const receptionPaymentPopup =
+    document.getElementById("receptionPaymentPopup");
+
+const closeReceptionPayment =
+    document.querySelector(".closeReceptionPayment");
+
+closeReceptionPayment.addEventListener("click", () => {
+
+    receptionPaymentPopup.style.display = "none";
+
+});
+
+receptionPaymentPopup.addEventListener("click", (e) => {
+
+    if (e.target === receptionPaymentPopup) {
+
+        receptionPaymentPopup.style.display = "none";
+
+    }
+
+});
+
+document.getElementById("requestReceptionPayment")
+    .addEventListener("click", () => {
+
+        const guestName =
+            localStorage.getItem("guestName") || "Guest";
+
+        const btn =
+            document.getElementById("requestReceptionPayment");
+
+        showLoading("Contacting Reception...", () => {
+
+            addRequest(
+                "🏨 Payment at Reception",
+                "Waiting"
+            );
+
+            showNotification(
+                "🏨",
+                "Reception",
+                "Reception has received your payment request."
+            );
+
+            receptionPaymentPopup.style.display = "none";
+
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Reception has received your payment request.",
+                "Please visit the reception desk when you are ready to pay."
+            );
+
+        }, btn);
+
+    });
 
 // ==========================================
 // CAMPFIRE REQUEST
