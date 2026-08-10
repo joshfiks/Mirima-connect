@@ -1493,6 +1493,113 @@ mobileMoneyPopup
 
     });
 
+  // ==========================================
+// MOBILE MONEY PAYMENT SUBMISSION
+// ==========================================
+
+document.getElementById("submitMobileMoney").addEventListener("click", () => {
+
+    const selectedNetwork =
+        mobileMoneyPopup.querySelector(".mobile-money-card.selected");
+
+    const phone =
+        document.getElementById("paymentPhone").value.trim();
+
+    const transactionId =
+        document.getElementById("transactionId").value.trim();
+
+    const accountName =
+        document.getElementById("paymentAccountName").value.trim();
+
+    // Check network
+    if (!selectedNetwork) {
+
+        showWarning(
+            "Select Mobile Network",
+            "Please select MTN Mobile Money or Airtel Money."
+        );
+
+        return;
+    }
+
+    // Check payment number
+    if (phone === "") {
+
+        showWarning(
+            "Payment Number Required",
+            "Please enter the number you used to make the payment."
+        );
+
+        return;
+    }
+
+    // Check transaction ID
+    if (transactionId === "") {
+
+        showWarning(
+            "Transaction ID Required",
+            "Please enter your mobile money transaction ID."
+        );
+
+        return;
+    }
+
+    // Check account name
+    if (accountName === "") {
+
+        showWarning(
+            "Account Name Required",
+            "Please enter the name registered on the mobile money account."
+        );
+
+        return;
+    }
+
+    const network =
+        selectedNetwork.querySelector("strong").textContent.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("submitMobileMoney");
+
+    showLoading("Submitting Payment Details...", () => {
+
+        addRequest(
+            `📱 ${network} Payment`,
+            "Verification"
+        );
+
+        showNotification(
+            "📱",
+            "Payment Submitted",
+            "Your payment details have been sent to reception for verification."
+        );
+
+        mobileMoneyPopup.style.display = "none";
+
+        clearSelections(
+            mobileMoneyPopup,
+            ".mobile-money-card"
+        );
+
+        mobileMoneyInstructions.style.display = "none";
+
+        document.getElementById("paymentPhone").value = "";
+        document.getElementById("transactionId").value = "";
+        document.getElementById("paymentAccountName").value = "";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your mobile money payment details have been received.",
+            "Reception will verify your payment and update you shortly."
+        );
+
+    }, btn);
+
+});
+  
 // ==========================================
 // CARD PAYMENT POPUP
 // ==========================================
