@@ -1380,6 +1380,15 @@ paymentPopup.querySelectorAll(".payment-card").forEach(card => {
             mobileMoneyPopup.style.display = "flex";
 
         }
+      if (paymentMethod === "Card Payment") {
+
+    paymentPopup.style.display = "none";
+
+    clearSelections(paymentPopup, ".payment-card");
+
+    cardPaymentPopup.style.display = "flex";
+
+}
 
     });
 
@@ -1470,6 +1479,32 @@ mobileMoneyPopup
         });
 
     });
+
+// ==========================================
+// CARD PAYMENT POPUP
+// ==========================================
+
+const cardPaymentPopup =
+    document.getElementById("cardPaymentPopup");
+
+const closeCardPayment =
+    document.querySelector(".closeCardPayment");
+
+closeCardPayment.addEventListener("click", () => {
+
+    cardPaymentPopup.style.display = "none";
+
+});
+
+cardPaymentPopup.addEventListener("click", (e) => {
+
+    if (e.target === cardPaymentPopup) {
+
+        cardPaymentPopup.style.display = "none";
+
+    }
+
+});
   
   // ==========================================
 // CAMPFIRE REQUEST
