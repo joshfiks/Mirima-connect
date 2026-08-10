@@ -1373,6 +1373,92 @@ paymentPopup.querySelectorAll(".payment-card").forEach(card => {
     });
 
 });
+
+  // ==========================================
+// MOBILE MONEY POPUP
+// ==========================================
+
+const mobileMoneyPopup =
+    document.getElementById("mobileMoneyPopup");
+
+const closeMobileMoney =
+    document.querySelector(".closeMobileMoney");
+
+const mobileMoneyInstructions =
+    document.getElementById("mobileMoneyInstructions");
+
+closeMobileMoney.addEventListener("click", () => {
+
+    clearSelections(
+        mobileMoneyPopup,
+        ".mobile-money-card"
+    );
+
+    mobileMoneyInstructions.style.display = "none";
+
+    mobileMoneyPopup.style.display = "none";
+
+});
+
+mobileMoneyPopup.addEventListener("click", (e) => {
+
+    if (e.target === mobileMoneyPopup) {
+
+        clearSelections(
+            mobileMoneyPopup,
+            ".mobile-money-card"
+        );
+
+        mobileMoneyInstructions.style.display = "none";
+
+        mobileMoneyPopup.style.display = "none";
+
+    }
+
+});
+
+mobileMoneyPopup
+    .querySelectorAll(".mobile-money-card")
+    .forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            mobileMoneyPopup
+                .querySelectorAll(".mobile-money-card")
+                .forEach(item => {
+
+                    item.classList.remove("selected");
+
+                });
+
+            card.classList.add("selected");
+
+            mobileMoneyInstructions.style.display = "block";
+
+            const network =
+                card.querySelector("strong")
+                    .textContent
+                    .trim();
+
+            if (network === "MTN Mobile Money") {
+
+                document.getElementById(
+                    "mobileMoneyGuide"
+                ).innerHTML =
+                    "Dial <strong>*165#</strong>, choose Payments, Merchant Payment, enter the merchant code, confirm the lodge name, and complete your payment.";
+
+            } else {
+
+                document.getElementById(
+                    "mobileMoneyGuide"
+                ).innerHTML =
+                    "Dial <strong>*185#</strong>, choose Payments, Merchant Payment, enter the merchant code, confirm the lodge name, and complete your payment.";
+
+            }
+
+        });
+
+    });
   
   // ==========================================
 // CAMPFIRE REQUEST
