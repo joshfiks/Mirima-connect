@@ -2013,6 +2013,101 @@ box-sizing:border-box;
 margin-top:12px;
 
 }
+/*==========================================
+PAYMENT OPTIONS
+==========================================*/
+
+#paymentPopup .payment-options{
+
+display:grid;
+
+grid-template-columns:repeat(3, minmax(0, 1fr));
+
+gap:12px;
+
+margin:20px 0;
+
+}
+
+#paymentPopup .payment-card{
+
+box-sizing:border-box;
+
+padding:20px 12px;
+
+border:1px solid rgba(212,175,55,.3);
+
+border-radius:18px;
+
+background:rgba(255,255,255,.06);
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+#paymentPopup .payment-card span{
+
+display:block;
+
+font-size:34px;
+
+margin-bottom:10px;
+
+}
+
+#paymentPopup .payment-card strong{
+
+display:block;
+
+font-family:"Cinzel",serif;
+
+font-size:16px;
+
+}
+
+#paymentPopup .payment-card small{
+
+display:block;
+
+margin-top:7px;
+
+font-size:12px;
+
+opacity:.75;
+
+}
+
+#paymentPopup .payment-card:hover{
+
+transform:translateY(-3px);
+
+border-color:#D4AF37;
+
+}
+
+#paymentPopup .payment-card.selected{
+
+background:#D4AF37;
+
+color:#111;
+
+box-shadow:0 0 18px rgba(212,175,55,.35);
+
+}
+
+#paymentPopup button{
+
+width:100%;
+
+box-sizing:border-box;
+
+margin-top:12px;
+
+}
 
 /*==========================================
 SELECTED MENU ITEM
