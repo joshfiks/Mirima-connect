@@ -1370,6 +1370,17 @@ paymentPopup.querySelectorAll(".payment-card").forEach(card => {
 
         card.classList.add("selected");
 
+        const paymentMethod =
+            card.querySelector("strong").textContent.trim();
+
+        if (paymentMethod === "Mobile Money") {
+
+            paymentPopup.style.display = "none";
+
+            mobileMoneyPopup.style.display = "flex";
+
+        }
+
     });
 
 });
