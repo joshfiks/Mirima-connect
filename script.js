@@ -1390,6 +1390,19 @@ paymentPopup.querySelectorAll(".payment-card").forEach(card => {
 
 }
 
+      if (paymentMethod === "Pay at Reception") {
+
+    paymentPopup.style.display = "none";
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    document.getElementById("receptionPaymentGuest").textContent =
+        guestName;
+
+    receptionPaymentPopup.style.display = "flex";
+
+}
     });
 
 });
@@ -1505,8 +1518,9 @@ cardPaymentPopup.addEventListener("click", (e) => {
     }
 
 });
-  
-  // ==========================================
+
+
+// ==========================================
 // CAMPFIRE REQUEST
 // ==========================================
 
