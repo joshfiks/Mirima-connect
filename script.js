@@ -324,6 +324,9 @@ const closeCampfire = document.querySelector(".closeCampfire");
 
 const spaPopup = document.getElementById("spaPopup");
 const closeSpa = document.querySelector(".closeSpa");
+
+const paymentPopup = document.getElementById("paymentPopup");
+const closePayment = document.querySelector(".closePayment");
   
 const housekeepingCard = document.getElementById("housekeepingCard");
 const housekeepingPopup = document.getElementById("housekeepingPopup");
@@ -1288,6 +1291,21 @@ return;
 
     }
 
+const selectedTitle =
+    selectedItems[0].querySelector(".title").textContent.trim();
+
+if (selectedTitle === "Make Payment") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(billingPopup, ".service-option");
+
+    paymentPopup.style.display = "flex";
+
+    return;
+
+}
+  
     const guestName = localStorage.getItem("guestName") || "Guest";
 
     clearSelections(billingPopup, ".service-option");
