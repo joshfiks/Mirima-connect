@@ -2807,32 +2807,39 @@ color:#d4af37;
 
 }
 /* ==========================================
-   LATE CHECKOUT POPUP
+   LATE CHECKOUT - IMPROVED STYLE
 ========================================== */
 
+#lateCheckoutPopup .popup-content {
+    max-width: 430px;
+}
+
 #lateCheckoutPopup .checkout-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
 }
 
 #lateCheckoutPopup .checkout-info > div {
-    padding: 14px;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(212,175,55,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 13px 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(212,175,55,.2);
 }
 
 #lateCheckoutPopup .checkout-info small {
-    display: block;
     font-size: 11px;
-    opacity: 0.6;
-    margin-bottom: 6px;
+    opacity: .6;
 }
 
 #lateCheckoutPopup .checkout-info strong {
-    font-size: 14px;
+    font-size: 13px;
+    text-align: right;
 }
 
 #lateCheckoutPopup label {
@@ -2846,11 +2853,11 @@ color:#d4af37;
 #lateCheckoutPopup textarea {
     width: 100%;
     box-sizing: border-box;
-    padding: 13px;
+    border: 1px solid rgba(212,175,55,.25);
     border-radius: 12px;
-    border: 1px solid rgba(212,175,55,0.3);
-    background: rgba(255,255,255,0.06);
+    background: rgba(255,255,255,.06);
     color: inherit;
+    padding: 13px 14px;
     font-size: 14px;
     outline: none;
 }
@@ -2860,25 +2867,27 @@ color:#d4af37;
 }
 
 #lateCheckoutPopup textarea {
+    min-height: 90px;
     resize: vertical;
-    min-height: 85px;
+    font-family: inherit;
 }
 
 #lateCheckoutPopup select:focus,
 #lateCheckoutPopup textarea:focus {
-    border-color: #D4AF37;
+    border-color: #d4af37;
 }
 
 #lateCheckoutPopup .late-checkout-note {
-    margin: 16px 0;
-    padding: 12px;
+    margin: 15px 0;
+    padding: 12px 14px;
     border-radius: 12px;
-    background: rgba(212,175,55,0.08);
+    background: rgba(212,175,55,.07);
+    border: 1px solid rgba(212,175,55,.15);
     font-size: 12px;
     line-height: 1.5;
 }
 
 #lateCheckoutPopup #submitLateCheckout {
     width: 100%;
-    margin-top: 8px;
+    margin-top: 5px;
 }
