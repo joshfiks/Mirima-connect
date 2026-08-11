@@ -1292,7 +1292,22 @@ return;
     }
 
 const selectedTitle =
-    selectedItems[0].querySelector(".title").textContent.trim();
+selectedItems[0].querySelector(".title").textContent.trim();
+
+if (selectedTitle === "Late Checkout") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    lateCheckoutPopup.style.display = "flex";
+
+    return;
+
+}
 
 if (selectedTitle === "Make Payment") {
 
