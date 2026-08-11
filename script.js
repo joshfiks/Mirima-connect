@@ -1701,6 +1701,32 @@ document.getElementById("requestReceptionPayment")
 
     });
 
+/* ==========================================
+   LATE CHECKOUT POPUP
+========================================== */
+
+const lateCheckoutPopup =
+    document.getElementById("lateCheckoutPopup");
+
+const closeLateCheckout =
+    document.querySelector(".closeLateCheckout");
+
+closeLateCheckout.addEventListener("click", () => {
+
+    lateCheckoutPopup.style.display = "none";
+
+});
+
+lateCheckoutPopup.addEventListener("click", (e) => {
+
+    if (e.target === lateCheckoutPopup) {
+
+        lateCheckoutPopup.style.display = "none";
+
+    }
+
+});
+  
 // ==========================================
 // CAMPFIRE REQUEST
 // ==========================================
