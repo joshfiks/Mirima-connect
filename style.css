@@ -2807,40 +2807,44 @@ color:#d4af37;
 
 }
 /* ==========================================
-   LATE CHECKOUT — DISTINCTIVE DESIGN
+   LATE CHECKOUT — UNIQUE PREMIUM POPUP
 ========================================== */
 
 #lateCheckoutPopup .popup-content {
-    width: 92%;
-    max-width: 440px;
+    width: 90% !important;
+    max-width: 460px !important;
     padding: 0 !important;
-    overflow: hidden;
-    border-radius: 26px !important;
-    background: #111 !important;
-    border: 1px solid rgba(212,175,55,.35) !important;
-    box-shadow: 0 25px 70px rgba(0,0,0,.65) !important;
+    background: linear-gradient(160deg, #10231b, #07130e) !important;
+    border: 1px solid rgba(212,175,55,.45) !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+    box-shadow: 0 30px 80px rgba(0,0,0,.7) !important;
 }
 
-/* Top section */
+/* Gold header */
 #lateCheckoutPopup .popup-content::before {
-    content: "🕒";
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 74px;
-    height: 74px;
-    margin: 28px auto 14px;
-    border-radius: 50%;
-    background: rgba(212,175,55,.12);
-    border: 1px solid rgba(212,175,55,.4);
-    font-size: 32px;
+    content: "LATE CHECKOUT";
+    display: block;
+    padding: 25px 20px;
+    background: linear-gradient(
+        135deg,
+        #173b2a,
+        #0a1c14
+    );
+    border-bottom: 1px solid rgba(212,175,55,.3);
+    color: #f1d477;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: 13px;
+    letter-spacing: 3px;
 }
 
-/* Close button */
+/* Close */
 #lateCheckoutPopup .closeLateCheckout {
     position: absolute;
-    top: 16px;
-    right: 18px;
+    top: 15px;
+    right: 17px;
+    z-index: 5;
     width: 32px;
     height: 32px;
     display: flex;
@@ -2848,121 +2852,130 @@ color:#d4af37;
     justify-content: center;
     border-radius: 50%;
     background: rgba(255,255,255,.08);
-    font-size: 20px;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
 }
 
-/* Heading */
+/* Title */
 #lateCheckoutPopup h2 {
+    margin: 25px 25px 8px !important;
+    font-family: "Cinzel", serif;
+    font-size: 27px !important;
     text-align: center;
-    font-size: 24px;
-    margin: 0 25px 8px;
-    color: #f4d875;
+    color: #f4dc8a;
 }
 
 /* Description */
 #lateCheckoutPopup .popup-content > p {
+    margin: 0 30px 25px !important;
     text-align: center;
-    margin: 0 30px 25px;
     font-size: 13px;
-    line-height: 1.6;
-    opacity: .65;
+    line-height: 1.7;
+    opacity: .7;
 }
 
-/* Information cards */
+/* Checkout information */
 #lateCheckoutPopup .checkout-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    padding: 0 22px;
-    margin: 0 0 22px;
+    gap: 12px;
+    margin: 0 22px 24px;
+    padding: 0;
 }
 
 #lateCheckoutPopup .checkout-info > div {
-    padding: 15px;
-    border-radius: 15px;
-    background: #1b1b1b;
-    border: 1px solid rgba(255,255,255,.07);
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(212,175,55,.18);
+    text-align: center;
 }
 
 #lateCheckoutPopup .checkout-info small {
     display: block;
     margin-bottom: 7px;
+    color: #d4af37;
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #d4af37;
 }
 
 #lateCheckoutPopup .checkout-info strong {
     font-size: 12px;
 }
 
-/* Form area */
+/* Labels */
 #lateCheckoutPopup label {
     display: block;
-    margin: 14px 22px 7px;
+    margin: 16px 22px 7px;
     font-size: 12px;
-    color: #ddd;
+    color: #eadfbf;
 }
 
-/* Inputs */
+/* Fields */
 #lateCheckoutPopup select,
 #lateCheckoutPopup textarea {
-    display: block;
-    width: calc(100% - 44px);
-    margin: 0 22px;
+    width: calc(100% - 44px) !important;
+    margin: 0 22px !important;
     box-sizing: border-box;
     padding: 14px;
-    border-radius: 13px;
-    border: 1px solid #292929;
-    background: #1b1b1b;
-    color: #fff;
-    font-family: inherit;
+    border-radius: 14px;
+    border: 1px solid rgba(212,175,55,.22);
+    background: rgba(0,0,0,.22);
+    color: white;
+    font-family: "Poppins", sans-serif;
     font-size: 13px;
     outline: none;
+}
+
+#lateCheckoutPopup textarea {
+    min-height: 90px;
+    resize: vertical;
 }
 
 #lateCheckoutPopup select:focus,
 #lateCheckoutPopup textarea:focus {
     border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212,175,55,.08);
 }
 
 /* Note */
 #lateCheckoutPopup .late-checkout-note {
     margin: 18px 22px;
-    padding: 12px 14px;
-    border-radius: 13px;
-    background: rgba(212,175,55,.08);
+    padding: 13px 15px;
+    border-radius: 14px;
+    background: rgba(212,175,55,.07);
+    border: 1px solid rgba(212,175,55,.15);
     color: #ddd;
     font-size: 11px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* Button */
 #lateCheckoutPopup #submitLateCheckout {
-    display: block;
-    width: calc(100% - 44px);
-    margin: 20px 22px 25px;
+    width: calc(100% - 44px) !important;
+    margin: 20px 22px 25px !important;
     padding: 15px;
     border: none;
-    border-radius: 14px;
-    background: linear-gradient(135deg,#d4af37,#f4d875);
-    color: #111;
+    border-radius: 15px;
+    background: linear-gradient(135deg,#d4af37,#f3d778);
+    color: #172016;
     font-weight: 700;
     font-size: 13px;
     cursor: pointer;
+    box-shadow: 0 8px 25px rgba(212,175,55,.2);
 }
 
 /* Mobile */
-@media (max-width: 480px) {
+@media(max-width:600px){
 
     #lateCheckoutPopup .checkout-info {
         grid-template-columns: 1fr;
     }
 
     #lateCheckoutPopup .popup-content {
-        max-height: 90vh;
-        overflow-y: auto;
+        max-height: 90vh !important;
     }
 
 }
