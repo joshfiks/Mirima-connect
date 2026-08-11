@@ -2806,3 +2806,79 @@ font-weight:bold;
 color:#d4af37;
 
 }
+/* ==========================================
+   LATE CHECKOUT POPUP
+========================================== */
+
+#lateCheckoutPopup .checkout-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 18px 0;
+}
+
+#lateCheckoutPopup .checkout-info > div {
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,175,55,0.25);
+}
+
+#lateCheckoutPopup .checkout-info small {
+    display: block;
+    font-size: 11px;
+    opacity: 0.6;
+    margin-bottom: 6px;
+}
+
+#lateCheckoutPopup .checkout-info strong {
+    font-size: 14px;
+}
+
+#lateCheckoutPopup label {
+    display: block;
+    margin: 16px 0 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#lateCheckoutPopup select,
+#lateCheckoutPopup textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    border-radius: 12px;
+    border: 1px solid rgba(212,175,55,0.3);
+    background: rgba(255,255,255,0.06);
+    color: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+#lateCheckoutPopup select {
+    cursor: pointer;
+}
+
+#lateCheckoutPopup textarea {
+    resize: vertical;
+    min-height: 85px;
+}
+
+#lateCheckoutPopup select:focus,
+#lateCheckoutPopup textarea:focus {
+    border-color: #D4AF37;
+}
+
+#lateCheckoutPopup .late-checkout-note {
+    margin: 16px 0;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(212,175,55,0.08);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#lateCheckoutPopup #submitLateCheckout {
+    width: 100%;
+    margin-top: 8px;
+}
