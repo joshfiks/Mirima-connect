@@ -2979,3 +2979,108 @@ color:#d4af37;
     }
 
 }
+/* ==========================================
+   BILLING HELP — HELP CENTER STYLE
+========================================== */
+
+#billingHelpPopup .popup-content {
+    width: 92%;
+    max-width: 520px;
+    box-sizing: border-box;
+}
+
+#billingHelpPopup h2 {
+    margin-bottom: 8px;
+}
+
+#billingHelpPopup .popup-content > p {
+    text-align: center;
+    opacity: .65;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+/* Help options */
+#billingHelpPopup .billing-help-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+#billingHelpPopup .billing-help-card {
+    padding: 17px 14px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(212,175,55,.18);
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+#billingHelpPopup .billing-help-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(212,175,55,.55);
+    background: rgba(212,175,55,.08);
+}
+
+#billingHelpPopup .billing-help-card span {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 9px;
+}
+
+#billingHelpPopup .billing-help-card strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+#billingHelpPopup .billing-help-card small {
+    display: block;
+    font-size: 10px;
+    line-height: 1.5;
+    opacity: .55;
+}
+
+/* Selected help option */
+#billingHelpPopup .billing-help-card.selected {
+    border-color: #d4af37;
+    background: rgba(212,175,55,.12);
+    box-shadow: 0 0 0 2px rgba(212,175,55,.08);
+}
+
+/* Message box */
+#billingHelpPopup #billingHelpMessage {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100px;
+    resize: vertical;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(212,175,55,.25);
+    background: rgba(255,255,255,.06);
+    color: inherit;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+#billingHelpPopup #billingHelpMessage:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212,175,55,.07);
+}
+
+/* Send button */
+#billingHelpPopup #submitBillingHelp {
+    width: 100%;
+    margin-top: 16px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    #billingHelpPopup .billing-help-options {
+        grid-template-columns: 1fr;
+    }
+
+}
