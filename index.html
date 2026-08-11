@@ -1031,6 +1031,89 @@ PAY AT RECEPTION POPUP
     </div>
 
 </div>
+
+<!-- ==========================================
+LATE CHECKOUT POPUP
+========================================== -->
+
+<div id="lateCheckoutPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeLateCheckout">&times;</span>
+
+        <h2>🕒 Late Checkout</h2>
+
+        <p>
+            Request additional time before leaving your cottage.
+        </p>
+
+        <div class="checkout-info">
+
+            <div>
+                <small>Scheduled Checkout</small>
+                <strong id="currentCheckoutTime">
+                    11:00 AM
+                </strong>
+            </div>
+
+            <div>
+                <small>Late Checkout</small>
+                <strong>Subject to availability</strong>
+            </div>
+
+        </div>
+
+        <label for="extraCheckoutTime">
+            How much extra time do you need?
+        </label>
+
+        <select id="extraCheckoutTime">
+
+            <option value="">
+                Select extra time
+            </option>
+
+            <option value="1 Hour">
+                +1 Hour
+            </option>
+
+            <option value="2 Hours">
+                +2 Hours
+            </option>
+
+            <option value="3 Hours">
+                +3 Hours
+            </option>
+
+            <option value="Custom">
+                Custom Request
+            </option>
+
+        </select>
+
+        <label for="lateCheckoutReason">
+            Special request (optional)
+        </label>
+
+        <textarea
+            id="lateCheckoutReason"
+            placeholder="Tell reception anything they should know..."
+            rows="3">
+        </textarea>
+
+        <div class="late-checkout-note">
+            💡 Late checkout may have an additional charge
+            depending on the time requested.
+        </div>
+
+        <button id="submitLateCheckout">
+            Request Late Checkout
+        </button>
+
+    </div>
+
+</div>
   
 <!-- ==========================================
 MY REQUESTS POPUP
