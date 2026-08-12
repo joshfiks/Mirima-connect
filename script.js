@@ -1295,7 +1295,43 @@ receiptPopup.addEventListener("click", (e) => {
     }
 
 });
-                          
+  // ==========================================
+// RECEIPT REQUEST
+// ==========================================
+
+document.getElementById("requestReceipt")
+    .addEventListener("click", () => {
+
+        const guestName =
+            localStorage.getItem("guestName") || "Guest";
+
+        receiptPopup.style.display = "none";
+
+        const btn =
+            document.getElementById("requestReceipt");
+
+        showLoading("Requesting Receipt...", () => {
+
+            addRequest(
+                "🧾 Receipt",
+                "Guest requested a payment receipt."
+            );
+
+            showNotification(
+                "🧾",
+                "Receipt",
+                "Your receipt request has been received."
+            );
+
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your receipt request has been received.",
+                "Reception will prepare your receipt shortly."
+            );
+
+        }, btn);
+
+    });                        
   // ==========================================
 // BILLING HELP POPUP
 // ==========================================
@@ -1321,6 +1357,90 @@ billingHelpPopup.addEventListener("click", (e) => {
     }
 
 });
+  // ==========================================
+// BILLING HELP
+// ==========================================
+
+billingHelpPopup
+    .querySelectorAll(".billing-help-card")
+    .forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            billingHelpPopup
+                .querySelectorAll(".billing-help-card")
+                .forEach(item => {
+                    item.classList.remove("selected");
+                });
+
+            card.classList.add("selected");
+
+        });
+
+    });
+
+document.getElementById("submitBillingHelp")
+    .addEventListener("click", () => {
+
+        const selectedHelp =
+            billingHelpPopup.querySelector(
+                ".billing-help-card.selected"
+            );
+
+        if (!selectedHelp) {
+
+            showWarning(
+                "Select a Help Topic",
+                "Please select the billing problem you need help with."
+            );
+
+            return;
+        }
+
+        const helpTitle =
+            selectedHelp.querySelector("strong")
+                .textContent
+                .trim();
+
+        const message =
+            document.getElementById("billingHelpMessage")
+                .value
+                .trim();
+
+        const guestName =
+            localStorage.getItem("guestName") || "Guest";
+
+        billingHelpPopup.style.display = "none";
+
+        selectedHelp.classList.remove("selected");
+
+        document.getElementById("billingHelpMessage").value = "";
+
+        const btn =
+            document.getElementById("submitBillingHelp");
+
+        showLoading("Sending Billing Help...", () => {
+
+            addRequest(
+                "❓ Billing Help",
+                `${helpTitle}${message ? " — " + message : ""}`
+            );
+
+            showNotification(
+                "❓",
+                "Billing Help",
+                "Your billing help request has been received."
+            );
+
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your billing help request has been received.",
+                "Reception will assist you shortly."
+            );
+
+        }, btn);
+
+    });
   
 // ==========================================
 // BILLING REQUEST
