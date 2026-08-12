@@ -1359,7 +1359,110 @@ LATE CHECKOUT POPUP
     </div>
 
 </div>
-  
+  <!-- ==========================================
+     CURRENCY EXCHANGE POPUP
+========================================== -->
+
+<div id="exchangePopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeExchange">&times;</span>
+
+        <div class="exchange-header">
+
+            <span class="exchange-icon">💱</span>
+
+            <h2>Currency Exchange</h2>
+
+            <p>Request a currency exchange from reception</p>
+
+        </div>
+
+        <label for="exchangeCurrency">
+            Currency
+        </label>
+
+        <select id="exchangeCurrency">
+
+            <option value="">
+                Select currency
+            </option>
+
+            <option value="USD">
+                US Dollar (USD)
+            </option>
+
+            <option value="EUR">
+                Euro (EUR)
+            </option>
+
+            <option value="GBP">
+                British Pound (GBP)
+            </option>
+
+            <option value="KES">
+                Kenyan Shilling (KES)
+            </option>
+
+            <option value="TZS">
+                Tanzanian Shilling (TZS)
+            </option>
+
+            <option value="RWF">
+                Rwandan Franc (RWF)
+            </option>
+
+        </select>
+
+        <label for="exchangeAmount">
+            Amount
+        </label>
+
+        <input
+            type="number"
+            id="exchangeAmount"
+            placeholder="Enter amount"
+            min="0"
+        >
+
+        <div class="exchange-rate-box">
+
+            <span>Current Rate</span>
+
+            <strong id="exchangeRate">
+                Rate set by reception
+            </strong>
+
+        </div>
+
+        <div class="exchange-result">
+
+            <span>Estimated UGX</span>
+
+            <strong id="exchangeResult">
+                UGX 0
+            </strong>
+
+        </div>
+
+        <label for="exchangeNote">
+            Note <span>(Optional)</span>
+        </label>
+
+        <textarea
+            id="exchangeNote"
+            rows="3"
+            placeholder="Any additional information..."
+        ></textarea>
+
+        <button id="submitExchange">
+            Request Exchange
+        </button>
+
+    </div>
+
+</div>
 <!-- ==========================================
 MY REQUESTS POPUP
 ========================================== -->
