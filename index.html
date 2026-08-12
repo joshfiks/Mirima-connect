@@ -1188,6 +1188,75 @@ LATE CHECKOUT POPUP
     </div>
 
 </div>
+
+  <!-- ==========================================
+     RECEIPT POPUP
+========================================== -->
+
+<div id="receiptPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeReceipt">&times;</span>
+
+        <div class="receipt-header">
+
+            <span class="receipt-icon">🧾</span>
+
+            <h2>Payment Receipt</h2>
+
+            <p>Your payment information</p>
+
+        </div>
+
+        <div class="receipt-box">
+
+            <div class="receipt-row">
+                <span>Guest</span>
+                <strong id="receiptGuestName">Guest</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Cottage</span>
+                <strong id="receiptCottage">—</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Amount</span>
+                <strong id="receiptAmount">—</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Payment Method</span>
+                <strong id="receiptMethod">—</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Transaction ID</span>
+                <strong id="receiptTransaction">—</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Date</span>
+                <strong id="receiptDate">—</strong>
+            </div>
+
+        </div>
+
+        <div class="receipt-status">
+            <span>●</span>
+            <strong id="receiptStatus">
+                Payment Pending Verification
+            </strong>
+        </div>
+
+        <button id="requestReceipt">
+            Request Receipt
+        </button>
+
+    </div>
+
+</div>
   
 <!-- ==========================================
 MY REQUESTS POPUP
