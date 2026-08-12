@@ -424,6 +424,98 @@ AIRPORT TRANSFER POPUP
 </div>
 
 </div>
+  <!-- ==========================================
+     LUGGAGE ASSISTANCE POPUP
+========================================== -->
+
+<div id="luggagePopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeLuggage">&times;</span>
+
+        <div class="luggage-header">
+
+            <span class="luggage-icon">🧳</span>
+
+            <h2>Luggage Assistance</h2>
+
+            <p>
+                Let our reception team assist you with your luggage.
+            </p>
+
+        </div>
+
+        <label for="luggageService">
+            What do you need?
+        </label>
+
+        <select id="luggageService">
+
+            <option value="">
+                Select assistance
+            </option>
+
+            <option value="Luggage assistance">
+                Help with luggage
+            </option>
+
+            <option value="Collect luggage">
+                Collect luggage from my cottage
+            </option>
+
+            <option value="Store luggage">
+                Store my luggage
+            </option>
+
+            <option value="Deliver luggage">
+                Deliver luggage to my cottage
+            </option>
+
+        </select>
+
+        <label for="luggageLocation">
+            Cottage / Room
+        </label>
+
+        <input
+            type="text"
+            id="luggageLocation"
+            placeholder="Enter your cottage or room number"
+        >
+
+        <label for="luggageTime">
+            Preferred time
+        </label>
+
+        <input
+            type="time"
+            id="luggageTime"
+        >
+
+        <label for="luggageMessage">
+            Additional instructions
+            <span>(Optional)</span>
+        </label>
+
+        <textarea
+            id="luggageMessage"
+            rows="3"
+            placeholder="Example: I have two large bags..."
+        ></textarea>
+
+        <div class="luggage-note">
+            🧳 Our reception team will receive your request
+            and arrange assistance for you.
+        </div>
+
+        <button id="submitLuggage">
+            Request Luggage Assistance
+        </button>
+
+    </div>
+
+</div>
 
   <!-- ==========================================
 CAMPFIRE EXPERIENCE POPUP
