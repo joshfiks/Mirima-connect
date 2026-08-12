@@ -1331,7 +1331,33 @@ document.getElementById("requestReceipt")
 
         }, btn);
 
-    });                        
+    });     
+
+  // ==========================================
+// CURRENT BILL POPUP
+// ==========================================
+
+const currentBillPopup =
+    document.getElementById("currentBillPopup");
+
+const closeCurrentBill =
+    document.querySelector(".closeCurrentBill");
+
+  closeCurrentBill.addEventListener("click", () => {
+
+    currentBillPopup.style.display = "none";
+
+});
+
+currentBillPopup.addEventListener("click", (e) => {
+
+    if (e.target === currentBillPopup) {
+
+        currentBillPopup.style.display = "none";
+
+    }
+
+});
   // ==========================================
 // BILLING HELP POPUP
 // ==========================================
@@ -1525,6 +1551,20 @@ if (selectedTitle === "Make Payment") {
 
     return;
 
+}
+
+  if (selectedTitle === "Current Bill") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    currentBillPopup.style.display = "flex";
+
+    return;
 }
   
     const guestName = localStorage.getItem("guestName") || "Guest";
