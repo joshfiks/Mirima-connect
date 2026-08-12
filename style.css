@@ -3246,3 +3246,179 @@ color:#d4af37;
     }
 
 }
+/* ==========================================
+   CURRENT BILL — PREMIUM BILL STYLE
+========================================== */
+
+#currentBillPopup .popup-content {
+    width: 92%;
+    max-width: 500px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Header */
+#currentBillPopup .bill-header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+#currentBillPopup .bill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: rgba(212,175,55,.12);
+    border: 1px solid rgba(212,175,55,.35);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+#currentBillPopup .bill-header h2 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    color: #f1d477;
+}
+
+#currentBillPopup .bill-header p {
+    margin: 0;
+    font-size: 12px;
+    opacity: .6;
+}
+
+/* Guest information */
+#currentBillPopup .bill-guest-info,
+#currentBillPopup .bill-dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+#currentBillPopup .bill-guest-info > div,
+#currentBillPopup .bill-dates > div {
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(212,175,55,.16);
+}
+
+#currentBillPopup small {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #d4af37;
+}
+
+#currentBillPopup strong {
+    font-size: 12px;
+}
+
+/* Bill items */
+#currentBillPopup .bill-items {
+    margin-top: 18px;
+    border: 1px solid rgba(212,175,55,.18);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+#currentBillPopup .bill-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 16px;
+    border-bottom: 1px dashed rgba(255,255,255,.12);
+}
+
+#currentBillPopup .bill-item:last-child {
+    border-bottom: none;
+}
+
+#currentBillPopup .bill-item span {
+    font-size: 12px;
+    opacity: .65;
+}
+
+/* Total */
+#currentBillPopup .bill-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding: 17px;
+    border-radius: 15px;
+    background: rgba(212,175,55,.1);
+    border: 1px solid rgba(212,175,55,.3);
+}
+
+#currentBillPopup .bill-total span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#currentBillPopup .bill-total strong {
+    color: #f1d477;
+    font-size: 16px;
+}
+
+/* Paid / balance */
+#currentBillPopup .bill-payment-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+#currentBillPopup .bill-payment-summary > div {
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+#currentBillPopup .bill-payment-summary > div:last-child strong {
+    color: #f1d477;
+}
+
+/* Status */
+#currentBillPopup .bill-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 13px 15px;
+    border-radius: 13px;
+    background: rgba(212,175,55,.07);
+    border: 1px solid rgba(212,175,55,.16);
+}
+
+#currentBillPopup .bill-status span {
+    color: #d4af37;
+}
+
+#currentBillPopup .bill-status strong {
+    font-size: 11px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    #currentBillPopup .popup-content {
+        width: 94%;
+        padding: 21px;
+    }
+
+    #currentBillPopup .bill-guest-info,
+    #currentBillPopup .bill-dates {
+        grid-template-columns: 1fr;
+    }
+
+    #currentBillPopup .bill-payment-summary {
+        grid-template-columns: 1fr;
+    }
+
+}
