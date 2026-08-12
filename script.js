@@ -1341,10 +1341,18 @@ const billingHelpPopup =
 
 const closeBillingHelp =
     document.querySelector(".closeBillingHelp");
-// Close Billing Help
+  
 closeBillingHelp.addEventListener("click", () => {
 
     billingHelpPopup.style.display = "none";
+
+    billingHelpPopup
+        .querySelectorAll(".billing-help-card")
+        .forEach(item => {
+            item.classList.remove("selected");
+        });
+
+    document.getElementById("billingHelpMessage").value = "";
 
 });
 
