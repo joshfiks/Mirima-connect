@@ -1271,6 +1271,31 @@ showLoading("Notifying Housekeeping...", () => {
 
   });
 
+// ==========================================
+// RECEIPT POPUP
+// ==========================================
+
+const receiptPopup =
+    document.getElementById("receiptPopup");
+
+const closeReceipt =
+    document.querySelector(".closeReceipt");
+  closeReceipt.addEventListener("click", () => {
+
+    receiptPopup.style.display = "none";
+
+});
+
+receiptPopup.addEventListener("click", (e) => {
+
+    if (e.target === receiptPopup) {
+
+        receiptPopup.style.display = "none";
+
+    }
+
+});
+                          
   // ==========================================
 // BILLING HELP POPUP
 // ==========================================
@@ -1347,6 +1372,21 @@ if (selectedTitle === "Late Checkout") {
 
     return;
 }
+
+  if (selectedTitle === "Receipt") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    receiptPopup.style.display = "flex";
+
+    return;
+}
+  
 if (selectedTitle === "Make Payment") {
 
     billingPopup.style.display = "none";
