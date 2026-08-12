@@ -1383,6 +1383,189 @@ exchangePopup.addEventListener("click", (e) => {
     }
 
 });
+
+  // ==========================================
+// EXCHANGE CALCULATION
+// ==========================================
+
+const exchangeCurrency =
+    document.getElementById("exchangeCurrency");
+
+const exchangeAmount =
+    document.getElementById("exchangeAmount");
+
+const exchangeRate =
+    document.getElementById("exchangeRate");
+
+const exchangeResult =
+    document.getElementById("exchangeResult");
+
+
+// TEMPORARY TEST RATES
+// Reception/admin will control these later.
+
+const exchangeRates = {
+    USD: 3700,
+    EUR: 4300,
+    GBP: 5000,
+    KES: 28,
+    TZS: 1.45,
+    RWF: 2.8
+};
+
+
+// Currency selected
+exchangeCurrency.addEventListener("change", updateExchange);
+
+
+// Amount changed
+exchangeAmount.addEventListener("input", updateExchange);
+
+
+function updateExchange() {
+
+    const currency =
+        exchangeCurrency.value;
+
+    const amount =
+        parseFloat(exchangeAmount.value);
+
+
+    if (!currency) {
+
+        exchangeRate.textContent =
+            "Select a currency";
+
+        exchangeResult.textContent =
+            "UGX 0";
+
+        return;
+    }
+
+
+    const rate =
+        exchangeRates[currency];
+
+
+    exchangeRate.textContent =
+        `1 ${currency} = UGX ${rate.toLocaleString()}`;
+
+
+    if (!amount || amount <= 0) {
+
+        exchangeResult.textContent =
+            "UGX 0";
+
+        return;
+    }
+
+
+    const result =
+        amount * rate;
+
+
+    exchangeResult.textContent =
+        `UGX ${result.toLocaleString()}`;
+
+}
+  // ==========================================
+// EXCHANGE REQUEST
+// ==========================================
+
+document.getElementById("submitExchange")
+.addEventListener("click", () => {
+
+    const currency =
+        exchangeCurrency.value;
+
+    const amount =
+        parseFloat(exchangeAmount.value);
+
+    const note =
+        document.getElementById("exchangeNote")
+            .value
+            .trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+
+    if (!currency) {
+
+        showWarning(
+            "Currency Required",
+            "Please select the currency you want to exchange."
+        );
+
+        return;
+    }
+
+
+    if (!amount || amount <= 0) {
+
+        showWarning(
+            "Amount Required",
+            "Please enter the amount you want to exchange."
+        );
+
+        return;
+    }
+
+
+    const rate =
+        exchangeRates[currency];
+
+    const ugxAmount =
+        amount * rate;
+
+
+    exchangePopup.style.display = "none";
+
+
+    const btn =
+        document.getElementById("submitExchange");
+
+
+    showLoading("Sending Exchange Request...", () => {
+
+        addRequest(
+            "💱 Currency Exchange",
+            `${amount} ${currency} → approximately UGX ${ugxAmount.toLocaleString()}`
+            + (note ? ` — ${note}` : "")
+        );
+
+
+        showNotification(
+            "💱",
+            "Exchange Request",
+            "Your currency exchange request has been sent to reception."
+        );
+
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your currency exchange request has been received.",
+            "Reception will confirm the exchange rate and assist you shortly."
+        );
+
+
+        // Reset form
+        exchangeCurrency.value = "";
+
+        exchangeAmount.value = "";
+
+        document.getElementById("exchangeNote").value = "";
+
+        exchangeRate.textContent =
+            "Rate set by reception";
+
+        exchangeResult.textContent =
+            "UGX 0";
+
+
+    }, btn);
+
+});
   // ==========================================
 // BILLING HELP POPUP
 // ==========================================
