@@ -2980,27 +2980,32 @@ color:#d4af37;
 
 }
 /* ==========================================
-   BILLING HELP — HELP CENTER STYLE
+   BILLING HELP — UNIQUE HELP CENTER STYLE
 ========================================== */
 
 #billingHelpPopup .popup-content {
     width: 92%;
-    max-width: 520px;
-    box-sizing: border-box;
+    max-width: 500px;
+    padding: 30px;
+    background: linear-gradient(145deg, #21170b, #0f0c08);
+    border: 1px solid rgba(212,175,55,.4);
+    border-radius: 26px;
 }
 
+/* Header */
 #billingHelpPopup h2 {
+    font-size: 28px;
     margin-bottom: 8px;
 }
 
 #billingHelpPopup .popup-content > p {
     text-align: center;
-    opacity: .65;
     font-size: 13px;
-    margin-bottom: 22px;
+    opacity: .65;
+    margin-bottom: 24px;
 }
 
-/* Help options */
+/* Help cards */
 #billingHelpPopup .billing-help-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -3018,8 +3023,8 @@ color:#d4af37;
 }
 
 #billingHelpPopup .billing-help-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(212,175,55,.55);
+    transform: translateY(-3px);
+    border-color: #d4af37;
     background: rgba(212,175,55,.08);
 }
 
@@ -3042,38 +3047,38 @@ color:#d4af37;
     opacity: .55;
 }
 
-/* Selected help option */
+/* Selected card */
 #billingHelpPopup .billing-help-card.selected {
     border-color: #d4af37;
-    background: rgba(212,175,55,.12);
+    background: rgba(212,175,55,.13);
     box-shadow: 0 0 0 2px rgba(212,175,55,.08);
 }
 
 /* Message box */
 #billingHelpPopup #billingHelpMessage {
     width: 100%;
-    box-sizing: border-box;
     min-height: 100px;
-    resize: vertical;
+    box-sizing: border-box;
     padding: 14px;
-    border-radius: 14px;
+    border-radius: 15px;
     border: 1px solid rgba(212,175,55,.25);
-    background: rgba(255,255,255,.06);
-    color: inherit;
+    background: rgba(255,255,255,.05);
+    color: #fff;
     font-family: inherit;
     font-size: 13px;
+    resize: vertical;
     outline: none;
 }
 
 #billingHelpPopup #billingHelpMessage:focus {
     border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212,175,55,.07);
+    box-shadow: 0 0 12px rgba(212,175,55,.12);
 }
 
 /* Send button */
 #billingHelpPopup #submitBillingHelp {
     width: 100%;
-    margin-top: 16px;
+    margin-top: 15px;
 }
 
 /* Mobile */
@@ -3081,6 +3086,11 @@ color:#d4af37;
 
     #billingHelpPopup .billing-help-options {
         grid-template-columns: 1fr;
+    }
+
+    #billingHelpPopup .popup-content {
+        width: 94%;
+        padding: 22px;
     }
 
 }
