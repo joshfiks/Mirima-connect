@@ -1359,6 +1359,31 @@ currentBillPopup.addEventListener("click", (e) => {
 
 });
   // ==========================================
+// EXCHANGE POPUP
+// ==========================================
+
+const exchangePopup =
+    document.getElementById("exchangePopup");
+
+const closeExchange =
+    document.querySelector(".closeExchange");
+  
+  closeExchange.addEventListener("click", () => {
+
+    exchangePopup.style.display = "none";
+
+});
+
+exchangePopup.addEventListener("click", (e) => {
+
+    if (e.target === exchangePopup) {
+
+        exchangePopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
 // BILLING HELP POPUP
 // ==========================================
 
@@ -1566,7 +1591,20 @@ if (selectedTitle === "Make Payment") {
 
     return;
 }
-  
+
+  if (selectedTitle === "Exchange") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    exchangePopup.style.display = "flex";
+
+    return;
+}
     const guestName = localStorage.getItem("guestName") || "Guest";
 
     clearSelections(billingPopup, ".service-option");
