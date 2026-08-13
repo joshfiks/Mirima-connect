@@ -668,6 +668,31 @@ extendStayPopup.addEventListener("click", (e) => {
 
 });
   // ==========================================
+// EMERGENCY POPUP
+// ==========================================
+
+const emergencyPopup =
+    document.getElementById("emergencyPopup");
+
+const closeEmergency =
+    document.querySelector(".closeEmergency");
+
+  closeEmergency.addEventListener("click", () => {
+
+    emergencyPopup.style.display = "none";
+
+});
+
+emergencyPopup.addEventListener("click", (e) => {
+
+    if (e.target === emergencyPopup) {
+
+        emergencyPopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
 
@@ -1242,6 +1267,31 @@ if (
     );
 
     extendStayPopup.style.display = "flex";
+
+    return;
+
+}
+
+  // ==========================================
+// EMERGENCY ASSISTANCE
+// ==========================================
+
+const emergencyAssistance =
+    selected[0].querySelector(".title");
+
+if (
+    emergencyAssistance &&
+    emergencyAssistance.textContent.trim() === "Emergency Assistance"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    emergencyPopup.style.display = "flex";
 
     return;
 
