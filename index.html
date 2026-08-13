@@ -516,6 +516,120 @@ AIRPORT TRANSFER POPUP
     </div>
 
 </div>
+  <!-- ==========================================
+     MAINTENANCE REQUEST POPUP
+========================================== -->
+
+<div id="maintenancePopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeMaintenance">&times;</span>
+
+        <div class="maintenance-header">
+
+            <span class="maintenance-icon">🔧</span>
+
+            <h2>Maintenance Request</h2>
+
+            <p>
+                Tell us what needs attention and our team will assist you.
+            </p>
+
+        </div>
+
+        <label for="maintenanceType">
+            Issue Type
+        </label>
+
+        <select id="maintenanceType">
+
+            <option value="">
+                Select an issue
+            </option>
+
+            <option value="Electrical">
+                💡 Electrical
+            </option>
+
+            <option value="Plumbing">
+                🚿 Plumbing / Water
+            </option>
+
+            <option value="Air Conditioning">
+                ❄️ Air Conditioning
+            </option>
+
+            <option value="Furniture">
+                🪑 Furniture
+            </option>
+
+            <option value="Appliance">
+                📺 Appliance
+            </option>
+
+            <option value="Internet / Wi-Fi">
+                📶 Internet / Wi-Fi
+            </option>
+
+            <option value="Other">
+                🔧 Other
+            </option>
+
+        </select>
+
+        <label for="maintenanceLocation">
+            Cottage / Room
+        </label>
+
+        <input
+            type="text"
+            id="maintenanceLocation"
+            placeholder="Enter your cottage or room number"
+        >
+
+        <label for="maintenancePriority">
+            Priority
+        </label>
+
+        <select id="maintenancePriority">
+
+            <option value="Normal">
+                🟢 Normal
+            </option>
+
+            <option value="Low">
+                🔵 Low
+            </option>
+
+            <option value="Urgent">
+                🔴 Urgent
+            </option>
+
+        </select>
+
+        <label for="maintenanceMessage">
+            Describe the problem
+        </label>
+
+        <textarea
+            id="maintenanceMessage"
+            rows="4"
+            placeholder="Please describe what is wrong..."
+        ></textarea>
+
+        <div class="maintenance-note">
+            🔧 For urgent issues, our reception team will prioritize
+            your request.
+        </div>
+
+        <button id="submitMaintenance">
+            Send Maintenance Request
+        </button>
+
+    </div>
+
+</div>
 
   <!-- ==========================================
 CAMPFIRE EXPERIENCE POPUP
