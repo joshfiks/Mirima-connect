@@ -692,6 +692,31 @@ emergencyPopup.addEventListener("click", (e) => {
     }
 
 });
+
+  // ==========================================
+// SPEAK TO RECEPTION POPUP
+// ==========================================
+
+const receptionChatPopup =
+    document.getElementById("receptionChatPopup");
+
+const closeReceptionChat =
+    document.querySelector(".closeReceptionChat");
+  closeReceptionChat.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+});
+
+receptionChatPopup.addEventListener("click", (e) => {
+
+    if (e.target === receptionChatPopup) {
+
+        receptionChatPopup.style.display = "none";
+
+    }
+
+});
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
@@ -1292,6 +1317,31 @@ if (
     );
 
     emergencyPopup.style.display = "flex";
+
+    return;
+
+}
+
+  // ==========================================
+// SPEAK TO RECEPTION
+// ==========================================
+
+const speakToReception =
+    selected[0].querySelector(".title");
+
+if (
+    speakToReception &&
+    speakToReception.textContent.trim() === "Speak to Reception"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    receptionChatPopup.style.display = "flex";
 
     return;
 
