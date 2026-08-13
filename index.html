@@ -632,6 +632,80 @@ AIRPORT TRANSFER POPUP
 </div>
 
   <!-- ==========================================
+     EXTEND YOUR STAY POPUP
+========================================== -->
+
+<div id="extendStayPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeExtendStay">&times;</span>
+
+        <div class="extend-stay-header">
+
+            <span class="extend-stay-icon">📅</span>
+
+            <h2>Extend Your Stay</h2>
+
+            <p>
+                We'd be happy to help you extend your stay.
+            </p>
+
+        </div>
+
+        <div class="stay-current-info">
+
+            <div>
+                <small>Current Check-out</small>
+                <strong id="currentCheckoutDate">—</strong>
+            </div>
+
+        </div>
+
+        <label for="newCheckoutDate">
+            New Check-out Date
+        </label>
+
+        <input
+            type="date"
+            id="newCheckoutDate"
+        >
+
+        <label for="additionalNights">
+            Additional Nights
+        </label>
+
+        <input
+            type="number"
+            id="additionalNights"
+            min="1"
+            placeholder="Number of additional nights"
+        >
+
+        <label for="extendStayMessage">
+            Additional Message
+            <span>(Optional)</span>
+        </label>
+
+        <textarea
+            id="extendStayMessage"
+            rows="3"
+            placeholder="Any additional information..."
+        ></textarea>
+
+        <div class="extend-stay-note">
+            📌 Extension requests are subject to room availability.
+            Additional accommodation charges may apply.
+        </div>
+
+        <button id="submitExtendStay">
+            Request Stay Extension
+        </button>
+
+    </div>
+
+</div>
+  <!-- ==========================================
 CAMPFIRE EXPERIENCE POPUP
 ========================================== -->
 
