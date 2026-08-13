@@ -706,6 +706,92 @@ AIRPORT TRANSFER POPUP
 
 </div>
   <!-- ==========================================
+     EMERGENCY ASSISTANCE POPUP
+========================================== -->
+
+<div id="emergencyPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeEmergency">&times;</span>
+
+        <div class="emergency-header">
+
+            <span class="emergency-icon">🚨</span>
+
+            <h2>Emergency Assistance</h2>
+
+            <p>
+                Tell reception what assistance you need immediately.
+            </p>
+
+        </div>
+
+        <div class="emergency-warning">
+            🚨 For serious or life-threatening emergencies,
+            contact the appropriate emergency service immediately.
+        </div>
+
+        <label for="emergencyType">
+            Emergency Type
+        </label>
+
+        <select id="emergencyType">
+
+            <option value="">
+                Select emergency type
+            </option>
+
+            <option value="Medical Emergency">
+                🏥 Medical Emergency
+            </option>
+
+            <option value="Fire">
+                🔥 Fire / Smoke
+            </option>
+
+            <option value="Security">
+                🛡️ Security Emergency
+            </option>
+
+            <option value="Accident">
+                ⚠️ Accident
+            </option>
+
+            <option value="Other Emergency">
+                🚨 Other Emergency
+            </option>
+
+        </select>
+
+        <label for="emergencyLocation">
+            Cottage / Location
+        </label>
+
+        <input
+            type="text"
+            id="emergencyLocation"
+            placeholder="Where is the emergency?"
+        >
+
+        <label for="emergencyMessage">
+            Describe the emergency
+        </label>
+
+        <textarea
+            id="emergencyMessage"
+            rows="4"
+            placeholder="Briefly describe what happened..."
+        ></textarea>
+
+        <button id="submitEmergency">
+            Request Emergency Assistance
+        </button>
+
+    </div>
+
+</div>
+  <!-- ==========================================
 CAMPFIRE EXPERIENCE POPUP
 ========================================== -->
 
