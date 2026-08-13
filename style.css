@@ -3679,3 +3679,220 @@ color:#d4af37;
     }
 
 }
+/* ==========================================
+   LUGGAGE ASSISTANCE — PREMIUM STYLE
+========================================== */
+
+#luggagePopup .popup-content {
+    width: 92% !important;
+    max-width: 500px !important;
+    padding: 30px !important;
+    box-sizing: border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(212,175,55,.13),
+            transparent 45%
+        ),
+        linear-gradient(145deg,#21170b,#0d0a06) !important;
+
+    border: 1px solid rgba(212,175,55,.42) !important;
+    border-radius: 28px !important;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.75) !important;
+}
+
+/* Header */
+#luggagePopup .luggage-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#luggagePopup .luggage-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 68px;
+    height: 68px;
+
+    margin-bottom: 11px;
+
+    border-radius: 50%;
+
+    background: rgba(212,175,55,.12);
+    border: 1px solid rgba(212,175,55,.35);
+
+    font-size: 31px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
+}
+
+#luggagePopup .luggage-header h2 {
+    margin: 0 0 7px !important;
+
+    color: #f3d77b !important;
+
+    font-family: "Cinzel", serif !important;
+    font-size: 28px !important;
+
+    text-align: center !important;
+}
+
+#luggagePopup .luggage-header p {
+    margin: 0 !important;
+
+    font-size: 12px !important;
+    line-height: 1.6;
+
+    opacity: .6;
+}
+
+/* Labels */
+#luggagePopup label {
+    display: block;
+
+    margin: 17px 0 7px;
+
+    color: #eadfbf;
+
+    font-size: 11px;
+    font-weight: 500;
+}
+
+#luggagePopup label span {
+    opacity: .45;
+    font-size: 10px;
+}
+
+/* Inputs */
+#luggagePopup select,
+#luggagePopup input,
+#luggagePopup textarea {
+
+    width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    padding: 14px 15px !important;
+
+    background: rgba(0,0,0,.28) !important;
+
+    color: #fff !important;
+
+    border: 1px solid rgba(212,175,55,.22) !important;
+
+    border-radius: 14px !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 13px !important;
+
+    outline: none !important;
+
+    transition: .25s ease;
+}
+
+/* Focus */
+#luggagePopup select:focus,
+#luggagePopup input:focus,
+#luggagePopup textarea:focus {
+
+    border-color: #d4af37 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(212,175,55,.08),
+        0 0 15px rgba(212,175,55,.06) !important;
+}
+
+/* Textarea */
+#luggagePopup textarea {
+
+    min-height: 85px;
+
+    resize: vertical;
+}
+
+/* Information note */
+#luggagePopup .luggage-note {
+
+    margin-top: 18px;
+
+    padding: 14px 16px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.10),
+            rgba(212,175,55,.035)
+        );
+
+    border: 1px solid rgba(212,175,55,.18);
+
+    color: #ddd;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+/* Submit button */
+#luggagePopup #submitLuggage {
+
+    width: 100% !important;
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #f3d778
+        );
+
+    color: #171207;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(212,175,55,.20);
+
+    transition: .25s ease;
+}
+
+#luggagePopup #submitLuggage:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 32px rgba(212,175,55,.32);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    #luggagePopup .popup-content {
+
+        width: 94% !important;
+        max-width: 94% !important;
+
+        padding: 22px !important;
+
+    }
+
+}
