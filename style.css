@@ -4326,3 +4326,213 @@ color:#d4af37;
     }
 
 }
+/* ==========================================
+   EMERGENCY ASSISTANCE — PREMIUM ALERT STYLE
+========================================== */
+
+#emergencyPopup .popup-content {
+    width: 92% !important;
+    max-width: 500px !important;
+    padding: 30px !important;
+    box-sizing: border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(190,45,45,.16),
+            transparent 45%
+        ),
+        linear-gradient(145deg,#210d0d,#0d0707) !important;
+
+    border: 1px solid rgba(220,70,70,.45) !important;
+    border-radius: 28px !important;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.8),
+        0 0 35px rgba(180,40,40,.08) !important;
+}
+
+/* Header */
+#emergencyPopup .emergency-header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+#emergencyPopup .emergency-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 70px;
+    height: 70px;
+
+    margin-bottom: 12px;
+
+    border-radius: 50%;
+
+    background: rgba(210,50,50,.12);
+    border: 1px solid rgba(220,70,70,.4);
+
+    font-size: 32px;
+
+    box-shadow:
+        0 0 25px rgba(200,40,40,.12);
+}
+
+#emergencyPopup .emergency-header h2 {
+    margin: 0 0 7px !important;
+
+    color: #ffb0b0 !important;
+
+    font-family: "Cinzel", serif !important;
+    font-size: 28px !important;
+
+    text-align: center !important;
+}
+
+#emergencyPopup .emergency-header p {
+    margin: 0 !important;
+
+    font-size: 12px !important;
+    line-height: 1.6;
+
+    opacity: .65;
+}
+
+/* Warning box */
+#emergencyPopup .emergency-warning {
+    margin-bottom: 20px;
+
+    padding: 14px 16px;
+
+    border-radius: 15px;
+
+    background: rgba(190,45,45,.10);
+
+    border: 1px solid rgba(220,70,70,.25);
+
+    color: #f0c2c2;
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* Labels */
+#emergencyPopup label {
+    display: block;
+
+    margin: 17px 0 7px;
+
+    color: #eadcdc;
+
+    font-size: 11px;
+}
+
+/* Inputs */
+#emergencyPopup select,
+#emergencyPopup input,
+#emergencyPopup textarea {
+
+    width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    padding: 14px 15px !important;
+
+    background: rgba(0,0,0,.3) !important;
+
+    color: #fff !important;
+
+    border: 1px solid rgba(220,70,70,.25) !important;
+
+    border-radius: 14px !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 13px !important;
+
+    outline: none !important;
+
+    transition: .25s ease;
+}
+
+/* Focus */
+#emergencyPopup select:focus,
+#emergencyPopup input:focus,
+#emergencyPopup textarea:focus {
+
+    border-color: #e05252 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(220,70,70,.08),
+        0 0 15px rgba(220,70,70,.07) !important;
+}
+
+/* Message */
+#emergencyPopup textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Emergency button */
+#emergencyPopup #submitEmergency {
+
+    width: 100% !important;
+
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b83232,
+            #e05252
+        );
+
+    color: #fff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(190,45,45,.25);
+
+    transition: .25s ease;
+}
+
+#emergencyPopup #submitEmergency:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 32px rgba(190,45,45,.4);
+}
+
+/* Close button */
+#emergencyPopup .closeEmergency {
+
+    background: rgba(255,255,255,.08);
+
+    color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    #emergencyPopup .popup-content {
+
+        width: 94% !important;
+        max-width: 94% !important;
+
+        padding: 22px !important;
+    }
+
+}
