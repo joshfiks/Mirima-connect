@@ -619,6 +619,30 @@ luggagePopup.addEventListener("click", (e) => {
 
 });
   // ==========================================
+// MAINTENANCE REQUEST POPUP
+// ==========================================
+
+const maintenancePopup =
+    document.getElementById("maintenancePopup");
+
+const closeMaintenance =
+    document.querySelector(".closeMaintenance");
+  closeMaintenance.addEventListener("click", () => {
+
+    maintenancePopup.style.display = "none";
+
+});
+
+maintenancePopup.addEventListener("click", (e) => {
+
+    if (e.target === maintenancePopup) {
+
+        maintenancePopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
 
@@ -1149,7 +1173,30 @@ if (
     return;
 
 }
-   
+   // ==========================================
+// MAINTENANCE REQUEST
+// ==========================================
+
+const maintenanceRequest =
+    selected[0].querySelector(".title");
+
+if (
+    maintenanceRequest &&
+    maintenanceRequest.textContent.trim() === "Maintenance Request"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    maintenancePopup.style.display = "flex";
+
+    return;
+
+}
   clearSelections(receptionPopup, ".service-option");
 
     receptionPopup.style.display = "none";
