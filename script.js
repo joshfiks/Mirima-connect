@@ -594,6 +594,31 @@ transferPopup.querySelectorAll(".service-option").forEach(item => {
 });
 
   // ==========================================
+// LUGGAGE ASSISTANCE POPUP
+// ==========================================
+
+const luggagePopup =
+    document.getElementById("luggagePopup");
+
+const closeLuggage =
+    document.querySelector(".closeLuggage");
+
+closeLuggage.addEventListener("click", () => {
+
+    luggagePopup.style.display = "none";
+
+});
+
+luggagePopup.addEventListener("click", (e) => {
+
+    if (e.target === luggagePopup) {
+
+        luggagePopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
 
@@ -1096,6 +1121,30 @@ if (airportTransfer && airportTransfer.textContent.trim() === "Airport Transfer"
     transferPopup.style.display = "flex";
 
 }, 150);
+
+    return;
+
+}
+  // ==========================================
+// LUGGAGE ASSISTANCE
+// ==========================================
+
+const luggageAssistance =
+    selected[0].querySelector(".title");
+
+if (
+    luggageAssistance &&
+    luggageAssistance.textContent.trim() === "Luggage Assistance"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    luggagePopup.style.display = "flex";
 
     return;
 
