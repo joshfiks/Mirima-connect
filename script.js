@@ -642,6 +642,31 @@ maintenancePopup.addEventListener("click", (e) => {
     }
 
 });
+
+  // ==========================================
+// EXTEND YOUR STAY POPUP
+// ==========================================
+
+const extendStayPopup =
+    document.getElementById("extendStayPopup");
+
+const closeExtendStay =
+    document.querySelector(".closeExtendStay");
+  closeExtendStay.addEventListener("click", () => {
+
+    extendStayPopup.style.display = "none";
+
+});
+
+extendStayPopup.addEventListener("click", (e) => {
+
+    if (e.target === extendStayPopup) {
+
+        extendStayPopup.style.display = "none";
+
+    }
+
+});
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
@@ -1193,6 +1218,30 @@ if (
     );
 
     maintenancePopup.style.display = "flex";
+
+    return;
+
+}
+  // ==========================================
+// EXTEND YOUR STAY
+// ==========================================
+
+const extendStayRequest =
+    selected[0].querySelector(".title");
+
+if (
+    extendStayRequest &&
+    extendStayRequest.textContent.trim() === "Extend Your Stay"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    extendStayPopup.style.display = "flex";
 
     return;
 
