@@ -1059,6 +1059,127 @@ document.getElementById("receptionAssistance")
     otherAssistancePopup.style.display = "flex";
 
 });
+
+  // ==========================================
+// RECEPTION FAQ POPUP
+// ==========================================
+
+const receptionFAQPopup =
+    document.getElementById("receptionFAQPopup");
+
+const closeReceptionFAQ =
+    document.querySelector(".closeReceptionFAQ");
+
+
+// ==========================================
+// OPEN FAQ
+// ==========================================
+
+document.getElementById("receptionFAQ")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    receptionFAQPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLOSE FAQ
+// ==========================================
+
+closeReceptionFAQ.addEventListener("click", () => {
+
+    receptionFAQPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+receptionFAQPopup.addEventListener("click", (e) => {
+
+    if (e.target === receptionFAQPopup) {
+
+        receptionFAQPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// FAQ QUESTIONS
+// ==========================================
+
+receptionFAQPopup
+.querySelectorAll(".faq-question")
+.forEach(question => {
+
+    question.addEventListener("click", () => {
+
+        const faqItem =
+            question.closest(".faq-item");
+
+        const answer =
+            faqItem.querySelector(".faq-answer");
+
+        const plus =
+            question.querySelector(".faq-plus");
+
+
+        // Close other open questions
+        receptionFAQPopup
+            .querySelectorAll(".faq-item")
+            .forEach(item => {
+
+                if (item !== faqItem) {
+
+                    item.classList.remove("active");
+
+                    const otherAnswer =
+                        item.querySelector(".faq-answer");
+
+                    const otherPlus =
+                        item.querySelector(".faq-plus");
+
+                    otherAnswer.style.maxHeight = null;
+
+                    if (otherPlus) {
+                        otherPlus.textContent = "+";
+                    }
+
+                }
+
+            });
+
+
+        // Open / close selected question
+        if (faqItem.classList.contains("active")) {
+
+            faqItem.classList.remove("active");
+
+            answer.style.maxHeight = null;
+
+            plus.textContent = "+";
+
+        } else {
+
+            faqItem.classList.add("active");
+
+            answer.style.maxHeight =
+                answer.scrollHeight + "px";
+
+            plus.textContent = "−";
+
+        }
+
+    });
+
+});              
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
