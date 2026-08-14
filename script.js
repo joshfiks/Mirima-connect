@@ -929,11 +929,43 @@ receptionChatPopup.addEventListener("click", (e) => {
     }
 
 });
-  // ==========================================
-// RECEPTION CONTACT ACTIONS
+
+// ==========================================
+// OTHER ASSISTANCE POPUP
 // ==========================================
 
+const otherAssistancePopup =
+    document.getElementById("otherAssistancePopup");
+
+const closeOtherAssistance =
+    document.querySelector(".closeOtherAssistance");
+
+// Close Other Assistance
+closeOtherAssistance.addEventListener("click", () => {
+
+    otherAssistancePopup.style.display = "none";
+
+});
+
+// ==========================================
+// RECEPTION CONTACT ACTIONS
+// ==========================================
+// Close when clicking outside
+otherAssistancePopup.addEventListener("click", (e) => {
+
+    if (e.target === otherAssistancePopup) {
+
+        otherAssistancePopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
 // WHATSAPP
+// ==========================================
+
 document.getElementById("openReceptionWhatsApp")
 .addEventListener("click", () => {
 
@@ -947,7 +979,10 @@ document.getElementById("openReceptionWhatsApp")
 });
 
 
+// ==========================================
 // CALL RECEPTION
+// ==========================================
+
 document.getElementById("callReception")
 .addEventListener("click", () => {
 
@@ -955,36 +990,73 @@ document.getElementById("callReception")
 
 });
 
-  // 🚨 EMERGENCY
+
+// ==========================================
+// 🚨 EMERGENCY
+// ==========================================
+
 document.getElementById("receptionEmergency")
 .addEventListener("click", () => {
 
     receptionChatPopup.style.display = "none";
+
     emergencyPopup.style.display = "flex";
 
 });
-  // 🧳 LUGGAGE
+
+
+// ==========================================
+// 🧳 LUGGAGE
+// ==========================================
+
 document.getElementById("receptionLuggage")
 .addEventListener("click", () => {
 
     receptionChatPopup.style.display = "none";
+
     luggagePopup.style.display = "flex";
 
 });
-  // 🔧 MAINTENANCE
+
+
+// ==========================================
+// 🔧 MAINTENANCE
+// ==========================================
+
 document.getElementById("receptionMaintenance")
 .addEventListener("click", () => {
 
     receptionChatPopup.style.display = "none";
+
     maintenancePopup.style.display = "flex";
 
 });
-  // 🚕 TRANSPORT
+
+
+// ==========================================
+// 🚕 TRANSPORT
+// ==========================================
+
 document.getElementById("receptionTransport")
 .addEventListener("click", () => {
 
     receptionChatPopup.style.display = "none";
+
     transferPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// 🛎️ OTHER ASSISTANCE
+// ==========================================
+
+document.getElementById("receptionAssistance")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    otherAssistancePopup.style.display = "flex";
 
 });
   // ==========================================
