@@ -955,6 +955,14 @@ document.getElementById("callReception")
 
 });
 
+  // 🚨 EMERGENCY
+document.getElementById("receptionEmergency")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+    emergencyPopup.style.display = "flex";
+
+});
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
