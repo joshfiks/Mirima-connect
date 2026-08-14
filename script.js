@@ -619,6 +619,43 @@ luggagePopup.addEventListener("click", (e) => {
 
 });
   // ==========================================
+// LUGGAGE ASSISTANCE REQUEST
+// ==========================================
+
+document.getElementById("submitLuggage")
+.addEventListener("click", () => {
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("submitLuggage");
+
+    luggagePopup.style.display = "none";
+
+    showLoading("Requesting Luggage Assistance...", () => {
+
+        addRequest(
+            "🧳 Luggage Assistance",
+            "Guest requested luggage assistance."
+        );
+
+        showNotification(
+            "🧳",
+            "Luggage Assistance",
+            "Your luggage assistance request has been received."
+        );
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your luggage assistance request has been received.",
+            "Our reception team will assist you shortly."
+        );
+
+    }, btn);
+
+});
+  // ==========================================
 // MAINTENANCE REQUEST POPUP
 // ==========================================
 
@@ -644,6 +681,49 @@ maintenancePopup.addEventListener("click", (e) => {
 });
 
   // ==========================================
+// MAINTENANCE REQUEST
+// ==========================================
+
+document.getElementById("submitMaintenance")
+.addEventListener("click", () => {
+
+    const maintenanceType =
+        document.getElementById("maintenanceType")?.value || "";
+
+    const maintenanceMessage =
+        document.getElementById("maintenanceMessage")?.value.trim() || "";
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("submitMaintenance");
+
+    maintenancePopup.style.display = "none";
+
+    showLoading("Sending Maintenance Request...", () => {
+
+        addRequest(
+            "🔧 Maintenance Request",
+            maintenanceType || maintenanceMessage || "Guest requested maintenance assistance."
+        );
+
+        showNotification(
+            "🔧",
+            "Maintenance",
+            "Your maintenance request has been received."
+        );
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your maintenance request has been received.",
+            "Our maintenance team will assist you shortly."
+        );
+
+    }, btn);
+
+});
+  // ==========================================
 // EXTEND YOUR STAY POPUP
 // ==========================================
 
@@ -665,6 +745,67 @@ extendStayPopup.addEventListener("click", (e) => {
         extendStayPopup.style.display = "none";
 
     }
+
+});
+
+  // ==========================================
+// EXTEND YOUR STAY REQUEST
+// ==========================================
+
+document.getElementById("submitExtendStay")
+.addEventListener("click", () => {
+
+    const newCheckoutDate =
+        document.getElementById("newCheckoutDate").value;
+
+    const additionalNights =
+        document.getElementById("additionalNights").value;
+
+    const message =
+        document.getElementById("extendStayMessage").value.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    if (!newCheckoutDate || !additionalNights) {
+
+        showWarning(
+            "Incomplete Information",
+            "Please select a new checkout date and enter the number of additional nights."
+        );
+
+        return;
+    }
+
+    const btn =
+        document.getElementById("submitExtendStay");
+
+    extendStayPopup.style.display = "none";
+
+    showLoading("Sending Extension Request...", () => {
+
+        addRequest(
+            "📅 Extend Stay",
+            `${additionalNights} additional night(s) — New checkout: ${newCheckoutDate}${message ? " — " + message : ""}`
+        );
+
+        showNotification(
+            "📅",
+            "Stay Extension",
+            "Your stay extension request has been received."
+        );
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your stay extension request has been received.",
+            "Reception will check availability and confirm your new checkout date."
+        );
+
+        document.getElementById("newCheckoutDate").value = "";
+        document.getElementById("additionalNights").value = "";
+        document.getElementById("extendStayMessage").value = "";
+
+    }, btn);
 
 });
   // ==========================================
@@ -694,6 +835,77 @@ emergencyPopup.addEventListener("click", (e) => {
 });
 
   // ==========================================
+// EMERGENCY ASSISTANCE REQUEST
+// ==========================================
+
+document.getElementById("submitEmergency")
+.addEventListener("click", () => {
+
+    const emergencyType =
+        document.getElementById("emergencyType").value;
+
+    const emergencyLocation =
+        document.getElementById("emergencyLocation").value.trim();
+
+    const emergencyMessage =
+        document.getElementById("emergencyMessage").value.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    if (!emergencyType) {
+
+        showWarning(
+            "Select Emergency Type",
+            "Please select the type of emergency."
+        );
+
+        return;
+    }
+
+    if (!emergencyLocation) {
+
+        showWarning(
+            "Location Required",
+            "Please tell reception where the emergency is."
+        );
+
+        return;
+    }
+
+    const btn =
+        document.getElementById("submitEmergency");
+
+    emergencyPopup.style.display = "none";
+
+    showLoading("Sending Emergency Alert...", () => {
+
+        addRequest(
+            "🚨 Emergency Assistance",
+            `${emergencyType} — Location: ${emergencyLocation}${emergencyMessage ? " — " + emergencyMessage : ""}`
+        );
+
+        showNotification(
+            "🚨",
+            "Emergency Assistance",
+            "Your emergency request has been sent to reception."
+        );
+
+        showConfirmation(
+            `We're here to help, ${guestName}.`,
+            "Your emergency assistance request has been received.",
+            "Reception has been alerted and will assist you immediately."
+        );
+
+        document.getElementById("emergencyType").value = "";
+        document.getElementById("emergencyLocation").value = "";
+        document.getElementById("emergencyMessage").value = "";
+
+    }, btn);
+
+});
+
+  // ==========================================
 // SPEAK TO RECEPTION POPUP
 // ==========================================
 
@@ -715,6 +927,77 @@ receptionChatPopup.addEventListener("click", (e) => {
         receptionChatPopup.style.display = "none";
 
     }
+
+});
+  // ==========================================
+// RECEPTION CONTACT ACTIONS
+// ==========================================
+
+// WHATSAPP
+document.getElementById("openReceptionWhatsApp")
+.addEventListener("click", () => {
+
+    const phoneNumber = "256742015605";
+
+    window.open(
+        `https://wa.me/${phoneNumber}`,
+        "_blank"
+    );
+
+});
+
+
+// CALL RECEPTION
+document.getElementById("callReception")
+.addEventListener("click", () => {
+
+    window.location.href = "tel:+256700894459";
+
+});
+  // ==========================================
+// RECEPTION QUICK ACTIONS
+// ==========================================
+
+// 🚨 EMERGENCY
+document.getElementById("receptionEmergency")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    emergencyPopup.style.display = "flex";
+
+});
+
+
+// 🧳 LUGGAGE
+document.getElementById("receptionLuggage")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    luggagePopup.style.display = "flex";
+
+});
+
+
+// 🔧 MAINTENANCE
+document.getElementById("receptionMaintenance")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    maintenancePopup.style.display = "flex";
+
+});
+
+
+// 🚕 TRANSPORT
+document.getElementById("receptionTransport")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    transferPopup.style.display = "flex";
 
 });
   // ==========================================
