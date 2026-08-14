@@ -5092,3 +5092,354 @@ padding:22px !important;
 }
 
 }
+/* ==========================================
+   RECEPTION FAQ — PREMIUM STYLE
+========================================== */
+
+/* FAQ BUTTON */
+
+#receptionFAQ {
+
+    width: 100%;
+
+    margin-top: 14px;
+    padding: 15px 18px;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(212,175,55,.28);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.10),
+            rgba(212,175,55,.035)
+        );
+
+    color: #f1d477;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: .3px;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.18);
+}
+
+#receptionFAQ:hover {
+
+    transform: translateY(-2px);
+
+    border-color: rgba(212,175,55,.65);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.18),
+            rgba(212,175,55,.06)
+        );
+
+    box-shadow:
+        0 12px 30px rgba(212,175,55,.12);
+}
+
+
+/* ==========================================
+   FAQ POPUP
+========================================== */
+
+#receptionFAQPopup .popup-content {
+
+    width: 92% !important;
+    max-width: 560px !important;
+
+    max-height: 88vh !important;
+
+    padding: 30px !important;
+
+    box-sizing: border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(212,175,55,.13),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #21170b,
+            #0d0a06
+        ) !important;
+
+    border: 1px solid rgba(212,175,55,.40) !important;
+
+    border-radius: 28px !important;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.75) !important;
+
+    overflow-y: auto;
+}
+
+
+/* HEADER */
+
+#receptionFAQPopup .faq-header {
+
+    text-align: center;
+
+    margin-bottom: 24px;
+}
+
+#receptionFAQPopup .faq-icon {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 66px;
+    height: 66px;
+
+    margin-bottom: 12px;
+
+    border-radius: 50%;
+
+    background: rgba(212,175,55,.11);
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    font-size: 28px;
+}
+
+#receptionFAQPopup .faq-header h2 {
+
+    margin: 0 0 8px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 27px;
+
+    color: #f3d77b;
+}
+
+#receptionFAQPopup .faq-header p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    opacity: .58;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   FAQ ITEMS
+========================================== */
+
+#receptionFAQPopup .faq-item {
+
+    margin-bottom: 10px;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(212,175,55,.16);
+
+    background: rgba(255,255,255,.035);
+
+    overflow: hidden;
+
+    transition: .25s ease;
+}
+
+#receptionFAQPopup .faq-item.active {
+
+    border-color: rgba(212,175,55,.38);
+
+    background: rgba(212,175,55,.055);
+}
+
+
+/* QUESTION */
+
+#receptionFAQPopup .faq-question {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 16px 17px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #f2e5bd;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+#receptionFAQPopup .faq-question:hover {
+
+    color: #f3d77b;
+}
+
+
+/* PLUS */
+
+#receptionFAQPopup .faq-plus {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: rgba(212,175,55,.10);
+
+    color: #d4af37;
+
+    font-size: 17px;
+
+    transition: .25s ease;
+}
+
+#receptionFAQPopup .faq-item.active .faq-plus {
+
+    background: rgba(212,175,55,.18);
+
+    color: #f3d778;
+}
+
+
+/* ANSWER */
+
+#receptionFAQPopup .faq-answer {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        max-height .3s ease,
+        padding .3s ease;
+}
+
+#receptionFAQPopup .faq-answer p {
+
+    margin: 0;
+
+    padding: 0 17px 17px;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    color: #ddd;
+
+    opacity: .68;
+}
+
+
+/* ==========================================
+   FAQ FOOTER
+========================================== */
+
+#receptionFAQPopup .faq-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 17px;
+
+    padding: 14px 15px;
+
+    border-radius: 15px;
+
+    background: rgba(212,175,55,.055);
+
+    border: 1px solid rgba(212,175,55,.14);
+}
+
+#receptionFAQPopup .faq-footer > span {
+
+    font-size: 19px;
+}
+
+#receptionFAQPopup .faq-footer p {
+
+    margin: 0;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    opacity: .58;
+}
+
+#receptionFAQPopup .faq-footer strong {
+
+    color: #d4af37;
+
+    font-weight: 500;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #receptionFAQPopup .popup-content {
+
+        width: 94% !important;
+
+        padding: 22px !important;
+
+        max-height: 90vh !important;
+    }
+
+    #receptionFAQPopup .faq-header h2 {
+
+        font-size: 23px;
+    }
+
+    #receptionFAQPopup .faq-question {
+
+        padding: 15px;
+    }
+
+}
