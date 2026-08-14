@@ -979,6 +979,14 @@ document.getElementById("receptionMaintenance")
     maintenancePopup.style.display = "flex";
 
 });
+  // 🚕 TRANSPORT
+document.getElementById("receptionTransport")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+    transferPopup.style.display = "flex";
+
+});
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
