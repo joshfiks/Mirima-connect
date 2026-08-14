@@ -963,6 +963,14 @@ document.getElementById("receptionEmergency")
     emergencyPopup.style.display = "flex";
 
 });
+  // 🧳 LUGGAGE
+document.getElementById("receptionLuggage")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+    luggagePopup.style.display = "flex";
+
+});
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
