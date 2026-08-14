@@ -954,52 +954,7 @@ document.getElementById("callReception")
     window.location.href = "tel:+256700894459";
 
 });
-  // ==========================================
-// RECEPTION QUICK ACTIONS
-// ==========================================
 
-// 🚨 EMERGENCY
-document.getElementById("receptionEmergency")
-.addEventListener("click", () => {
-
-    receptionChatPopup.style.display = "none";
-
-    emergencyPopup.style.display = "flex";
-
-});
-
-
-// 🧳 LUGGAGE
-document.getElementById("receptionLuggage")
-.addEventListener("click", () => {
-
-    receptionChatPopup.style.display = "none";
-
-    luggagePopup.style.display = "flex";
-
-});
-
-
-// 🔧 MAINTENANCE
-document.getElementById("receptionMaintenance")
-.addEventListener("click", () => {
-
-    receptionChatPopup.style.display = "none";
-
-    maintenancePopup.style.display = "flex";
-
-});
-
-
-// 🚕 TRANSPORT
-document.getElementById("receptionTransport")
-.addEventListener("click", () => {
-
-    receptionChatPopup.style.display = "none";
-
-    transferPopup.style.display = "flex";
-
-});
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
