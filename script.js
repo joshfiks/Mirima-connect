@@ -971,6 +971,14 @@ document.getElementById("receptionLuggage")
     luggagePopup.style.display = "flex";
 
 });
+  // 🔧 MAINTENANCE
+document.getElementById("receptionMaintenance")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+    maintenancePopup.style.display = "flex";
+
+});
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
