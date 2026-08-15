@@ -1199,7 +1199,66 @@ campfirePopup.addEventListener("click", (e) => {
     }
 
 });
+// ==========================================
+// RESTAURANT & BAR
+// ==========================================
 
+const restaurantBarPopup =
+    document.getElementById("restaurantBarPopup");
+
+const closeRestaurantBar =
+    document.querySelector(".closeRestaurantBar");
+
+
+// Close Restaurant & Bar popup
+closeRestaurantBar.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+
+});
+
+
+// Close when clicking outside
+restaurantBarPopup.addEventListener("click", (e) => {
+
+    if (e.target === restaurantBarPopup) {
+
+        restaurantBarPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// OPEN RESTAURANT & BAR
+// ==========================================
+
+explorePopup
+.querySelectorAll(".service-option")
+.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        const title =
+            option.querySelector(".title");
+
+        if (
+            title &&
+            title.textContent.trim() === "Restaurant & Bar"
+        ) {
+
+            explorePopup.style.display = "none";
+
+            option.classList.remove("selected");
+
+            restaurantBarPopup.style.display = "flex";
+
+        }
+
+    });
+
+});
 // ==========================================
 // SPA POPUP
 // ==========================================
