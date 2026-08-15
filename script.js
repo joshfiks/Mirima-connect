@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Audio Volume
-    dayForest.volume = 0.30;
-    dayBirds.volume = 0.25;
-    nightForest.volume = 0.30;
+    dayForest.volume = 0.20;
+    dayBirds.volume = 0.30;
+    nightForest.volume = 0.20;
 
 function fadeOut(audio){
 
