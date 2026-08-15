@@ -5462,3 +5462,29 @@ padding:22px !important;
     }
 
 }
+/* … all other popup-content rules … */
+
+/* Premium overrides – must be last before mobile */
+#billingHelpPopup .popup-content {
+    background: linear-gradient(to right, #2a1f0f, #4a3b1f);
+    border: 2px solid rgba(212,175,55,.85);
+}
+
+#receiptPopup .popup-content {
+    width: 92%;
+    max-width: 460px;
+    padding: 28px;
+}
+
+/* Mobile-only adjustments */
+@media (max-width:600px) {
+    #billingHelpPopup .popup-content {
+        width: 94% !important;
+        max-width: 94% !important;
+        padding: 22px !important;
+    }
+
+    #billingHelpPopup .billing-help-options {
+        grid-template-columns: 1fr !important;
+    }
+}
