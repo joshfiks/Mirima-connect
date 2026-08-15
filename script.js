@@ -1308,6 +1308,72 @@ restaurantMenuPopup.addEventListener("click", (e) => {
     }
 
 });
+  // ==========================================
+// CRATER LAKE TOUR POPUP
+// ==========================================
+
+const craterLakePopup =
+    document.getElementById("craterLakePopup");
+
+const closeCraterLake =
+    document.querySelector(".closeCraterLake");
+
+
+// ==========================================
+// OPEN CRATER LAKE TOUR
+// ==========================================
+
+explorePopup
+.querySelectorAll(".service-option")
+.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        const title =
+            option.querySelector(".title");
+
+        if (
+            title &&
+            title.textContent.trim() === "Crater Lake Tour"
+        ) {
+
+            explorePopup.style.display = "none";
+
+            option.classList.remove("selected");
+
+            craterLakePopup.style.display = "flex";
+
+        }
+
+    });
+
+});
+
+
+// ==========================================
+// CLOSE CRATER LAKE TOUR
+// ==========================================
+
+closeCraterLake.addEventListener("click", () => {
+
+    craterLakePopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+craterLakePopup.addEventListener("click", (e) => {
+
+    if (e.target === craterLakePopup) {
+
+        craterLakePopup.style.display = "none";
+
+    }
+
+});
 // ==========================================
 // SPA POPUP
 // ==========================================
