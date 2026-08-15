@@ -1259,6 +1259,55 @@ explorePopup
     });
 
 });
+  // ==========================================
+// RESTAURANT MENU POPUP
+// ==========================================
+
+const restaurantMenuPopup =
+    document.getElementById("restaurantMenuPopup");
+
+const closeRestaurantMenu =
+    document.querySelector(".closeRestaurantMenu");
+
+
+// ==========================================
+// OPEN RESTAURANT MENU
+// ==========================================
+
+document.getElementById("restaurantMenuButton")
+.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+
+    restaurantMenuPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLOSE RESTAURANT MENU
+// ==========================================
+
+closeRestaurantMenu.addEventListener("click", () => {
+
+    restaurantMenuPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+restaurantMenuPopup.addEventListener("click", (e) => {
+
+    if (e.target === restaurantMenuPopup) {
+
+        restaurantMenuPopup.style.display = "none";
+
+    }
+
+});
 // ==========================================
 // SPA POPUP
 // ==========================================
