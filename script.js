@@ -1374,6 +1374,72 @@ craterLakePopup.addEventListener("click", (e) => {
     }
 
 });
+  // ==========================================
+// WILDLIFE VIEWING POPUP
+// ==========================================
+
+const wildlifeViewingPopup =
+    document.getElementById("wildlifeViewingPopup");
+
+const closeWildlifeViewing =
+    document.querySelector(".closeWildlifeViewing");
+
+
+// ==========================================
+// OPEN WILDLIFE VIEWING
+// ==========================================
+
+explorePopup
+    .querySelectorAll(".service-option")
+    .forEach(option => {
+
+        option.addEventListener("click", () => {
+
+            const title =
+                option.querySelector(".title");
+
+            if (
+                title &&
+                title.textContent.trim() === "Wildlife Viewing"
+            ) {
+
+                explorePopup.style.display = "none";
+
+                option.classList.remove("selected");
+
+                wildlifeViewingPopup.style.display = "flex";
+
+            }
+
+        });
+
+    });
+
+
+// ==========================================
+// CLOSE WILDLIFE VIEWING
+// ==========================================
+
+closeWildlifeViewing.addEventListener("click", () => {
+
+    wildlifeViewingPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+wildlifeViewingPopup.addEventListener("click", (e) => {
+
+    if (e.target === wildlifeViewingPopup) {
+
+        wildlifeViewingPopup.style.display = "none";
+
+    }
+
+});
 // ==========================================
 // SPA POPUP
 // ==========================================
