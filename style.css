@@ -5488,3 +5488,271 @@ padding:22px !important;
         grid-template-columns: 1fr !important;
     }
 }
+/* ==========================================
+   RESTAURANT MENU — PREMIUM STYLE
+========================================== */
+
+#restaurantMenuPopup .popup-content {
+
+    width: 92% !important;
+    max-width: 560px !important;
+
+    max-height: 88vh !important;
+
+    padding: 30px !important;
+
+    box-sizing: border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(212,175,55,.14),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #21170b,
+            #0d0a06
+        ) !important;
+
+    border: 1px solid rgba(212,175,55,.42) !important;
+
+    border-radius: 28px !important;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.75) !important;
+
+    overflow-y: auto;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+#restaurantMenuPopup .restaurant-menu-header {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+#restaurantMenuPopup .restaurant-menu-icon {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 68px;
+    height: 68px;
+
+    margin-bottom: 12px;
+
+    border-radius: 50%;
+
+    background: rgba(212,175,55,.11);
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    font-size: 30px;
+}
+
+#restaurantMenuPopup .restaurant-menu-header h2 {
+
+    margin: 0 0 7px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 28px;
+
+    color: #f3d77b;
+}
+
+#restaurantMenuPopup .restaurant-menu-header p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    opacity: .58;
+}
+
+
+/* ==========================================
+   MENU SECTIONS
+========================================== */
+
+#restaurantMenuPopup .menu-section {
+
+    margin-bottom: 18px;
+
+    padding: 17px;
+
+    border-radius: 17px;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(212,175,55,.15);
+}
+
+#restaurantMenuPopup .menu-section h3 {
+
+    margin: 0 0 13px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    color: #d4af37;
+}
+
+
+/* ==========================================
+   MENU ITEMS
+========================================== */
+
+#restaurantMenuPopup .menu-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px dashed rgba(255,255,255,.10);
+}
+
+#restaurantMenuPopup .menu-item:last-child {
+
+    border-bottom: none;
+
+    padding-bottom: 0;
+}
+
+#restaurantMenuPopup .menu-item:first-of-type {
+
+    padding-top: 0;
+}
+
+#restaurantMenuPopup .menu-item strong {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 12px;
+
+    color: #f0e3c0;
+}
+
+#restaurantMenuPopup .menu-item small {
+
+    display: block;
+
+    max-width: 300px;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    opacity: .52;
+}
+
+#restaurantMenuPopup .menu-item > span {
+
+    flex-shrink: 0;
+
+    color: #f3d778;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   ORDER BUTTON
+========================================== */
+
+#restaurantMenuPopup .menu-order-button {
+
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #f3d778
+        );
+
+    color: #17130a;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(212,175,55,.20);
+
+    transition: .25s ease;
+}
+
+#restaurantMenuPopup .menu-order-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 32px rgba(212,175,55,.35);
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #restaurantMenuPopup .popup-content {
+
+        width: 94% !important;
+
+        padding: 22px !important;
+
+        max-height: 90vh !important;
+    }
+
+    #restaurantMenuPopup .restaurant-menu-header h2 {
+
+        font-size: 24px;
+    }
+
+    #restaurantMenuPopup .menu-section {
+
+        padding: 15px;
+    }
+
+    #restaurantMenuPopup .menu-item {
+
+        gap: 10px;
+    }
+
+}
