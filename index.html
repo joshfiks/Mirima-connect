@@ -1794,72 +1794,106 @@ FOREST NATURE WALK POPUP
     </div>
 
 </div>
-// ==========================================
-// CHIMPANZEE TREKKING POPUP
-// ==========================================
+<!-- ==========================================
+     CHIMPANZEE TREKKING POPUP
+========================================== -->
 
-const chimpanzeeTrekkingPopup =
-    document.getElementById("chimpanzeeTrekkingPopup");
+<div id="chimpanzeeTrekkingPopup" class="popup">
 
-const closeChimpanzeeTrekking =
-    document.querySelector(".closeChimpanzeeTrekking");
+    <div class="popup-content">
 
+        <span class="closeChimpanzeeTrekking">&times;</span>
 
-// ==========================================
-// OPEN CHIMPANZEE TREKKING
-// ==========================================
+        <div class="chimp-header">
 
-explorePopup
-    .querySelectorAll(".service-option")
-    .forEach(option => {
+            <span class="chimp-icon">🦍</span>
 
-        option.addEventListener("click", () => {
+            <h2>Chimpanzee Trekking</h2>
 
-            const title =
-                option.querySelector(".title");
+            <p>
+                Experience the excitement of exploring the
+                forest while discovering chimpanzees in their
+                natural environment.
+            </p>
 
-            if (
-                title &&
-                title.textContent.trim() === "Chimpanzee Trekking"
-            ) {
-
-                explorePopup.style.display = "none";
-
-                option.classList.remove("selected");
-
-                chimpanzeeTrekkingPopup.style.display = "flex";
-
-            }
-
-        });
-
-    });
+        </div>
 
 
-// ==========================================
-// CLOSE CHIMPANZEE TREKKING
-// ==========================================
+        <!-- EXPERIENCE DETAILS -->
 
-closeChimpanzeeTrekking.addEventListener("click", () => {
+        <div class="chimp-info">
 
-    chimpanzeeTrekkingPopup.style.display = "none";
+            <div>
+                <small>Duration</small>
+                <strong>3–5 Hours</strong>
+            </div>
 
-});
+            <div>
+                <small>Experience</small>
+                <strong>Guided</strong>
+            </div>
+
+            <div>
+                <small>Difficulty</small>
+                <strong>Moderate</strong>
+            </div>
+
+            <div>
+                <small>Best Time</small>
+                <strong>Morning</strong>
+            </div>
+
+        </div>
 
 
-// ==========================================
-// CLOSE WHEN CLICKING OUTSIDE
-// ==========================================
+        <!-- TREKKING EXPERIENCE -->
 
-chimpanzeeTrekkingPopup.addEventListener("click", (e) => {
+        <div class="chimp-card">
 
-    if (e.target === chimpanzeeTrekkingPopup) {
+            <span>🌳</span>
 
-        chimpanzeeTrekkingPopup.style.display = "none";
+            <div>
 
-    }
+                <strong>Forest Trek</strong>
 
-});
+                <p>
+                    Follow an experienced guide through the
+                    forest and learn about chimpanzees, birds
+                    and the surrounding ecosystem.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMPORTANT NOTE -->
+
+        <div class="chimp-note">
+
+            <strong>🥾 Before you go</strong>
+
+            <p>
+                Wear comfortable walking shoes, carry drinking
+                water and follow your guide's instructions
+                throughout the trek.
+            </p>
+
+        </div>
+
+
+        <!-- BOOK -->
+
+        <button id="bookChimpanzeeTrekking"
+                class="chimp-book-button">
+
+            🦍 Book Chimpanzee Trekking
+
+        </button>
+
+    </div>
+
+</div>
 <!-- ==========================================
 HOUSEKEEPING POPUP
 ========================================== -->
