@@ -1506,6 +1506,73 @@ chimpanzeeTrekkingPopup.addEventListener("click", (e) => {
     }
 
 });
+
+  // ==========================================
+// PHOTOGRAPHY TOUR POPUP
+// ==========================================
+
+const photographyTourPopup =
+    document.getElementById("photographyTourPopup");
+
+const closePhotographyTour =
+    document.querySelector(".closePhotographyTour");
+
+
+// ==========================================
+// OPEN PHOTOGRAPHY TOUR
+// ==========================================
+
+explorePopup
+    .querySelectorAll(".service-option")
+    .forEach(option => {
+
+        option.addEventListener("click", () => {
+
+            const title =
+                option.querySelector(".title");
+
+            if (
+                title &&
+                title.textContent.trim() === "Photography Tour"
+            ) {
+
+                explorePopup.style.display = "none";
+
+                option.classList.remove("selected");
+
+                photographyTourPopup.style.display = "flex";
+
+            }
+
+        });
+
+    });
+
+
+// ==========================================
+// CLOSE PHOTOGRAPHY TOUR
+// ==========================================
+
+closePhotographyTour.addEventListener("click", () => {
+
+    photographyTourPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+photographyTourPopup.addEventListener("click", (e) => {
+
+    if (e.target === photographyTourPopup) {
+
+        photographyTourPopup.style.display = "none";
+
+    }
+
+});
 // ==========================================
 // SPA POPUP
 // ==========================================
