@@ -1573,33 +1573,41 @@ photographyTourPopup.addEventListener("click", (e) => {
     }
 
 });
-  // ==========================================
+// ==========================================
 // EXPERIENCE CONFIRMATION
 // ==========================================
 
-const experienceConfirmationPopup =
-    document.getElementById("experienceConfirmationPopup");
+const orderConfirmation =
+    document.getElementById("orderConfirmation");
 
-const closeExperienceConfirmation =
-    document.querySelector(".closeExperienceConfirmation");
+const confirmTitle =
+    document.getElementById("confirmTitle");
 
-const confirmationMessage =
-    document.getElementById("confirmationMessage");
+const confirmMessage =
+    document.getElementById("confirmMessage");
 
-const confirmationDoneButton =
-    document.getElementById("confirmationDoneButton");
+const confirmTime =
+    document.getElementById("confirmTime");
+
+const closeConfirmation =
+    document.getElementById("closeConfirmation");
 
 
 // ==========================================
-// SHOW CONFIRMATION
+// SHOW EXPERIENCE CONFIRMATION
 // ==========================================
 
 function showExperienceConfirmation(experienceName) {
 
-    confirmationMessage.textContent =
-        `Your ${experienceName} request has been sent to Reception.`;
+    confirmTitle.textContent = "Request Received";
 
-    experienceConfirmationPopup.style.display = "flex";
+    confirmMessage.textContent =
+        `Your ${experienceName} request has been received successfully.`;
+
+    confirmTime.textContent =
+        "Reception will confirm availability and details with you shortly.";
+
+    orderConfirmation.style.display = "flex";
 
 }
 
@@ -1608,33 +1616,22 @@ function showExperienceConfirmation(experienceName) {
 // CLOSE CONFIRMATION
 // ==========================================
 
-closeExperienceConfirmation.addEventListener("click", () => {
+closeConfirmation.addEventListener("click", () => {
 
-    experienceConfirmationPopup.style.display = "none";
-
-});
-
-
-// ==========================================
-// DONE BUTTON
-// ==========================================
-
-confirmationDoneButton.addEventListener("click", () => {
-
-    experienceConfirmationPopup.style.display = "none";
+    orderConfirmation.style.display = "none";
 
 });
 
 
 // ==========================================
-// CLICK OUTSIDE
+// CLOSE WHEN CLICKING OUTSIDE
 // ==========================================
 
-experienceConfirmationPopup.addEventListener("click", (e) => {
+orderConfirmation.addEventListener("click", (e) => {
 
-    if (e.target === experienceConfirmationPopup) {
+    if (e.target === orderConfirmation) {
 
-        experienceConfirmationPopup.style.display = "none";
+        orderConfirmation.style.display = "none";
 
     }
 
