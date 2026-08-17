@@ -10,43 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Background
     const background = document.querySelector(".background");
 
-    // Helper: set stable background image and properties to avoid zoom/overflow on mobile
-    function setBackgroundImage(url, isNight) {
-      if (!background) return;
-
-      background.style.backgroundImage = `url("${url}")`;
-
-      // Force consistent background sizing/positioning so images don't change layout
-      background.style.backgroundSize = "cover";
-      background.style.backgroundPosition = "center center";
-      background.style.backgroundRepeat = "no-repeat";
-
-      // Do NOT use fixed attachment on mobile (commonly causes zoom/shift); use scroll
-      background.style.backgroundAttachment = "scroll";
-
-      // Ensure the background container itself can't expand beyond viewport width
-      background.style.width = "100%";
-      background.style.height = "100%";
-      background.style.minHeight = "100vh";
-      background.style.boxSizing = "border-box";
-      background.style.left = "0";
-      background.style.top = "0";
-
-      // Toggle night class for any night-specific styling
-      if (isNight) {
-        document.body.classList.add("night");
-      } else {
-        document.body.classList.remove("night");
-      }
-
-      // Prevent accidental horizontal scrolling caused by small rounding differences
-      try {
-        document.documentElement.style.overflowX = "hidden";
-      } catch (e) {
-        // ignore in restricted environments
-      }
-    }
-
     // Audio
     const dayForest = document.getElementById("dayForest");
     const dayBirds = document.getElementById("dayBirds");
@@ -69,9 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Audio Volume
-    if (dayForest) dayForest.volume = 0.20;
-    if (dayBirds) dayBirds.volume = 0.30;
-    if (nightForest) nightForest.volume = 0.20;
+    dayForest.volume = 0.20;
+    dayBirds.volume = 0.30;
+    nightForest.volume = 0.20;
 
 function fadeOut(audio){
 
@@ -128,13 +91,17 @@ if(portalOpened) return;
 
         if(hour >= 18 || hour < 6){
 
-            // Night
-            setBackgroundImage("images/forest-night.png", true);
+            background.style.backgroundImage =
+            'url("images/forest-night.png")';
+
+            document.body.classList.add("night");
 
         }else{
 
-            // Day
-            setBackgroundImage("images/forest.png", false);
+            background.style.backgroundImage =
+            'url("images/forest.png")';
+
+            document.body.classList.remove("night");
 
         }
 
@@ -150,17 +117,17 @@ if(portalOpened) return;
 
     if(hour >= 18 || hour < 6){
 
-        if (dayForest) fadeOut(dayForest);
-        if (dayBirds) fadeOut(dayBirds);
+        fadeOut(dayForest);
+        fadeOut(dayBirds);
 
-        if (nightForest) fadeIn(nightForest,0.30);
+        fadeIn(nightForest,0.30);
 
     }else{
 
-        if (nightForest) fadeOut(nightForest);
+        fadeOut(nightForest);
 
-        if (dayForest) fadeIn(dayForest,0.30);
-        if (dayBirds) fadeIn(dayBirds,0.25);
+        fadeIn(dayForest,0.30);
+        fadeIn(dayBirds,0.25);
 
     }
 
@@ -179,7 +146,7 @@ if(portalOpened) return;
 
       typingSound.currentTime = 0;
 typingSound.loop = true;
-try { typingSound.play(); } catch (e) {}
+typingSound.play();
 
         const timer = setInterval(() => {
 
@@ -246,15 +213,13 @@ introVideo.addEventListener("ended", () => {
 
         if(hour >= 18 || hour < 6){
 
-            background.classList.remove("day");
-            // Night lake
-            setBackgroundImage("images/lake-night.png", true);
+            background.style.backgroundImage =
+            'url("images/lake-night.png")';
 
         }else{
 
-            background.classList.remove("day");
-            // Day lake
-            setBackgroundImage("images/lake-day.png", false);
+            background.style.backgroundImage =
+            'url("images/lake-day.png")';
 
         }
 
@@ -541,7 +506,7 @@ servicePopup.addEventListener("click", (e) => {
     }
 
 });
-
+  
 // ==========================================
 // RECEPTION POPUP
 // ==========================================
@@ -690,8 +655,7 @@ document.getElementById("submitLuggage")
     }, btn);
 
 });
-
-// ==========================================
+  // ==========================================
 // MAINTENANCE REQUEST POPUP
 // ==========================================
 
@@ -759,8 +723,7 @@ document.getElementById("submitMaintenance")
     }, btn);
 
 });
-
-// ==========================================
+  // ==========================================
 // EXTEND YOUR STAY POPUP
 // ==========================================
 
@@ -845,7 +808,6 @@ document.getElementById("submitExtendStay")
     }, btn);
 
 });
-
   // ==========================================
 // EMERGENCY POPUP
 // ==========================================
@@ -1217,7 +1179,7 @@ receptionFAQPopup
 
     });
 
-});
+});              
   // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
@@ -1273,6 +1235,161 @@ restaurantBarPopup.addEventListener("click", (e) => {
 // ==========================================
 
 explorePopup
+.querySelectorAll(".service-option")
+.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        const title =
+            option.querySelector(".title");
+
+        if (
+            title &&
+            title.textContent.trim() === "Restaurant & Bar"
+        ) {
+
+            explorePopup.style.display = "none";
+
+            option.classList.remove("selected");
+
+            restaurantBarPopup.style.display = "flex";
+
+        }
+
+    });
+
+});
+  // ==========================================
+// RESTAURANT MENU POPUP
+// ==========================================
+
+const restaurantMenuPopup =
+    document.getElementById("restaurantMenuPopup");
+
+const closeRestaurantMenu =
+    document.querySelector(".closeRestaurantMenu");
+
+
+// ==========================================
+// OPEN RESTAURANT MENU
+// ==========================================
+
+document.getElementById("restaurantMenuButton")
+.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+
+    restaurantMenuPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLOSE RESTAURANT MENU
+// ==========================================
+
+closeRestaurantMenu.addEventListener("click", () => {
+
+    restaurantMenuPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+restaurantMenuPopup.addEventListener("click", (e) => {
+
+    if (e.target === restaurantMenuPopup) {
+
+        restaurantMenuPopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
+// CRATER LAKE TOUR POPUP
+// ==========================================
+
+const craterLakePopup =
+    document.getElementById("craterLakePopup");
+
+const closeCraterLake =
+    document.querySelector(".closeCraterLake");
+
+
+// ==========================================
+// OPEN CRATER LAKE TOUR
+// ==========================================
+
+explorePopup
+.querySelectorAll(".service-option")
+.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        const title =
+            option.querySelector(".title");
+
+        if (
+            title &&
+            title.textContent.trim() === "Crater Lake Tour"
+        ) {
+
+            explorePopup.style.display = "none";
+
+            option.classList.remove("selected");
+
+            craterLakePopup.style.display = "flex";
+
+        }
+
+    });
+
+});
+
+
+// ==========================================
+// CLOSE CRATER LAKE TOUR
+// ==========================================
+
+closeCraterLake.addEventListener("click", () => {
+
+    craterLakePopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+craterLakePopup.addEventListener("click", (e) => {
+
+    if (e.target === craterLakePopup) {
+
+        craterLakePopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
+// WILDLIFE VIEWING POPUP
+// ==========================================
+
+const wildlifeViewingPopup =
+    document.getElementById("wildlifeViewingPopup");
+
+const closeWildlifeViewing =
+    document.querySelector(".closeWildlifeViewing");
+
+
+// ==========================================
+// OPEN WILDLIFE VIEWING
+// ==========================================
+
+explorePopup
     .querySelectorAll(".service-option")
     .forEach(option => {
 
@@ -1283,17 +1400,2371 @@ explorePopup
 
             if (
                 title &&
-                title.textContent.trim() === "Restaurant & Bar"
+                title.textContent.trim() === "Wildlife Viewing"
             ) {
 
                 explorePopup.style.display = "none";
 
                 option.classList.remove("selected");
 
-                restaurantBarPopup.style.display = "flex";
+                wildlifeViewingPopup.style.display = "flex";
 
             }
 
         });
 
     });
+
+
+// ==========================================
+// CLOSE WILDLIFE VIEWING
+// ==========================================
+
+closeWildlifeViewing.addEventListener("click", () => {
+
+    wildlifeViewingPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+wildlifeViewingPopup.addEventListener("click", (e) => {
+
+    if (e.target === wildlifeViewingPopup) {
+
+        wildlifeViewingPopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
+// CHIMPANZEE TREKKING POPUP
+// ==========================================
+
+const chimpanzeeTrekkingPopup =
+    document.getElementById("chimpanzeeTrekkingPopup");
+
+const closeChimpanzeeTrekking =
+    document.querySelector(".closeChimpanzeeTrekking");
+
+
+// ==========================================
+// OPEN CHIMPANZEE TREKKING
+// ==========================================
+
+explorePopup
+    .querySelectorAll(".service-option")
+    .forEach(option => {
+
+        option.addEventListener("click", () => {
+
+            const title =
+                option.querySelector(".title");
+
+            if (
+                title &&
+                title.textContent.trim() === "Chimpanzee Trekking"
+            ) {
+
+                explorePopup.style.display = "none";
+
+                option.classList.remove("selected");
+
+                chimpanzeeTrekkingPopup.style.display = "flex";
+
+            }
+
+        });
+
+    });
+
+
+// ==========================================
+// CLOSE CHIMPANZEE TREKKING
+// ==========================================
+
+closeChimpanzeeTrekking.addEventListener("click", () => {
+
+    chimpanzeeTrekkingPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+chimpanzeeTrekkingPopup.addEventListener("click", (e) => {
+
+    if (e.target === chimpanzeeTrekkingPopup) {
+
+        chimpanzeeTrekkingPopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// PHOTOGRAPHY TOUR POPUP
+// ==========================================
+
+const photographyTourPopup =
+    document.getElementById("photographyTourPopup");
+
+const closePhotographyTour =
+    document.querySelector(".closePhotographyTour");
+
+
+// ==========================================
+// OPEN PHOTOGRAPHY TOUR
+// ==========================================
+
+explorePopup
+    .querySelectorAll(".service-option")
+    .forEach(option => {
+
+        option.addEventListener("click", () => {
+
+            const title =
+                option.querySelector(".title");
+
+            if (
+                title &&
+                title.textContent.trim() === "Photography Tour"
+            ) {
+
+                explorePopup.style.display = "none";
+
+                option.classList.remove("selected");
+
+                photographyTourPopup.style.display = "flex";
+
+            }
+
+        });
+
+    });
+
+
+// ==========================================
+// CLOSE PHOTOGRAPHY TOUR
+// ==========================================
+
+closePhotographyTour.addEventListener("click", () => {
+
+    photographyTourPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+photographyTourPopup.addEventListener("click", (e) => {
+
+    if (e.target === photographyTourPopup) {
+
+        photographyTourPopup.style.display = "none";
+
+    }
+
+});
+// ==========================================
+// EXPLORE EXPERIENCE CONFIRMATIONS
+// ==========================================
+
+
+// 🦍 CHIMPANZEE TREKKING
+
+document.getElementById("bookChimpanzeeTrekking")
+.addEventListener("click", () => {
+
+    chimpanzeeTrekkingPopup.style.display = "none";
+
+    showConfirmation(
+        "Request Received",
+        "Your Chimpanzee Trekking request has been received successfully.",
+        "Reception will confirm availability and details shortly."
+    );
+
+});
+
+
+// 🐘 WILDLIFE VIEWING
+
+document.getElementById("bookWildlifeViewing")
+.addEventListener("click", () => {
+
+    wildlifeViewingPopup.style.display = "none";
+
+    showConfirmation(
+        "Request Received",
+        "Your Wildlife Viewing request has been received successfully.",
+        "Reception will confirm availability and details shortly."
+    );
+
+});
+
+
+// 🌋 CRATER LAKE TOUR
+
+document.getElementById("bookCraterLake")
+.addEventListener("click", () => {
+
+    craterLakePopup.style.display = "none";
+
+    showConfirmation(
+        "Request Received",
+        "Your Crater Lake Tour request has been received successfully.",
+        "Reception will confirm availability and details shortly."
+    );
+
+});
+
+
+// 📸 PHOTOGRAPHY TOUR
+
+document.getElementById("bookPhotographyTour")
+.addEventListener("click", () => {
+
+    photographyTourPopup.style.display = "none";
+
+    showConfirmation(
+        "Request Received",
+        "Your Photography Tour request has been received successfully.",
+        "Reception will confirm availability and details shortly."
+    );
+
+});
+// ==========================================
+// SPA POPUP
+// ==========================================
+
+closeSpa.addEventListener("click", () => {
+
+    spaPopup.style.display = "none";
+
+});
+
+spaPopup.addEventListener("click", (e) => {
+
+    if (e.target === spaPopup) {
+
+        spaPopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// NATURE WALK POPUP
+// ==========================================
+
+const natureWalkPopup = document.getElementById("natureWalkPopup");
+const closeNatureWalk = document.querySelector(".closeNatureWalk");
+
+closeNatureWalk.addEventListener("click", () => {
+
+    clearSelections(natureWalkPopup, ".nature-card");
+
+    natureWalkPopup.style.display = "none";
+
+});
+
+natureWalkPopup.addEventListener("click", (e) => {
+
+    if (e.target === natureWalkPopup) {
+
+        clearSelections(natureWalkPopup, ".nature-card");
+
+        natureWalkPopup.style.display = "none";
+
+    }
+
+});
+
+natureWalkPopup.querySelectorAll(".nature-card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        natureWalkPopup.querySelectorAll(".nature-card").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        card.classList.add("selected");
+
+    });
+
+});
+  
+// ==========================================
+// HOUSEKEEPING POPUP
+// ==========================================
+
+housekeepingCard.addEventListener("click", () => {
+
+    housekeepingPopup.style.display = "flex";
+
+    housekeepingPopup.querySelectorAll(".menuItem").forEach(item => {
+
+        item.onclick = () => item.classList.toggle("selected");
+
+    });
+
+});
+
+closeHousekeeping.addEventListener("click", () => {
+
+       clearSelections(housekeepingPopup, ".menuItem");
+  
+   housekeepingPopup.style.display = "none";
+
+});
+
+housekeepingPopup.addEventListener("click", (e) => {
+
+    if (e.target === housekeepingPopup) {
+
+      clearSelections(housekeepingPopup, ".menuItem");
+      
+        housekeepingPopup.style.display = "none";
+
+        
+    }
+
+});
+
+
+// ==========================================
+// BILLING POPUP
+// ==========================================
+
+billingCard.addEventListener("click", () => {
+
+    billingPopup.style.display = "flex";
+
+    billingPopup.querySelectorAll(".service-option").forEach(option => {
+
+    option.onclick = () => {
+
+        billingPopup.querySelectorAll(".service-option").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    };
+
+});
+
+});
+
+closeBilling.addEventListener("click", () => {
+   
+   clearSelections(billingPopup, ".service-option");
+  
+ billingPopup.style.display = "none";
+  
+});
+
+billingPopup.addEventListener("click", (e) => {
+
+    if (e.target === billingPopup) {
+
+    clearSelections(billingPopup, ".service-option");
+      
+        billingPopup.style.display = "none";
+
+        
+    }
+
+});
+
+// ==========================================
+// EXPLORE POPUP
+// ==========================================
+
+exploreCard.addEventListener("click", () => {
+
+    explorePopup.style.display = "flex";
+
+   explorePopup.querySelectorAll(".service-option").forEach(option => {
+
+    option.onclick = () => {
+
+        explorePopup.querySelectorAll(".service-option").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    };
+
+});
+
+});
+
+closeExplore.addEventListener("click", () => {
+   
+    clearSelections(explorePopup, ".service-option");
+
+  explorePopup.style.display = "none";
+
+});
+
+explorePopup.addEventListener("click", (e) => {
+
+    if (e.target === explorePopup) {
+
+   clearSelections(explorePopup, ".service-option");
+      
+        explorePopup.style.display = "none";
+             
+    }
+
+});
+
+
+// ==========================================
+// FEEDBACK POPUP
+// ==========================================
+
+feedbackCard.addEventListener("click", () => {
+
+    feedbackPopup.style.display = "flex";
+
+    feedbackPopup.querySelectorAll(".service-option").forEach(option => {
+
+    option.onclick = () => {
+
+        feedbackPopup.querySelectorAll(".service-option").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        option.classList.add("selected");
+
+    };
+
+});
+
+});
+
+closeFeedback.addEventListener("click", () => {
+
+      clearSelections(feedbackPopup, ".service-option");
+  
+  feedbackPopup.style.display = "none";
+
+});
+
+feedbackPopup.addEventListener("click", (e) => {
+
+    if (e.target === feedbackPopup) {
+
+      clearSelections(feedbackPopup, ".service-option");      
+        feedbackPopup.style.display = "none";
+        
+    }
+
+});
+
+  // ==========================================
+// MY REQUESTS POPUP
+// ==========================================
+
+const myRequestsBtn = document.getElementById("myRequestsBtn");
+
+const requestsPopup = document.getElementById("requestsPopup");
+
+const closeRequests = document.getElementById("closeRequests");
+
+myRequestsBtn.addEventListener("click", () => {
+
+    requestsPopup.style.display = "flex";
+
+});
+
+closeRequests.addEventListener("click", () => {
+
+    requestsPopup.style.display = "none";
+
+});
+
+requestsPopup.addEventListener("click", (e) => {
+
+    if(e.target === requestsPopup){
+
+        requestsPopup.style.display = "none";
+
+    }
+
+});
+
+// ==========================================
+// LOADING FUNCTION
+// ==========================================
+
+function showLoading(message, callback, button = null){
+
+    const loadingPopup = document.getElementById("loadingPopup");
+
+    const title = document.getElementById("loadingTitle");
+
+    const progress = document.getElementById("loadingProgress");
+
+    const percent = document.getElementById("loadingPercent");
+
+    title.textContent = message;
+
+    loadingPopup.style.display = "flex";
+
+    progress.style.width = "0%";
+
+    percent.textContent = "0%";
+
+    if(button){
+
+        button.disabled = true;
+
+        button.dataset.originalText = button.innerHTML;
+
+        button.innerHTML = "⏳ Sending...";
+
+    }
+
+    let value = 0;
+
+    const interval = setInterval(() => {
+
+        value += 5;
+
+        progress.style.width = value + "%";
+
+        percent.textContent = value + "%";
+
+        if(value >= 100){
+
+            clearInterval(interval);
+
+            loadingPopup.style.display = "none";
+
+            if(button){
+
+                button.disabled = false;
+
+                button.innerHTML = button.dataset.originalText;
+
+            }
+
+            callback();
+
+        }
+
+    },300);
+
+}
+
+// ==========================================
+// SAVE REQUEST
+// ==========================================
+
+function addRequest(service, status){
+
+    const requestsList = document.getElementById("requestsList");
+
+    const badge = document.getElementById("requestBadge");
+
+    if(requestsList.textContent.includes("You haven't made any requests yet")){
+
+        requestsList.innerHTML = "";
+
+    }
+
+    const request = document.createElement("div");
+
+    request.className = "requestItem";
+
+    request.innerHTML = `
+        <strong>${service}</strong><br>
+        Status: <span class="requestStatus">${status}</span>
+        <hr>
+    `;
+
+    requestsList.prepend(request);
+
+    badge.textContent = requestsList.querySelectorAll(".requestItem").length;
+
+}
+  
+// ==========================================
+// CONFIRMATION FUNCTION
+// ==========================================
+
+function showConfirmation(title, message, time = "") {
+
+    const orderConfirmation = document.getElementById("orderConfirmation");
+
+    document.getElementById("confirmTitle").textContent = title;
+    document.getElementById("confirmMessage").textContent = message;
+    document.getElementById("confirmTime").innerHTML =
+        time ? `<strong>${time}</strong>` : "";
+
+    servicePopup.style.display = "none";
+    receptionPopup.style.display = "none";
+    housekeepingPopup.style.display = "none";
+    billingPopup.style.display = "none";
+    explorePopup.style.display = "none";
+    feedbackPopup.style.display = "none";
+
+    orderConfirmation.style.display = "flex";
+}
+
+
+  // ==========================================
+// LIVE NOTIFICATION
+// ==========================================
+
+function showNotification(icon, title, message){
+
+    const notification = document.getElementById("notification");
+
+    document.getElementById("notificationIcon").textContent = icon;
+
+    document.getElementById("notificationTitle").textContent = title;
+
+    document.getElementById("notificationMessage").textContent = message;
+
+    notification.classList.add("show");
+
+    setTimeout(() => {
+
+        notification.classList.remove("show");
+
+    },4000);
+
+}
+  // ==========================================
+// WARNING FUNCTION
+// ==========================================
+
+function showWarning(title, message) {
+
+    document.getElementById("warningTitle").textContent = title;
+
+    document.getElementById("warningMessage").textContent = message;
+
+    document.getElementById("warningPopup").style.display = "flex";
+
+}
+
+const closeWarning = document.getElementById("closeWarning");
+
+closeWarning.addEventListener("click", () => {
+
+    document.getElementById("warningPopup").style.display = "none";
+
+});
+
+warningPopup.addEventListener("click", (e) => {
+
+    if (e.target === warningPopup) {
+
+        warningPopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// RECEPTION REQUEST
+// ==========================================
+
+document.getElementById("sendReceptionRequest").addEventListener("click", () => {
+
+    const selected = receptionPopup.querySelectorAll(".service-option.selected");
+
+    if (selected.length === 0) {
+
+        showWarning(
+            "No Service Selected",
+            "Please choose at least one service before sending your request."
+        );
+
+        return;
+
+    }
+
+    const airportTransfer = selected[0].querySelector(".title");
+
+if (airportTransfer && airportTransfer.textContent.trim() === "Airport Transfer") {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(receptionPopup, ".service-option");
+
+    setTimeout(() => {
+
+    const guestName = localStorage.getItem("guestName") || "";
+
+    document.getElementById("transferName").value = guestName;
+
+    transferPopup.style.display = "flex";
+
+}, 150);
+
+    return;
+
+}
+  // ==========================================
+// LUGGAGE ASSISTANCE
+// ==========================================
+
+const luggageAssistance =
+    selected[0].querySelector(".title");
+
+if (
+    luggageAssistance &&
+    luggageAssistance.textContent.trim() === "Luggage Assistance"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    luggagePopup.style.display = "flex";
+
+    return;
+
+}
+   // ==========================================
+// MAINTENANCE REQUEST
+// ==========================================
+
+const maintenanceRequest =
+    selected[0].querySelector(".title");
+
+if (
+    maintenanceRequest &&
+    maintenanceRequest.textContent.trim() === "Maintenance Request"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    maintenancePopup.style.display = "flex";
+
+    return;
+
+}
+  // ==========================================
+// EXTEND YOUR STAY
+// ==========================================
+
+const extendStayRequest =
+    selected[0].querySelector(".title");
+
+if (
+    extendStayRequest &&
+    extendStayRequest.textContent.trim() === "Extend Your Stay"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    extendStayPopup.style.display = "flex";
+
+    return;
+
+}
+
+  // ==========================================
+// EMERGENCY ASSISTANCE
+// ==========================================
+
+const emergencyAssistance =
+    selected[0].querySelector(".title");
+
+if (
+    emergencyAssistance &&
+    emergencyAssistance.textContent.trim() === "Emergency Assistance"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    emergencyPopup.style.display = "flex";
+
+    return;
+
+}
+
+  // ==========================================
+// SPEAK TO RECEPTION
+// ==========================================
+
+const speakToReception =
+    selected[0].querySelector(".title");
+
+if (
+    speakToReception &&
+    speakToReception.textContent.trim() === "Speak to Reception"
+) {
+
+    receptionPopup.style.display = "none";
+
+    clearSelections(
+        receptionPopup,
+        ".service-option"
+    );
+
+    receptionChatPopup.style.display = "flex";
+
+    return;
+
+}
+  clearSelections(receptionPopup, ".service-option");
+
+    receptionPopup.style.display = "none";
+
+const btn = document.getElementById("sendReceptionRequest");
+
+showLoading("Connecting to Reception...", () => {
+
+  addRequest("🛎️ Reception", "Waiting");
+
+  showNotification(
+    "🛎️",
+    "Reception",
+    "Reception has received your request."
+);
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Reception has received your request.",
+        "Estimated response: 2–5 minutes"
+    );
+
+}, btn);
+
+  });
+
+  // ==========================================
+// AIRPORT TRANSFER REQUEST
+// ==========================================
+
+document.getElementById("sendTransferRequest").addEventListener("click", () => {
+
+    const transferType = document.getElementById("transferType").value;
+    const transferDate = document.getElementById("transferDate").value;
+    const transferTime = document.getElementById("transferTime").value;
+
+    if (
+        transferType === "" ||
+        transferDate === "" ||
+        transferTime === ""
+    ) {
+
+        showWarning(
+            "Incomplete Information",
+            "Please complete all required transfer details."
+        );
+
+        return;
+
+    }
+
+    const guestName = document.getElementById("transferName").value;
+
+    const btn = document.getElementById("sendTransferRequest");
+
+    showLoading("Booking Airport Transfer...", () => {
+
+        addRequest("🚖 Airport Transfer", "Waiting");
+
+        showNotification(
+            "🚖",
+            "Transport Team",
+            "Your airport transfer request has been received."
+        );
+
+        transferPopup.style.display = "none";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your airport transfer has been booked.",
+            "Estimated confirmation: 5–10 minutes"
+        );
+
+    }, btn);
+
+});
+
+  // ==========================================
+// CAMPFIRE REQUEST
+// ==========================================
+
+document.getElementById("sendCampfireRequest").addEventListener("click", () => {
+
+    const type = document.getElementById("campfireType").value;
+    const date = document.getElementById("campfireDate").value;
+    const time = document.getElementById("campfireTime").value;
+
+    if (type === "" || date === "" || time === "") {
+
+        showWarning(
+            "Incomplete Information",
+            "Please complete all required campfire details."
+        );
+
+        return;
+
+    }
+
+    const guestName = document.getElementById("campfireName").value;
+
+    const btn = document.getElementById("sendCampfireRequest");
+
+    showLoading("Preparing Your Campfire...", () => {
+
+        addRequest("🔥 Campfire Experience", "Waiting");
+
+        showNotification(
+            "🔥",
+            "Camp Activities",
+            "Your campfire reservation has been received."
+        );
+
+        campfirePopup.style.display = "none";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your campfire has been reserved.",
+            "Estimated confirmation: 5–10 minutes"
+        );
+
+    }, btn);
+
+});
+  
+// ==========================================
+// HOUSEKEEPING REQUEST
+// ==========================================
+
+document.getElementById("sendHousekeepingRequest").addEventListener("click", () => {
+
+    const selected = housekeepingPopup.querySelectorAll(".menuItem.selected");
+
+    if (selected.length === 0) {
+
+        showWarning(
+    "No Service Selected",
+    "Please choose at least one service before sending your request."
+);
+return;
+
+    }
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+  clearSelections(housekeepingPopup, ".menuItem");
+  
+    housekeepingPopup.style.display = "none";
+  
+const btn = document.getElementById("sendHousekeepingRequest");
+
+showLoading("Notifying Housekeeping...", () => {
+
+  addRequest("🧹 Housekeeping", "Received");
+
+  showNotification(
+    "🧹",
+    "Housekeeping",
+    "Your request has been received."
+);
+  
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Housekeeping has received your request.",
+        "Estimated response: 10–20 minutes"
+    );
+
+}, btn);
+
+  });
+
+// ==========================================
+// RECEIPT POPUP
+// ==========================================
+
+const receiptPopup =
+    document.getElementById("receiptPopup");
+
+const closeReceipt =
+    document.querySelector(".closeReceipt");
+  closeReceipt.addEventListener("click", () => {
+
+    receiptPopup.style.display = "none";
+
+});
+
+receiptPopup.addEventListener("click", (e) => {
+
+    if (e.target === receiptPopup) {
+
+        receiptPopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
+// RECEIPT REQUEST
+// ==========================================
+
+document.getElementById("requestReceipt")
+    .addEventListener("click", () => {
+
+        const guestName =
+            localStorage.getItem("guestName") || "Guest";
+
+        receiptPopup.style.display = "none";
+
+        const btn =
+            document.getElementById("requestReceipt");
+
+        showLoading("Requesting Receipt...", () => {
+
+            addRequest(
+                "🧾 Receipt",
+                "Guest requested a payment receipt."
+            );
+
+            showNotification(
+                "🧾",
+                "Receipt",
+                "Your receipt request has been received."
+            );
+
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your receipt request has been received.",
+                "Reception will prepare your receipt shortly."
+            );
+
+        }, btn);
+
+    });     
+
+  // ==========================================
+// CURRENT BILL POPUP
+// ==========================================
+
+const currentBillPopup =
+    document.getElementById("currentBillPopup");
+
+const closeCurrentBill =
+    document.querySelector(".closeCurrentBill");
+
+  closeCurrentBill.addEventListener("click", () => {
+
+    currentBillPopup.style.display = "none";
+
+});
+
+currentBillPopup.addEventListener("click", (e) => {
+
+    if (e.target === currentBillPopup) {
+
+        currentBillPopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
+// EXCHANGE POPUP
+// ==========================================
+
+const exchangePopup =
+    document.getElementById("exchangePopup");
+
+const closeExchange =
+    document.querySelector(".closeExchange");
+  
+  closeExchange.addEventListener("click", () => {
+
+    exchangePopup.style.display = "none";
+
+});
+
+exchangePopup.addEventListener("click", (e) => {
+
+    if (e.target === exchangePopup) {
+
+        exchangePopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// EXCHANGE CALCULATION
+// ==========================================
+
+const exchangeCurrency =
+    document.getElementById("exchangeCurrency");
+
+const exchangeAmount =
+    document.getElementById("exchangeAmount");
+
+const exchangeRate =
+    document.getElementById("exchangeRate");
+
+const exchangeResult =
+    document.getElementById("exchangeResult");
+
+
+// TEMPORARY TEST RATES
+// Reception/admin will control these later.
+
+const exchangeRates = {
+    USD: 3700,
+    EUR: 4300,
+    GBP: 5000,
+    KES: 28,
+    TZS: 1.45,
+    RWF: 2.8
+};
+
+
+// Currency selected
+exchangeCurrency.addEventListener("change", updateExchange);
+
+
+// Amount changed
+exchangeAmount.addEventListener("input", updateExchange);
+
+
+function updateExchange() {
+
+    const currency =
+        exchangeCurrency.value;
+
+    const amount =
+        parseFloat(exchangeAmount.value);
+
+
+    if (!currency) {
+
+        exchangeRate.textContent =
+            "Select a currency";
+
+        exchangeResult.textContent =
+            "UGX 0";
+
+        return;
+    }
+
+
+    const rate =
+        exchangeRates[currency];
+
+
+    exchangeRate.textContent =
+        `1 ${currency} = UGX ${rate.toLocaleString()}`;
+
+
+    if (!amount || amount <= 0) {
+
+        exchangeResult.textContent =
+            "UGX 0";
+
+        return;
+    }
+
+
+    const result =
+        amount * rate;
+
+
+    exchangeResult.textContent =
+        `UGX ${result.toLocaleString()}`;
+
+}
+  // ==========================================
+// EXCHANGE REQUEST
+// ==========================================
+
+document.getElementById("submitExchange")
+.addEventListener("click", () => {
+
+    const currency =
+        exchangeCurrency.value;
+
+    const amount =
+        parseFloat(exchangeAmount.value);
+
+    const note =
+        document.getElementById("exchangeNote")
+            .value
+            .trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+
+    if (!currency) {
+
+        showWarning(
+            "Currency Required",
+            "Please select the currency you want to exchange."
+        );
+
+        return;
+    }
+
+
+    if (!amount || amount <= 0) {
+
+        showWarning(
+            "Amount Required",
+            "Please enter the amount you want to exchange."
+        );
+
+        return;
+    }
+
+
+    const rate =
+        exchangeRates[currency];
+
+    const ugxAmount =
+        amount * rate;
+
+
+    exchangePopup.style.display = "none";
+
+
+    const btn =
+        document.getElementById("submitExchange");
+
+
+    showLoading("Sending Exchange Request...", () => {
+
+        addRequest(
+            "💱 Currency Exchange",
+            `${amount} ${currency} → approximately UGX ${ugxAmount.toLocaleString()}`
+            + (note ? ` — ${note}` : "")
+        );
+
+
+        showNotification(
+            "💱",
+            "Exchange Request",
+            "Your currency exchange request has been sent to reception."
+        );
+
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your currency exchange request has been received.",
+            "Reception will confirm the exchange rate and assist you shortly."
+        );
+
+
+        // Reset form
+        exchangeCurrency.value = "";
+
+        exchangeAmount.value = "";
+
+        document.getElementById("exchangeNote").value = "";
+
+        exchangeRate.textContent =
+            "Rate set by reception";
+
+        exchangeResult.textContent =
+            "UGX 0";
+
+
+    }, btn);
+
+});
+  // ==========================================
+// BILLING HELP POPUP
+// ==========================================
+
+const billingHelpPopup =
+    document.getElementById("billingHelpPopup");
+
+const closeBillingHelp =
+    document.querySelector(".closeBillingHelp");
+  
+closeBillingHelp.addEventListener("click", () => {
+
+    billingHelpPopup.style.display = "none";
+
+    billingHelpPopup
+        .querySelectorAll(".billing-help-card")
+        .forEach(item => {
+            item.classList.remove("selected");
+        });
+
+    document.getElementById("billingHelpMessage").value = "";
+
+});
+
+billingHelpPopup.addEventListener("click", (e) => {
+
+    if (e.target === billingHelpPopup) {
+
+        billingHelpPopup.style.display = "none";
+
+    }
+
+});
+  // ==========================================
+// BILLING HELP
+// ==========================================
+
+billingHelpPopup
+    .querySelectorAll(".billing-help-card")
+    .forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            billingHelpPopup
+                .querySelectorAll(".billing-help-card")
+                .forEach(item => {
+                    item.classList.remove("selected");
+                });
+
+            card.classList.add("selected");
+
+        });
+
+    });
+
+document.getElementById("submitBillingHelp")
+    .addEventListener("click", () => {
+
+        const selectedHelp =
+            billingHelpPopup.querySelector(
+                ".billing-help-card.selected"
+            );
+
+        if (!selectedHelp) {
+
+            showWarning(
+                "Select a Help Topic",
+                "Please select the billing problem you need help with."
+            );
+
+            return;
+        }
+
+        const helpTitle =
+            selectedHelp.querySelector("strong")
+                .textContent
+                .trim();
+
+        const message =
+            document.getElementById("billingHelpMessage")
+                .value
+                .trim();
+
+        const guestName =
+            localStorage.getItem("guestName") || "Guest";
+
+        billingHelpPopup.style.display = "none";
+
+        selectedHelp.classList.remove("selected");
+
+        document.getElementById("billingHelpMessage").value = "";
+
+        const btn =
+            document.getElementById("submitBillingHelp");
+
+        showLoading("Sending Billing Help...", () => {
+
+            addRequest(
+                "❓ Billing Help",
+                `${helpTitle}${message ? " — " + message : ""}`
+            );
+
+            showNotification(
+                "❓",
+                "Billing Help",
+                "Your billing help request has been received."
+            );
+
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your billing help request has been received.",
+                "Reception will assist you shortly."
+            );
+
+        }, btn);
+
+    });
+  
+// ==========================================
+// BILLING REQUEST
+// ==========================================
+
+document.getElementById("sendBillingRequest").addEventListener("click", () => {
+
+    // Find every selected billing option
+    const selectedItems = billingPopup.querySelectorAll(".service-option.selected");
+
+    // Stop if nothing is selected
+    if (selectedItems.length === 0) {
+
+       showWarning(
+    "No Service Selected",
+    "Please select at least one billing option before sending your request."
+);
+return;
+
+    }
+
+const selectedTitle =
+selectedItems[0].querySelector(".title").textContent.trim();
+
+if (selectedTitle === "Late Checkout") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    lateCheckoutPopup.style.display = "flex";
+
+    return;
+
+}
+  if (selectedTitle === "Billing Help") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    billingHelpPopup.style.display = "flex";
+
+    return;
+}
+
+  if (selectedTitle === "Receipt") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    receiptPopup.style.display = "flex";
+
+    return;
+}
+  
+if (selectedTitle === "Make Payment") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(billingPopup, ".service-option");
+
+    paymentPopup.style.display = "flex";
+
+    return;
+
+}
+
+  if (selectedTitle === "Current Bill") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    currentBillPopup.style.display = "flex";
+
+    return;
+}
+
+  if (selectedTitle === "Exchange") {
+
+    billingPopup.style.display = "none";
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    exchangePopup.style.display = "flex";
+
+    return;
+}
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+    clearSelections(billingPopup, ".service-option");
+
+billingPopup.style.display = "none";
+
+const btn = document.getElementById("sendBillingRequest");
+
+showLoading("Processing Billing Request...", () => {
+
+  addRequest("💳 Billing", "Processing");
+
+  showNotification(
+    "💳",
+    "Billing",
+    "Your billing request has been received."
+);
+
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Your billing request has been received.",
+        "Estimated response: 5–10 minutes"
+    );
+
+}, btn);
+
+  });
+
+// ==========================================
+// PAYMENT POPUP
+// ==========================================
+
+closePayment.addEventListener("click", () => {
+
+    clearSelections(paymentPopup, ".payment-card");
+
+    paymentPopup.style.display = "none";
+
+});
+
+paymentPopup.addEventListener("click", (e) => {
+
+    if (e.target === paymentPopup) {
+
+        clearSelections(paymentPopup, ".payment-card");
+
+        paymentPopup.style.display = "none";
+
+    }
+
+});
+
+paymentPopup.querySelectorAll(".payment-card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        paymentPopup.querySelectorAll(".payment-card").forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+        card.classList.add("selected");
+
+        const paymentMethod =
+            card.querySelector("strong").textContent.trim();
+
+        if (paymentMethod === "Mobile Money") {
+
+            paymentPopup.style.display = "none";
+
+            mobileMoneyPopup.style.display = "flex";
+
+        }
+      if (paymentMethod === "Card Payment") {
+
+    paymentPopup.style.display = "none";
+
+    clearSelections(paymentPopup, ".payment-card");
+
+    cardPaymentPopup.style.display = "flex";
+
+}
+
+      if (paymentMethod === "Pay at Reception") {
+
+    paymentPopup.style.display = "none";
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    document.getElementById("receptionPaymentGuest").textContent =
+        guestName;
+
+    receptionPaymentPopup.style.display = "flex";
+
+}
+    });
+
+});
+
+  // ==========================================
+// MOBILE MONEY POPUP
+// ==========================================
+
+const mobileMoneyPopup =
+    document.getElementById("mobileMoneyPopup");
+
+const closeMobileMoney =
+    document.querySelector(".closeMobileMoney");
+
+const mobileMoneyInstructions =
+    document.getElementById("mobileMoneyInstructions");
+
+closeMobileMoney.addEventListener("click", () => {
+
+    clearSelections(
+        mobileMoneyPopup,
+        ".mobile-money-card"
+    );
+
+    mobileMoneyInstructions.style.display = "none";
+
+    mobileMoneyPopup.style.display = "none";
+
+});
+
+mobileMoneyPopup.addEventListener("click", (e) => {
+
+    if (e.target === mobileMoneyPopup) {
+
+        clearSelections(
+            mobileMoneyPopup,
+            ".mobile-money-card"
+        );
+
+        mobileMoneyInstructions.style.display = "none";
+
+        mobileMoneyPopup.style.display = "none";
+
+    }
+
+});
+
+mobileMoneyPopup
+    .querySelectorAll(".mobile-money-card")
+    .forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            mobileMoneyPopup
+                .querySelectorAll(".mobile-money-card")
+                .forEach(item => {
+
+                    item.classList.remove("selected");
+
+                });
+
+            card.classList.add("selected");
+
+            mobileMoneyInstructions.style.display = "block";
+
+            const network =
+                card.querySelector("strong")
+                    .textContent
+                    .trim();
+
+            if (network === "MTN Mobile Money") {
+
+                document.getElementById(
+                    "mobileMoneyGuide"
+                ).innerHTML =
+                    "Dial <strong>*165#</strong>, choose Payments, Merchant Payment, enter the merchant code, confirm the lodge name, and complete your payment.";
+
+            } else {
+
+                document.getElementById(
+                    "mobileMoneyGuide"
+                ).innerHTML =
+                    "Dial <strong>*185#</strong>, choose Payments, Merchant Payment, enter the merchant code, confirm the lodge name, and complete your payment.";
+
+            }
+
+        });
+
+    });
+
+  // ==========================================
+// MOBILE MONEY PAYMENT SUBMISSION
+// ==========================================
+
+document.getElementById("submitMobileMoney").addEventListener("click", () => {
+
+    const selectedNetwork =
+        mobileMoneyPopup.querySelector(".mobile-money-card.selected");
+
+    const phone =
+        document.getElementById("paymentPhone").value.trim();
+
+    const transactionId =
+        document.getElementById("transactionId").value.trim();
+
+    const accountName =
+        document.getElementById("paymentAccountName").value.trim();
+
+    // Check network
+    if (!selectedNetwork) {
+
+        showWarning(
+            "Select Mobile Network",
+            "Please select MTN Mobile Money or Airtel Money."
+        );
+
+        return;
+    }
+
+    // Check payment number
+    if (phone === "") {
+
+        showWarning(
+            "Payment Number Required",
+            "Please enter the number you used to make the payment."
+        );
+
+        return;
+    }
+
+    // Check transaction ID
+    if (transactionId === "") {
+
+        showWarning(
+            "Transaction ID Required",
+            "Please enter your mobile money transaction ID."
+        );
+
+        return;
+    }
+
+    // Check account name
+    if (accountName === "") {
+
+        showWarning(
+            "Account Name Required",
+            "Please enter the name registered on the mobile money account."
+        );
+
+        return;
+    }
+
+    const network =
+        selectedNetwork.querySelector("strong").textContent.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("submitMobileMoney");
+
+    showLoading("Submitting Payment Details...", () => {
+
+        addRequest(
+            `📱 ${network} Payment`,
+            "Verification"
+        );
+
+        showNotification(
+            "📱",
+            "Payment Submitted",
+            "Your payment details have been sent to reception for verification."
+        );
+
+        mobileMoneyPopup.style.display = "none";
+
+        clearSelections(
+            mobileMoneyPopup,
+            ".mobile-money-card"
+        );
+
+        mobileMoneyInstructions.style.display = "none";
+
+        document.getElementById("paymentPhone").value = "";
+        document.getElementById("transactionId").value = "";
+        document.getElementById("paymentAccountName").value = "";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your mobile money payment details have been received.",
+            "Reception will verify your payment and update you shortly."
+        );
+
+    }, btn);
+
+});
+  
+// ==========================================
+// CARD PAYMENT POPUP
+// ==========================================
+
+const cardPaymentPopup =
+    document.getElementById("cardPaymentPopup");
+
+const closeCardPayment =
+    document.querySelector(".closeCardPayment");
+
+closeCardPayment.addEventListener("click", () => {
+
+    cardPaymentPopup.style.display = "none";
+
+});
+
+cardPaymentPopup.addEventListener("click", (e) => {
+
+    if (e.target === cardPaymentPopup) {
+
+        cardPaymentPopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// PAY AT RECEPTION POPUP
+// ==========================================
+
+const receptionPaymentPopup =
+    document.getElementById("receptionPaymentPopup");
+
+const closeReceptionPayment =
+    document.querySelector(".closeReceptionPayment");
+
+closeReceptionPayment.addEventListener("click", () => {
+
+    receptionPaymentPopup.style.display = "none";
+
+});
+
+receptionPaymentPopup.addEventListener("click", (e) => {
+
+    if (e.target === receptionPaymentPopup) {
+
+        receptionPaymentPopup.style.display = "none";
+
+    }
+
+});
+
+document.getElementById("requestReceptionPayment")
+    .addEventListener("click", () => {
+
+        const guestName =
+            localStorage.getItem("guestName") || "Guest";
+
+        const btn =
+            document.getElementById("requestReceptionPayment");
+
+        showLoading("Contacting Reception...", () => {
+
+            addRequest(
+                "🏨 Payment at Reception",
+                "Waiting"
+            );
+
+            showNotification(
+                "🏨",
+                "Reception",
+                "Reception has received your payment request."
+            );
+
+            receptionPaymentPopup.style.display = "none";
+
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Reception has received your payment request.",
+                "Please visit the reception desk when you are ready to pay."
+            );
+
+        }, btn);
+
+    });
+
+/* ==========================================
+   LATE CHECKOUT POPUP
+========================================== */
+
+const lateCheckoutPopup =
+    document.getElementById("lateCheckoutPopup");
+
+const closeLateCheckout =
+    document.querySelector(".closeLateCheckout");
+
+closeLateCheckout.addEventListener("click", () => {
+
+    lateCheckoutPopup.style.display = "none";
+
+});
+
+lateCheckoutPopup.addEventListener("click", (e) => {
+
+    if (e.target === lateCheckoutPopup) {
+
+        lateCheckoutPopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// LATE CHECKOUT REQUEST
+// ==========================================
+
+document.getElementById("submitLateCheckout").addEventListener("click", () => {
+
+    const extraTime =
+        document.getElementById("extraCheckoutTime").value;
+
+    const reason =
+        document.getElementById("lateCheckoutReason").value.trim();
+
+    // Check extra time
+    if (extraTime === "") {
+
+        showWarning(
+            "Select Extra Time",
+            "Please choose how much additional time you need."
+        );
+
+        return;
+    }
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("submitLateCheckout");
+
+    showLoading("Sending Late Checkout Request...", () => {
+
+        addRequest(
+            `🕒 Late Checkout - ${extraTime}`,
+            "Waiting"
+        );
+
+        showNotification(
+            "🕒",
+            "Late Checkout",
+            "Your late checkout request has been sent to reception."
+        );
+
+        lateCheckoutPopup.style.display = "none";
+
+        document.getElementById("extraCheckoutTime").value = "";
+        document.getElementById("lateCheckoutReason").value = "";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your late checkout request has been received.",
+            "Reception will confirm availability and any additional charge shortly."
+        );
+
+    }, btn);
+
+});
+ 
+// ==========================================
+// CAMPFIRE REQUEST
+// ==========================================
+
+document.getElementById("sendCampfireRequest").addEventListener("click", () => {
+
+    const type = document.getElementById("campfireType").value;
+    const date = document.getElementById("campfireDate").value;
+    const time = document.getElementById("campfireTime").value;
+    const guests = document.getElementById("campfireGuests").value;
+
+    if (type === "" || date === "" || time === "" || guests === "") {
+
+        showWarning(
+            "Incomplete Information",
+            "Please complete the campfire type, date, time, and number of guests."
+        );
+
+        return;
+
+    }
+
+    const guestName =
+        document.getElementById("campfireName").value || "Guest";
+
+    const btn =
+        document.getElementById("sendCampfireRequest");
+
+    showLoading("Preparing Your Campfire...", () => {
+
+        addRequest(
+            "🔥 Campfire Experience",
+            "Waiting"
+        );
+
+        showNotification(
+            "🔥",
+            "Camp Activities",
+            "Your campfire reservation has been received."
+        );
+
+        campfirePopup.style.display = "none";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your campfire reservation has been received.",
+            "Our activities team will confirm the arrangements shortly."
+        );
+
+    }, btn);
+
+});
+
+  // ==========================================
+// SPA REQUEST
+// ==========================================
+
+document.getElementById("sendSpaRequest").addEventListener("click", () => {
+
+    const service = document.getElementById("spaService").value;
+    const date = document.getElementById("spaDate").value;
+    const time = document.getElementById("spaTime").value;
+    const guests = document.getElementById("spaGuests").value;
+
+    if (service === "" || date === "" || time === "" || guests === "") {
+
+        showWarning(
+            "Incomplete Information",
+            "Please complete the treatment, date, time, and number of guests."
+        );
+
+        return;
+
+    }
+
+    const guestName =
+        document.getElementById("spaName").value || "Guest";
+
+    const btn =
+        document.getElementById("sendSpaRequest");
+
+    showLoading("Preparing Your Spa Experience...", () => {
+
+        addRequest(
+            "💆 Spa & Wellness",
+            "Waiting"
+        );
+
+        showNotification(
+            "💆",
+            "Spa & Wellness",
+            "Your spa request has been received."
+        );
+
+        spaPopup.style.display = "none";
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your spa request has been received.",
+            "Our wellness team will confirm your appointment shortly."
+        );
+
+    }, btn);
+
+});
+
+  // ==========================================
+// NATURE WALK REQUEST
+// ==========================================
+
+document.getElementById("sendNatureWalkRequest").addEventListener("click", () => {
+
+    const selectedWalk =
+        natureWalkPopup.querySelector(".nature-card.selected");
+
+    const date = document.getElementById("natureWalkDate").value;
+    const time = document.getElementById("natureWalkTime").value;
+    const guests = document.getElementById("natureWalkGuests").value;
+
+    if (!selectedWalk || date === "" || time === "" || guests === "") {
+
+        showWarning(
+            "Incomplete Information",
+            "Please select a nature experience and complete the date, time, and number of guests."
+        );
+
+        return;
+
+    }
+
+    const walkName =
+        selectedWalk.querySelector("strong").textContent.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("sendNatureWalkRequest");
+
+    showLoading("Arranging Your Nature Walk...", () => {
+
+        addRequest(
+            "🌿 Forest Nature Walk",
+            "Waiting"
+        );
+
+        showNotification(
+            "🌿",
+            "Nature Activities",
+            `${walkName} request has been received.`
+        );
+
+        natureWalkPopup.style.display = "none";
+
+        clearSelections(natureWalkPopup, ".nature-card");
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            `${walkName} has been requested.`,
+            "Our nature activities team will confirm the arrangements shortly."
+        );
+
+    }, btn);
+
+});
+  
+// ==========================================
+// EXPLORE REQUEST
+// ==========================================
+
+document.getElementById("bookActivity").addEventListener("click", () => {
+
+ // Find all selected activities
+const selectedItems = explorePopup.querySelectorAll(".service-option.selected");
+
+// Stop if nothing is selected
+if (selectedItems.length === 0) {
+
+    showWarning(
+        "No Service Selected",
+        "Please select at least one activity before sending your request."
+    );
+
+    return;
+
+}
+
+// Get the selected activity
+const selectedTitle = selectedItems[0].querySelector(".title").textContent.trim();
+
+if (selectedTitle.includes("Campfire")) {
+  
+    explorePopup.style.display = "none";
+
+    clearSelections(explorePopup, ".service-option");
+
+    document.getElementById("campfireName").value =
+        localStorage.getItem("guestName") || "";
+
+    campfirePopup.style.display = "flex";
+
+    return;
+
+}
+
+  if (selectedTitle.includes("Spa")) {
+
+    explorePopup.style.display = "none";
+
+    clearSelections(explorePopup, ".service-option");
+
+    document.getElementById("spaName").value =
+        localStorage.getItem("guestName") || "";
+
+    spaPopup.style.display = "flex";
+
+    return;
+
+}
+
+  if (selectedTitle.includes("Forest Nature Walk")) {
+
+    explorePopup.style.display = "none";
+
+    clearSelections(explorePopup, ".service-option");
+
+    natureWalkPopup.style.display = "flex";
+
+    return;
+
+}
+
+const guestName = localStorage.getItem("guestName") || "Guest";
+
+clearSelections(explorePopup, ".service-option");
+
+explorePopup.style.display = "none";
+  
+const btn = document.getElementById("bookActivity");
+
+showLoading("Booking Your Activity...", () => {
+
+  addRequest("🗺️ Explore", "Booking");
+
+  showNotification(
+    "🗺️",
+    "Explore",
+    "Your activity booking has been received."
+);
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Your booking request has been received.",
+        "Our activities team will contact you shortly."
+    );
+
+}, btn);
+
+  });
+// ==========================================
+// FEEDBACK SUBMISSION
+// ==========================================
+
+document.getElementById("submitFeedback").addEventListener("click", () => {
+
+    // Find all selected feedback options
+    const selectedItems = feedbackPopup.querySelectorAll(".service-option.selected");
+
+    // Stop if nothing is selected
+    if (selectedItems.length === 0) {
+
+    showWarning(
+    "No Feedback Selected",
+    "Please select at least one feedback option before submitting."
+);
+ return;
+
+    }
+
+    const guestName = localStorage.getItem("guestName") || "Guest";
+
+  clearSelections(feedbackPopup, ".service-option");
+  
+    feedbackPopup.style.display = "none";
+
+const btn = document.getElementById("submitFeedback");
+
+showLoading("Submitting Your Feedback...", () => {
+
+  addRequest("⭐ Feedback", "Submitted");
+
+  showNotification(
+    "⭐",
+    "Feedback",
+    "Thank you for sharing your feedback."
+);
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "We appreciate your feedback.",
+        "Your comments help us improve."
+    );
+
+}, btn);
+
+  });
+
+
+  // ==========================================
+// GREETING
+// ==========================================
+
+function updateGreeting(){
+
+    const hour = new Date().getHours();
+
+    let greeting = "";
+
+    if(hour < 12){
+
+        greeting = "☀️ Good Morning";
+
+    }else if(hour < 18){
+
+        greeting = "🌿 Good Afternoon";
+
+    }else{
+
+        greeting = "🌙 Good Evening";
+
+    }
+
+    document.getElementById("weatherTemp").textContent = greeting;
+
+}
+
+updateGreeting();
+  
+// ==========================================
+// LIVE CLOCK
+// ==========================================
+
+function updateClock(){
+
+    const now = new Date();
+
+    document.getElementById("currentTime").textContent =
+        now.toLocaleTimeString([],{
+            hour:"2-digit",
+            minute:"2-digit"
+        });
+
+}
+
+updateClock();
+
+setInterval(updateClock,1000);
+
+// ==========================================
+// CLOSE CONFIRMATION
+// ==========================================
+
+const closeConfirmation = document.getElementById("closeConfirmation");
+
+closeConfirmation.addEventListener("click", () => {
+
+    document.getElementById("orderConfirmation").style.display = "none";
+
+});
+
+});
