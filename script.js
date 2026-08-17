@@ -12,40 +12,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Helper: set stable background image and properties to avoid zoom/overflow on mobile
     function setBackgroundImage(url, isNight) {
-        if (!background) return;
+      if (!background) return;
 
-        background.style.backgroundImage = `url("${url}")`;
+      background.style.backgroundImage = `url("${url}")`;
 
-        // Force consistent background sizing/positioning so images don't change layout
-        background.style.backgroundSize = "cover";
-        background.style.backgroundPosition = "center center";
-        background.style.backgroundRepeat = "no-repeat";
+      // Force consistent background sizing/positioning so images don't change layout
+      background.style.backgroundSize = "cover";
+      background.style.backgroundPosition = "center center";
+      background.style.backgroundRepeat = "no-repeat";
 
-        // Do NOT use fixed attachment on mobile (commonly causes zoom/shift); use scroll
-        background.style.backgroundAttachment = "scroll";
+      // Do NOT use fixed attachment on mobile (commonly causes zoom/shift); use scroll
+      background.style.backgroundAttachment = "scroll";
 
-        // Ensure the background container itself can't expand beyond viewport width
-        background.style.width = "100%";
-        background.style.height = "100%";
-        background.style.minHeight = "100vh";
-        background.style.boxSizing = "border-box";
-        background.style.left = "0";
-        background.style.top = "0";
+      // Ensure the background container itself can't expand beyond viewport width
+      background.style.width = "100%";
+      background.style.height = "100%";
+      background.style.minHeight = "100vh";
+      background.style.boxSizing = "border-box";
+      background.style.left = "0";
+      background.style.top = "0";
 
-        // Toggle night class for any night-specific styling
-        if (isNight) {
-            document.body.classList.add("night");
-        } else {
-            document.body.classList.remove("night");
-        }
+      // Toggle night class for any night-specific styling
+      if (isNight) {
+        document.body.classList.add("night");
+      } else {
+        document.body.classList.remove("night");
+      }
 
-        // Prevent accidental horizontal scrolling caused by small rounding differences
-        // Only set once (safe to call repeatedly).
-        try {
-            document.documentElement.style.overflowX = "hidden";
-        } catch (e) {
-            // ignore in restricted environments
-        }
+      // Prevent accidental horizontal scrolling caused by small rounding differences
+      try {
+        document.documentElement.style.overflowX = "hidden";
+      } catch (e) {
+        // ignore in restricted environments
+      }
     }
 
     // Audio
@@ -174,23 +173,15 @@ if(portalOpened) return;
         const typingText = document.getElementById("typingText");
       const typingSound = document.getElementById("typingSound");
 
-        if (typingText) typingText.textContent = "";
+        typingText.textContent = "";
 
         let i = 0;
 
-      if (typingSound) {
-        try {
-          typingSound.currentTime = 0;
-          typingSound.loop = true;
-          typingSound.play();
-        } catch (e) {
-          // play may be blocked by browser autoplay policies
-        }
-      }
+      typingSound.currentTime = 0;
+typingSound.loop = true;
+try { typingSound.play(); } catch (e) {}
 
         const timer = setInterval(() => {
-
-            if (!typingText) return;
 
             typingText.textContent += message.charAt(i);
 
@@ -200,9 +191,8 @@ if(portalOpened) return;
 
     clearInterval(timer);
 
-    if (typingSound) {
-      try { typingSound.pause(); typingSound.currentTime = 0; } catch (e) {}
-    }
+    typingSound.pause();
+    typingSound.currentTime = 0;
 
     setTimeout(resolve,1500);
 
@@ -256,11 +246,13 @@ introVideo.addEventListener("ended", () => {
 
         if(hour >= 18 || hour < 6){
 
+            background.classList.remove("day");
             // Night lake
             setBackgroundImage("images/lake-night.png", true);
 
         }else{
 
+            background.classList.remove("day");
             // Day lake
             setBackgroundImage("images/lake-day.png", false);
 
@@ -698,3 +690,612 @@ document.getElementById("submitLuggage")
     }, btn);
 
 });
+
+// ==========================================
+// MAINTENANCE REQUEST POPUP
+// ==========================================
+
+const maintenancePopup =
+    document.getElementById("maintenancePopup");
+
+const closeMaintenance =
+    document.querySelector(".closeMaintenance");
+  closeMaintenance.addEventListener("click", () => {
+
+    maintenancePopup.style.display = "none";
+
+});
+
+maintenancePopup.addEventListener("click", (e) => {
+
+    if (e.target === maintenancePopup) {
+
+        maintenancePopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// MAINTENANCE REQUEST
+// ==========================================
+
+document.getElementById("submitMaintenance")
+.addEventListener("click", () => {
+
+    const maintenanceType =
+        document.getElementById("maintenanceType")?.value || "";
+
+    const maintenanceMessage =
+        document.getElementById("maintenanceMessage")?.value.trim() || "";
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("submitMaintenance");
+
+    maintenancePopup.style.display = "none";
+
+    showLoading("Sending Maintenance Request...", () => {
+
+        addRequest(
+            "🔧 Maintenance Request",
+            maintenanceType || maintenanceMessage || "Guest requested maintenance assistance."
+        );
+
+        showNotification(
+            "🔧",
+            "Maintenance",
+            "Your maintenance request has been received."
+        );
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your maintenance request has been received.",
+            "Our maintenance team will assist you shortly."
+        );
+
+    }, btn);
+
+});
+
+// ==========================================
+// EXTEND YOUR STAY POPUP
+// ==========================================
+
+const extendStayPopup =
+    document.getElementById("extendStayPopup");
+
+const closeExtendStay =
+    document.querySelector(".closeExtendStay");
+  closeExtendStay.addEventListener("click", () => {
+
+    extendStayPopup.style.display = "none";
+
+});
+
+extendStayPopup.addEventListener("click", (e) => {
+
+    if (e.target === extendStayPopup) {
+
+        extendStayPopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// EXTEND YOUR STAY REQUEST
+// ==========================================
+
+document.getElementById("submitExtendStay")
+.addEventListener("click", () => {
+
+    const newCheckoutDate =
+        document.getElementById("newCheckoutDate").value;
+
+    const additionalNights =
+        document.getElementById("additionalNights").value;
+
+    const message =
+        document.getElementById("extendStayMessage").value.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    if (!newCheckoutDate || !additionalNights) {
+
+        showWarning(
+            "Incomplete Information",
+            "Please select a new checkout date and enter the number of additional nights."
+        );
+
+        return;
+    }
+
+    const btn =
+        document.getElementById("submitExtendStay");
+
+    extendStayPopup.style.display = "none";
+
+    showLoading("Sending Extension Request...", () => {
+
+        addRequest(
+            "📅 Extend Stay",
+            `${additionalNights} additional night(s) — New checkout: ${newCheckoutDate}${message ? " — " + message : ""}`
+        );
+
+        showNotification(
+            "📅",
+            "Stay Extension",
+            "Your stay extension request has been received."
+        );
+
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your stay extension request has been received.",
+            "Reception will check availability and confirm your new checkout date."
+        );
+
+        document.getElementById("newCheckoutDate").value = "";
+        document.getElementById("additionalNights").value = "";
+        document.getElementById("extendStayMessage").value = "";
+
+    }, btn);
+
+});
+
+  // ==========================================
+// EMERGENCY POPUP
+// ==========================================
+
+const emergencyPopup =
+    document.getElementById("emergencyPopup");
+
+const closeEmergency =
+    document.querySelector(".closeEmergency");
+
+  closeEmergency.addEventListener("click", () => {
+
+    emergencyPopup.style.display = "none";
+
+});
+
+emergencyPopup.addEventListener("click", (e) => {
+
+    if (e.target === emergencyPopup) {
+
+        emergencyPopup.style.display = "none";
+
+    }
+
+});
+
+  // ==========================================
+// EMERGENCY ASSISTANCE REQUEST
+// ==========================================
+
+document.getElementById("submitEmergency")
+.addEventListener("click", () => {
+
+    const emergencyType =
+        document.getElementById("emergencyType").value;
+
+    const emergencyLocation =
+        document.getElementById("emergencyLocation").value.trim();
+
+    const emergencyMessage =
+        document.getElementById("emergencyMessage").value.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    if (!emergencyType) {
+
+        showWarning(
+            "Select Emergency Type",
+            "Please select the type of emergency."
+        );
+
+        return;
+    }
+
+    if (!emergencyLocation) {
+
+        showWarning(
+            "Location Required",
+            "Please tell reception where the emergency is."
+        );
+
+        return;
+    }
+
+    const btn =
+        document.getElementById("submitEmergency");
+
+    emergencyPopup.style.display = "none";
+
+    showLoading("Sending Emergency Alert...", () => {
+
+        addRequest(
+            "🚨 Emergency Assistance",
+            `${emergencyType} — Location: ${emergencyLocation}${emergencyMessage ? " — " + emergencyMessage : ""}`
+        );
+
+        showNotification(
+            "🚨",
+            "Emergency Assistance",
+            "Your emergency request has been sent to reception."
+        );
+
+        showConfirmation(
+            `We're here to help, ${guestName}.`,
+            "Your emergency assistance request has been received.",
+            "Reception has been alerted and will assist you immediately."
+        );
+
+        document.getElementById("emergencyType").value = "";
+        document.getElementById("emergencyLocation").value = "";
+        document.getElementById("emergencyMessage").value = "";
+
+    }, btn);
+
+});
+
+  // ==========================================
+// SPEAK TO RECEPTION POPUP
+// ==========================================
+
+const receptionChatPopup =
+    document.getElementById("receptionChatPopup");
+
+const closeReceptionChat =
+    document.querySelector(".closeReceptionChat");
+  closeReceptionChat.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+});
+
+receptionChatPopup.addEventListener("click", (e) => {
+
+    if (e.target === receptionChatPopup) {
+
+        receptionChatPopup.style.display = "none";
+
+    }
+
+});
+
+// ==========================================
+// OTHER ASSISTANCE POPUP
+// ==========================================
+
+const otherAssistancePopup =
+    document.getElementById("otherAssistancePopup");
+
+const closeOtherAssistance =
+    document.querySelector(".closeOtherAssistance");
+
+// Close Other Assistance
+closeOtherAssistance.addEventListener("click", () => {
+
+    otherAssistancePopup.style.display = "none";
+
+});
+
+// ==========================================
+// RECEPTION CONTACT ACTIONS
+// ==========================================
+// Close when clicking outside
+otherAssistancePopup.addEventListener("click", (e) => {
+
+    if (e.target === otherAssistancePopup) {
+
+        otherAssistancePopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// WHATSAPP
+// ==========================================
+
+document.getElementById("openReceptionWhatsApp")
+.addEventListener("click", () => {
+
+    const phoneNumber = "256742015605";
+
+    window.open(
+        `https://wa.me/${phoneNumber}`,
+        "_blank"
+    );
+
+});
+
+
+// ==========================================
+// CALL RECEPTION
+// ==========================================
+
+document.getElementById("callReception")
+.addEventListener("click", () => {
+
+    window.location.href = "tel:+256700894459";
+
+});
+
+
+// ==========================================
+// 🚨 EMERGENCY
+// ==========================================
+
+document.getElementById("receptionEmergency")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    emergencyPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// 🧳 LUGGAGE
+// ==========================================
+
+document.getElementById("receptionLuggage")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    luggagePopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// 🔧 MAINTENANCE
+// ==========================================
+
+document.getElementById("receptionMaintenance")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    maintenancePopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// 🚕 TRANSPORT
+// ==========================================
+
+document.getElementById("receptionTransport")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    transferPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// 🛎️ OTHER ASSISTANCE
+// ==========================================
+
+document.getElementById("receptionAssistance")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    otherAssistancePopup.style.display = "flex";
+
+});
+
+  // ==========================================
+// RECEPTION FAQ POPUP
+// ==========================================
+
+const receptionFAQPopup =
+    document.getElementById("receptionFAQPopup");
+
+const closeReceptionFAQ =
+    document.querySelector(".closeReceptionFAQ");
+
+
+// ==========================================
+// OPEN FAQ
+// ==========================================
+
+document.getElementById("receptionFAQ")
+.addEventListener("click", () => {
+
+    receptionChatPopup.style.display = "none";
+
+    receptionFAQPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLOSE FAQ
+// ==========================================
+
+closeReceptionFAQ.addEventListener("click", () => {
+
+    receptionFAQPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+receptionFAQPopup.addEventListener("click", (e) => {
+
+    if (e.target === receptionFAQPopup) {
+
+        receptionFAQPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// FAQ QUESTIONS
+// ==========================================
+
+receptionFAQPopup
+.querySelectorAll(".faq-question")
+.forEach(question => {
+
+    question.addEventListener("click", () => {
+
+        const faqItem =
+            question.closest(".faq-item");
+
+        const answer =
+            faqItem.querySelector(".faq-answer");
+
+        const plus =
+            question.querySelector(".faq-plus");
+
+
+        // Close other open questions
+        receptionFAQPopup
+            .querySelectorAll(".faq-item")
+            .forEach(item => {
+
+                if (item !== faqItem) {
+
+                    item.classList.remove("active");
+
+                    const otherAnswer =
+                        item.querySelector(".faq-answer");
+
+                    const otherPlus =
+                        item.querySelector(".faq-plus");
+
+                    otherAnswer.style.maxHeight = null;
+
+                    if (otherPlus) {
+                        otherPlus.textContent = "+";
+                    }
+
+                }
+
+            });
+
+
+        // Open / close selected question
+        if (faqItem.classList.contains("active")) {
+
+            faqItem.classList.remove("active");
+
+            answer.style.maxHeight = null;
+
+            plus.textContent = "+";
+
+        } else {
+
+            faqItem.classList.add("active");
+
+            answer.style.maxHeight =
+                answer.scrollHeight + "px";
+
+            plus.textContent = "−";
+
+        }
+
+    });
+
+});
+  // ==========================================
+// CAMPFIRE POPUP
+// ==========================================
+
+closeCampfire.addEventListener("click", () => {
+
+    campfirePopup.style.display = "none";
+
+});
+
+campfirePopup.addEventListener("click", (e) => {
+
+    if (e.target === campfirePopup) {
+
+        campfirePopup.style.display = "none";
+
+    }
+
+});
+// ==========================================
+// RESTAURANT & BAR
+// ==========================================
+
+const restaurantBarPopup =
+    document.getElementById("restaurantBarPopup");
+
+const closeRestaurantBar =
+    document.querySelector(".closeRestaurantBar");
+
+
+// Close Restaurant & Bar popup
+closeRestaurantBar.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+
+});
+
+
+// Close when clicking outside
+restaurantBarPopup.addEventListener("click", (e) => {
+
+    if (e.target === restaurantBarPopup) {
+
+        restaurantBarPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// OPEN RESTAURANT & BAR
+// ==========================================
+
+explorePopup
+.querySelectorAll(".service-option")
+.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        const title =
+            option.querySelector(".title");
+
+        if (
+            title &&
+            title.textContent.trim() === "Restaurant & Bar"
+        ) {
+
+            explorePopup.style.display = "none";
+
+            option.classList.remove("selected");
+
+            restaurantBarPopup.style.display = "flex";
+
+        }
+
+    });
+
+});
+
+// ...
