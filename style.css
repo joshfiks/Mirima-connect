@@ -6307,3 +6307,296 @@ padding:22px !important;
     }
 
 }
+/* ==========================================
+   CHIMPANZEE TREKKING — PREMIUM STYLE
+========================================== */
+
+#chimpanzeeTrekkingPopup .popup-content {
+    width: 92% !important;
+    max-width: 580px !important;
+    max-height: 88vh !important;
+    padding: 30px !important;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(212,175,55,.13),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #21170b,
+            #0c0a06
+        ) !important;
+
+    border: 1px solid rgba(212,175,55,.42) !important;
+    border-radius: 28px !important;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.75) !important;
+
+    overflow-y: auto;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+#chimpanzeeTrekkingPopup .chimp-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#chimpanzeeTrekkingPopup .chimp-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 70px;
+    height: 70px;
+
+    margin-bottom: 12px;
+
+    border-radius: 50%;
+
+    background: rgba(212,175,55,.10);
+    border: 1px solid rgba(212,175,55,.35);
+
+    font-size: 32px;
+}
+
+#chimpanzeeTrekkingPopup .chimp-header h2 {
+    margin: 0 0 8px;
+
+    font-family: "Cinzel", serif;
+    font-size: 29px;
+
+    color: #f3d77b;
+}
+
+#chimpanzeeTrekkingPopup .chimp-header p {
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    opacity: .58;
+}
+
+
+/* ==========================================
+   EXPERIENCE DETAILS
+========================================== */
+
+#chimpanzeeTrekkingPopup .chimp-info {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+#chimpanzeeTrekkingPopup .chimp-info > div {
+    padding: 14px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(212,175,55,.14);
+}
+
+#chimpanzeeTrekkingPopup .chimp-info small {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: rgba(255,255,255,.45);
+}
+
+#chimpanzeeTrekkingPopup .chimp-info strong {
+    font-size: 12px;
+
+    color: #e9d58f;
+}
+
+
+/* ==========================================
+   FOREST TREK CARD
+========================================== */
+
+#chimpanzeeTrekkingPopup .chimp-card {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    margin-bottom: 15px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.09),
+            rgba(255,255,255,.025)
+        );
+
+    border: 1px solid rgba(212,175,55,.20);
+}
+
+#chimpanzeeTrekkingPopup .chimp-card > span {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 45px;
+    height: 45px;
+
+    border-radius: 13px;
+
+    background: rgba(212,175,55,.10);
+
+    font-size: 23px;
+}
+
+#chimpanzeeTrekkingPopup .chimp-card strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    color: #e9d58f;
+}
+
+#chimpanzeeTrekkingPopup .chimp-card p {
+    margin: 0;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    opacity: .58;
+}
+
+
+/* ==========================================
+   IMPORTANT NOTE
+========================================== */
+
+#chimpanzeeTrekkingPopup .chimp-note {
+    padding: 16px;
+
+    margin-bottom: 20px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.035);
+
+    border-left: 3px solid #d4af37;
+}
+
+#chimpanzeeTrekkingPopup .chimp-note strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 12px;
+
+    color: #d4af37;
+}
+
+#chimpanzeeTrekkingPopup .chimp-note p {
+    margin: 0;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+    opacity: .55;
+}
+
+
+/* ==========================================
+   BOOK BUTTON
+========================================== */
+
+#chimpanzeeTrekkingPopup .chimp-book-button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #f3d778
+        );
+
+    color: #17130a;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(212,175,55,.20);
+
+    transition: .25s ease;
+}
+
+#chimpanzeeTrekkingPopup .chimp-book-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 32px rgba(212,175,55,.35);
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #chimpanzeeTrekkingPopup .popup-content {
+        width: 94% !important;
+
+        padding: 22px !important;
+
+        max-height: 90vh !important;
+    }
+
+    #chimpanzeeTrekkingPopup .chimp-header h2 {
+        font-size: 24px;
+    }
+
+    #chimpanzeeTrekkingPopup .chimp-info {
+        gap: 8px;
+    }
+
+}
