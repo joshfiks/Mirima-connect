@@ -1273,27 +1273,27 @@ restaurantBarPopup.addEventListener("click", (e) => {
 // ==========================================
 
 explorePopup
-.querySelectorAll(".service-option")
-.forEach(option => {
+    .querySelectorAll(".service-option")
+    .forEach(option => {
 
-    option.addEventListener("click", () => {
+        option.addEventListener("click", () => {
 
-        const title =
-            option.querySelector(".title");
+            const title =
+                option.querySelector(".title");
 
-        if (
-            title &&
-            title.textContent.trim() === "Restaurant & Bar"
-        ) {
+            if (
+                title &&
+                title.textContent.trim() === "Restaurant & Bar"
+            ) {
 
-            explorePopup.style.display = "none";
+                explorePopup.style.display = "none";
 
-            option.classList.remove("selected");
+                option.classList.remove("selected");
 
-            restaurantBarPopup.style.display = "flex";
+                restaurantBarPopup.style.display = "flex";
 
-        }
+            }
+
+        });
 
     });
-
-});
