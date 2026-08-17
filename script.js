@@ -1440,6 +1440,72 @@ wildlifeViewingPopup.addEventListener("click", (e) => {
     }
 
 });
+  // ==========================================
+// CHIMPANZEE TREKKING POPUP
+// ==========================================
+
+const chimpanzeeTrekkingPopup =
+    document.getElementById("chimpanzeeTrekkingPopup");
+
+const closeChimpanzeeTrekking =
+    document.querySelector(".closeChimpanzeeTrekking");
+
+
+// ==========================================
+// OPEN CHIMPANZEE TREKKING
+// ==========================================
+
+explorePopup
+    .querySelectorAll(".service-option")
+    .forEach(option => {
+
+        option.addEventListener("click", () => {
+
+            const title =
+                option.querySelector(".title");
+
+            if (
+                title &&
+                title.textContent.trim() === "Chimpanzee Trekking"
+            ) {
+
+                explorePopup.style.display = "none";
+
+                option.classList.remove("selected");
+
+                chimpanzeeTrekkingPopup.style.display = "flex";
+
+            }
+
+        });
+
+    });
+
+
+// ==========================================
+// CLOSE CHIMPANZEE TREKKING
+// ==========================================
+
+closeChimpanzeeTrekking.addEventListener("click", () => {
+
+    chimpanzeeTrekkingPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+chimpanzeeTrekkingPopup.addEventListener("click", (e) => {
+
+    if (e.target === chimpanzeeTrekkingPopup) {
+
+        chimpanzeeTrekkingPopup.style.display = "none";
+
+    }
+
+});
 // ==========================================
 // SPA POPUP
 // ==========================================
