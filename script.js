@@ -1573,6 +1573,128 @@ photographyTourPopup.addEventListener("click", (e) => {
     }
 
 });
+  // ==========================================
+// EXPERIENCE CONFIRMATION
+// ==========================================
+
+const experienceConfirmationPopup =
+    document.getElementById("experienceConfirmationPopup");
+
+const closeExperienceConfirmation =
+    document.querySelector(".closeExperienceConfirmation");
+
+const confirmationMessage =
+    document.getElementById("confirmationMessage");
+
+const confirmationDoneButton =
+    document.getElementById("confirmationDoneButton");
+
+
+// ==========================================
+// SHOW CONFIRMATION
+// ==========================================
+
+function showExperienceConfirmation(experienceName) {
+
+    confirmationMessage.textContent =
+        `Your ${experienceName} request has been sent to Reception.`;
+
+    experienceConfirmationPopup.style.display = "flex";
+
+}
+
+
+// ==========================================
+// CLOSE CONFIRMATION
+// ==========================================
+
+closeExperienceConfirmation.addEventListener("click", () => {
+
+    experienceConfirmationPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// DONE BUTTON
+// ==========================================
+
+confirmationDoneButton.addEventListener("click", () => {
+
+    experienceConfirmationPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLICK OUTSIDE
+// ==========================================
+
+experienceConfirmationPopup.addEventListener("click", (e) => {
+
+    if (e.target === experienceConfirmationPopup) {
+
+        experienceConfirmationPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// CHIMPANZEE TREKKING
+// ==========================================
+
+document.getElementById("bookChimpanzeeTrekking")
+.addEventListener("click", () => {
+
+    chimpanzeeTrekkingPopup.style.display = "none";
+
+    showExperienceConfirmation("Chimpanzee Trekking");
+
+});
+
+
+// ==========================================
+// WILDLIFE VIEWING
+// ==========================================
+
+document.getElementById("bookWildlifeViewing")
+.addEventListener("click", () => {
+
+    wildlifeViewingPopup.style.display = "none";
+
+    showExperienceConfirmation("Wildlife Viewing");
+
+});
+
+
+// ==========================================
+// CRATER LAKE TOUR
+// ==========================================
+
+document.getElementById("bookCraterLake")
+.addEventListener("click", () => {
+
+    craterLakePopup.style.display = "none";
+
+    showExperienceConfirmation("Crater Lake Tour");
+
+});
+
+
+// ==========================================
+// PHOTOGRAPHY TOUR
+// ==========================================
+
+document.getElementById("bookPhotographyTour")
+.addEventListener("click", () => {
+
+    photographyTourPopup.style.display = "none";
+
+    showExperienceConfirmation("Photography Tour");
+
+});
 // ==========================================
 // SPA POPUP
 // ==========================================
