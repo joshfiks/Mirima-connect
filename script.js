@@ -3765,7 +3765,7 @@ closeConfirmation.addEventListener("click", () => {
 
     document.getElementById("orderConfirmation").style.display = "none";
 
-  document.querySelector(".birds").style.display = "none";
+ 
 });
-
+document.querySelector(".birds").style.display = "none";
 });
