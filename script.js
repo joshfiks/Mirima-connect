@@ -3767,5 +3767,5 @@ closeConfirmation.addEventListener("click", () => {
 
  
 });
-document.querySelector(".birds").style.display = "none";
+
 });
