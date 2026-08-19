@@ -1040,7 +1040,7 @@ top:18%;
 
 left:-300px;
 
-animation:birdFly2 20s linear infinite;
+animation:birdFly2 42s linear infinite;
 
 }
 
@@ -1150,7 +1150,7 @@ transform:translateX(calc(100vw + 200px));
 
     .birds2 {
         left: -200px;
-        animation: birdFly2Mobile 20s linear infinite;
+        animation: birdFly2Mobile 42s linear infinite;
     }
 
     @keyframes birdFly1Mobile {
@@ -1159,7 +1159,7 @@ transform:translateX(calc(100vw + 200px));
         }
 
         to {
-            transform: translateX(calc(80vw + 80px));
+            transform: translateX(calc(0vw + 80px));
         }
     }
 
@@ -1169,7 +1169,7 @@ transform:translateX(calc(100vw + 200px));
         }
 
         to {
-            transform: translateX(calc(80vw + 80px));
+            transform: translateX(calc(0vw + 80px));
         }
     }
 
