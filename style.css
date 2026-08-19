@@ -1088,7 +1088,7 @@ transform:translateX(0);
 
 to{
 
-transform:translateX(calc(100vw + 200px));
+transform:translateX(calc(100vw + 600px));
 
 }
 
@@ -1104,7 +1104,7 @@ transform:translateX(0);
 
 to{
 
-transform:translateX(calc(100vw + 200px));
+transform:translateX(calc(100vw + 700px));
 
 }
 
@@ -1139,6 +1139,39 @@ to{
 transform:translateX(calc(100vw + 200px));
 
 }
+
+}
+@media (max-width: 650px) {
+
+    .birds1 {
+        left: -100px;
+        animation: birdFly1Mobile 34s linear infinite;
+    }
+
+    .birds2 {
+        left: -200px;
+        animation: birdFly2Mobile 42s linear infinite;
+    }
+
+    @keyframes birdFly1Mobile {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(calc(100vw + 200px));
+        }
+    }
+
+    @keyframes birdFly2Mobile {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(calc(100vw + 200px));
+        }
+    }
 
 }
 
