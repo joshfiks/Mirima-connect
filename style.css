@@ -992,6 +992,10 @@ LANTERNS
 FLYING BIRDS
 ==========================================*/
 
+/*==========================================
+FLYING BIRDS
+==========================================*/
+
 .birds {
     position: absolute;
     top: 0;
@@ -1004,120 +1008,73 @@ FLYING BIRDS
     z-index: 2;
 }
 
+/* Bird images */
+
 .birds img {
     width: 170px;
+    position: absolute;
 }
+
+/* Bird 1 */
 
 .birds1 {
     top: 10%;
     left: 0;
 }
 
+.birds1 img {
+    left: -170px;
+    top: 0;
+    animation: birdFly1Safe 34s linear infinite;
+}
+
+/* Bird 2 */
+
 .birds2 {
     top: 18%;
     left: 0;
 }
-/*
-.birds3 img{
 
-width:170px;
+.birds2 img {
+    left: -170px;
+    top: 0;
+    animation: birdFly2Safe 42s linear infinite;
+}
 
-transform:scaleX(-1);
+/*==========================================
+SAFE BIRD ANIMATIONS
+==========================================*/
+
+@keyframes birdFly1Safe {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(100vw + 340px));
+    }
 
 }
 
-@keyframes bird3Fly{
+@keyframes birdFly2Safe {
 
-0%{
+    from {
+        transform: translateX(0);
+    }
 
-left:100vw;
-
-}
-
-100%{
-
-left:-250px;
+    to {
+        transform: translateX(calc(100vw + 340px));
+    }
 
 }
 
-}
+/*==========================================
+MOBILE BIRDS
+==========================================*/
 
-.birds4{
-
-top:14%;
-
-left:-400px;
-
-animation:birdFly4 58s linear infinite;
-
-}
-
-@keyframes birdFly1{
-
-from{
-
-transform:translateX(0);
-
-}
-
-to{
-
-transform:translateX(calc(100vw + 600px));
-
-}
-
-}
-
-@keyframes birdFly2{
-
-from{
-
-transform:translateX(0);
-
-}
-
-to{
-
-transform:translateX(calc(100vw + 700px));
-
-}
-
-}
-
-@keyframes birdFly3{
-
-from{
-
-transform:translateX(0);
-
-}
-
-to{
-
-transform:translateX(calc(100vw + 200px));
-
-}
-
-}
-
-@keyframes birdFly4{
-
-from{
-
-transform:translateX(0);
-
-}
-
-to{
-
-transform:translateX(calc(100vw + 200px));
-
-}
-
-}
-*/
 @media (max-width: 650px) {
-   
+
     .birds1 {
         left: 0;
     }
@@ -1125,30 +1082,40 @@ transform:translateX(calc(100vw + 200px));
     .birds2 {
         left: 0;
     }
-}
+
+    .birds1 img {
+        animation: birdFly1Mobile 34s linear infinite;
+    }
+
+    .birds2 img {
+        animation: birdFly2Mobile 42s linear infinite;
+    }
 
     @keyframes birdFly1Mobile {
+
         from {
             transform: translateX(0);
         }
 
         to {
-            transform: translateX(calc(80vw + 100px));
+            transform: translateX(calc(100vw + 340px));
         }
+
     }
 
     @keyframes birdFly2Mobile {
+
         from {
             transform: translateX(0);
         }
 
         to {
-            transform: translateX(calc(80vw + 100px));
+            transform: translateX(calc(100vw + 340px));
         }
+
     }
 
 }
-
 /* Hide birds at night */
 
 body.night .birds{
