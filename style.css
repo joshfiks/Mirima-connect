@@ -1088,7 +1088,7 @@ transform:translateX(0);
 
 to{
 
-transform:translateX(calc(100vw + 600px));
+transform:translateX(calc(100vw + 200px));
 
 }
 
@@ -1104,7 +1104,7 @@ transform:translateX(0);
 
 to{
 
-transform:translateX(calc(100vw + 700px));
+transform:translateX(calc(100vw + 200px));
 
 }
 
@@ -1120,7 +1120,7 @@ transform:translateX(0);
 
 to{
 
-transform:translateX(calc(100vw + 650px));
+transform:translateX(calc(100vw + 200px));
 
 }
 
@@ -1136,7 +1136,7 @@ transform:translateX(0);
 
 to{
 
-transform:translateX(calc(100vw + 800px));
+transform:translateX(calc(100vw + 200px));
 
 }
 
