@@ -103,7 +103,7 @@ z-index:-9;
 /*=====================================
 SUNSET LIGHT
 =====================================*/
-/*
+
 .overlay::before{
 
 content:"";
@@ -135,7 +135,7 @@ animation:sunGlow 6s ease-in-out infinite;
 
 }
 */
-/*
+
 @keyframes sunGlow{
 
 0%{
@@ -157,11 +157,11 @@ opacity:.55;
 }
 
 }
-*/
+
 /*=====================================
 LAKE REFLECTION
 =====================================*/
-/*
+
 .overlay::after{
 
 content:"";
@@ -190,8 +190,7 @@ transparent
 animation:reflection 5s ease-in-out infinite;
 
 }
-*/
-/*
+
 @keyframes reflection{
 
 0%{
@@ -213,11 +212,11 @@ opacity:.25;
 }
 
 }
-*/
+
 /*=====================================
 MIST
 =====================================*/
-/*
+
 .mist {
     position: fixed;
     width: 100%;
@@ -286,7 +285,7 @@ animation:fog2 24s linear infinite alternate;
         transform: translateX(-5%);
     }
 }
-*/
+
 /*==========================================
 HERO
 ==========================================*/
