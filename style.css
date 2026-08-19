@@ -1159,7 +1159,7 @@ transform:translateX(calc(100vw + 200px));
         }
 
         to {
-            transform: translateX(calc(0vw + 80px));
+            transform: translateX(calc(10vw + 80px));
         }
     }
 
@@ -1169,7 +1169,7 @@ transform:translateX(calc(100vw + 200px));
         }
 
         to {
-            transform: translateX(calc(0vw + 80px));
+            transform: translateX(calc(10vw + 80px));
         }
     }
 
