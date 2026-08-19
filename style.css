@@ -1150,7 +1150,7 @@ transform:translateX(calc(100vw + 200px));
 
     .birds2 {
         left: -200px;
-        animation: birdFly2Mobile 42s linear infinite;
+        animation: birdFly2Mobile 30s linear infinite;
     }
 
     @keyframes birdFly1Mobile {
@@ -1159,7 +1159,7 @@ transform:translateX(calc(100vw + 200px));
         }
 
         to {
-            transform: translateX(calc(100vw + 100px));
+            transform: translateX(calc(100vw + 80px));
         }
     }
 
@@ -1169,7 +1169,7 @@ transform:translateX(calc(100vw + 200px));
         }
 
         to {
-            transform: translateX(calc(100vw + 100px));
+            transform: translateX(calc(100vw + 80px));
         }
     }
 
