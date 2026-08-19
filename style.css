@@ -1004,38 +1004,20 @@ FLYING BIRDS
     z-index: 2;
 }
 
-.birds img{
-
-width:170px;
-
+.birds img {
+    width: 170px;
 }
 
-.birds img{
-
-width:170px;
-
+.birds1 {
+    top: 10%;
+    left: 0;
 }
 
-.birds1{
-
-top:10%;
-
-left:-100px;
-
-animation:birdFly1 34s linear infinite;
-
+.birds2 {
+    top: 18%;
+    left: 0;
 }
-
-.birds2{
-
-top:18%;
-
-left:-300px;
-
-animation:birdFly2 42s linear infinite;
-
-}
-
+/*
 .birds3 img{
 
 width:170px;
@@ -1133,17 +1115,17 @@ transform:translateX(calc(100vw + 200px));
 }
 
 }
+*/
 @media (max-width: 650px) {
-
+   
     .birds1 {
-        left: -100px;
-        animation: birdFly1Mobile 34s linear infinite;
+        left: 0;
     }
 
     .birds2 {
-        left: -200px;
-        animation: birdFly2Mobile 42s linear infinite;
+        left: 0;
     }
+}
 
     @keyframes birdFly1Mobile {
         from {
