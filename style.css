@@ -875,25 +875,37 @@ color:#fff;
 }
 */
 /* ==========================================
-   NEW CARD BASE — TEST
+   NEW CARD PREMIUM BASE — TEST
 ========================================== */
 
 .card {
     width: 100%;
     box-sizing: border-box;
+
     padding: 30px 20px;
-
     text-align: center;
-
-    background: #2b2117;
-
-    border: 1px solid #8f743d;
-    border-radius: 20px;
 
     position: relative;
     z-index: 30;
 
-    transition: transform .3s ease;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(75, 52, 28, .98),
+            rgba(30, 21, 12, .98)
+        );
+
+    border: 1px solid rgba(212, 175, 55, .45);
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.45),
+        inset 0 1px 1px rgba(255,255,255,.12);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
 }
 
 .card img {
