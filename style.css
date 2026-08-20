@@ -7088,3 +7088,11 @@ padding:22px !important;
         }
     }
 }
+#spaPopup .popup-content {
+    background: red !important;
+    border: 10px solid blue !important;
+    width: 300px !important;
+    max-width: 300px !important;
+    padding: 50px !important;
+}
+            
