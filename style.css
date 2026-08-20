@@ -759,6 +759,7 @@ font-size:18px;
 }
 
 }
+/*
 .card{
 
 position:relative;
@@ -871,6 +872,47 @@ font-weight:600;
 
 color:#fff;
 
+}
+*/
+/* ==========================================
+   NEW CARD BASE — TEST
+========================================== */
+
+.card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #2b2117;
+
+    border: 1px solid #8f743d;
+    border-radius: 20px;
+
+    position: relative;
+    z-index: 30;
+
+    transition: transform .3s ease;
+}
+
+.card img {
+    width: 70px;
+    height: 70px;
+
+    object-fit: contain;
+
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.card span {
+    display: block;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: white;
 }
 /*==========================================
 FLOATING LEAVES
