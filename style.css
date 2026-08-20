@@ -879,52 +879,10 @@ color:#fff;
 ========================================== */
 
 .card {
-    width: 100%;
-    box-sizing: border-box;
-
-    padding: 30px 20px;
-    text-align: center;
-
-    position: relative;
-    z-index: 30;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(75, 52, 28, .98),
-            rgba(30, 21, 12, .98)
-        );
-
-    border: 1px solid rgba(212, 175, 55, .45);
-    border-radius: 22px;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.45),
-        inset 0 1px 1px rgba(255,255,255,.12);
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease,
-        border-color .35s ease;
-}
-
-.card img {
-    width: 70px;
-    height: 70px;
-
-    object-fit: contain;
-
-    display: block;
-    margin: 0 auto 15px;
-}
-
-.card span {
-    display: block;
-
-    font-size: 18px;
-    font-weight: 600;
-
-    color: white;
+    background: red !important;
+    border: 10px solid blue !important;
+    color: yellow !important;
+    padding: 50px !important;
 }
 /*==========================================
 FLOATING LEAVES
