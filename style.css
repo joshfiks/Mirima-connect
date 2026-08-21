@@ -766,6 +766,39 @@ grid-template-columns:repeat(2,1fr);
         transform: translateY(-3px) scale(1.05);
     }
 }
+/* ==========================================
+   MOBILE CARD TAP EFFECT
+========================================== */
+
+@media (max-width: 650px) {
+
+    .card:active {
+        transform: translateY(-5px);
+
+        border-color: rgba(243, 215, 123, .9);
+
+        box-shadow:
+            0 20px 40px rgba(0,0,0,.55),
+            0 0 25px rgba(212,175,55,.30),
+            0 0 50px rgba(212,175,55,.15);
+    }
+
+    .card:active img {
+        transform: translateY(-3px) scale(1.05);
+
+        filter:
+            drop-shadow(0 0 8px rgba(212,175,55,.45))
+            drop-shadow(0 0 18px rgba(212,175,55,.25));
+    }
+
+    .card:active span {
+        color: #fff1a8;
+
+        text-shadow:
+            0 0 8px rgba(212,175,55,.45),
+            0 0 18px rgba(212,175,55,.25);
+    }
+}
 /*
 .card{
 
