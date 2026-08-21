@@ -7182,3 +7182,10 @@ padding:22px !important;
         }
     }
 }
+/* ROOM SERVICE DESKTOP TEST */
+
+#servicePopup .popup-content {
+    background: red !important;
+    border: 5px solid blue !important;
+    box-shadow: 0 0 40px lime !important;
+}
