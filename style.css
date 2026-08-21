@@ -963,6 +963,19 @@ color:#fff;
         drop-shadow(0 0 8px rgba(212,175,55,.45))
         drop-shadow(0 0 18px rgba(212,175,55,.25));
 }
+.card span {
+    transition:
+        color .35s ease,
+        text-shadow .35s ease;
+}
+
+.card:hover span {
+    color: #fff1a8;
+
+    text-shadow:
+        0 0 8px rgba(212,175,55,.45),
+        0 0 18px rgba(212,175,55,.25);
+}
 /*==========================================
 FLOATING LEAVES
 ==========================================*/
