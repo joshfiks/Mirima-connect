@@ -950,6 +950,19 @@ color:#fff;
         0 0 60px rgba(212,175,55,.14),
         inset 0 1px 1px rgba(255,255,255,.15);
 }
+.card img {
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+.card:hover img {
+    transform: translateY(-4px) scale(1.08);
+
+    filter:
+        drop-shadow(0 0 8px rgba(212,175,55,.45))
+        drop-shadow(0 0 18px rgba(212,175,55,.25));
+}
 /*==========================================
 FLOATING LEAVES
 ==========================================*/
