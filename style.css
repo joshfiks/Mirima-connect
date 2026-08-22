@@ -1244,58 +1244,6 @@ transform:translate(40px,110vh) rotate(-360deg);
 
 }
 /*==========================================
-LANTERNS
-==========================================*/
-
-.lantern{
-    position:absolute;
-    width:80px;
-    z-index:5;
-    animation:swing 5s ease-in-out infinite;
-}
-
-.lantern img{
-    width:100%;
-}
-
-.lantern::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:60%;
-    transform:translateX(-50%);
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:radial-gradient(circle,
-        rgba(255,210,120,.55),
-        rgba(255,210,120,.18),
-        transparent 70%);
-    filter:blur(12px);
-    z-index:-1;
-}
-
-.lantern.left{
-    top:80px;
-    left:60px;
-}
-
-.lantern.right{
-    top:80px;
-    right:60px;
-}
-
-@keyframes swing{
-    0%{transform:rotate(-3deg);}
-    50%{transform:rotate(3deg);}
-    100%{transform:rotate(-3deg);}
-}
-
-/*==========================================
-FLYING BIRDS
-==========================================*/
-
-/*==========================================
 FLYING BIRDS
 ==========================================*/
 
@@ -1511,174 +1459,309 @@ overflow:hidden;
 
 }
 
-#welcomeText{
+/* ==========================================
+   PREMIUM WELCOME TEXT
+========================================== */
 
-position:absolute;
+#welcomeText {
 
-top:50%;
+    position: absolute;
 
-left:50%;
+    top: 50%;
+    left: 50%;
 
-transform:translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 
-font-family:"Cinzel",serif;
-
-font-size:54px;
-
-font-weight:700;
-
-color:#f5d67a;
-
-text-align:center;
-
-text-shadow:0 0 20px rgba(0,0,0,.8);
-
-opacity:0;
-
-transition:opacity 1s;
-
-pointer-events:none;
-
-}
-.background.fade{
-
-opacity:0;
-
-}
-
-#welcomeScreen{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:none;
-
-justify-content:center;
-align-items:center;
-
-flex-direction:column;
-
-gap:30px;
-
-text-align:center;
-
-z-index:100;
-
-pointer-events:auto;
-
-}
-
-#typingText{
+    width: 90%;
+    max-width: 700px;
 
     font-family: "Cinzel", serif;
 
-    font-size: 58px;
+    font-size: 38px;
+    font-weight: 600;
 
-    font-weight: 700;
+    line-height: 1.25;
 
-    color: #d4af37;
+    letter-spacing: 1.5px;
 
-    text-shadow: 0 4px 20px rgba(0,0,0,.8);
-
-    line-height: 1.5;
-
-    max-width: 900px;
+    color: #f3d778;
 
     text-align: center;
 
-}
-#guestNameBox{
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.85),
+        0 0 25px rgba(212,175,55,.15);
 
-display:none;
+    opacity: 0;
 
-margin-top:40px;
+    transition: opacity 1s;
 
-text-align:center;
-
-}
-
-#guestName{
-
-width:320px;
-
-padding:15px 20px;
-
-font-size:22px;
-
-font-family:"Poppins",sans-serif;
-
-border:2px solid #d4af37;
-
-border-radius:40px;
-
-background:rgba(0,0,0,.45);
-
-color:white;
-
-outline:none;
-
-text-align:center;
-
+    pointer-events: none;
 }
 
-#guestName::placeholder{
 
-color:#ddd;
+/* ==========================================
+   WELCOME SCREEN
+========================================== */
 
+#welcomeScreen {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    z-index: 100;
+
+    pointer-events: auto;
 }
 
-#continueBtn{
 
-margin-top:20px;
+/* ==========================================
+   PREMIUM TYPING TEXT
+========================================== */
 
-padding:14px 40px;
+#typingText {
 
-font-size:20px;
+    width: 90%;
+    max-width: 700px;
 
-font-family:"Cinzel",serif;
+    font-family: "Cinzel", serif;
 
-background:#d4af37;
+    font-size: 40px;
 
-color:#222;
+    font-weight: 600;
 
-border:none;
+    line-height: 1.3;
 
-border-radius:40px;
+    letter-spacing: 1.5px;
 
-cursor:pointer;
+    color: #f3d778;
 
-transition:.3s;
+    text-align: center;
 
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.85),
+        0 0 22px rgba(212,175,55,.16);
 }
 
-#continueBtn:hover{
 
-transform:scale(1.05);
+/* ==========================================
+   GUEST NAME AREA
+========================================== */
 
-}
-.card{
+#guestNameBox {
 
-opacity:0;
+    display: none;
 
-transform:translateY(40px);
+    width: 100%;
+    max-width: 380px;
 
-transition:opacity .8s ease, transform .8s ease;
+    margin-top: 15px;
 
-}
-
-.card.show{
-
-opacity:1;
-
-transform:translateY(0);
-
+    text-align: center;
 }
 
+
+/* ==========================================
+   PREMIUM NAME FIELD
+========================================== */
+
+#guestName {
+
+    width: 100%;
+
+    max-width: 330px;
+
+    box-sizing: border-box;
+
+    padding: 13px 20px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    letter-spacing: .4px;
+
+    text-align: center;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(40,29,15,.92),
+            rgba(12,9,5,.92)
+        );
+
+    border: 1px solid rgba(212,175,55,.55);
+
+    border-radius: 30px;
+
+    outline: none;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35),
+        inset 0 1px 1px rgba(255,255,255,.06);
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+}
+
+
+#guestName:focus {
+
+    border-color: #f3d778;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.4),
+        0 0 20px rgba(212,175,55,.18);
+
+    transform: translateY(-1px);
+}
+
+
+#guestName::placeholder {
+
+    color: rgba(255,255,255,.52);
+}
+
+
+/* ==========================================
+   PREMIUM CONTINUE BUTTON
+========================================== */
+
+#continueBtn {
+
+    margin-top: 14px;
+
+    padding: 12px 34px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: #1b1408;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #f3d778,
+            #c49a28
+        );
+
+    border: 1px solid rgba(255,230,150,.7);
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35),
+        0 0 18px rgba(212,175,55,.18);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+#continueBtn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.45),
+        0 0 28px rgba(212,175,55,.35);
+}
+
+
+/* ==========================================
+   MOBILE WELCOME
+========================================== */
+
+@media (max-width: 650px) {
+
+    #welcomeText {
+
+        width: 88%;
+
+        font-size: 25px;
+
+        line-height: 1.3;
+
+        letter-spacing: 1px;
+    }
+
+    #typingText {
+
+        width: 88%;
+
+        font-size: 27px;
+
+        line-height: 1.35;
+
+        letter-spacing: .8px;
+    }
+
+    #welcomeScreen {
+
+        gap: 12px;
+
+        padding: 15px;
+    }
+
+    #guestNameBox {
+
+        max-width: 300px;
+
+        margin-top: 8px;
+    }
+
+    #guestName {
+
+        max-width: 280px;
+
+        padding: 11px 17px;
+
+        font-size: 14px;
+    }
+
+    #continueBtn {
+
+        margin-top: 10px;
+
+        padding: 11px 28px;
+
+        font-size: 13px;
+    }
+}
 /*==========================================
 LIVE NOTIFICATION
 ==========================================*/
