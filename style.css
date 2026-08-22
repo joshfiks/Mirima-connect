@@ -1016,6 +1016,166 @@ color:#fff;
         0 0 8px rgba(212,175,55,.45),
         0 0 18px rgba(212,175,55,.25);
 }
+/* ==========================================
+   ROOM SERVICE — LUXURY HEADER
+========================================== */
+
+#servicePopup .popup-content > h2 {
+    margin: 0 0 28px;
+
+    padding: 18px 10px;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+    font-size: 30px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #f3d778;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.65),
+        0 0 18px rgba(212,175,55,.20);
+
+    border-top: 1px solid rgba(212,175,55,.25);
+    border-bottom: 1px solid rgba(212,175,55,.25);
+}
+
+
+/* ==========================================
+   ROOM SERVICE — PREMIUM ORDER BUTTON
+========================================== */
+
+#servicePopup #placeOrder {
+    width: 100%;
+
+    margin-top: 22px;
+    padding: 16px 20px;
+
+    border: 1px solid rgba(255,225,130,.65);
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b88a20,
+            #f3d778,
+            #c79b2e
+        );
+
+    color: #171109;
+
+    font-family: "Cinzel", serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.45),
+        0 0 20px rgba(212,175,55,.18),
+        inset 0 1px 1px rgba(255,255,255,.45);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        filter .3s ease;
+}
+
+
+/* Hover */
+
+#servicePopup #placeOrder:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.55),
+        0 0 30px rgba(212,175,55,.38),
+        inset 0 1px 2px rgba(255,255,255,.5);
+}
+
+
+/* Click */
+
+#servicePopup #placeOrder:active {
+    transform: translateY(0);
+}
+ /* ==========================================
+    ROOM SERVICE — LUXURY SPECIAL REQUESTS
+ ========================================== */
+
+#servicePopup #popupBody textarea {
+    width: 100%;
+    min-height: 115px;
+
+    box-sizing: border-box;
+
+    margin-top: 4px;
+    padding: 16px 18px;
+
+    resize: vertical;
+
+    border: 1px solid rgba(212,175,55,.25);
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.025)
+        );
+
+    color: #f4e7c5;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 17px;
+    line-height: 1.5;
+
+    outline: none;
+
+    box-shadow:
+        inset 0 2px 8px rgba(0,0,0,.35),
+        0 6px 18px rgba(0,0,0,.18);
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+
+/* Placeholder */
+
+#servicePopup #popupBody textarea::placeholder {
+    color: rgba(243,215,120,.48);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
+}
+
+
+/* Focus */
+
+#servicePopup #popupBody textarea:focus {
+    border-color: rgba(212,175,55,.65);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212,175,55,.07),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+        inset 0 2px 8px rgba(0,0,0,.35),
+        0 0 0 2px rgba(212,175,55,.06),
+        0 0 24px rgba(212,175,55,.15);
+}
 /*==========================================
 FLOATING LEAVES
 ==========================================*/
