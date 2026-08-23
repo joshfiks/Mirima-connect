@@ -3732,7 +3732,6 @@ function updateGreeting(){
 
 updateGreeting();
 
-
 // ==========================================
 // LIVE WEATHER
 // ==========================================
@@ -3742,6 +3741,10 @@ async function updateWeather(){
     const latitude = 0.5196;
     const longitude = 30.3184;
 
+    const temperature = document.getElementById("weatherTemp");
+    const humidity = document.getElementById("weatherHumidity");
+    const icon = document.getElementById("weatherIcon");
+
     try {
 
         const response = await fetch(
@@ -3749,25 +3752,82 @@ async function updateWeather(){
         );
 
         if(!response.ok){
-            throw new Error("Weather request failed");
+
+            throw new Error(
+                `Weather request failed: ${response.status}`
+            );
+
         }
 
         const data = await response.json();
 
+        if(!data.current){
+
+            throw new Error("No current weather data received");
+
+        }
+
         const current = data.current;
 
-        document.getElementById("weatherTemp").textContent =
-            `${Math.round(current.temperature_2m)}°C`;
 
-        document.getElementById("weatherHumidity").textContent =
-            `${current.relative_humidity_2m}%`;
+        // TEMPERATURE
 
-        document.getElementById("weatherIcon").textContent =
-            getWeatherIcon(current.weather_code);
+        if(temperature){
+
+            temperature.textContent =
+                `${Math.round(current.temperature_2m)}°C`;
+
+        }
+
+
+        // HUMIDITY
+
+        if(humidity){
+
+            humidity.textContent =
+                `${Math.round(current.relative_humidity_2m)}%`;
+
+        }
+
+
+        // WEATHER ICON
+
+        if(icon){
+
+            icon.textContent =
+                getWeatherIcon(current.weather_code);
+
+        }
+
+
+        console.log(
+            "Mirima weather updated:",
+            current.temperature_2m + "°C",
+            current.relative_humidity_2m + "%",
+            current.weather_code
+        );
+
 
     } catch(error){
 
-        console.error("Weather error:", error);
+        console.error(
+            "Mirima weather error:",
+            error
+        );
+
+        // Keep the bar usable if the API temporarily fails
+
+        if(temperature){
+            temperature.textContent = "--°C";
+        }
+
+        if(humidity){
+            humidity.textContent = "--%";
+        }
+
+        if(icon){
+            icon.textContent = "🌤️";
+        }
 
     }
 }
@@ -3796,11 +3856,13 @@ function getWeatherIcon(code){
     return "🌤️";
 }
 
+
+// First update
 updateWeather();
 
+
+// Refresh every 10 minutes
 setInterval(updateWeather, 600000);
-
-
 // ==========================================
 // LIVE CLOCK
 // ==========================================
