@@ -3705,7 +3705,7 @@ showLoading("Submitting Your Feedback...", () => {
   });
 
 
-  // ==========================================
+// ==========================================
 // GREETING
 // ==========================================
 
@@ -3729,32 +3729,95 @@ function updateGreeting(){
 
     }
 
-    document.getElementById("weatherTemp").textContent = greeting;
-
+    document.getElementById("weatherGreeting").textContent = greeting;
 }
 
 updateGreeting();
-  
+
+
 // ==========================================
-// LIVE CLOCK
+// LIVE WEATHER
 // ==========================================
 
-function updateClock(){
+async function updateWeather(){
 
-    const now = new Date();
+    const latitude = 0.5196;
+    const longitude = 30.3184;
 
-    document.getElementById("currentTime").textContent =
-        now.toLocaleTimeString([],{
-            hour:"2-digit",
-            minute:"2-digit"
-        });
+    try {
 
+        const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code&timezone=Africa%2FKampala`
+        );
+
+        if(!response.ok){
+
+            throw new Error("Weather request failed");
+
+        }
+
+        const data = await response.json();
+
+        const current = data.current;
+
+        document.getElementById("weatherTemp").textContent =
+            `${Math.round(current.temperature_2m)}°C`;
+
+        document.getElementById("weatherHumidity").textContent =
+            `${current.relative_humidity_2m}%`;
+
+        document.getElementById("weatherIcon").textContent =
+            getWeatherIcon(current.weather_code);
+
+    } catch(error){
+
+        console.error("Weather error:", error);
+
+    }
+}
+// ==========================================
+// WEATHER ICON
+// ==========================================
+
+function getWeatherIcon(code){
+
+    if(code === 0){
+        return "☀️";
+    }
+
+    if(code >= 1 && code <= 3){
+        return "🌤️";
+    }
+
+    if(code >= 45 && code <= 48){
+        return "🌫️";
+    }
+
+    if(code >= 51 && code <= 67){
+        return "🌧️";
+    }
+
+    if(code >= 71 && code <= 77){
+        return "❄️";
+    }
+
+    if(code >= 80 && code <= 82){
+        return "🌦️";
+    }
+
+    if(code >= 95){
+        return "⛈️";
+    }
+
+    return "🌤️";
 }
 
-updateClock();
+updateWeather();
 
-setInterval(updateClock,1000);
 
+// Refresh weather every 10 minutes
+
+setInterval(updateWeather, 600000);
 // ==========================================
 // CLOSE CONFIRMATION
 // ==========================================
