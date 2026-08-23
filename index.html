@@ -106,29 +106,34 @@
 </section>
 
 <!-- ==========================================
-WEATHER BAR
+     PREMIUM WEATHER BAR
 ========================================== -->
 
-<section class="weatherBar">
+<section class="weatherBar" id="weatherBar">
 
-    <div class="weatherItem">
-        <span id="weatherTemp">Welcome</span>
+    <div class="weatherItem weatherGreeting">
+        <span id="weatherGreeting">Welcome</span>
     </div>
 
     <div class="weatherItem">
-        💧 <span id="weatherHumidity">68%</span>
+        <span class="weatherIcon" id="weatherIcon">🌤️</span>
+        <span id="weatherTemp">--°C</span>
+    </div>
+
+    <div class="weatherItem">
+        💧 <span id="weatherHumidity">--%</span>
     </div>
 
     <div class="weatherItem">
         🕒 <span id="currentTime">--:--</span>
     </div>
 
-    <div class="weatherItem">
+    <div class="weatherItem weatherLocation">
         📍 Mirima Lodge
     </div>
 
 </section>
-
+  
 <!-- Guest Portal -->
 
 <section class="portal">
