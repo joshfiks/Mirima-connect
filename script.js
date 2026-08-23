@@ -3703,8 +3703,6 @@ showLoading("Submitting Your Feedback...", () => {
 }, btn);
 
   });
-
-
 // ==========================================
 // GREETING
 // ==========================================
@@ -3751,9 +3749,7 @@ async function updateWeather(){
         );
 
         if(!response.ok){
-
             throw new Error("Weather request failed");
-
         }
 
         const data = await response.json();
@@ -3775,49 +3771,73 @@ async function updateWeather(){
 
     }
 }
+
+
 // ==========================================
 // WEATHER ICON
 // ==========================================
 
 function getWeatherIcon(code){
 
-    if(code === 0){
-        return "☀️";
-    }
+    if(code === 0) return "☀️";
 
-    if(code >= 1 && code <= 3){
-        return "🌤️";
-    }
+    if(code >= 1 && code <= 3) return "🌤️";
 
-    if(code >= 45 && code <= 48){
-        return "🌫️";
-    }
+    if(code >= 45 && code <= 48) return "🌫️";
 
-    if(code >= 51 && code <= 67){
-        return "🌧️";
-    }
+    if(code >= 51 && code <= 67) return "🌧️";
 
-    if(code >= 71 && code <= 77){
-        return "❄️";
-    }
+    if(code >= 71 && code <= 77) return "❄️";
 
-    if(code >= 80 && code <= 82){
-        return "🌦️";
-    }
+    if(code >= 80 && code <= 82) return "🌦️";
 
-    if(code >= 95){
-        return "⛈️";
-    }
+    if(code >= 95) return "⛈️";
 
     return "🌤️";
 }
 
 updateWeather();
 
-
-// Refresh weather every 10 minutes
-
 setInterval(updateWeather, 600000);
+
+
+// ==========================================
+// LIVE CLOCK
+// ==========================================
+
+function updateClock(){
+
+    const clock = document.getElementById("currentTime");
+
+    if(!clock) return;
+
+    const now = new Date();
+
+    clock.textContent =
+        now.toLocaleTimeString("en-UG", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+        });
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
+
+
+// ==========================================
+// CLOSE CONFIRMATION
+// ==========================================
+
+const closeConfirmation =
+    document.getElementById("closeConfirmation");
+
+closeConfirmation.addEventListener("click", () => {
+
+    document.getElementById("orderConfirmation").style.display = "none";
+
+});
 // ==========================================
 // CLOSE CONFIRMATION
 // ==========================================
