@@ -3824,20 +3824,6 @@ function updateClock(){
 updateClock();
 
 setInterval(updateClock, 1000);
-
-
-// ==========================================
-// CLOSE CONFIRMATION
-// ==========================================
-
-const closeConfirmation =
-    document.getElementById("closeConfirmation");
-
-closeConfirmation.addEventListener("click", () => {
-
-    document.getElementById("orderConfirmation").style.display = "none";
-
-});
 // ==========================================
 // CLOSE CONFIRMATION
 // ==========================================
