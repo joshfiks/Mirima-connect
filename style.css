@@ -502,47 +502,254 @@ box-shadow:
 
 }
 
-/*==========================================
-WEATHER BAR
-==========================================*/
+/* ==========================================
+   MIRIMA CONNECT — PREMIUM WEATHER BAR
+========================================== */
 
-.weatherBar{
+.weatherBar {
 
-max-width:1250px;
+    position: relative;
 
-margin:30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-padding:18px 30px;
+    gap: 8px;
 
-display:flex;
+    width: fit-content;
+    max-width: 92%;
 
-justify-content:space-around;
+    margin: 18px auto;
 
-align-items:center;
+    padding: 8px 14px;
 
-flex-wrap:wrap;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(91, 61, 32, .97),
+            rgba(48, 30, 16, .98)
+        );
 
-gap:20px;
+    border: 1px solid rgba(212,175,55,.55);
 
-background:rgba(255,255,255,.08);
+    border-radius: 16px;
 
-backdrop-filter:blur(10px);
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.38),
+        inset 0 1px 1px rgba(255,255,255,.10),
+        inset 0 -5px 10px rgba(0,0,0,.25);
 
-border:1px solid rgba(255,255,255,.15);
+    color: #f3e7c5;
 
-border-radius:20px;
+    font-family: "Poppins", sans-serif;
 
-color:#fff;
-
-box-shadow:0 10px 25px rgba(0,0,0,.25);
+    z-index: 50;
 
 }
 
-.weatherItem{
 
-font-size:18px;
+/* ==========================================
+   INNER GOLD DETAIL
+========================================== */
 
-font-weight:600;
+.weatherBar::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 3px;
+
+    border: 1px solid rgba(255,225,150,.12);
+
+    border-radius: 13px;
+
+    pointer-events: none;
+
+}
+
+
+/* ==========================================
+   WEATHER ITEMS
+========================================== */
+
+.weatherItem {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 5px 9px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    color: #f0dfb5;
+
+}
+
+
+/* ==========================================
+   GREETING
+========================================== */
+
+.weatherGreeting {
+
+    color: #f3d778;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: .4px;
+
+}
+
+
+/* ==========================================
+   WEATHER TEMPERATURE
+========================================== */
+
+#weatherTemp {
+
+    color: #fff1c7;
+
+    font-weight: 600;
+
+}
+
+
+/* ==========================================
+   WEATHER ICON
+========================================== */
+
+.weatherIcon {
+
+    font-size: 15px;
+
+    filter:
+        drop-shadow(
+            0 0 5px rgba(212,175,55,.35)
+        );
+
+}
+
+
+/* ==========================================
+   HUMIDITY
+========================================== */
+
+#weatherHumidity {
+
+    color: #d8c28b;
+
+}
+
+
+/* ==========================================
+   CLOCK
+========================================== */
+
+#currentTime {
+
+    color: #f3d778;
+
+    font-weight: 600;
+
+}
+
+
+/* ==========================================
+   LOCATION
+========================================== */
+
+.weatherLocation {
+
+    color: #d8c28b;
+
+    font-size: 10px;
+
+}
+
+
+/* ==========================================
+   DIVIDERS
+========================================== */
+
+.weatherItem + .weatherItem {
+
+    border-left: 1px solid rgba(212,175,55,.18);
+
+}
+
+
+/* ==========================================
+   HOVER
+========================================== */
+
+.weatherBar:hover {
+
+    border-color: rgba(212,175,55,.8);
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.45),
+        0 0 20px rgba(212,175,55,.10),
+        inset 0 1px 1px rgba(255,255,255,.10);
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+
+    .weatherBar {
+
+        max-width: 94%;
+
+        gap: 3px;
+
+        padding: 6px 8px;
+
+        margin: 12px auto;
+
+        border-radius: 14px;
+
+    }
+
+    .weatherItem {
+
+        padding: 4px 6px;
+
+        font-size: 9px;
+
+    }
+
+    .weatherGreeting {
+
+        font-size: 9px;
+
+    }
+
+    .weatherIcon {
+
+        font-size: 12px;
+
+    }
+
+    .weatherLocation {
+
+        font-size: 8px;
+
+    }
 
 }
 /*==========================================
