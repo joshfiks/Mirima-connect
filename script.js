@@ -447,6 +447,80 @@ roomServiceCard.addEventListener("click", () => {
         });
 
     });
+  // ==========================================
+// FOOD IMAGE PREVIEW
+// ==========================================
+
+let foodPreview = servicePopup.querySelector(".foodPreview");
+
+if (!foodPreview) {
+
+    foodPreview = document.createElement("div");
+
+    foodPreview.className = "foodPreview";
+
+    foodPreview.innerHTML = `
+        <img src="" alt="Food preview">
+    `;
+
+    servicePopup.querySelector(".popup-content").appendChild(foodPreview);
+}
+
+const previewImage = foodPreview.querySelector("img");
+
+let previewTimeout;
+
+
+popupBody.querySelectorAll(".menuItem[data-image]").forEach(item => {
+
+    const image = item.dataset.image;
+
+
+    // DESKTOP — HOVER
+    item.addEventListener("mouseenter", () => {
+
+        if (window.innerWidth <= 650) return;
+
+        previewImage.src = image;
+
+        const rect = item.getBoundingClientRect();
+
+        foodPreview.style.left =
+            `${rect.right + 18}px`;
+
+        foodPreview.style.top =
+            `${rect.top + (rect.height / 2) - 90}px`;
+
+        foodPreview.classList.add("show");
+
+    });
+
+
+    item.addEventListener("mouseleave", () => {
+
+        if (window.innerWidth <= 650) return;
+
+        foodPreview.classList.remove("show");
+
+    });
+
+
+    // MOBILE — TAP
+    item.addEventListener("click", (event) => {
+
+        if (window.innerWidth > 650) return;
+
+        event.stopPropagation();
+
+        clearTimeout(previewTimeout);
+
+        previewImage.src = image;
+
+        foodPreview.classList.toggle("show");
+
+    });
+
+});
 
     document.getElementById("placeOrder").addEventListener("click", () => {
 
