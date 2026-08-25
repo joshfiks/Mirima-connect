@@ -1586,6 +1586,385 @@ color:#fff;
         0 0 0 2px rgba(212,175,55,.06),
         0 0 24px rgba(212,175,55,.15);
 }
+
+/* ==========================================
+   MY REQUESTS — LUXURY POPUP
+========================================== */
+
+#requestsPopup {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212,175,55,.08),
+            rgba(0,0,0,.78) 70%
+        );
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+
+/* ==========================================
+   LUXURY PANEL
+========================================== */
+
+#requestsPopup .popup-content {
+
+    position: relative;
+
+    width: 92%;
+    max-width: 620px;
+    max-height: 82vh;
+
+    padding: 34px 30px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(212,175,55,.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            #21170b,
+            #120d07 55%,
+            #080604
+        );
+
+    border: 1px solid rgba(212,175,55,.55);
+
+    border-radius: 26px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.75),
+        0 0 35px rgba(212,175,55,.10),
+        inset 0 1px 1px rgba(255,255,255,.08);
+
+}
+
+
+/* ==========================================
+   HEADING
+========================================== */
+
+#requestsPopup .popup-content h2 {
+
+    margin: 5px 0 8px;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #f3d778;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.8),
+        0 0 18px rgba(212,175,55,.20);
+
+}
+
+
+/* Gold line underneath heading */
+
+#requestsPopup .popup-content h2::after {
+
+    content: "";
+
+    display: block;
+
+    width: 75px;
+    height: 2px;
+
+    margin: 12px auto 18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px rgba(212,175,55,.35);
+}
+
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+#requestsPopup .popup-content > p {
+
+    margin: 0 auto 24px;
+
+    max-width: 460px;
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 17px;
+
+    line-height: 1.5;
+
+    color: rgba(243,231,197,.68);
+
+}
+
+
+/* ==========================================
+   REQUEST LIST
+========================================== */
+
+#requestsList {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+/* ==========================================
+   REQUEST CARD
+========================================== */
+
+#requestsList .requestItem {
+
+    position: relative;
+
+    padding: 17px 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(75,53,29,.72),
+            rgba(25,17,10,.92)
+        );
+
+    border: 1px solid rgba(212,175,55,.20);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.28),
+        inset 0 1px 1px rgba(255,255,255,.04);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    color: rgba(255,255,255,.72);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* Request hover */
+
+#requestsList .requestItem:hover {
+
+    transform: translateY(-2px);
+
+    border-color: rgba(212,175,55,.48);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.38),
+        0 0 18px rgba(212,175,55,.10);
+}
+
+
+/* Service name */
+
+#requestsList .requestItem strong {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    letter-spacing: .7px;
+
+    color: #f3d778;
+}
+
+
+/* Status */
+
+#requestsList .requestStatus {
+
+    display: inline-block;
+
+    margin-left: 5px;
+
+    padding: 3px 9px;
+
+    border-radius: 20px;
+
+    background: rgba(212,175,55,.12);
+
+    border: 1px solid rgba(212,175,55,.25);
+
+    color: #f3d778;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+}
+
+
+/* Remove ugly HR */
+
+#requestsList .requestItem hr {
+
+    display: none;
+}
+
+
+/* ==========================================
+   EMPTY REQUEST MESSAGE
+========================================== */
+
+#requestsList p {
+
+    margin: 20px 0;
+
+    padding: 25px 15px;
+
+    border: 1px dashed rgba(212,175,55,.22);
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.025);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 17px;
+
+    color: rgba(243,231,197,.55) !important;
+
+}
+
+
+/* ==========================================
+   CLOSE BUTTON
+========================================== */
+
+#requestsPopup #closeRequests {
+
+    position: absolute;
+
+    top: 18px;
+    right: 20px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(212,175,55,.08);
+
+    border: 1px solid rgba(212,175,55,.25);
+
+    color: #d4af37;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+#requestsPopup #closeRequests:hover {
+
+    color: #fff;
+
+    background: rgba(212,175,55,.18);
+
+    border-color: rgba(212,175,55,.65);
+
+    transform: rotate(90deg);
+
+    box-shadow:
+        0 0 16px rgba(212,175,55,.25);
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+
+    #requestsPopup .popup-content {
+
+        width: 94%;
+
+        max-height: 88vh;
+
+        padding: 30px 18px;
+
+        border-radius: 22px;
+    }
+
+    #requestsPopup .popup-content h2 {
+
+        font-size: 22px;
+
+        letter-spacing: 1.3px;
+
+        padding-right: 25px;
+    }
+
+    #requestsPopup .popup-content > p {
+
+        font-size: 15px;
+
+        margin-bottom: 20px;
+    }
+
+    #requestsList .requestItem {
+
+        padding: 14px;
+
+        font-size: 11px;
+
+        border-radius: 14px;
+    }
+
+    #requestsList .requestItem strong {
+
+        font-size: 12px;
+    }
+
+}
 /*==========================================
 FLOATING LEAVES
 ==========================================*/
