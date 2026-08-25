@@ -3031,22 +3031,32 @@ opacity:.9;
 
     #servicePopup .foodPreview {
 
-        position: absolute;
+        position: fixed !important;
 
         width: 170px;
         height: 140px;
 
-        left: 50%;
+        left: 50% !important;
+        top: 50% !important;
+
+        right: auto !important;
+        bottom: auto !important;
 
         transform:
-            translate(-50%, 10px)
-            scale(.94);
+            translate(-50%, -50%)
+            scale(.92);
+
+        z-index: 10002;
+
+        overflow: hidden;
+
+        pointer-events: none;
     }
 
     #servicePopup .foodPreview.show {
 
         transform:
-            translate(-50%, 0)
+            translate(-50%, -50%)
             scale(1);
     }
 }
