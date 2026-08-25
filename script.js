@@ -360,15 +360,48 @@ roomServiceCard.addEventListener("click", () => {
     popupBody.innerHTML = `
 <h3>🍳 Breakfast</h3>
 
-<div class="menuItem" data-time="20–25">🍽️ Full English Breakfast <small>(20–25 min)</small></div>
-<div class="menuItem" data-time="15–20">🥞 Pancakes & Honey <small>(15–20 min)</small></div>
-<div class="menuItem" data-time="10–15">🍳 Chef's Omelette <small>(10–15 min)</small></div>
-<div class="menuItem" data-time="5–8">🍉 Fresh Tropical Fruit Platter <small>(5–8 min)</small></div>
-<div class="menuItem" data-time="20–25">🥣 African Breakfast <small>(20–25 min)</small></div>
+<div class="menuItem"
+     data-time="20–25">
+    🍽️ Full English Breakfast
+    <small>(20–25 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="15–20"
+     data-image="images/menu/pancakes-honey.png">
+    🥞 Pancakes & Honey
+    <small>(15–20 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="10–15"
+     data-image="images/menu/chefs-omelette.png">
+    🍳 Chef's Omelette
+    <small>(10–15 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="5–8"
+     data-image="images/menu/tropical-fruit-platter.png">
+    🍉 Fresh Tropical Fruit Platter
+    <small>(5–8 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="20–25"
+     data-image="images/menu/african-breakfast.png">
+    🥣 African Breakfast
+    <small>(20–25 min)</small>
+</div>
 
 <h3>🍽️ Main Meals</h3>
 
-<div class="menuItem" data-time="25–30">🐟 Grilled Nile Tilapia <small>(25–30 min)</small></div>
+<div class="menuItem"
+     data-time="25–30"
+     data-image="images/menu/nile-tilapia.png">
+    🐟 Grilled Nile Tilapia
+    <small>(25–30 min)</small>
+</div>
 <div class="menuItem" data-time="25–30">🍗 Roast Chicken <small>(25–30 min)</small></div>
 <div class="menuItem" data-time="30–35">🥩 Beef Fillet <small>(30–35 min)</small></div>
 <div class="menuItem" data-time="35–45">🍖 Goat Muchomo <small>(35–45 min)</small></div>
