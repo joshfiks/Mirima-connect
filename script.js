@@ -2145,7 +2145,7 @@ natureWalkPopup.querySelectorAll(".nature-card").forEach(card => {
     });
 
 });
- // ==========================================
+// ==========================================
 // HOUSEKEEPING POPUP
 // ==========================================
 
@@ -2154,18 +2154,62 @@ housekeepingCard.addEventListener("click", () => {
     housekeepingPopup.style.display = "flex";
 
 
-    /* ==========================================
-       HOUSEKEEPING MENU ITEMS
-       ONE ITEM AT A TIME
-    ========================================== */
+    // ==========================================
+    // CREATE IMAGE PREVIEW
+    // ==========================================
+
+    let housekeepingPreview =
+        housekeepingPopup.querySelector(".foodPreview");
+
+    if (!housekeepingPreview) {
+
+        housekeepingPreview = document.createElement("div");
+
+        housekeepingPreview.className = "foodPreview";
+
+        housekeepingPreview.innerHTML = `
+            <img src="" alt="Housekeeping preview">
+        `;
+
+        housekeepingPopup
+            .querySelector(".popup-content")
+            .appendChild(housekeepingPreview);
+    }
+
+
+    const previewImage =
+        housekeepingPreview.querySelector("img");
+
+
+    // ==========================================
+    // PRELOAD ALL HOUSEKEEPING IMAGES
+    // ==========================================
+
+    housekeepingPopup
+        .querySelectorAll(".menuItem[data-image]")
+        .forEach(item => {
+
+            const preload = new Image();
+
+            preload.src = item.dataset.image;
+
+        });
+
+
+    // ==========================================
+    // MENU SELECTION + PREVIEW
+    // ==========================================
 
     housekeepingPopup
         .querySelectorAll(".menuItem")
         .forEach(item => {
 
-            item.onclick = () => {
+            item.onclick = event => {
 
-                // Remove selection from other items
+                event.stopPropagation();
+
+
+                // Remove other selections
                 housekeepingPopup
                     .querySelectorAll(".menuItem.selected")
                     .forEach(selectedItem => {
@@ -2181,8 +2225,66 @@ housekeepingCard.addEventListener("click", () => {
                     });
 
 
-                // Select clicked item
+                // Select current item
                 item.classList.add("selected");
+
+
+                // Show image
+                if (item.dataset.image) {
+
+                    previewImage.src =
+                        item.dataset.image;
+
+                    housekeepingPreview.classList.add(
+                        "show"
+                    );
+
+                }
+
+            };
+
+
+            // ==========================================
+            // DESKTOP HOVER
+            // ==========================================
+
+            item.onmouseenter = () => {
+
+                if (window.innerWidth <= 650) return;
+
+                if (!item.dataset.image) return;
+
+
+                const rect =
+                    item.getBoundingClientRect();
+
+
+                previewImage.src =
+                    item.dataset.image;
+
+
+                housekeepingPreview.style.left =
+                    `${rect.right + 18}px`;
+
+
+                housekeepingPreview.style.top =
+                    `${rect.top + (rect.height / 2) - 90}px`;
+
+
+                housekeepingPreview.classList.add(
+                    "show"
+                );
+
+            };
+
+
+            item.onmouseleave = () => {
+
+                if (window.innerWidth <= 650) return;
+
+                housekeepingPreview.classList.remove(
+                    "show"
+                );
 
             };
 
@@ -2202,6 +2304,15 @@ closeHousekeeping.addEventListener("click", () => {
         ".menuItem"
     );
 
+    const preview =
+        housekeepingPopup.querySelector(".foodPreview");
+
+    if (preview) {
+
+        preview.classList.remove("show");
+
+    }
+
     housekeepingPopup.style.display =
         "none";
 
@@ -2220,6 +2331,15 @@ housekeepingPopup.addEventListener("click", e => {
             housekeepingPopup,
             ".menuItem"
         );
+
+        const preview =
+            housekeepingPopup.querySelector(".foodPreview");
+
+        if (preview) {
+
+            preview.classList.remove("show");
+
+        }
 
         housekeepingPopup.style.display =
             "none";
