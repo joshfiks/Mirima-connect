@@ -9165,3 +9165,354 @@ padding:22px !important;
         }
     }
 }
+/* ==========================================
+   ROMANTIC ROOM SETUP — PREMIUM
+========================================== */
+
+#romanticPopup .romantic-content {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(32,20,16,.98),
+            rgba(15,10,8,.99)
+        );
+
+    border: 1px solid rgba(212,175,55,.5);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.8),
+        0 0 45px rgba(212,175,55,.1);
+
+    padding: 38px 34px;
+
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+#romanticPopup h2 {
+
+    margin: 0;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 29px;
+
+    letter-spacing: 1.8px;
+
+    color: #f1d77b;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.7),
+        0 0 20px rgba(212,175,55,.15);
+
+}
+
+
+#romanticPopup h2::after {
+
+    content: "";
+
+    display: block;
+
+    width: 90px;
+
+    height: 1px;
+
+    margin: 13px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+
+}
+
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+#romanticPopup .romantic-content > p {
+
+    margin: 14px 0 28px;
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 18px;
+
+    font-style: italic;
+
+    color: rgba(245,231,197,.75);
+
+}
+
+
+/* ==========================================
+   SECTION HEADINGS
+========================================== */
+
+#romanticPopup h3 {
+
+    margin: 22px 0 10px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    color: #d8b94f;
+
+    text-transform: uppercase;
+
+}
+
+
+/* ==========================================
+   OPTION GROUP
+========================================== */
+
+#romanticPopup .romantic-option-group {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+}
+
+
+/* ==========================================
+   OPTIONS
+========================================== */
+
+#romanticPopup .romanticOption {
+
+    flex: 1;
+
+    min-width: 110px;
+
+    padding: 12px 14px;
+
+    border: 1px solid rgba(212,175,55,.2);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.015)
+        );
+
+    color: #f1e3c1;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+}
+
+
+#romanticPopup .romanticOption:hover {
+
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(212,175,55,.6);
+
+    background:
+        rgba(212,175,55,.1);
+
+}
+
+
+/* ==========================================
+   SELECTED OPTION
+========================================== */
+
+#romanticPopup .romanticOption.selected {
+
+    border-color:
+        rgba(212,175,55,.9);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.22),
+            rgba(212,175,55,.06)
+        );
+
+    color: #ffe8a0;
+
+    box-shadow:
+        0 6px 18px rgba(212,175,55,.12);
+
+}
+
+
+/* ==========================================
+   SPECIAL MESSAGE
+========================================== */
+
+#romanticPopup #romanticMessage {
+
+    width: 100%;
+
+    min-height: 100px;
+
+    box-sizing: border-box;
+
+    padding: 14px 16px;
+
+    resize: vertical;
+
+    border-radius: 15px;
+
+    border: 1px solid rgba(212,175,55,.22);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: #f4e7c5;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 17px;
+
+    outline: none;
+
+}
+
+
+#romanticPopup #romanticMessage::placeholder {
+
+    color: rgba(243,215,120,.45);
+
+}
+
+
+#romanticPopup #romanticMessage:focus {
+
+    border-color:
+        rgba(212,175,55,.65);
+
+    box-shadow:
+        0 0 20px rgba(212,175,55,.08);
+
+}
+
+
+/* ==========================================
+   CONFIRM BUTTON
+========================================== */
+
+#confirmRomantic {
+
+    width: 100%;
+
+    margin-top: 24px;
+
+    padding: 15px;
+
+    border: 1px solid rgba(255,225,130,.75);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #8f691c,
+            #d4af37,
+            #f4d878,
+            #d4af37,
+            #8f691c
+        );
+
+    background-size: 250% 100%;
+
+    color: #251800;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: .8px;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+    box-shadow:
+        0 10px 28px rgba(212,175,55,.22);
+
+}
+
+
+#confirmRomantic:hover {
+
+    transform: translateY(-2px);
+
+    background-position: 100% 0;
+
+    box-shadow:
+        0 15px 35px rgba(212,175,55,.35);
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+
+    #romanticPopup .romantic-content {
+
+        width: 94%;
+
+        padding: 30px 18px;
+
+        border-radius: 24px;
+
+    }
+
+    #romanticPopup h2 {
+
+        font-size: 24px;
+
+    }
+
+    #romanticPopup .romanticOption {
+
+        min-width: 90px;
+
+        font-size: 15px;
+
+        padding: 11px 10px;
+
+    }
+
+}
