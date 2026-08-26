@@ -2213,144 +2213,150 @@ housekeepingCard.addEventListener("click", () => {
 
                 event.stopPropagation();
 
+// ----------------------------------
+// ROMANTIC ROOM SETUP
+// ----------------------------------
 
-                // ----------------------------------
-                // ROMANTIC ROOM SETUP
-                // ----------------------------------
+if (
+    item.textContent.includes(
+        "Romantic Room Setup"
+    )
+) {
 
-                if (
-                    item.textContent.includes(
-                        "Romantic Room Setup"
-                    )
-                ) {
+    // Select Romantic Room Setup
+    housekeepingPopup
+        .querySelectorAll(".menuItem.selected")
+        .forEach(selectedItem => {
 
-                    // Select Romantic Room Setup
-                    housekeepingPopup
-                        .querySelectorAll(".menuItem.selected")
-                        .forEach(selectedItem => {
+            if (selectedItem !== item) {
 
-                            if (selectedItem !== item) {
-
-                                selectedItem.classList.remove(
-                                    "selected"
-                                );
-
-                            }
-
-                        });
-
-                    item.classList.add("selected");
-
-
-                    // Open Romantic customization
-                    romanticPopup.style.display = "flex";
-
-
-                    // Show its image
-                    if (item.dataset.image) {
-
-                        previewImage.src =
-                            item.dataset.image;
-
-                        housekeepingPreview.classList.add(
-                            "show"
-                        );
-
-                    }
-
-                    return;
-                }
-
-
-                // ----------------------------------
-                // NORMAL HOUSEKEEPING ITEM
-                // ----------------------------------
-
-                housekeepingPopup
-                    .querySelectorAll(".menuItem.selected")
-                    .forEach(selectedItem => {
-
-                        if (selectedItem !== item) {
-
-                            selectedItem.classList.remove(
-                                "selected"
-                            );
-
-                        }
-
-                    });
-
-
-                item.classList.add("selected");
-
-
-                // ----------------------------------
-                // SHOW IMAGE
-                // ----------------------------------
-
-                if (item.dataset.image) {
-
-                    previewImage.src =
-                        item.dataset.image;
-
-                    housekeepingPreview.classList.add(
-                        "show"
-                    );
-
-                }
-
-            };
-
-
-            // ======================================
-            // DESKTOP — HOVER PREVIEW
-            // ======================================
-
-            item.onmouseenter = () => {
-
-                if (window.innerWidth <= 650) return;
-
-                if (!item.dataset.image) return;
-
-
-                const rect =
-                    item.getBoundingClientRect();
-
-
-                previewImage.src =
-                    item.dataset.image;
-
-
-                housekeepingPreview.style.left =
-                    `${rect.right + 18}px`;
-
-
-                housekeepingPreview.style.top =
-                    `${rect.top + (rect.height / 2) - 90}px`;
-
-
-                housekeepingPreview.classList.add(
-                    "show"
+                selectedItem.classList.remove(
+                    "selected"
                 );
 
-            };
-
-
-            // ======================================
-            // DESKTOP — HIDE PREVIEW
-            // ======================================
-
-            item.onmouseleave = () => {
-
-                if (window.innerWidth <= 650) return;
-
-                housekeepingPreview.classList.remove(
-                    "show"
-                );
-
-            };
+            }
 
         });
+
+    item.classList.add("selected");
+
+
+    // Open Romantic customization
+    const romanticPopup =
+        document.getElementById("romanticPopup");
+
+    if (romanticPopup) {
+
+        romanticPopup.style.display = "flex";
+
+    }
+
+
+    // Show its image
+    if (item.dataset.image) {
+
+        previewImage.src =
+            item.dataset.image;
+
+        housekeepingPreview.classList.add(
+            "show"
+        );
+
+    }
+
+    return;
+}
+
+
+// ----------------------------------
+// NORMAL HOUSEKEEPING ITEM
+// ----------------------------------
+
+housekeepingPopup
+    .querySelectorAll(".menuItem.selected")
+    .forEach(selectedItem => {
+
+        if (selectedItem !== item) {
+
+            selectedItem.classList.remove(
+                "selected"
+            );
+
+        }
+
+    });
+
+
+item.classList.add("selected");
+
+
+// ----------------------------------
+// SHOW IMAGE
+// ----------------------------------
+
+if (item.dataset.image) {
+
+    previewImage.src =
+        item.dataset.image;
+
+    housekeepingPreview.classList.add(
+        "show"
+    );
+
+}
+
+};
+
+
+// ======================================
+// DESKTOP — HOVER PREVIEW
+// ======================================
+
+item.onmouseenter = () => {
+
+    if (window.innerWidth <= 650) return;
+
+    if (!item.dataset.image) return;
+
+
+    const rect =
+        item.getBoundingClientRect();
+
+
+    previewImage.src =
+        item.dataset.image;
+
+
+    housekeepingPreview.style.left =
+        `${rect.right + 18}px`;
+
+
+    housekeepingPreview.style.top =
+        `${rect.top + (rect.height / 2) - 90}px`;
+
+
+    housekeepingPreview.classList.add(
+        "show"
+    );
+
+};
+
+
+// ======================================
+// DESKTOP — HIDE PREVIEW
+// ======================================
+
+item.onmouseleave = () => {
+
+    if (window.innerWidth <= 650) return;
+
+    housekeepingPreview.classList.remove(
+        "show"
+    );
+
+};
+
+});
 
 });
 
@@ -2369,162 +2375,181 @@ const confirmRomantic =
     document.getElementById("confirmRomantic");
 
 
-// ==========================================
-// ROMANTIC OPTION SELECTION
-// ==========================================
+if (
+    romanticPopup &&
+    closeRomantic &&
+    confirmRomantic
+) {
 
-romanticPopup
-    .querySelectorAll(".romantic-option-group")
-    .forEach(group => {
 
-        const options =
-            group.querySelectorAll(".romanticOption");
+    // ==========================================
+    // ROMANTIC OPTION SELECTION
+    // ==========================================
 
-        options.forEach(option => {
+    romanticPopup
+        .querySelectorAll(
+            ".romantic-option-group"
+        )
+        .forEach(group => {
 
-            option.addEventListener("click", () => {
+            const options =
+                group.querySelectorAll(
+                    ".romanticOption"
+                );
 
-                options.forEach(other => {
 
-                    other.classList.remove(
-                        "selected"
-                    );
+            options.forEach(option => {
 
-                });
+                option.addEventListener(
+                    "click",
+                    () => {
 
-                option.classList.add(
-                    "selected"
+                        options.forEach(
+                            other => {
+
+                                other.classList.remove(
+                                    "selected"
+                                );
+
+                            }
+                        );
+
+
+                        option.classList.add(
+                            "selected"
+                        );
+
+                    }
                 );
 
             });
 
         });
 
-    });
 
+    // ==========================================
+    // CLOSE ROMANTIC POPUP
+    // ==========================================
 
-// ==========================================
-// CLOSE ROMANTIC POPUP
-// ==========================================
+    closeRomantic.addEventListener(
+        "click",
+        () => {
 
-closeRomantic.addEventListener("click", () => {
+            romanticPopup.style.display =
+                "none";
 
-    romanticPopup.style.display = "none";
-
-});
-
-
-// ==========================================
-// CLOSE ROMANTIC OUTSIDE
-// ==========================================
-
-romanticPopup.addEventListener("click", event => {
-
-    if (event.target === romanticPopup) {
-
-        romanticPopup.style.display = "none";
-
-    }
-
-});
-
-
-// ==========================================
-// CONFIRM ROMANTIC SETUP
-// ==========================================
-
-confirmRomantic.addEventListener("click", () => {
-
-    const selectedOptions =
-        romanticPopup.querySelectorAll(
-            ".romanticOption.selected"
-        );
-
-
-    if (selectedOptions.length === 0) {
-
-        showWarning(
-            "Choose Your Setup",
-            "Please select your preferred romantic room setup."
-        );
-
-        return;
-
-    }
-
-
-    const choices =
-        Array.from(selectedOptions)
-            .map(option => option.dataset.value);
-
-
-    const message =
-        document.getElementById(
-            "romanticMessage"
-        ).value.trim();
-
-
-    const romanticDetails = {
-
-        choices: choices,
-
-        message: message
-
-    };
-
-
-    localStorage.setItem(
-        "romanticRoomSetup",
-        JSON.stringify(
-            romanticDetails
-        )
+        }
     );
 
 
-    romanticPopup.style.display = "none";
+    // ==========================================
+    // CLOSE ROMANTIC OUTSIDE
+    // ==========================================
 
-});
+    romanticPopup.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                romanticPopup
+            ) {
+
+                romanticPopup.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // CONFIRM ROMANTIC SETUP
+    // ==========================================
+
+    confirmRomantic.addEventListener(
+        "click",
+        () => {
+
+            const selectedOptions =
+                romanticPopup.querySelectorAll(
+                    ".romanticOption.selected"
+                );
+
+
+            if (
+                selectedOptions.length === 0
+            ) {
+
+                showWarning(
+                    "Choose Your Setup",
+                    "Please select your preferred romantic room setup."
+                );
+
+                return;
+
+            }
+
+
+            // Get selected choices
+            const choices =
+                Array.from(
+                    selectedOptions
+                ).map(
+                    option =>
+                        option.dataset.value
+                );
+
+
+            // Get special message
+            const messageElement =
+                document.getElementById(
+                    "romanticMessage"
+                );
+
+
+            const message =
+                messageElement
+                    ? messageElement.value.trim()
+                    : "";
+
+
+            // Save customization
+            const romanticDetails = {
+
+                choices: choices,
+
+                message: message
+
+            };
+
+
+            localStorage.setItem(
+                "romanticRoomSetup",
+                JSON.stringify(
+                    romanticDetails
+                )
+            );
+
+
+            // Close popup
+            romanticPopup.style.display =
+                "none";
+
+        }
+    );
+
+}
 
 
 // ==========================================
 // CLOSE HOUSEKEEPING
 // ==========================================
 
-closeHousekeeping.addEventListener("click", () => {
-
-    clearSelections(
-        housekeepingPopup,
-        ".menuItem"
-    );
-
-
-    const preview =
-        housekeepingPopup.querySelector(
-            ".foodPreview"
-        );
-
-
-    if (preview) {
-
-        preview.classList.remove("show");
-
-    }
-
-
-    romanticPopup.style.display = "none";
-
-    housekeepingPopup.style.display = "none";
-
-});
-
-
-// ==========================================
-// CLOSE WHEN CLICKING OUTSIDE
-// ==========================================
-
-housekeepingPopup.addEventListener("click", e => {
-
-    if (e.target === housekeepingPopup) {
+closeHousekeeping.addEventListener(
+    "click",
+    () => {
 
         clearSelections(
             housekeepingPopup,
@@ -2540,18 +2565,77 @@ housekeepingPopup.addEventListener("click", e => {
 
         if (preview) {
 
-            preview.classList.remove("show");
+            preview.classList.remove(
+                "show"
+            );
 
         }
 
 
-        romanticPopup.style.display = "none";
+        if (romanticPopup) {
 
-        housekeepingPopup.style.display = "none";
+            romanticPopup.style.display =
+                "none";
+
+        }
+
+
+        housekeepingPopup.style.display =
+            "none";
 
     }
+);
 
-});
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+
+housekeepingPopup.addEventListener(
+    "click",
+    e => {
+
+        if (
+            e.target ===
+            housekeepingPopup
+        ) {
+
+            clearSelections(
+                housekeepingPopup,
+                ".menuItem"
+            );
+
+
+            const preview =
+                housekeepingPopup.querySelector(
+                    ".foodPreview"
+                );
+
+
+            if (preview) {
+
+                preview.classList.remove(
+                    "show"
+                );
+
+            }
+
+
+            if (romanticPopup) {
+
+                romanticPopup.style.display =
+                    "none";
+
+            }
+
+
+            housekeepingPopup.style.display =
+                "none";
+
+        }
+
+    }
+);
 // ==========================================
 // BILLING POPUP
 // ==========================================
