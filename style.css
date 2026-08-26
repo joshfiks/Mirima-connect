@@ -9971,3 +9971,481 @@ padding:22px !important;
     }
 
 }
+/* ==========================================
+   RECEPTION — PREMIUM SERVICE CARDS
+========================================== */
+
+#receptionPopup .popup-content {
+
+    width: min(650px, 92%);
+
+    padding: 38px 34px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(32, 20, 16, .98),
+            rgba(10, 7, 5, .99)
+        );
+
+    border: 1px solid
+        rgba(212, 175, 55, .55);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.8),
+        0 0 45px rgba(212,175,55,.10),
+        inset 0 1px 1px
+        rgba(255,255,255,.07);
+
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+#receptionPopup h2 {
+
+    margin: 0;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 28px;
+
+    letter-spacing: 1.5px;
+
+    font-weight: 600;
+
+    color: #f1d77b;
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,.7),
+        0 0 20px
+        rgba(212,175,55,.15);
+
+}
+
+
+/* ==========================================
+   GOLD TITLE LINE
+========================================== */
+
+#receptionPopup h2::after {
+
+    content: "";
+
+    display: block;
+
+    width: 95px;
+
+    height: 1px;
+
+    margin: 13px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+
+}
+
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+#receptionPopup .popup-content > p {
+
+    margin: 14px 0 28px;
+
+    text-align: center;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
+
+    font-style: italic;
+
+    color:
+        rgba(245,231,197,.72);
+
+}
+
+
+/* ==========================================
+   SERVICE GRID
+========================================== */
+
+#receptionPopup .service-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+}
+
+
+/* ==========================================
+   SERVICE CARD
+========================================== */
+
+#receptionPopup .service-option {
+
+    position: relative;
+
+    min-height: 125px;
+
+    padding: 20px 15px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    border: 1px solid
+        rgba(212,175,55,.22);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.015)
+        );
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease,
+        background .28s ease;
+
+}
+
+
+/* ==========================================
+   SUBTLE CARD LIGHT
+========================================== */
+
+#receptionPopup .service-option::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+
+    height: 90px;
+
+    top: -45px;
+
+    right: -45px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(212,175,55,.07);
+
+    filter: blur(4px);
+
+    transition:
+        transform .35s ease;
+
+}
+
+
+/* ==========================================
+   HOVER
+========================================== */
+
+#receptionPopup .service-option:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(212,175,55,.65);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212,175,55,.11),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 14px 35px
+        rgba(0,0,0,.38),
+        0 0 20px
+        rgba(212,175,55,.08);
+
+}
+
+
+#receptionPopup .service-option:hover::before {
+
+    transform: scale(1.5);
+
+}
+
+
+/* ==========================================
+   ICON
+========================================== */
+
+#receptionPopup .service-option .icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    margin-bottom: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212,175,55,.15),
+            rgba(212,175,55,.035)
+        );
+
+    border: 1px solid
+        rgba(212,175,55,.25);
+
+    font-size: 27px;
+
+    box-shadow:
+        inset 0 1px 1px
+        rgba(255,255,255,.08);
+
+    transition:
+        transform .28s ease,
+        box-shadow .28s ease;
+
+}
+
+
+#receptionPopup .service-option:hover .icon {
+
+    transform:
+        translateY(-2px)
+        scale(1.05);
+
+    box-shadow:
+        0 8px 20px
+        rgba(212,175,55,.14);
+
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+#receptionPopup .service-option .title {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    letter-spacing: .3px;
+
+    color: #f1e3c1;
+
+    transition:
+        color .25s ease;
+
+}
+
+
+#receptionPopup .service-option:hover .title {
+
+    color: #ffe8a0;
+
+}
+
+
+/* ==========================================
+   SEND REQUEST BUTTON
+========================================== */
+
+#receptionPopup #sendReceptionRequest {
+
+    width: 100%;
+
+    margin-top: 24px;
+
+    padding: 15px 20px;
+
+    border: 1px solid
+        rgba(255,225,130,.75);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #8f691c,
+            #d4af37,
+            #f4d878,
+            #d4af37,
+            #8f691c
+        );
+
+    background-size: 250% 100%;
+
+    color: #251800;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: .8px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 28px
+        rgba(212,175,55,.20);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background-position .4s ease;
+
+}
+
+
+#receptionPopup #sendReceptionRequest:hover {
+
+    transform:
+        translateY(-2px);
+
+    background-position:
+        100% 0;
+
+    box-shadow:
+        0 15px 35px
+        rgba(212,175,55,.32);
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+
+    #receptionPopup .popup-content {
+
+        width: 94%;
+
+        padding: 30px 17px;
+
+        border-radius: 24px;
+
+    }
+
+
+    #receptionPopup h2 {
+
+        font-size: 23px;
+
+    }
+
+
+    #receptionPopup .popup-content > p {
+
+        font-size: 16px;
+
+        margin-bottom: 22px;
+
+    }
+
+
+    #receptionPopup .service-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 11px;
+
+    }
+
+
+    #receptionPopup .service-option {
+
+        min-height: 112px;
+
+        padding: 15px 8px;
+
+        border-radius: 17px;
+
+    }
+
+
+    #receptionPopup .service-option .icon {
+
+        width: 50px;
+
+        height: 50px;
+
+        margin-bottom: 9px;
+
+        font-size: 23px;
+
+        border-radius: 14px;
+
+    }
+
+
+    #receptionPopup .service-option .title {
+
+        font-size: 15px;
+
+    }
+
+}
