@@ -524,40 +524,6 @@ servicePopup.style.display = "flex";
 
 
 /* ==========================================
-   MENU ITEM SELECTION
-   — ONE ITEM PER ORDER
-========================================== */
-
-popupBody.querySelectorAll(".menuItem").forEach(item => {
-
-    item.addEventListener("click", () => {
-
-        // Remove selection from every other item
-        popupBody.querySelectorAll(".menuItem.selected")
-            .forEach(selectedItem => {
-
-                if (selectedItem !== item) {
-                    selectedItem.classList.remove("selected");
-                }
-
-            });
-
-        // Select the clicked item
-        item.classList.add("selected");
-
-        // Immediately show its food preview
-        if (item.dataset.image && previewImage) {
-
-            previewImage.src = item.dataset.image;
-
-            foodPreview.classList.add("show");
-
-        }
-
-    });
-
-});
-/* ==========================================
    FOOD IMAGE PREVIEW
 ========================================== */
 
@@ -594,10 +560,72 @@ popupBody
         preloadImage.src = item.dataset.image;
 
     });
+/* ==========================================
+   MENU ITEM SELECTION
+   — ONE ITEM PER ORDER
+========================================== */
+
+popupBody
+    .querySelectorAll(".menuItem")
+    .forEach(item => {
+
+        item.addEventListener("click", event => {
+
+            /*
+             * Mobile preview click should not
+             * interfere with selection.
+             */
+
+            if (window.innerWidth <= 650) {
+                event.stopPropagation();
+            }
+
+
+            /*
+             * Remove selection from all
+             * other menu items.
+             */
+
+            popupBody
+                .querySelectorAll(".menuItem.selected")
+                .forEach(selectedItem => {
+
+                    if (selectedItem !== item) {
+
+                        selectedItem.classList.remove("selected");
+
+                    }
+
+                });
+
+
+            /*
+             * Select this item.
+             */
+
+            item.classList.add("selected");
+
+
+            /*
+             * Show its image immediately.
+             */
+
+            if (item.dataset.image) {
+
+                previewImage.src =
+                    item.dataset.image;
+
+                foodPreview.classList.add("show");
+
+            }
+
+        });
+
+    });
 
 
 /* ==========================================
-   DESKTOP — FAST HOVER PREVIEW
+   DESKTOP — HOVER PREVIEW
 ========================================== */
 
 popupBody
@@ -608,17 +636,17 @@ popupBody
 
             if (window.innerWidth <= 650) return;
 
-            const image = item.dataset.image;
+            previewImage.src =
+                item.dataset.image;
 
-            const rect = item.getBoundingClientRect();
+            const rect =
+                item.getBoundingClientRect();
 
             foodPreview.style.left =
                 `${rect.right + 18}px`;
 
             foodPreview.style.top =
                 `${rect.top + (rect.height / 2) - 90}px`;
-
-            previewImage.src = image;
 
             foodPreview.classList.add("show");
 
@@ -633,115 +661,288 @@ popupBody
 
         });
 
-
-        /* ==========================================
-           MOBILE — FAST TAP PREVIEW
-        ========================================== */
-
-        item.addEventListener("click", event => {
-
-            if (window.innerWidth > 650) return;
-
-            event.stopPropagation();
-
-            previewImage.src = item.dataset.image;
-
-            foodPreview.classList.add("show");
-
-        });
-
     });
+
 
 /* ==========================================
    PLACE ORDER
 ========================================== */
-   document.getElementById("placeOrder").addEventListener("click", () => {
 
-    const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
+document
+    .getElementById("placeOrder")
+    .addEventListener("click", () => {
 
-    if (selectedItems.length === 0) {
 
-    showWarning(
-        "No Menu Item Selected",
-        "Please choose at least one menu item before placing your order."
-    );
+        /* --------------------------------------
+           CHECK SELECTED ITEM
+        -------------------------------------- */
 
-    return;
+        const selectedItems =
+            popupBody.querySelectorAll(
+                ".menuItem.selected"
+            );
 
-}
 
-    const guestName = localStorage.getItem("guestName") || "Guest";
-       
-        let estimate = "5–10 minutes";
+        if (selectedItems.length === 0) {
 
-        if (selectedItems.length > 0) {
+            showWarning(
+                "No Menu Item Selected",
+                "Please choose a menu item before placing your order."
+            );
 
-            let longest = 0;
-            let estimateText = "5–10";
+            return;
+        }
 
-            selectedItems.forEach(item => {
 
-                const time = item.dataset.time;
+        /* --------------------------------------
+           ORDER LIMIT
+           Maximum 2 orders
+        -------------------------------------- */
 
-                if (time === "0") return;
+        const orderHistory =
+            JSON.parse(
+                localStorage.getItem(
+                    "roomServiceOrders"
+                ) || "[]"
+            );
 
-                const highest = parseInt(time.split("–")[1]);
 
-                if (highest > longest) {
+        const now = Date.now();
 
-                    longest = highest;
-                    estimateText = time;
 
-                }
+        /*
+         * Remove orders older than the
+         * current session limit window.
+         */
+
+        const recentOrders =
+            orderHistory.filter(order => {
+
+                return now - order.time <
+                    24 * 60 * 60 * 1000;
 
             });
 
-            estimate = longest === 0
-                ? "Immediate"
-                : estimateText + " minutes";
+
+        /* --------------------------------------
+           MAXIMUM 2 ORDERS
+        -------------------------------------- */
+
+        if (recentOrders.length >= 2) {
+
+            showWarning(
+                "Order Limit Reached",
+                "You cannot place more than two Room Service orders within 24 hours."
+            );
+
+            return;
         }
 
-        servicePopup.style.display = "none";
 
-        const btn = document.getElementById("placeOrder");
+        /* --------------------------------------
+           10 MINUTE WAITING PERIOD
+        -------------------------------------- */
 
-showLoading("Contacting Room Service...", () => {
+        if (recentOrders.length > 0) {
 
-  addRequest("🍽️ Room Service", "Preparing");
+            const lastOrder =
+                recentOrders[recentOrders.length - 1];
 
-  showNotification(
-    "🍽️",
-    "Room Service",
-    "Your order has been received."
-);
-  
-    showConfirmation(
-        `Thank you, ${guestName}!`,
-        "Your order has been received.",
-        estimate
-    );
+            const tenMinutes =
+                10 * 60 * 1000;
 
-}, btn);
-      
- });
-  
-});
+            const timePassed =
+                now - lastOrder.time;
+
+
+            if (timePassed < tenMinutes) {
+
+                const remaining =
+                    Math.ceil(
+                        (tenMinutes - timePassed)
+                        / 60000
+                    );
+
+
+                showWarning(
+                    "Please Wait",
+                    `Please wait ${remaining} minute${remaining === 1 ? "" : "s"} before placing another Room Service order.`
+                );
+
+                return;
+            }
+
+        }
+
+
+        /* --------------------------------------
+           GUEST INFORMATION
+        -------------------------------------- */
+
+        const guestName =
+            localStorage.getItem("guestName")
+            || "Guest";
+
+
+        /* --------------------------------------
+           PREPARATION TIME
+        -------------------------------------- */
+
+        let estimate =
+            "5–10 minutes";
+
+        let longest = 0;
+
+        let estimateText =
+            "5–10";
+
+
+        selectedItems.forEach(item => {
+
+            const time =
+                item.dataset.time;
+
+
+            if (time === "0") return;
+
+
+            const highest =
+                parseInt(
+                    time.split("–")[1]
+                );
+
+
+            if (highest > longest) {
+
+                longest = highest;
+
+                estimateText = time;
+
+            }
+
+        });
+
+
+        estimate =
+            longest === 0
+                ? "Immediate"
+                : estimateText + " minutes";
+
+
+        /* --------------------------------------
+           SAVE ORDER TIME
+        -------------------------------------- */
+
+        recentOrders.push({
+
+            time: now,
+
+            item:
+                selectedItems[0].textContent
+                    .trim()
+
+        });
+
+
+        localStorage.setItem(
+            "roomServiceOrders",
+            JSON.stringify(recentOrders)
+        );
+
+
+        /* --------------------------------------
+           CLOSE POPUP
+        -------------------------------------- */
+
+        servicePopup.style.display =
+            "none";
+
+
+        foodPreview.classList.remove(
+            "show"
+        );
+
+
+        /* --------------------------------------
+           EXISTING LOADING SYSTEM
+        -------------------------------------- */
+
+        const btn =
+            document.getElementById(
+                "placeOrder"
+            );
+
+
+        showLoading(
+            "Contacting Room Service...",
+            () => {
+
+                addRequest(
+                    "🍽️ Room Service",
+                    "Preparing"
+                );
+
+
+                showNotification(
+                    "🍽️",
+                    "Room Service",
+                    "Your order has been received."
+                );
+
+
+                showConfirmation(
+                    `Thank you, ${guestName}!`,
+                    "Your order has been received.",
+                    estimate
+                );
+
+            },
+            btn
+        );
+
+    });
+
+
+/* ==========================================
+   CLOSE POPUP
+========================================== */
 
 closePopup.addEventListener("click", () => {
 
-    clearSelections(servicePopup, ".menuItem");
+    clearSelections(
+        servicePopup,
+        ".menuItem"
+    );
 
-    servicePopup.style.display = "none";
+    foodPreview.classList.remove(
+        "show"
+    );
+
+    servicePopup.style.display =
+        "none";
 
 });
 
-servicePopup.addEventListener("click", (e) => {
+
+/* ==========================================
+   CLOSE WHEN CLICKING OUTSIDE
+========================================== */
+
+servicePopup.addEventListener("click", e => {
 
     if (e.target === servicePopup) {
 
-        clearSelections(servicePopup, ".menuItem");
+        clearSelections(
+            servicePopup,
+            ".menuItem"
+        );
 
-        servicePopup.style.display = "none";
+        foodPreview.classList.remove(
+            "show"
+        );
+
+        servicePopup.style.display =
+            "none";
 
     }
 
