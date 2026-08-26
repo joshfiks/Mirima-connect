@@ -2542,7 +2542,238 @@ if (
 
 }
 
+// ==========================================
+// BABY COT REQUEST
+// ==========================================
 
+const babyCotPopup =
+    document.getElementById("babyCotPopup");
+
+const closeBabyCot =
+    document.getElementById("closeBabyCot");
+
+const confirmBabyCot =
+    document.getElementById("confirmBabyCot");
+
+
+// ==========================================
+// OPEN BABY COT POPUP
+// ==========================================
+
+housekeepingPopup
+    .querySelectorAll(".menuItem")
+    .forEach(item => {
+
+        if (
+            item.textContent.includes(
+                "Baby Cot Request"
+            )
+        ) {
+
+            item.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+                    // Select Baby Cot
+                    housekeepingPopup
+                        .querySelectorAll(
+                            ".menuItem.selected"
+                        )
+                        .forEach(selectedItem => {
+
+                            if (
+                                selectedItem !== item
+                            ) {
+
+                                selectedItem.classList.remove(
+                                    "selected"
+                                );
+
+                            }
+
+                        });
+
+                    item.classList.add(
+                        "selected"
+                    );
+
+
+                    // Open Baby Cot popup
+                    if (babyCotPopup) {
+
+                        babyCotPopup.style.display =
+                            "flex";
+
+                    }
+
+                }
+            );
+
+        }
+
+    });
+
+
+// ==========================================
+// BABY COT OPTION SELECTION
+// ==========================================
+
+if (babyCotPopup) {
+
+    babyCotPopup
+        .querySelectorAll(
+            ".romantic-option-group"
+        )
+        .forEach(group => {
+
+            const options =
+                group.querySelectorAll(
+                    ".romanticOption"
+                );
+
+
+            options.forEach(option => {
+
+                option.addEventListener(
+                    "click",
+                    () => {
+
+                        options.forEach(
+                            other => {
+
+                                other.classList.remove(
+                                    "selected"
+                                );
+
+                            }
+                        );
+
+
+                        option.classList.add(
+                            "selected"
+                        );
+
+                    }
+                );
+
+            });
+
+        });
+
+
+    // ==========================================
+    // CLOSE BABY COT
+    // ==========================================
+
+    closeBabyCot.addEventListener(
+        "click",
+        () => {
+
+            babyCotPopup.style.display =
+                "none";
+
+        }
+    );
+
+
+    // ==========================================
+    // CLOSE OUTSIDE
+    // ==========================================
+
+    babyCotPopup.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                babyCotPopup
+            ) {
+
+                babyCotPopup.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // CONFIRM BABY COT
+    // ==========================================
+
+    confirmBabyCot.addEventListener(
+        "click",
+        () => {
+
+            const selectedOptions =
+                babyCotPopup.querySelectorAll(
+                    ".romanticOption.selected"
+                );
+
+
+            if (
+                selectedOptions.length === 0
+            ) {
+
+                showWarning(
+                    "Choose Cot Options",
+                    "Please select your preferred baby cot options."
+                );
+
+                return;
+
+            }
+
+
+            const choices =
+                Array.from(
+                    selectedOptions
+                ).map(
+                    option =>
+                        option.dataset.value
+                );
+
+
+            const messageElement =
+                document.getElementById(
+                    "babyCotMessage"
+                );
+
+
+            const message =
+                messageElement
+                    ? messageElement.value.trim()
+                    : "";
+
+
+            const babyCotDetails = {
+
+                choices: choices,
+
+                message: message
+
+            };
+
+
+            localStorage.setItem(
+                "babyCotRequest",
+                JSON.stringify(
+                    babyCotDetails
+                )
+            );
+
+
+            // Close popup
+            babyCotPopup.style.display =
+                "none";
+
+        }
+    );
+
+}
 // ==========================================
 // CLOSE HOUSEKEEPING
 // ==========================================
