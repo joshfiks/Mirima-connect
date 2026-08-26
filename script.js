@@ -361,7 +361,8 @@ roomServiceCard.addEventListener("click", () => {
 <h3>🍳 Breakfast</h3>
 
 <div class="menuItem"
-     data-time="20–25">
+     data-time="20–25"
+     data-image="images/menu/full-english-breakfast.png">
     🍽️ Full English Breakfast
     <small>(20–25 min)</small>
 </div>
@@ -399,35 +400,118 @@ roomServiceCard.addEventListener("click", () => {
 <div class="menuItem"
      data-time="25–30"
      data-image="images/menu/nile-tilapia.png">
-    🐟 Grilled Nile Tilapia
-    <small>(25–30 min)</small>
+    🐟 Grilled Nile Tilapia <small>(25–30 min)</small>
 </div>
-<div class="menuItem" data-time="25–30">🍗 Roast Chicken <small>(25–30 min)</small></div>
-<div class="menuItem" data-time="30–35">🥩 Beef Fillet <small>(30–35 min)</small></div>
-<div class="menuItem" data-time="35–45">🍖 Goat Muchomo <small>(35–45 min)</small></div>
-<div class="menuItem" data-time="20–25">🥬 Vegetarian Curry <small>(20–25 min)</small></div>
+
+<div class="menuItem"
+     data-time="25–30"
+     data-image="images/menu/roast-chicken.png">
+    🍗 Roast Chicken <small>(25–30 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="30–35"
+     data-image="images/menu/beef-fillet.png">
+    🥩 Beef Fillet <small>(30–35 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="35–45"
+     data-image="images/menu/goat-muchomo.png">
+    🍖 Goat Muchomo <small>(35–45 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="20–25"
+     data-image="images/menu/vegetarian-curry.png">
+    🥬 Vegetarian Curry <small>(20–25 min)</small>
+</div>
 
 <h3>🥗 Light Meals</h3>
 
-<div class="menuItem" data-time="10–15">🥪 Club Sandwich <small>(10–15 min)</small></div>
-<div class="menuItem" data-time="5–10">🥗 Garden Salad <small>(5–10 min)</small></div>
-<div class="menuItem" data-time="10–15">🍟 French Fries <small>(10–15 min)</small></div>
-<div class="menuItem" data-time="20–25">🍕 Chef's Pizza <small>(20–25 min)</small></div>
+<div class="menuItem"
+     data-time="10–15"
+     data-image="images/menu/club-sandwich.png">
+    🥪 Club Sandwich <small>(10–15 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="5–10"
+     data-image="images/menu/garden-salad.png">
+    🥗 Garden Salad <small>(5–10 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="10–15"
+     data-image="images/menu/french-fries.png">
+    🍟 French Fries <small>(10–15 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="20–25"
+     data-image="images/menu/chefs-pizza.png">
+    🍕 Chef's Pizza <small>(20–25 min)</small>
+</div>
+
 
 <h3>🥤 Drinks</h3>
 
-<div class="menuItem" data-time="3–5">🍹 Fresh Passion Juice <small>(3–5 min)</small></div>
-<div class="menuItem" data-time="3–5">🥭 Fresh Mango Juice <small>(3–5 min)</small></div>
-<div class="menuItem" data-time="5–7">☕ African Tea <small>(5–7 min)</small></div>
-<div class="menuItem" data-time="2–4">☕ Espresso <small>(2–4 min)</small></div>
-<div class="menuItem" data-time="4–6">🥛 Cappuccino <small>(4–6 min)</small></div>
-<div class="menuItem" data-time="0">💧 Mineral Water <small>(Immediate)</small></div>
+<div class="menuItem"
+     data-time="3–5"
+     data-image="images/menu/fresh-passion-juice.png">
+    🍹 Fresh Passion Juice <small>(3–5 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="3–5"
+     data-image="images/menu/fresh-mango-juice.png">
+    🥭 Fresh Mango Juice <small>(3–5 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="5–7"
+     data-image="images/menu/african-tea.png">
+    ☕ African Tea <small>(5–7 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="2–4"
+     data-image="images/menu/espresso.png">
+    ☕ Espresso <small>(2–4 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="4–6"
+     data-image="images/menu/cappuccino.png">
+    🥛 Cappuccino <small>(4–6 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="0"
+     data-image="images/menu/mineral-water.png">
+    💧 Mineral Water <small>(Immediate)</small>
+</div>
+
 
 <h3>🍰 Desserts</h3>
 
-<div class="menuItem" data-time="3–5">🍰 Chocolate Cake <small>(3–5 min)</small></div>
-<div class="menuItem" data-time="0">🍨 Vanilla Ice Cream <small>(Immediate)</small></div>
-<div class="menuItem" data-time="5–8">🍓 Seasonal Fruit Salad <small>(5–8 min)</small></div>
+<div class="menuItem"
+     data-time="3–5"
+     data-image="images/menu/chocolate-cake.png">
+    🍰 Chocolate Cake <small>(3–5 min)</small>
+</div>
+
+<div class="menuItem"
+     data-time="0"
+     data-image="images/menu/vanilla-ice-cream.png">
+    🍨 Vanilla Ice Cream <small>(Immediate)</small>
+</div>
+
+<div class="menuItem"
+     data-time="5–8"
+     data-image="images/menu/seasonal-fruit-salad.png">
+    🍓 Seasonal Fruit Salad <small>(5–8 min)</small>
+</div>
 
 <h3>📝 Special Instructions</h3>
 
