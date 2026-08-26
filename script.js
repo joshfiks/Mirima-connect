@@ -2182,7 +2182,7 @@ housekeepingCard.addEventListener("click", () => {
 
 
     // ==========================================
-    // PRELOAD ALL HOUSEKEEPING IMAGES
+    // PRELOAD HOUSEKEEPING IMAGES
     // ==========================================
 
     housekeepingPopup
@@ -2197,19 +2197,75 @@ housekeepingCard.addEventListener("click", () => {
 
 
     // ==========================================
-    // MENU SELECTION + PREVIEW
+    // MENU ITEMS
     // ==========================================
 
     housekeepingPopup
         .querySelectorAll(".menuItem")
         .forEach(item => {
 
+
+            // ======================================
+            // CLICK
+            // ======================================
+
             item.onclick = event => {
 
                 event.stopPropagation();
 
 
-                // Remove other selections
+                // ----------------------------------
+                // ROMANTIC ROOM SETUP
+                // ----------------------------------
+
+                if (
+                    item.textContent.includes(
+                        "Romantic Room Setup"
+                    )
+                ) {
+
+                    // Select Romantic Room Setup
+                    housekeepingPopup
+                        .querySelectorAll(".menuItem.selected")
+                        .forEach(selectedItem => {
+
+                            if (selectedItem !== item) {
+
+                                selectedItem.classList.remove(
+                                    "selected"
+                                );
+
+                            }
+
+                        });
+
+                    item.classList.add("selected");
+
+
+                    // Open Romantic customization
+                    romanticPopup.style.display = "flex";
+
+
+                    // Show its image
+                    if (item.dataset.image) {
+
+                        previewImage.src =
+                            item.dataset.image;
+
+                        housekeepingPreview.classList.add(
+                            "show"
+                        );
+
+                    }
+
+                    return;
+                }
+
+
+                // ----------------------------------
+                // NORMAL HOUSEKEEPING ITEM
+                // ----------------------------------
+
                 housekeepingPopup
                     .querySelectorAll(".menuItem.selected")
                     .forEach(selectedItem => {
@@ -2225,11 +2281,13 @@ housekeepingCard.addEventListener("click", () => {
                     });
 
 
-                // Select current item
                 item.classList.add("selected");
 
 
-                // Show image
+                // ----------------------------------
+                // SHOW IMAGE
+                // ----------------------------------
+
                 if (item.dataset.image) {
 
                     previewImage.src =
@@ -2244,9 +2302,9 @@ housekeepingCard.addEventListener("click", () => {
             };
 
 
-            // ==========================================
-            // DESKTOP HOVER
-            // ==========================================
+            // ======================================
+            // DESKTOP — HOVER PREVIEW
+            // ======================================
 
             item.onmouseenter = () => {
 
@@ -2278,6 +2336,10 @@ housekeepingCard.addEventListener("click", () => {
             };
 
 
+            // ======================================
+            // DESKTOP — HIDE PREVIEW
+            // ======================================
+
             item.onmouseleave = () => {
 
                 if (window.innerWidth <= 650) return;
@@ -2293,9 +2355,140 @@ housekeepingCard.addEventListener("click", () => {
 });
 
 
-/* ==========================================
-   CLOSE HOUSEKEEPING
-========================================== */
+// ==========================================
+// ROMANTIC ROOM SETUP
+// ==========================================
+
+const romanticPopup =
+    document.getElementById("romanticPopup");
+
+const closeRomantic =
+    document.getElementById("closeRomantic");
+
+const confirmRomantic =
+    document.getElementById("confirmRomantic");
+
+
+// ==========================================
+// ROMANTIC OPTION SELECTION
+// ==========================================
+
+romanticPopup
+    .querySelectorAll(".romantic-option-group")
+    .forEach(group => {
+
+        const options =
+            group.querySelectorAll(".romanticOption");
+
+        options.forEach(option => {
+
+            option.addEventListener("click", () => {
+
+                options.forEach(other => {
+
+                    other.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+                option.classList.add(
+                    "selected"
+                );
+
+            });
+
+        });
+
+    });
+
+
+// ==========================================
+// CLOSE ROMANTIC POPUP
+// ==========================================
+
+closeRomantic.addEventListener("click", () => {
+
+    romanticPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE ROMANTIC OUTSIDE
+// ==========================================
+
+romanticPopup.addEventListener("click", event => {
+
+    if (event.target === romanticPopup) {
+
+        romanticPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// CONFIRM ROMANTIC SETUP
+// ==========================================
+
+confirmRomantic.addEventListener("click", () => {
+
+    const selectedOptions =
+        romanticPopup.querySelectorAll(
+            ".romanticOption.selected"
+        );
+
+
+    if (selectedOptions.length === 0) {
+
+        showWarning(
+            "Choose Your Setup",
+            "Please select your preferred romantic room setup."
+        );
+
+        return;
+
+    }
+
+
+    const choices =
+        Array.from(selectedOptions)
+            .map(option => option.dataset.value);
+
+
+    const message =
+        document.getElementById(
+            "romanticMessage"
+        ).value.trim();
+
+
+    const romanticDetails = {
+
+        choices: choices,
+
+        message: message
+
+    };
+
+
+    localStorage.setItem(
+        "romanticRoomSetup",
+        JSON.stringify(
+            romanticDetails
+        )
+    );
+
+
+    romanticPopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE HOUSEKEEPING
+// ==========================================
 
 closeHousekeeping.addEventListener("click", () => {
 
@@ -2304,8 +2497,12 @@ closeHousekeeping.addEventListener("click", () => {
         ".menuItem"
     );
 
+
     const preview =
-        housekeepingPopup.querySelector(".foodPreview");
+        housekeepingPopup.querySelector(
+            ".foodPreview"
+        );
+
 
     if (preview) {
 
@@ -2313,15 +2510,17 @@ closeHousekeeping.addEventListener("click", () => {
 
     }
 
-    housekeepingPopup.style.display =
-        "none";
+
+    romanticPopup.style.display = "none";
+
+    housekeepingPopup.style.display = "none";
 
 });
 
 
-/* ==========================================
-   CLOSE WHEN CLICKING OUTSIDE
-========================================== */
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
 
 housekeepingPopup.addEventListener("click", e => {
 
@@ -2332,8 +2531,12 @@ housekeepingPopup.addEventListener("click", e => {
             ".menuItem"
         );
 
+
         const preview =
-            housekeepingPopup.querySelector(".foodPreview");
+            housekeepingPopup.querySelector(
+                ".foodPreview"
+            );
+
 
         if (preview) {
 
@@ -2341,8 +2544,10 @@ housekeepingPopup.addEventListener("click", e => {
 
         }
 
-        housekeepingPopup.style.display =
-            "none";
+
+        romanticPopup.style.display = "none";
+
+        housekeepingPopup.style.display = "none";
 
     }
 
