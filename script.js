@@ -525,19 +525,38 @@ servicePopup.style.display = "flex";
 
 /* ==========================================
    MENU ITEM SELECTION
+   — ONE ITEM PER ORDER
 ========================================== */
 
 popupBody.querySelectorAll(".menuItem").forEach(item => {
 
     item.addEventListener("click", () => {
 
-        item.classList.toggle("selected");
+        // Remove selection from every other item
+        popupBody.querySelectorAll(".menuItem.selected")
+            .forEach(selectedItem => {
+
+                if (selectedItem !== item) {
+                    selectedItem.classList.remove("selected");
+                }
+
+            });
+
+        // Select the clicked item
+        item.classList.add("selected");
+
+        // Immediately show its food preview
+        if (item.dataset.image && previewImage) {
+
+            previewImage.src = item.dataset.image;
+
+            foodPreview.classList.add("show");
+
+        }
 
     });
 
 });
-
-
 /* ==========================================
    FOOD IMAGE PREVIEW
 ========================================== */
