@@ -947,6 +947,8 @@ servicePopup.addEventListener("click", e => {
     }
 
 });
+
+});
   
 // ==========================================
 // RECEPTION POPUP
