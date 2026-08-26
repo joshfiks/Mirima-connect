@@ -520,20 +520,27 @@ roomServiceCard.addEventListener("click", () => {
 <button id="placeOrder">Place Order</button>
 `;
 
-    servicePopup.style.display = "flex";
+servicePopup.style.display = "flex";
 
-    popupBody.querySelectorAll(".menuItem").forEach(item => {
 
-        item.addEventListener("click", () => {
+/* ==========================================
+   MENU ITEM SELECTION
+========================================== */
 
-            item.classList.toggle("selected");
+popupBody.querySelectorAll(".menuItem").forEach(item => {
 
-        });
+    item.addEventListener("click", () => {
+
+        item.classList.toggle("selected");
 
     });
-  // ==========================================
-// FOOD IMAGE PREVIEW
-// ==========================================
+
+});
+
+
+/* ==========================================
+   FOOD IMAGE PREVIEW
+========================================== */
 
 let foodPreview = servicePopup.querySelector(".foodPreview");
 
@@ -547,66 +554,89 @@ if (!foodPreview) {
         <img src="" alt="Food preview">
     `;
 
-    servicePopup.querySelector(".popup-content").appendChild(foodPreview);
+    servicePopup
+        .querySelector(".popup-content")
+        .appendChild(foodPreview);
 }
 
 const previewImage = foodPreview.querySelector("img");
 
-let previewTimeout;
 
+/* ==========================================
+   PRELOAD FOOD IMAGES
+========================================== */
 
-popupBody.querySelectorAll(".menuItem[data-image]").forEach(item => {
+popupBody
+    .querySelectorAll(".menuItem[data-image]")
+    .forEach(item => {
 
-    const image = item.dataset.image;
+        const preloadImage = new Image();
 
-
-    // DESKTOP — HOVER
-    item.addEventListener("mouseenter", () => {
-
-        if (window.innerWidth <= 650) return;
-
-        previewImage.src = image;
-
-        const rect = item.getBoundingClientRect();
-
-        foodPreview.style.left =
-            `${rect.right + 18}px`;
-
-        foodPreview.style.top =
-            `${rect.top + (rect.height / 2) - 90}px`;
-
-        foodPreview.classList.add("show");
+        preloadImage.src = item.dataset.image;
 
     });
 
 
-    item.addEventListener("mouseleave", () => {
+/* ==========================================
+   DESKTOP — FAST HOVER PREVIEW
+========================================== */
 
-        if (window.innerWidth <= 650) return;
+popupBody
+    .querySelectorAll(".menuItem[data-image]")
+    .forEach(item => {
 
-        foodPreview.classList.remove("show");
+        item.addEventListener("mouseenter", () => {
+
+            if (window.innerWidth <= 650) return;
+
+            const image = item.dataset.image;
+
+            const rect = item.getBoundingClientRect();
+
+            foodPreview.style.left =
+                `${rect.right + 18}px`;
+
+            foodPreview.style.top =
+                `${rect.top + (rect.height / 2) - 90}px`;
+
+            previewImage.src = image;
+
+            foodPreview.classList.add("show");
+
+        });
+
+
+        item.addEventListener("mouseleave", () => {
+
+            if (window.innerWidth <= 650) return;
+
+            foodPreview.classList.remove("show");
+
+        });
+
+
+        /* ==========================================
+           MOBILE — FAST TAP PREVIEW
+        ========================================== */
+
+        item.addEventListener("click", event => {
+
+            if (window.innerWidth > 650) return;
+
+            event.stopPropagation();
+
+            previewImage.src = item.dataset.image;
+
+            foodPreview.classList.add("show");
+
+        });
 
     });
 
-
-    // MOBILE — TAP
-    item.addEventListener("click", (event) => {
-
-        if (window.innerWidth > 650) return;
-
-        event.stopPropagation();
-
-        clearTimeout(previewTimeout);
-
-        previewImage.src = image;
-
-        foodPreview.classList.toggle("show");
-
-    });
-
-});
-
-    document.getElementById("placeOrder").addEventListener("click", () => {
+/* ==========================================
+   PLACE ORDER
+========================================== */
+   document.getElementById("placeOrder").addEventListener("click", () => {
 
     const selectedItems = popupBody.querySelectorAll(".menuItem.selected");
 
