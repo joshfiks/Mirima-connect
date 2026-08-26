@@ -2145,8 +2145,7 @@ natureWalkPopup.querySelectorAll(".nature-card").forEach(card => {
     });
 
 });
-  
-// ==========================================
+ // ==========================================
 // HOUSEKEEPING POPUP
 // ==========================================
 
@@ -2154,36 +2153,80 @@ housekeepingCard.addEventListener("click", () => {
 
     housekeepingPopup.style.display = "flex";
 
-    housekeepingPopup.querySelectorAll(".menuItem").forEach(item => {
 
-        item.onclick = () => item.classList.toggle("selected");
+    /* ==========================================
+       HOUSEKEEPING MENU ITEMS
+       ONE ITEM AT A TIME
+    ========================================== */
 
-    });
+    housekeepingPopup
+        .querySelectorAll(".menuItem")
+        .forEach(item => {
+
+            item.onclick = () => {
+
+                // Remove selection from other items
+                housekeepingPopup
+                    .querySelectorAll(".menuItem.selected")
+                    .forEach(selectedItem => {
+
+                        if (selectedItem !== item) {
+
+                            selectedItem.classList.remove(
+                                "selected"
+                            );
+
+                        }
+
+                    });
+
+
+                // Select clicked item
+                item.classList.add("selected");
+
+            };
+
+        });
 
 });
+
+
+/* ==========================================
+   CLOSE HOUSEKEEPING
+========================================== */
 
 closeHousekeeping.addEventListener("click", () => {
 
-       clearSelections(housekeepingPopup, ".menuItem");
-  
-   housekeepingPopup.style.display = "none";
+    clearSelections(
+        housekeepingPopup,
+        ".menuItem"
+    );
+
+    housekeepingPopup.style.display =
+        "none";
 
 });
 
-housekeepingPopup.addEventListener("click", (e) => {
+
+/* ==========================================
+   CLOSE WHEN CLICKING OUTSIDE
+========================================== */
+
+housekeepingPopup.addEventListener("click", e => {
 
     if (e.target === housekeepingPopup) {
 
-      clearSelections(housekeepingPopup, ".menuItem");
-      
-        housekeepingPopup.style.display = "none";
+        clearSelections(
+            housekeepingPopup,
+            ".menuItem"
+        );
 
-        
+        housekeepingPopup.style.display =
+            "none";
+
     }
 
 });
-
-
 // ==========================================
 // BILLING POPUP
 // ==========================================
