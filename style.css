@@ -9972,89 +9972,158 @@ padding:22px !important;
 
 }
 /* ==========================================
-   RECEPTION — PREMIUM SERVICE CARDS
+   RECEPTION — LUXURY CONCIERGE DESIGN
 ========================================== */
 
 #receptionPopup .popup-content {
 
-    width: min(650px, 92%);
+    width: min(850px, 94%);
+    max-height: 90vh;
+    overflow-y: auto;
 
-    padding: 38px 34px;
+    padding: 38px 36px 32px;
 
     box-sizing: border-box;
 
     background:
         linear-gradient(
             145deg,
-            rgba(32, 20, 16, .98),
-            rgba(10, 7, 5, .99)
+            #24170f,
+            #120b07 55%,
+            #1d120b
         );
 
-    border: 1px solid
-        rgba(212, 175, 55, .55);
+    border: 1px solid #c99b35;
 
-    border-radius: 28px;
+    border-radius: 26px;
 
     box-shadow:
-        0 30px 90px rgba(0,0,0,.8),
-        0 0 45px rgba(212,175,55,.10),
-        inset 0 1px 1px
-        rgba(255,255,255,.07);
+        0 30px 80px rgba(0,0,0,.8),
+        0 0 0 1px rgba(255,215,120,.08),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    position: relative;
+}
+
+
+/* ==========================================
+   INNER GOLD FRAME
+========================================== */
+
+#receptionPopup .popup-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border: 1px solid
+        rgba(212,175,55,.22);
+
+    border-radius: 20px;
+
+    pointer-events: none;
 
 }
 
 
 /* ==========================================
-   TITLE
+   CLOSE BUTTON
+========================================== */
+
+#receptionPopup .closeReception {
+
+    position: absolute;
+
+    top: 17px;
+    right: 20px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid
+        rgba(212,175,55,.55);
+
+    background: #17100b;
+
+    color: #e8c76a;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease;
+}
+
+#receptionPopup .closeReception:hover {
+
+    transform: rotate(90deg);
+
+    background: #d4af37;
+
+    color: #1a1007;
+
+}
+
+
+/* ==========================================
+   RECEPTION TITLE
 ========================================== */
 
 #receptionPopup h2 {
 
-    margin: 0;
+    margin: 5px 0 0;
 
     text-align: center;
 
+    color: #f1d27a;
+
     font-family: "Cinzel", serif;
 
-    font-size: 28px;
-
-    letter-spacing: 1.5px;
+    font-size: 30px;
 
     font-weight: 600;
 
-    color: #f1d77b;
+    letter-spacing: 2px;
 
-    text-shadow:
-        0 2px 12px rgba(0,0,0,.7),
-        0 0 20px
-        rgba(212,175,55,.15);
+    text-transform: uppercase;
 
+    position: relative;
+
+    z-index: 2;
 }
 
 
 /* ==========================================
-   GOLD TITLE LINE
+   GOLD ORNAMENT UNDER TITLE
 ========================================== */
 
 #receptionPopup h2::after {
 
-    content: "";
+    content: "◆ ─── ◆ ─── ◆";
 
     display: block;
 
-    width: 95px;
+    margin-top: 8px;
 
-    height: 1px;
+    color: #c89b3c;
 
-    margin: 13px auto 0;
+    font-size: 9px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #d4af37,
-            transparent
-        );
+    letter-spacing: 5px;
 
 }
 
@@ -10065,9 +10134,12 @@ padding:22px !important;
 
 #receptionPopup .popup-content > p {
 
-    margin: 14px 0 28px;
+    margin: 10px 0 28px;
 
     text-align: center;
+
+    color:
+        rgba(245,226,181,.75);
 
     font-family:
         "Cormorant Garamond",
@@ -10076,9 +10148,6 @@ padding:22px !important;
     font-size: 18px;
 
     font-style: italic;
-
-    color:
-        rgba(245,231,197,.72);
 
 }
 
@@ -10092,10 +10161,13 @@ padding:22px !important;
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(3, 1fr);
 
-    gap: 15px;
+    gap: 17px;
 
+    position: relative;
+
+    z-index: 2;
 }
 
 
@@ -10107,9 +10179,9 @@ padding:22px !important;
 
     position: relative;
 
-    min-height: 125px;
+    min-height: 180px;
 
-    padding: 20px 15px;
+    padding: 17px 12px 13px;
 
     box-sizing: border-box;
 
@@ -10119,37 +10191,39 @@ padding:22px !important;
 
     align-items: center;
 
-    justify-content: center;
+    justify-content: space-between;
 
     text-align: center;
-
-    border-radius: 20px;
-
-    border: 1px solid
-        rgba(212,175,55,.22);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.015)
-        );
 
     cursor: pointer;
 
     overflow: hidden;
 
-    transition:
-        transform .28s ease,
-        border-color .28s ease,
-        box-shadow .28s ease,
-        background .28s ease;
+    background:
+        linear-gradient(
+            145deg,
+            #f6edda,
+            #e8d6b3
+        );
 
+    border: 2px solid #b88a2b;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 7px 18px rgba(0,0,0,.4),
+        inset 0 0 0 1px
+        rgba(255,255,255,.65);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
 }
 
 
 /* ==========================================
-   SUBTLE CARD LIGHT
+   INNER CARD FRAME
 ========================================== */
 
 #receptionPopup .service-option::before {
@@ -10158,150 +10232,156 @@ padding:22px !important;
 
     position: absolute;
 
-    width: 90px;
+    inset: 5px;
 
-    height: 90px;
+    border: 1px solid
+        rgba(150,105,25,.45);
 
-    top: -45px;
+    border-radius: 10px;
 
-    right: -45px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(212,175,55,.07);
-
-    filter: blur(4px);
-
-    transition:
-        transform .35s ease;
-
+    pointer-events: none;
 }
 
 
 /* ==========================================
-   HOVER
+   CARD HOVER
 ========================================== */
 
 #receptionPopup .service-option:hover {
 
     transform:
-        translateY(-5px);
+        translateY(-6px);
 
-    border-color:
-        rgba(212,175,55,.65);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(212,175,55,.11),
-            rgba(255,255,255,.025)
-        );
+    border-color: #f0c85b;
 
     box-shadow:
-        0 14px 35px
-        rgba(0,0,0,.38),
-        0 0 20px
-        rgba(212,175,55,.08);
-
-}
-
-
-#receptionPopup .service-option:hover::before {
-
-    transform: scale(1.5);
-
+        0 16px 30px rgba(0,0,0,.5),
+        0 0 18px
+        rgba(212,175,55,.18);
 }
 
 
 /* ==========================================
-   ICON
+   PNG ICON
 ========================================== */
 
 #receptionPopup .service-option .icon {
 
-    width: 58px;
+    width: 105px;
+    height: 105px;
 
-    height: 58px;
+    object-fit: contain;
 
-    margin-bottom: 12px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 17px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(212,175,55,.15),
-            rgba(212,175,55,.035)
-        );
-
-    border: 1px solid
-        rgba(212,175,55,.25);
-
-    font-size: 27px;
-
-    box-shadow:
-        inset 0 1px 1px
-        rgba(255,255,255,.08);
-
-    transition:
-        transform .28s ease,
-        box-shadow .28s ease;
-
-}
-
-
-#receptionPopup .service-option:hover .icon {
-
-    transform:
-        translateY(-2px)
-        scale(1.05);
-
-    box-shadow:
-        0 8px 20px
-        rgba(212,175,55,.14);
-
-}
-
-
-/* ==========================================
-   TITLE
-========================================== */
-
-#receptionPopup .service-option .title {
+    display: block;
 
     position: relative;
 
     z-index: 2;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 17px;
-
-    font-weight: 600;
-
-    letter-spacing: .3px;
-
-    color: #f1e3c1;
+    filter:
+        drop-shadow(
+            0 8px 6px
+            rgba(0,0,0,.22)
+        );
 
     transition:
-        color .25s ease;
-
+        transform .3s ease,
+        filter .3s ease;
 }
 
 
-#receptionPopup .service-option:hover .title {
+/* ==========================================
+   ICON HOVER
+========================================== */
 
-    color: #ffe8a0;
+#receptionPopup .service-option:hover .icon {
 
+    transform:
+        scale(1.08)
+        translateY(-3px);
+
+    filter:
+        drop-shadow(
+            0 10px 8px
+            rgba(0,0,0,.3)
+        );
+}
+
+
+/* ==========================================
+   SERVICE TITLE
+========================================== */
+
+#receptionPopup .service-option .title {
+
+    width: 100%;
+
+    padding: 10px 5px 5px;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    z-index: 2;
+
+    color: #2b1b0d;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: .5px;
+
+    line-height: 1.25;
+
+    text-transform: uppercase;
+}
+
+
+/* ==========================================
+   GOLD TITLE DIVIDER
+========================================== */
+
+#receptionPopup .service-option .title::before {
+
+    content: "";
+
+    display: block;
+
+    width: 42px;
+
+    height: 1px;
+
+    margin: 0 auto 7px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #b88724,
+            transparent
+        );
+}
+
+
+/* ==========================================
+   SELECTED CARD
+========================================== */
+
+#receptionPopup .service-option.selected {
+
+    border-color: #f2c95c;
+
+    transform:
+        translateY(-4px)
+        scale(1.015);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.5),
+        0 0 25px
+        rgba(212,175,55,.28);
 }
 
 
@@ -10311,30 +10391,28 @@ padding:22px !important;
 
 #receptionPopup #sendReceptionRequest {
 
-    width: 100%;
+    display: block;
 
-    margin-top: 24px;
+    width: min(360px, 100%);
 
-    padding: 15px 20px;
+    margin: 27px auto 0;
 
-    border: 1px solid
-        rgba(255,225,130,.75);
+    padding: 15px 25px;
+
+    border: 1px solid #e5bd52;
 
     border-radius: 50px;
 
     background:
         linear-gradient(
-            110deg,
-            #8f691c,
+            135deg,
+            #8b641d,
             #d4af37,
-            #f4d878,
-            #d4af37,
-            #8f691c
+            #f0d06b,
+            #b98625
         );
 
-    background-size: 250% 100%;
-
-    color: #251800;
+    color: #211407;
 
     font-family: "Cinzel", serif;
 
@@ -10342,34 +10420,33 @@ padding:22px !important;
 
     font-weight: 700;
 
-    letter-spacing: .8px;
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
 
     cursor: pointer;
 
     box-shadow:
-        0 10px 28px
-        rgba(212,175,55,.20);
+        0 10px 25px rgba(0,0,0,.4);
+
+    position: relative;
+
+    z-index: 2;
 
     transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        background-position .4s ease;
-
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
 
 #receptionPopup #sendReceptionRequest:hover {
 
     transform:
-        translateY(-2px);
-
-    background-position:
-        100% 0;
+        translateY(-3px);
 
     box-shadow:
-        0 15px 35px
-        rgba(212,175,55,.32);
-
+        0 15px 32px
+        rgba(212,175,55,.25);
 }
 
 
@@ -10377,16 +10454,17 @@ padding:22px !important;
    MOBILE
 ========================================== */
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 
     #receptionPopup .popup-content {
 
         width: 94%;
 
-        padding: 30px 17px;
+        padding:
+            32px 14px
+            25px;
 
-        border-radius: 24px;
-
+        border-radius: 22px;
     }
 
 
@@ -10394,6 +10472,7 @@ padding:22px !important;
 
         font-size: 23px;
 
+        letter-spacing: 1.5px;
     }
 
 
@@ -10402,7 +10481,6 @@ padding:22px !important;
         font-size: 16px;
 
         margin-bottom: 22px;
-
     }
 
 
@@ -10412,40 +10490,67 @@ padding:22px !important;
             repeat(2, 1fr);
 
         gap: 11px;
-
     }
 
 
     #receptionPopup .service-option {
 
-        min-height: 112px;
+        min-height: 150px;
 
-        padding: 15px 8px;
+        padding:
+            12px 7px 10px;
 
-        border-radius: 17px;
-
+        border-radius: 13px;
     }
 
 
     #receptionPopup .service-option .icon {
 
-        width: 50px;
-
-        height: 50px;
-
-        margin-bottom: 9px;
-
-        font-size: 23px;
-
-        border-radius: 14px;
-
+        width: 82px;
+        height: 82px;
     }
 
 
     #receptionPopup .service-option .title {
 
-        font-size: 15px;
+        font-size: 10.5px;
 
+        letter-spacing: .3px;
+    }
+
+
+    #receptionPopup #sendReceptionRequest {
+
+        margin-top: 20px;
+
+        font-size: 12px;
+    }
+
+}
+
+
+/* ==========================================
+   VERY SMALL PHONES
+========================================== */
+
+@media (max-width: 380px) {
+
+    #receptionPopup .service-option {
+
+        min-height: 140px;
+    }
+
+
+    #receptionPopup .service-option .icon {
+
+        width: 70px;
+        height: 70px;
+    }
+
+
+    #receptionPopup .service-option .title {
+
+        font-size: 9.5px;
     }
 
 }
