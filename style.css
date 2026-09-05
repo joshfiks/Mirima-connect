@@ -4562,126 +4562,597 @@ margin-top:20px;
     }
 
 }
-/*==========================================
-FOREST NATURE WALK
-==========================================*/
+/* ==========================================
+   🌳 FOREST NATURE WALK — FOREST RETREAT
+========================================== */
 
-#natureWalkPopup .nature-options{
+#natureWalkPopup .popup-content {
 
-display:grid;
+    width: min(680px, 94%);
+    max-height: 88vh;
 
-grid-template-columns:repeat(2, minmax(0, 1fr));
+    overflow-y: auto;
+    overflow-x: hidden;
 
-gap:12px;
+    box-sizing: border-box;
 
-margin:20px 0;
+    padding: 42px 36px 34px;
 
-}
+    position: relative;
 
-#natureWalkPopup .nature-card{
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(91,105,62,.22),
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            #172015,
+            #090d08 65%,
+            #12180f
+        );
 
-box-sizing:border-box;
+    border: 1px solid rgba(212,175,55,.48);
 
-padding:18px 12px;
+    border-radius: 28px;
 
-border:1px solid rgba(212,175,55,.3);
-
-border-radius:18px;
-
-background:rgba(255,255,255,.06);
-
-text-align:center;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-#natureWalkPopup .nature-card span{
-
-display:block;
-
-font-size:32px;
-
-margin-bottom:8px;
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.85),
+        inset 0 1px 0 rgba(255,255,255,.07);
 
 }
 
-#natureWalkPopup .nature-card strong{
 
-display:block;
+/* ==========================================
+   INNER FRAME
+========================================== */
 
-font-size:16px;
+#natureWalkPopup .popup-content::before {
 
-font-family:"Cinzel",serif;
+    content: "";
 
-}
+    position: absolute;
 
-#natureWalkPopup .nature-card small{
+    inset: 9px;
 
-display:block;
+    border: 1px solid rgba(212,175,55,.16);
 
-margin-top:6px;
+    border-radius: 21px;
 
-font-size:12px;
-
-opacity:.75;
-
-}
-
-#natureWalkPopup .nature-card:hover{
-
-transform:translateY(-3px);
-
-border-color:#D4AF37;
+    pointer-events: none;
 
 }
 
-#natureWalkPopup .nature-card.selected{
 
-background:#D4AF37;
+/* ==========================================
+   CLOSE BUTTON
+========================================== */
 
-color:#111;
+#natureWalkPopup .closeNatureWalk {
 
-box-shadow:0 0 18px rgba(212,175,55,.35);
+    position: absolute;
+
+    top: 17px;
+    right: 20px;
+
+    width: 39px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #182015;
+
+    border: 1px solid rgba(212,175,55,.4);
+
+    color: #e7cd78;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    transition: .3s;
 
 }
+
+#natureWalkPopup .closeNatureWalk:hover {
+
+    transform: rotate(90deg);
+
+    border-color: #d4af37;
+
+    background: #26321d;
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.2);
+
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+#natureWalkPopup h2 {
+
+    margin: 3px 0 8px;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: #e9d486;
+
+}
+
+
+/* FOREST DIVIDER */
+
+#natureWalkPopup h2::after {
+
+    content: "❧  ✦  ❧";
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #d4af37;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* DESCRIPTION */
+
+#natureWalkPopup .popup-content > p {
+
+    margin: 0 0 25px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.65);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+/* ==========================================
+   NATURE OPTIONS
+========================================== */
+
+#natureWalkPopup .nature-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+
+    margin: 21px 0 24px;
+
+}
+
+
+/* ==========================================
+   NATURE CARD
+========================================== */
+
+#natureWalkPopup .nature-card {
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    min-height: 145px;
+
+    padding: 20px 14px 17px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid rgba(212,175,55,.25);
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eee8d7,
+            #d8cfb5
+        );
+
+    color: #211d14;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform .25s,
+        border-color .25s,
+        box-shadow .25s;
+
+}
+
+
+/* CARD INNER FRAME */
+
+#natureWalkPopup .nature-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 6px;
+
+    border: 1px solid rgba(93,76,32,.18);
+
+    border-radius: 12px;
+
+    pointer-events: none;
+
+}
+
+
+/* ICON */
+
+#natureWalkPopup .nature-card span {
+
+    display: block;
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 9px;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    filter:
+        drop-shadow(0 4px 5px rgba(0,0,0,.18));
+
+}
+
+
+/* TITLE */
+
+#natureWalkPopup .nature-card strong {
+
+    display: block;
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: .3px;
+
+}
+
+
+/* DESCRIPTION */
+
+#natureWalkPopup .nature-card small {
+
+    display: block;
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 6px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    color: #655b47;
+
+}
+
+
+/* HOVER */
+
+#natureWalkPopup .nature-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.35),
+        0 0 18px rgba(212,175,55,.12);
+
+}
+
+
+/* ==========================================
+   SELECTED CARD
+========================================== */
+
+#natureWalkPopup .nature-card.selected {
+
+    transform: translateY(-4px);
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff2c7,
+            #dfc47d
+        );
+
+    color: #211608;
+
+    border: 2px solid #d4af37;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.4),
+        0 0 0 3px rgba(212,175,55,.12),
+        0 0 25px rgba(212,175,55,.25);
+
+}
+
+
+/* SELECTED MARK */
+
+#natureWalkPopup .nature-card.selected::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    top: 8px;
+    right: 9px;
+
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #9a721e;
+
+    color: #fff5d2;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    z-index: 5;
+
+}
+
+
+/* ==========================================
+   INPUTS
+========================================== */
 
 #natureWalkPopup input,
-#natureWalkPopup textarea{
+#natureWalkPopup textarea {
 
-width:100%;
+    width: 100%;
 
-max-width:100%;
+    max-width: 100%;
 
-box-sizing:border-box;
+    box-sizing: border-box;
 
-padding:14px 16px;
+    padding: 14px 16px;
 
-margin:7px 0;
+    margin: 7px 0;
 
-border:1px solid rgba(212,175,55,.35);
+    border: 1px solid rgba(212,175,55,.28);
 
-border-radius:14px;
+    border-radius: 13px;
 
-background:rgba(255,255,255,.08);
+    background: #11150e;
 
-color:#fff;
+    color: #fff;
 
-font-size:16px;
+    font-family: "Poppins", sans-serif;
 
-outline:none;
+    font-size: 14px;
+
+    outline: none;
+
+    transition: .25s;
 
 }
 
-#natureWalkPopup button{
 
-width:100%;
+#natureWalkPopup input::placeholder,
+#natureWalkPopup textarea::placeholder {
 
-box-sizing:border-box;
+    color: rgba(255,255,255,.38);
 
-margin-top:12px;
+}
+
+
+/* FOCUS */
+
+#natureWalkPopup input:focus,
+#natureWalkPopup textarea:focus {
+
+    border-color: #d4af37;
+
+    background: #171d12;
+
+    box-shadow:
+        0 0 0 3px rgba(212,175,55,.06),
+        0 8px 22px rgba(0,0,0,.3);
+
+}
+
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+#natureWalkPopup button {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 12px;
+
+    padding: 15px 18px;
+
+    border: 1px solid #f0d477;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #94701e,
+            #d4af37 50%,
+            #efd477
+        );
+
+    color: #171209;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 28px rgba(212,175,55,.18);
+
+    transition: .25s;
+
+}
+
+
+#natureWalkPopup button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 36px rgba(212,175,55,.34);
+
+}
+
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+#natureWalkPopup .popup-content::-webkit-scrollbar {
+
+    width: 5px;
+
+}
+
+#natureWalkPopup .popup-content::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+#natureWalkPopup .popup-content::-webkit-scrollbar-thumb {
+
+    background: rgba(212,175,55,.4);
+
+    border-radius: 10px;
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #natureWalkPopup .popup-content {
+
+        width: 94%;
+
+        max-height: 90vh;
+
+        padding: 34px 20px 27px;
+
+        border-radius: 23px;
+
+    }
+
+    #natureWalkPopup h2 {
+
+        font-size: 23px;
+
+    }
+
+    #natureWalkPopup .nature-options {
+
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+    }
+
+    #natureWalkPopup .nature-card {
+
+        min-height: 125px;
+
+        padding: 17px 12px;
+
+    }
+
+    #natureWalkPopup input,
+    #natureWalkPopup textarea {
+
+        font-size: 14px;
+
+        padding: 13px 14px;
+
+    }
 
 }
 /*==========================================
