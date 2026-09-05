@@ -10554,3 +10554,96 @@ padding:22px !important;
     }
 
 }
+/* ==========================================
+   RECEPTION — CLEAR SELECTED STATE
+========================================== */
+
+#receptionPopup .service-option.selected {
+
+    transform: translateY(-5px);
+
+    border: 3px solid #e5b93f;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff4d6,
+            #e4c68b
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.45),
+        0 0 0 3px rgba(212,175,55,.20),
+        0 0 28px rgba(212,175,55,.35);
+
+}
+
+
+/* ==========================================
+   SELECTED CHECK MARK
+========================================== */
+
+#receptionPopup .service-option.selected::after {
+
+    content: "✓ SELECTED";
+
+    position: absolute;
+
+    top: 9px;
+    right: 9px;
+
+    padding: 5px 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8d641c,
+            #d4af37
+        );
+
+    color: #fff8df;
+
+    border: 1px solid #f3d477;
+
+    border-radius: 7px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .6px;
+
+    z-index: 10;
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.35);
+}
+
+
+/* ==========================================
+   SELECTED ICON
+========================================== */
+
+#receptionPopup .service-option.selected .icon {
+
+    transform: scale(1.06);
+
+    filter:
+        drop-shadow(
+            0 8px 10px
+            rgba(212,175,55,.35)
+        );
+}
+
+
+/* ==========================================
+   SELECTED TITLE
+========================================== */
+
+#receptionPopup .service-option.selected .title {
+
+    color: #5a3b0d;
+
+}
