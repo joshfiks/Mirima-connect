@@ -9271,40 +9271,113 @@ padding:22px !important;
     }
 }
 /* ==========================================
-   RESTAURANT MENU — PREMIUM STYLE
+   🍽️ RESTAURANT MENU — MIRIMA FINE DINING
 ========================================== */
 
 #restaurantMenuPopup .popup-content {
 
-    width: 92% !important;
-    max-width: 560px !important;
+    width: min(720px, 94%) !important;
+    max-width: 720px !important;
+    max-height: 90vh !important;
 
-    max-height: 88vh !important;
-
-    padding: 30px !important;
+    padding: 38px 30px 30px !important;
 
     box-sizing: border-box !important;
 
+    position: relative;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
     background:
         radial-gradient(
-            circle at top,
-            rgba(212,175,55,.14),
-            transparent 45%
+            circle at 50% 0%,
+            rgba(212,175,55,.17),
+            transparent 38%
         ),
         linear-gradient(
             145deg,
-            #21170b,
-            #0d0a06
+            #28190c,
+            #0d0905 62%,
+            #1b1008
         ) !important;
 
-    border: 1px solid rgba(212,175,55,.42) !important;
+    border: 1px solid rgba(212,175,55,.55) !important;
 
-    border-radius: 28px !important;
+    border-radius: 26px !important;
 
     box-shadow:
-        0 30px 90px rgba(0,0,0,.75) !important;
+        0 30px 90px rgba(0,0,0,.9),
+        inset 0 1px 0 rgba(255,255,255,.06);
+}
 
-    overflow-y: auto;
+
+/* ==========================================
+   INNER GOLD FRAME
+========================================== */
+
+#restaurantMenuPopup .popup-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border: 1px solid rgba(212,175,55,.18);
+
+    border-radius: 20px;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   CLOSE BUTTON
+========================================== */
+
+#restaurantMenuPopup .closeRestaurantMenu {
+
+    position: absolute;
+
+    top: 15px;
+    right: 17px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #24150b;
+
+    border: 1px solid rgba(212,175,55,.45);
+
+    color: #f0d477;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    transition: .3s;
+}
+
+
+#restaurantMenuPopup .closeRestaurantMenu:hover {
+
+    transform: rotate(90deg);
+
+    background: #39220e;
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.25);
 }
 
 
@@ -9314,10 +9387,15 @@ padding:22px !important;
 
 #restaurantMenuPopup .restaurant-menu-header {
 
+    position: relative;
+
+    z-index: 2;
+
     text-align: center;
 
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
+
 
 #restaurantMenuPopup .restaurant-menu-icon {
 
@@ -9326,41 +9404,398 @@ padding:22px !important;
     align-items: center;
     justify-content: center;
 
-    width: 68px;
-    height: 68px;
+    width: 66px;
+    height: 66px;
 
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 
     border-radius: 50%;
 
-    background: rgba(212,175,55,.11);
+    background:
+        linear-gradient(
+            145deg,
+            #d4af37,
+            #8d641b
+        );
 
-    border: 1px solid rgba(212,175,55,.35);
+    border: 1px solid #f0d477;
 
-    font-size: 30px;
+    font-size: 29px;
+
+    box-shadow:
+        0 9px 25px rgba(0,0,0,.4);
 }
+
 
 #restaurantMenuPopup .restaurant-menu-header h2 {
 
-    margin: 0 0 7px;
+    margin: 0;
 
     font-family: "Cinzel", serif;
 
     font-size: 28px;
 
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
     color: #f3d77b;
 }
 
-#restaurantMenuPopup .restaurant-menu-header p {
 
-    margin: 0;
+#restaurantMenuPopup .restaurant-menu-header h2::after {
 
-    font-size: 12px;
+    content: "◆  ✦  ◆";
 
-    opacity: .58;
+    display: block;
+
+    margin-top: 10px;
+
+    color: #d4af37;
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
 }
 
 
+#restaurantMenuPopup .restaurant-menu-header p {
+
+    max-width: 480px;
+
+    margin: 11px auto 0;
+
+    color: rgba(255,255,255,.62);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MENU SECTION
+========================================== */
+
+#restaurantMenuPopup .menu-section {
+
+    position: relative;
+
+    margin-bottom: 22px;
+
+    padding: 19px 18px 10px;
+
+    border: 1px solid rgba(212,175,55,.18);
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(0,0,0,.16)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+
+/* ==========================================
+   SECTION TITLE
+========================================== */
+
+#restaurantMenuPopup .menu-section h3 {
+
+    margin: 0 0 14px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(212,175,55,.22);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    color: #f0d477;
+}
+
+
+/* ==========================================
+   MENU ITEM
+========================================== */
+
+#restaurantMenuPopup .menu-item {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 14px 3px;
+
+    border-bottom: 1px solid rgba(255,255,255,.07);
+
+    transition:
+        padding-left .2s ease,
+        background .2s ease;
+}
+
+
+#restaurantMenuPopup .menu-item:last-child {
+
+    border-bottom: none;
+}
+
+
+#restaurantMenuPopup .menu-item:hover {
+
+    padding-left: 7px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(212,175,55,.08),
+            transparent
+        );
+}
+
+
+/* ==========================================
+   FOOD NAME
+========================================== */
+
+#restaurantMenuPopup .menu-item strong {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: .25px;
+
+    color: #f3e5c2;
+}
+
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+#restaurantMenuPopup .menu-item small {
+
+    display: block;
+
+    max-width: 430px;
+
+    color: rgba(255,255,255,.52);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   PRICE
+========================================== */
+
+#restaurantMenuPopup .menu-item > span {
+
+    flex-shrink: 0;
+
+    padding: 6px 9px;
+
+    border-left: 1px solid rgba(212,175,55,.35);
+
+    color: #e8c95f;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   ORDER BUTTON
+========================================== */
+
+#restaurantMenuPopup .menu-order-button {
+
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 15px 18px;
+
+    border: 1px solid #f0d477;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8e651b,
+            #d4af37 50%,
+            #f0d477
+        );
+
+    color: #171008;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 28px rgba(212,175,55,.18);
+
+    transition: .25s;
+}
+
+
+#restaurantMenuPopup .menu-order-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 34px rgba(212,175,55,.32);
+}
+
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+#restaurantMenuPopup .popup-content::-webkit-scrollbar {
+
+    width: 5px;
+}
+
+
+#restaurantMenuPopup .popup-content::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+
+#restaurantMenuPopup .popup-content::-webkit-scrollbar-thumb {
+
+    background: rgba(212,175,55,.4);
+
+    border-radius: 10px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #restaurantMenuPopup .popup-content {
+
+        width: 94% !important;
+
+        max-height: 90vh !important;
+
+        padding: 34px 17px 25px !important;
+
+        border-radius: 23px !important;
+    }
+
+
+    #restaurantMenuPopup .restaurant-menu-icon {
+
+        width: 56px;
+        height: 56px;
+
+        font-size: 25px;
+    }
+
+
+    #restaurantMenuPopup .restaurant-menu-header h2 {
+
+        font-size: 22px;
+    }
+
+
+    #restaurantMenuPopup .restaurant-menu-header p {
+
+        font-size: 10px;
+    }
+
+
+    #restaurantMenuPopup .menu-section {
+
+        padding: 16px 13px 8px;
+
+        margin-bottom: 15px;
+    }
+
+
+    #restaurantMenuPopup .menu-section h3 {
+
+        font-size: 12px;
+    }
+
+
+    #restaurantMenuPopup .menu-item {
+
+        gap: 10px;
+
+        padding: 12px 2px;
+    }
+
+
+    #restaurantMenuPopup .menu-item strong {
+
+        font-size: 11px;
+    }
+
+
+    #restaurantMenuPopup .menu-item small {
+
+        font-size: 9px;
+    }
+
+
+    #restaurantMenuPopup .menu-item > span {
+
+        padding: 5px 6px;
+
+        font-size: 8px;
+    }
+}
 /* ==========================================
    MENU SECTIONS
 ==========================================
