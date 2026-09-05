@@ -1617,6 +1617,326 @@ FOREST NATURE WALK POPUP
 
 </div>
   <!-- ==========================================
+     BAR MENU POPUP
+========================================== -->
+
+<div id="barMenuPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeBarMenu">&times;</span>
+
+        <div class="bar-menu-header">
+
+            <span class="bar-menu-icon">🍸</span>
+
+            <h2>Bar Menu</h2>
+
+            <p>
+                Refreshing drinks, cocktails and
+                carefully selected beverages.
+            </p>
+
+        </div>
+
+
+        <!-- SIGNATURE DRINKS -->
+
+        <div class="bar-section">
+
+            <h3>🍹 Signature Drinks</h3>
+
+            <div class="bar-item">
+
+                <div>
+                    <strong>Tropical Passion</strong>
+                    <small>
+                        Fresh passion fruit with tropical flavours
+                    </small>
+                </div>
+
+                <span>UGX 15,000</span>
+
+            </div>
+
+            <div class="bar-item">
+
+                <div>
+                    <strong>Mango Sunset</strong>
+                    <small>
+                        Fresh mango with a refreshing tropical blend
+                    </small>
+                </div>
+
+                <span>UGX 15,000</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOCKTAILS -->
+
+        <div class="bar-section">
+
+            <h3>🥂 Mocktails</h3>
+
+            <div class="bar-item">
+
+                <div>
+                    <strong>Virgin Mojito</strong>
+                    <small>
+                        Lime, mint and sparkling refreshment
+                    </small>
+                </div>
+
+                <span>UGX 12,000</span>
+
+            </div>
+
+            <div class="bar-item">
+
+                <div>
+                    <strong>Tropical Cooler</strong>
+                    <small>
+                        A refreshing blend of tropical fruits
+                    </small>
+                </div>
+
+                <span>UGX 12,000</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- SOFT DRINKS -->
+
+        <div class="bar-section">
+
+            <h3>🥤 Soft Drinks</h3>
+
+            <div class="bar-item">
+
+                <div>
+                    <strong>Fresh Juice</strong>
+                    <small>
+                        Passion, mango or seasonal fruit
+                    </small>
+                </div>
+
+                <span>UGX 8,000</span>
+
+            </div>
+
+            <div class="bar-item">
+
+                <div>
+                    <strong>Mineral Water</strong>
+                    <small>
+                        Chilled bottled water
+                    </small>
+                </div>
+
+                <span>UGX 5,000</span>
+
+            </div>
+
+        </div>
+
+
+        <button id="orderFromBar"
+                class="bar-order-button">
+
+            🍸 Order from Bar
+
+        </button>
+
+    </div>
+
+</div>
+  <!-- ==========================================
+     ROOM DINING POPUP
+========================================== -->
+
+<div id="roomDiningPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeRoomDining">&times;</span>
+
+        <div class="room-dining-header">
+
+            <span class="room-dining-icon">🛎️</span>
+
+            <h2>Room Dining</h2>
+
+            <p>
+                Enjoy a delicious meal in the comfort
+                and privacy of your room.
+            </p>
+
+        </div>
+
+
+        <div class="room-dining-card">
+
+            <span>🍽️</span>
+
+            <div>
+
+                <strong>Order from the Restaurant</strong>
+
+                <small>
+                    Choose your meal and we'll deliver it
+                    directly to your room.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <label for="roomDiningMeal">
+            Meal Request
+        </label>
+
+        <textarea
+            id="roomDiningMeal"
+            placeholder="Tell us what you would like to order..."
+        ></textarea>
+
+
+        <label for="roomDiningTime">
+            Preferred Delivery Time
+        </label>
+
+        <input
+            type="time"
+            id="roomDiningTime"
+        >
+
+
+        <label for="roomDiningNotes">
+            Special Request
+        </label>
+
+        <textarea
+            id="roomDiningNotes"
+            placeholder="Any special instructions?"
+        ></textarea>
+
+
+        <button id="sendRoomDiningRequest">
+
+            🛎️ Request Room Dining
+
+        </button>
+
+    </div>
+
+</div>
+  <!-- ==========================================
+     RESTAURANT TABLE RESERVATION POPUP
+========================================== -->
+
+<div id="restaurantReservationPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="closeRestaurantReservation">&times;</span>
+
+        <div class="reservation-header">
+
+            <span class="reservation-icon">📅</span>
+
+            <h2>Reserve a Table</h2>
+
+            <p>
+                Reserve your table and enjoy an
+                unforgettable dining experience.
+            </p>
+
+        </div>
+
+
+        <label for="reservationDate">
+            Date
+        </label>
+
+        <input
+            type="date"
+            id="reservationDate"
+        >
+
+
+        <label for="reservationTime">
+            Preferred Time
+        </label>
+
+        <input
+            type="time"
+            id="reservationTime"
+        >
+
+
+        <label for="reservationGuests">
+            Number of Guests
+        </label>
+
+        <select id="reservationGuests">
+
+            <option value="">
+                Select number of guests
+            </option>
+
+            <option value="1">
+                1 Guest
+            </option>
+
+            <option value="2">
+                2 Guests
+            </option>
+
+            <option value="3">
+                3 Guests
+            </option>
+
+            <option value="4">
+                4 Guests
+            </option>
+
+            <option value="5">
+                5 Guests
+            </option>
+
+            <option value="6+">
+                6+ Guests
+            </option>
+
+        </select>
+
+
+        <label for="reservationNotes">
+            Special Request
+        </label>
+
+        <textarea
+            id="reservationNotes"
+            placeholder="Birthday, anniversary, preferred seating, etc."
+        ></textarea>
+
+
+        <button id="sendRestaurantReservation">
+
+            📅 Request Reservation
+
+        </button>
+
+    </div>
+
+</div>
+  <!-- ==========================================
      CRATER LAKE TOUR POPUP
 ========================================== -->
 
