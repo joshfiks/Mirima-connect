@@ -13722,3 +13722,129 @@ padding:22px !important;
     color: #5a3b0d;
 
 }
+/* ==========================================
+   ROOM DINING — FORCE PREMIUM OVERRIDE
+========================================== */
+
+#roomDiningPopup {
+    z-index: 9999 !important;
+}
+
+#roomDiningPopup .popup-content {
+    width: min(700px, 94%) !important;
+    max-width: 700px !important;
+
+    background: linear-gradient(
+        145deg,
+        #21180d 0%,
+        #0c0a07 50%,
+        #1c1309 100%
+    ) !important;
+
+    border: 2px solid #d4af37 !important;
+    border-radius: 27px !important;
+
+    padding: 42px 34px 32px !important;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.8),
+        0 0 40px rgba(212,175,55,.25) !important;
+
+    color: #f5e8c2 !important;
+}
+
+
+/* HEADER */
+
+#roomDiningPopup .room-dining-header h2 {
+    color: #e7c96a !important;
+    font-family: "Cinzel", serif !important;
+    font-size: 30px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+}
+
+#roomDiningPopup .room-dining-header p {
+    color: #c8c0b1 !important;
+}
+
+
+/* ORDER CARD */
+
+#roomDiningPopup .room-dining-card {
+    background: linear-gradient(
+        145deg,
+        #352715,
+        #151009
+    ) !important;
+
+    border: 1px solid #d4af37 !important;
+
+    border-radius: 16px !important;
+}
+
+
+/* LABELS */
+
+#roomDiningPopup label {
+    color: #e7c96a !important;
+    font-family: "Cinzel", serif !important;
+}
+
+
+/* INPUTS */
+
+#roomDiningPopup textarea,
+#roomDiningPopup input[type="time"] {
+    background: #100d09 !important;
+
+    border: 1px solid #a98428 !important;
+
+    color: #f5e8c2 !important;
+
+    border-radius: 11px !important;
+}
+
+#roomDiningPopup textarea:focus,
+#roomDiningPopup input[type="time"]:focus {
+    border-color: #d4af37 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(212,175,55,.15),
+        0 0 20px rgba(212,175,55,.2) !important;
+}
+
+
+/* REQUEST BUTTON */
+
+#roomDiningPopup #sendRoomDiningRequest {
+    background: linear-gradient(
+        135deg,
+        #8d641c,
+        #d4af37,
+        #f0cf65
+    ) !important;
+
+    color: #241706 !important;
+
+    border: 1px solid #f1d36c !important;
+
+    border-radius: 14px !important;
+
+    font-family: "Cinzel", serif !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* CLOSE */
+
+#roomDiningPopup .closeRoomDining {
+    background: linear-gradient(
+        145deg,
+        #d4af37,
+        #8d641c
+    ) !important;
+
+    color: white !important;
+}
