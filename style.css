@@ -6257,12 +6257,6 @@ margin-top:20px;
         padding: 14px 12px;
     }
 }
-
-/*==========================================
-PAYMENT OPTIONS
-==========================================*/
-
-#paymentPopup .payment-options{
  /* ==========================================
     ROOM DINING — PREMIUM LUXURY DESIGN
  ========================================== */
@@ -6758,7 +6752,474 @@ gap:12px;
 margin:20px 0;
 
 }
+/* ==========================================
+   RESERVE A TABLE — PREMIUM LUXURY DESIGN
+========================================== */
 
+#restaurantReservationPopup .popup-content {
+    width: min(700px, 94%);
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 42px 34px 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b150e 0%,
+            #0d0b08 50%,
+            #1a1209 100%
+        );
+
+    border: 1px solid #d4af37;
+    border-radius: 27px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(212,175,55,.15);
+
+    position: relative;
+}
+
+
+/* INNER GOLD FRAME */
+
+#restaurantReservationPopup .popup-content::before {
+    content: "";
+
+    position: absolute;
+    inset: 10px;
+
+    border: 1px solid rgba(212,175,55,.28);
+    border-radius: 20px;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   CLOSE BUTTON
+========================================== */
+
+#restaurantReservationPopup .closeRestaurantReservation {
+    position: absolute;
+
+    top: 16px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d4af37,
+            #8d641c
+        );
+
+    color: #fff8df;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.45);
+
+    transition: .25s ease;
+}
+
+#restaurantReservationPopup .closeRestaurantReservation:hover {
+    transform: rotate(90deg) scale(1.05);
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+#restaurantReservationPopup .reservation-header {
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 28px;
+}
+
+#restaurantReservationPopup .reservation-icon {
+    display: block;
+
+    font-size: 40px;
+
+    margin-bottom: 7px;
+
+    filter:
+        drop-shadow(
+            0 5px 8px rgba(212,175,55,.3)
+        );
+}
+
+#restaurantReservationPopup .reservation-header h2 {
+    margin: 0;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #e7c96a;
+
+    text-shadow:
+        0 3px 10px rgba(0,0,0,.6);
+}
+
+#restaurantReservationPopup .reservation-header h2::after {
+    content: "◆ ◆ ◆";
+
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 8px;
+
+    letter-spacing: 7px;
+
+    color: #d4af37;
+}
+
+#restaurantReservationPopup .reservation-header p {
+    max-width: 500px;
+
+    margin: 12px auto 0;
+
+    color: #c8c0b1;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   FORM LABELS
+========================================== */
+
+#restaurantReservationPopup label {
+    display: block;
+
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+
+    margin: 18px 0 7px;
+
+    color: #e7c96a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .7px;
+}
+
+
+/* ==========================================
+   DATE / TIME / SELECT
+========================================== */
+
+#restaurantReservationPopup input[type="date"],
+#restaurantReservationPopup input[type="time"],
+#restaurantReservationPopup select {
+    display: block;
+
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    padding: 0 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #21190f,
+            #110e09
+        );
+
+    border: 1px solid rgba(212,175,55,.45);
+
+    border-radius: 11px;
+
+    color: #f5e8c2;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    outline: none;
+
+    color-scheme: dark;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* SELECT ARROW */
+
+#restaurantReservationPopup select {
+    appearance: auto;
+
+    cursor: pointer;
+}
+
+
+/* PLACEHOLDER / FIRST OPTION */
+
+#restaurantReservationPopup select option {
+    background: #171109;
+
+    color: #f5e8c2;
+}
+
+
+/* FOCUS */
+
+#restaurantReservationPopup input[type="date"]:focus,
+#restaurantReservationPopup input[type="time"]:focus,
+#restaurantReservationPopup select:focus {
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 3px rgba(212,175,55,.12),
+        0 0 18px rgba(212,175,55,.12);
+}
+
+
+/* ==========================================
+   SPECIAL REQUEST
+========================================== */
+
+#restaurantReservationPopup textarea {
+    display: block;
+
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+
+    min-height: 110px;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+
+    resize: vertical;
+
+    background:
+        linear-gradient(
+            145deg,
+            #21190f,
+            #110e09
+        );
+
+    border: 1px solid rgba(212,175,55,.45);
+
+    border-radius: 11px;
+
+    color: #f5e8c2;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    outline: none;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+#restaurantReservationPopup textarea::placeholder {
+    color: #81786d;
+}
+
+#restaurantReservationPopup textarea:focus {
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 3px rgba(212,175,55,.12),
+        0 0 18px rgba(212,175,55,.12);
+}
+
+
+/* ==========================================
+   RESERVATION BUTTON
+========================================== */
+
+#restaurantReservationPopup #sendRestaurantReservation {
+    display: block;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 25px;
+
+    padding: 15px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8d641c,
+            #d4af37 45%,
+            #f0cf65
+        );
+
+    border: 1px solid #f1d36c;
+
+    border-radius: 14px;
+
+    color: #241706;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.18);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+#restaurantReservationPopup #sendRestaurantReservation:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 26px rgba(0,0,0,.55),
+        0 0 28px rgba(212,175,55,.35);
+}
+
+#restaurantReservationPopup #sendRestaurantReservation:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+#restaurantReservationPopup .popup-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+#restaurantReservationPopup .popup-content::-webkit-scrollbar-track {
+    background: #0d0b08;
+
+    border-radius: 10px;
+}
+
+#restaurantReservationPopup .popup-content::-webkit-scrollbar-thumb {
+    background: #8d641c;
+
+    border-radius: 10px;
+}
+
+#restaurantReservationPopup .popup-content::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #restaurantReservationPopup .popup-content {
+        width: 94%;
+
+        padding: 36px 16px 22px;
+
+        border-radius: 22px;
+    }
+
+    #restaurantReservationPopup .reservation-header h2 {
+        font-size: 24px;
+    }
+
+    #restaurantReservationPopup .reservation-header p {
+        font-size: 11px;
+    }
+
+    #restaurantReservationPopup .reservation-icon {
+        font-size: 34px;
+    }
+
+    #restaurantReservationPopup label {
+        font-size: 10px;
+    }
+
+    #restaurantReservationPopup input[type="date"],
+    #restaurantReservationPopup input[type="time"],
+    #restaurantReservationPopup select {
+        height: 46px;
+
+        font-size: 11px;
+    }
+
+    #restaurantReservationPopup textarea {
+        min-height: 95px;
+
+        font-size: 11px;
+    }
+
+    #restaurantReservationPopup #sendRestaurantReservation {
+        font-size: 11px;
+
+        padding: 14px 12px;
+    }
+}
+/*==========================================
+PAYMENT OPTIONS
+==========================================*/
+
+#paymentPopup .payment-options{
+            
 #paymentPopup .payment-card{
 
 box-sizing:border-box;
