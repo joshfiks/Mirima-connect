@@ -13723,63 +13723,285 @@ padding:22px !important;
 
 }
 /* ==========================================
-   ROOM DINING — FORM LAYOUT FIX
+   ROOM DINING — FINAL VISUAL FIX
 ========================================== */
 
-#roomDiningPopup .popup-content {
-    display: block;
-    box-sizing: border-box;
-}
+/* CLOSE BUTTON */
 
-/* Close button */
 #roomDiningPopup .closeRoomDining {
-    left: auto;
-    right: 18px;
-    top: 16px;
+    position: absolute !important;
+    top: 16px !important;
+    right: 18px !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 38px !important;
+    height: 38px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: linear-gradient(
+        145deg,
+        #d4af37,
+        #8d641c
+    ) !important;
+
+    color: #fff8df !important;
+
+    border-radius: 50% !important;
+
+    font-size: 24px !important;
+
+    z-index: 100 !important;
 }
 
-/* Header */
-#roomDiningPopup .room-dining-header {
-    display: block;
-    width: 100%;
-}
 
-/* Restaurant card */
+/* ==========================================
+   RESTAURANT ORDER CARD
+========================================== */
+
 #roomDiningPopup .room-dining-card {
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
+    display: flex !important;
+    align-items: center !important;
+
+    width: 100% !important;
+    box-sizing: border-box !important;
+
+    gap: 16px !important;
+
+    margin: 0 0 25px 0 !important;
+    padding: 17px !important;
+
+    background: linear-gradient(
+        145deg,
+        #302414,
+        #171109
+    ) !important;
+
+    border: 1px solid rgba(212,175,55,.65) !important;
+
+    border-radius: 16px !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 8px 22px rgba(0,0,0,.4) !important;
 }
 
-/* Labels */
+
+/* CARD ICON */
+
+#roomDiningPopup .room-dining-card > span {
+    width: 55px !important;
+    height: 55px !important;
+
+    flex: 0 0 55px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: linear-gradient(
+        145deg,
+        #d4af37,
+        #8d641c
+    ) !important;
+
+    border-radius: 13px !important;
+
+    font-size: 27px !important;
+}
+
+
+/* CARD TEXT */
+
+#roomDiningPopup .room-dining-card > div {
+    display: block !important;
+    flex: 1 !important;
+}
+
+#roomDiningPopup .room-dining-card strong {
+    display: block !important;
+
+    margin-bottom: 5px !important;
+
+    color: #f4e7bd !important;
+
+    font-family: "Cinzel", serif !important;
+
+    font-size: 14px !important;
+}
+
+#roomDiningPopup .room-dining-card small {
+    display: block !important;
+
+    color: #aaa196 !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 11px !important;
+
+    line-height: 1.5 !important;
+}
+
+
+/* ==========================================
+   LABELS
+========================================== */
+
 #roomDiningPopup label {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: left;
+    display: block !important;
+
+    width: 100% !important;
+
+    margin: 18px 0 7px !important;
+
+    color: #e7c96a !important;
+
+    font-family: "Cinzel", serif !important;
+
+    font-size: 12px !important;
+
+    font-weight: 700 !important;
+
+    text-transform: uppercase !important;
+
+    letter-spacing: .6px !important;
 }
 
-/* Text fields */
+
+/* ==========================================
+   TEXTAREAS
+========================================== */
+
 #roomDiningPopup textarea {
-    display: block;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    display: block !important;
+
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+
+    min-height: 105px !important;
+
+    box-sizing: border-box !important;
+
+    padding: 13px !important;
+
+    background: #100d09 !important;
+
+    border: 1px solid rgba(212,175,55,.5) !important;
+
+    border-radius: 11px !important;
+
+    color: #f5e8c2 !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 12px !important;
+
+    outline: none !important;
 }
 
-/* Time field */
+#roomDiningPopup textarea::placeholder {
+    color: #81786d !important;
+}
+
+#roomDiningPopup textarea:focus {
+    border-color: #d4af37 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(212,175,55,.12),
+        0 0 18px rgba(212,175,55,.15) !important;
+}
+
+
+/* ==========================================
+   TIME INPUT
+========================================== */
+
 #roomDiningPopup input[type="time"] {
-    display: block;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    display: block !important;
+
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+
+    height: 48px !important;
+
+    box-sizing: border-box !important;
+
+    padding: 0 13px !important;
+
+    background: #100d09 !important;
+
+    border: 1px solid rgba(212,175,55,.5) !important;
+
+    border-radius: 11px !important;
+
+    color: #f5e8c2 !important;
+
+    color-scheme: dark !important;
+
+    font-family: "Poppins", sans-serif !important;
 }
 
-/* Button */
+
+/* ==========================================
+   BUTTON
+========================================== */
+
 #roomDiningPopup #sendRoomDiningRequest {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
+    display: block !important;
+
+    width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    margin-top: 25px !important;
+
+    background: linear-gradient(
+        135deg,
+        #8d641c,
+        #d4af37 45%,
+        #f0cf65
+    ) !important;
+
+    border: 1px solid #f1d36c !important;
+
+    border-radius: 14px !important;
+
+    color: #241706 !important;
+
+    font-family: "Cinzel", serif !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #roomDiningPopup .room-dining-card {
+        padding: 14px !important;
+        gap: 12px !important;
+    }
+
+    #roomDiningPopup .room-dining-card > span {
+        width: 48px !important;
+        height: 48px !important;
+        flex-basis: 48px !important;
+        font-size: 23px !important;
+    }
+
+    #roomDiningPopup .room-dining-card strong {
+        font-size: 12px !important;
+    }
+
+    #roomDiningPopup .room-dining-card small {
+        font-size: 10px !important;
+    }
 }
