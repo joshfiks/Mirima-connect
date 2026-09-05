@@ -5156,49 +5156,44 @@ margin-top:20px;
 
 }
 /* ==========================================
-   🍷 RESTAURANT & BAR — LODGE DINING
+   🍷 RESTAURANT & BAR — MIRIMA SIGNATURE DINING
 ========================================== */
 
 #restaurantBarPopup .popup-content {
 
     width: min(760px, 94%);
     max-height: 88vh;
-
     overflow-y: auto;
     overflow-x: hidden;
-
     box-sizing: border-box;
 
-    padding: 44px 38px 36px;
-
+    padding: 42px 34px 32px;
     position: relative;
 
     background:
         radial-gradient(
-            circle at 50% 0%,
-            rgba(212,175,55,.15),
-            transparent 40%
+            circle at 50% -10%,
+            rgba(212,175,55,.16),
+            transparent 38%
         ),
         linear-gradient(
             145deg,
-            #24170d,
-            #0d0906 65%,
-            #1b1009
+            #2a1a0e,
+            #100a06 60%,
+            #1d1008
         );
 
     border: 1px solid rgba(212,175,55,.55);
-
-    border-radius: 28px;
+    border-radius: 27px;
 
     box-shadow:
         0 30px 90px rgba(0,0,0,.88),
-        inset 0 1px 0 rgba(255,255,255,.07);
-
+        inset 0 1px 0 rgba(255,255,255,.06);
 }
 
 
 /* ==========================================
-   INNER GOLD FRAME
+   INNER FRAME
 ========================================== */
 
 #restaurantBarPopup .popup-content::before {
@@ -5209,12 +5204,11 @@ margin-top:20px;
 
     inset: 9px;
 
-    border: 1px solid rgba(212,175,55,.17);
+    border: 1px solid rgba(212,175,55,.18);
 
-    border-radius: 21px;
+    border-radius: 20px;
 
     pointer-events: none;
-
 }
 
 
@@ -5226,11 +5220,11 @@ margin-top:20px;
 
     position: absolute;
 
-    top: 17px;
-    right: 20px;
+    top: 16px;
+    right: 18px;
 
-    width: 39px;
-    height: 39px;
+    width: 38px;
+    height: 38px;
 
     display: flex;
     align-items: center;
@@ -5238,33 +5232,31 @@ margin-top:20px;
 
     border-radius: 50%;
 
-    background: #25180e;
+    background: #24150b;
 
-    border: 1px solid rgba(212,175,55,.42);
+    border: 1px solid rgba(212,175,55,.45);
 
-    color: #f0d477;
+    color: #f1d477;
 
-    font-size: 24px;
+    font-size: 23px;
 
     cursor: pointer;
 
     z-index: 20;
 
     transition: .3s;
-
 }
 
 #restaurantBarPopup .closeRestaurantBar:hover {
 
     transform: rotate(90deg);
 
-    background: #392411;
+    background: #39220e;
 
     border-color: #d4af37;
 
     box-shadow:
         0 0 18px rgba(212,175,55,.25);
-
 }
 
 
@@ -5272,179 +5264,236 @@ margin-top:20px;
    HEADER
 ========================================== */
 
-#restaurantBarPopup h2 {
-
-    margin: 2px 0 8px;
+#restaurantBarPopup .restaurant-bar-header {
 
     text-align: center;
 
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 28px;
+}
+
+
+#restaurantBarPopup .restaurant-bar-icon {
+
+    display: block;
+
+    font-size: 42px;
+
+    margin-bottom: 8px;
+
+    filter:
+        drop-shadow(0 6px 8px rgba(0,0,0,.35));
+}
+
+
+#restaurantBarPopup .restaurant-bar-header h2 {
+
+    margin: 0;
+
     font-family: "Cinzel", serif;
 
-    font-size: 31px;
+    font-size: 29px;
 
     font-weight: 700;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
 
     text-transform: uppercase;
 
     color: #f0d477;
-
 }
 
 
-/* DINING DIVIDER */
-
-#restaurantBarPopup h2::after {
+#restaurantBarPopup .restaurant-bar-header h2::after {
 
     content: "◆  ✦  ◆";
 
     display: block;
 
-    margin-top: 11px;
+    margin-top: 10px;
 
     color: #d4af37;
 
     font-size: 9px;
 
     letter-spacing: 5px;
-
 }
 
 
-/* DESCRIPTION */
+#restaurantBarPopup .restaurant-bar-header p {
 
-#restaurantBarPopup .popup-content > p {
+    max-width: 530px;
 
-    margin: 0 0 28px;
+    margin: 13px auto 0;
 
-    text-align: center;
-
-    color: rgba(255,255,255,.65);
+    color: rgba(255,255,255,.66);
 
     font-family: "Poppins", sans-serif;
 
     font-size: 13px;
 
     line-height: 1.7;
-
 }
 
 
 /* ==========================================
-   RESTAURANT / BAR OPTIONS
+   DINING NAVIGATION
 ========================================== */
 
-#restaurantBarPopup .service-grid {
+#restaurantBarPopup .dining-option {
 
-    display: grid;
+    width: 100%;
 
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+    min-height: 82px;
 
-    gap: 16px;
+    margin: 0 0 12px;
 
-    margin: 20px 0 25px;
-
-}
-
-
-/* ==========================================
-   DINING OPTION CARD
-========================================== */
-
-#restaurantBarPopup .service-option {
-
-    position: relative;
-
-    min-height: 145px;
-
-    padding: 22px 15px;
+    padding: 13px 18px;
 
     box-sizing: border-box;
 
-    display: flex;
+    display: grid;
 
-    flex-direction: column;
+    grid-template-columns: 54px 1fr 28px;
 
     align-items: center;
-    justify-content: center;
 
-    text-align: center;
+    gap: 14px;
 
-    border: 1px solid rgba(212,175,55,.32);
+    text-align: left;
 
-    border-radius: 18px;
+    border: 1px solid rgba(212,175,55,.25);
+
+    border-radius: 15px;
 
     background:
         linear-gradient(
-            145deg,
-            #f4ead5,
-            #d9c69e
+            110deg,
+            rgba(255,255,255,.055),
+            rgba(212,175,55,.035)
         );
 
-    color: #24180c;
+    color: #f5e7c0;
 
     cursor: pointer;
+
+    position: relative;
 
     overflow: hidden;
 
     transition:
-        transform .25s,
-        border-color .25s,
-        box-shadow .25s;
-
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
 }
 
 
-/* INNER CARD FRAME */
-
-#restaurantBarPopup .service-option::before {
+#restaurantBarPopup .dining-option::before {
 
     content: "";
 
     position: absolute;
 
-    inset: 6px;
+    left: 0;
+    top: 0;
+    bottom: 0;
 
-    border: 1px solid rgba(91,64,18,.18);
+    width: 3px;
 
-    border-radius: 13px;
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #d4af37,
+            transparent
+        );
 
-    pointer-events: none;
-
+    opacity: .65;
 }
 
 
-/* ICON */
+#restaurantBarPopup .dining-option:hover {
 
-#restaurantBarPopup .service-option .icon {
+    transform: translateX(5px);
 
-    position: relative;
+    border-color: rgba(212,175,55,.7);
 
-    z-index: 2;
+    background:
+        linear-gradient(
+            110deg,
+            rgba(212,175,55,.13),
+            rgba(255,255,255,.055)
+        );
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.35),
+        0 0 20px rgba(212,175,55,.08);
+}
+
+
+/* ==========================================
+   DINING ICON
+========================================== */
+
+#restaurantBarPopup .dining-option-icon {
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d4af37,
+            #8d641b
+        );
+
+    border: 1px solid #f0d477;
+
+    color: #171008;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 7px 18px rgba(0,0,0,.35);
+
+    transition: .25s;
+}
+
+
+#restaurantBarPopup .dining-option:hover .dining-option-icon {
+
+    transform: scale(1.06);
+
+    box-shadow:
+        0 8px 22px rgba(212,175,55,.22);
+}
+
+
+/* ==========================================
+   TEXT
+========================================== */
+
+#restaurantBarPopup .dining-option div {
+
+    min-width: 0;
+}
+
+
+#restaurantBarPopup .dining-option strong {
 
     display: block;
 
-    margin-bottom: 10px;
-
-    font-size: 39px;
-
-    line-height: 1;
-
-    filter:
-        drop-shadow(0 5px 5px rgba(0,0,0,.2));
-
-}
-
-
-/* TITLE */
-
-#restaurantBarPopup .service-option .title {
-
-    position: relative;
-
-    z-index: 2;
+    margin-bottom: 5px;
 
     font-family: "Cinzel", serif;
 
@@ -5452,143 +5501,180 @@ margin-top:20px;
 
     font-weight: 700;
 
-    letter-spacing: .3px;
+    letter-spacing: .5px;
 
+    color: #f3d477;
 }
 
 
-/* HOVER */
+#restaurantBarPopup .dining-option small {
 
-#restaurantBarPopup .service-option:hover {
+    display: block;
 
-    transform: translateY(-4px);
+    color: rgba(255,255,255,.58);
 
-    border-color: #d4af37;
+    font-family: "Poppins", sans-serif;
 
-    box-shadow:
-        0 13px 28px rgba(0,0,0,.4),
-        0 0 18px rgba(212,175,55,.12);
+    font-size: 11px;
 
+    line-height: 1.5;
 }
 
 
 /* ==========================================
-   SELECTED OPTION
+   ARROW
 ========================================== */
 
-#restaurantBarPopup .service-option.selected {
+#restaurantBarPopup .dining-arrow {
 
-    transform: translateY(-4px);
+    display: flex;
 
-    border: 2px solid #d4af37;
+    align-items: center;
+    justify-content: center;
 
-    background:
-        linear-gradient(
-            145deg,
-            #fff1c7,
-            #dfc37b
-        );
+    color: #d4af37;
 
-    box-shadow:
-        0 13px 30px rgba(0,0,0,.4),
-        0 0 0 3px rgba(212,175,55,.12),
-        0 0 25px rgba(212,175,55,.25);
+    font-family: Arial, sans-serif;
 
+    font-size: 29px;
+
+    transition: .25s;
 }
 
 
-/* SELECTED BADGE */
+#restaurantBarPopup .dining-option:hover .dining-arrow {
 
-#restaurantBarPopup .service-option.selected::after {
+    transform: translateX(4px);
 
-    content: "✓ SELECTED";
+    color: #f3d477;
+}
 
-    position: absolute;
 
-    top: 8px;
-    right: 8px;
+/* ==========================================
+   OPENING HOURS
+========================================== */
 
-    padding: 4px 7px;
+#restaurantBarPopup .dining-hours {
 
-    border-radius: 6px;
+    margin-top: 22px;
+
+    padding: 18px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-top: 1px solid rgba(212,175,55,.22);
+
+    border-bottom: 1px solid rgba(212,175,55,.22);
 
     background:
-        linear-gradient(
-            135deg,
-            #896218,
-            #d4af37
-        );
+        rgba(0,0,0,.16);
+}
 
-    border: 1px solid #f1d477;
 
-    color: #fff7db;
+#restaurantBarPopup .hours-icon {
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(212,175,55,.45);
+
+    border-radius: 50%;
+
+    color: #d4af37;
+
+    font-size: 19px;
+}
+
+
+#restaurantBarPopup .dining-hours strong {
+
+    display: block;
+
+    margin-bottom: 5px;
 
     font-family: "Cinzel", serif;
 
-    font-size: 8px;
+    font-size: 12px;
 
-    font-weight: 700;
+    letter-spacing: .7px;
 
-    letter-spacing: .5px;
+    text-transform: uppercase;
 
-    z-index: 5;
+    color: #f0d477;
+}
 
+
+#restaurantBarPopup .dining-hours p {
+
+    margin: 2px 0;
+
+    color: rgba(255,255,255,.58);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
 }
 
 
 /* ==========================================
-   BUTTON
+   CONTACT BUTTON
 ========================================== */
 
-#restaurantBarPopup button {
+#restaurantBarPopup .dining-contact-button {
 
     width: 100%;
 
-    box-sizing: border-box;
+    margin-top: 18px;
 
-    margin-top: 10px;
+    padding: 14px 18px;
 
-    padding: 16px 18px;
+    border: 1px solid #d4af37;
 
-    border: 1px solid #f0d477;
-
-    border-radius: 15px;
+    border-radius: 13px;
 
     background:
         linear-gradient(
             135deg,
-            #956c1b,
-            #d4af37 50%,
-            #f1d477
+            #8e651b,
+            #d4af37,
+            #f0d477
         );
 
     color: #171008;
 
     font-family: "Cinzel", serif;
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 700;
 
-    letter-spacing: .8px;
+    letter-spacing: .7px;
 
     cursor: pointer;
 
     box-shadow:
-        0 10px 30px rgba(212,175,55,.2);
+        0 9px 25px rgba(212,175,55,.18);
 
     transition: .25s;
-
 }
 
 
-#restaurantBarPopup button:hover {
+#restaurantBarPopup .dining-contact-button:hover {
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 15px 38px rgba(212,175,55,.36);
-
+        0 13px 32px rgba(212,175,55,.32);
 }
 
 
@@ -5599,21 +5685,20 @@ margin-top:20px;
 #restaurantBarPopup .popup-content::-webkit-scrollbar {
 
     width: 5px;
-
 }
+
 
 #restaurantBarPopup .popup-content::-webkit-scrollbar-track {
 
     background: transparent;
-
 }
+
 
 #restaurantBarPopup .popup-content::-webkit-scrollbar-thumb {
 
     background: rgba(212,175,55,.4);
 
     border-radius: 10px;
-
 }
 
 
@@ -5629,32 +5714,86 @@ margin-top:20px;
 
         max-height: 90vh;
 
-        padding: 35px 20px 28px;
+        padding: 35px 18px 27px;
 
         border-radius: 23px;
-
     }
 
-    #restaurantBarPopup h2 {
 
-        font-size: 23px;
+    #restaurantBarPopup .restaurant-bar-icon {
 
+        font-size: 35px;
     }
 
-    #restaurantBarPopup .service-grid {
 
-        grid-template-columns: 1fr;
+    #restaurantBarPopup .restaurant-bar-header h2 {
 
-        gap: 12px;
-
+        font-size: 22px;
     }
 
-    #restaurantBarPopup .service-option {
 
-        min-height: 125px;
+    #restaurantBarPopup .restaurant-bar-header p {
 
+        font-size: 11px;
+
+        line-height: 1.6;
     }
 
+
+    #restaurantBarPopup .dining-option {
+
+        min-height: 76px;
+
+        grid-template-columns: 46px 1fr 22px;
+
+        gap: 11px;
+
+        padding: 11px 13px;
+    }
+
+
+    #restaurantBarPopup .dining-option-icon {
+
+        width: 44px;
+        height: 44px;
+
+        font-size: 21px;
+    }
+
+
+    #restaurantBarPopup .dining-option strong {
+
+        font-size: 12px;
+    }
+
+
+    #restaurantBarPopup .dining-option small {
+
+        font-size: 9px;
+    }
+
+
+    #restaurantBarPopup .dining-arrow {
+
+        font-size: 25px;
+    }
+
+
+    #restaurantBarPopup .dining-hours {
+
+        padding: 15px;
+
+        gap: 11px;
+    }
+
+
+    #restaurantBarPopup .hours-icon {
+
+        width: 37px;
+        height: 37px;
+
+        font-size: 16px;
+    }
 }
 /*==========================================
 PAYMENT OPTIONS
