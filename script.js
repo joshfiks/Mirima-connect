@@ -1702,7 +1702,7 @@ explorePopup
     });
 
 });
-  // ==========================================
+ // ==========================================
 // RESTAURANT MENU POPUP
 // ==========================================
 
@@ -1712,13 +1712,13 @@ const restaurantMenuPopup =
 const closeRestaurantMenu =
     document.querySelector(".closeRestaurantMenu");
 
+const restaurantMenuButton =
+    document.getElementById("restaurantMenuButton");
 
-// ==========================================
+
 // OPEN RESTAURANT MENU
-// ==========================================
 
-document.getElementById("restaurantMenuButton")
-.addEventListener("click", () => {
+restaurantMenuButton.addEventListener("click", () => {
 
     restaurantBarPopup.style.display = "none";
 
@@ -1727,26 +1727,171 @@ document.getElementById("restaurantMenuButton")
 });
 
 
-// ==========================================
 // CLOSE RESTAURANT MENU
-// ==========================================
 
 closeRestaurantMenu.addEventListener("click", () => {
 
     restaurantMenuPopup.style.display = "none";
 
+    restaurantBarPopup.style.display = "flex";
+
 });
 
 
-// ==========================================
-// CLOSE WHEN CLICKING OUTSIDE
-// ==========================================
+// CLOSE RESTAURANT MENU WHEN CLICKING OUTSIDE
 
 restaurantMenuPopup.addEventListener("click", (e) => {
 
     if (e.target === restaurantMenuPopup) {
 
         restaurantMenuPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// BAR MENU POPUP
+// ==========================================
+
+const barMenuPopup =
+    document.getElementById("barMenuPopup");
+
+const closeBarMenu =
+    document.querySelector(".closeBarMenu");
+
+const barMenuButton =
+    document.getElementById("barMenuButton");
+
+
+// OPEN BAR MENU
+
+barMenuButton.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+
+    barMenuPopup.style.display = "flex";
+
+});
+
+
+// CLOSE BAR MENU
+
+closeBarMenu.addEventListener("click", () => {
+
+    barMenuPopup.style.display = "none";
+
+    restaurantBarPopup.style.display = "flex";
+
+});
+
+
+// CLOSE BAR MENU WHEN CLICKING OUTSIDE
+
+barMenuPopup.addEventListener("click", (e) => {
+
+    if (e.target === barMenuPopup) {
+
+        barMenuPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// ROOM DINING POPUP
+// ==========================================
+
+const roomDiningPopup =
+    document.getElementById("roomDiningPopup");
+
+const closeRoomDining =
+    document.querySelector(".closeRoomDining");
+
+const roomDiningButton =
+    document.getElementById("roomDiningButton");
+
+
+// OPEN ROOM DINING
+
+roomDiningButton.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+
+    roomDiningPopup.style.display = "flex";
+
+});
+
+
+// CLOSE ROOM DINING
+
+closeRoomDining.addEventListener("click", () => {
+
+    roomDiningPopup.style.display = "none";
+
+    restaurantBarPopup.style.display = "flex";
+
+});
+
+
+// CLOSE ROOM DINING WHEN CLICKING OUTSIDE
+
+roomDiningPopup.addEventListener("click", (e) => {
+
+    if (e.target === roomDiningPopup) {
+
+        roomDiningPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// RESTAURANT TABLE RESERVATION
+// ==========================================
+
+const restaurantReservationPopup =
+    document.getElementById("restaurantReservationPopup");
+
+const closeRestaurantReservation =
+    document.querySelector(".closeRestaurantReservation");
+
+const restaurantReservationButton =
+    document.getElementById("restaurantReservationButton");
+
+
+// OPEN RESERVATION
+
+restaurantReservationButton.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+
+    restaurantReservationPopup.style.display = "flex";
+
+});
+
+
+// CLOSE RESERVATION
+
+closeRestaurantReservation.addEventListener("click", () => {
+
+    restaurantReservationPopup.style.display = "none";
+
+    restaurantBarPopup.style.display = "flex";
+
+});
+
+
+// CLOSE RESERVATION WHEN CLICKING OUTSIDE
+
+restaurantReservationPopup.addEventListener("click", (e) => {
+
+    if (e.target === restaurantReservationPopup) {
+
+        restaurantReservationPopup.style.display = "none";
 
     }
 
