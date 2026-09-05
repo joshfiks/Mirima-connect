@@ -14005,3 +14005,34 @@ padding:22px !important;
         font-size: 10px !important;
     }
 }
+/* ==========================================
+   ROOM DINING — CLOSE BUTTON POSITION
+========================================== */
+
+#roomDiningPopup {
+    position: fixed !important;
+}
+
+#roomDiningPopup .popup-content {
+    position: relative !important;
+}
+
+#roomDiningPopup .closeRoomDining {
+    position: absolute !important;
+
+    top: 16px !important;
+    right: 18px !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 38px !important;
+    height: 38px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    z-index: 9999 !important;
+
+    cursor: pointer !important;
+}
