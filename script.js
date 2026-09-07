@@ -2477,7 +2477,7 @@ confirmRoomDining.addEventListener("click", () => {
 });
   
 // ==========================================
-// RESTAURANT TABLE RESERVATION
+// RESTAURANT RESERVATION — COMPLETE FUNCTIONALITY
 // ==========================================
 
 const restaurantReservationPopup =
@@ -2489,8 +2489,55 @@ const closeRestaurantReservation =
 const restaurantReservationButton =
     document.getElementById("restaurantReservationButton");
 
+const reservationDate =
+    document.getElementById("reservationDate");
 
+const reservationTime =
+    document.getElementById("reservationTime");
+
+const reservationGuests =
+    document.getElementById("reservationGuests");
+
+const reservationNotes =
+    document.getElementById("reservationNotes");
+
+const sendRestaurantReservation =
+    document.getElementById("sendRestaurantReservation");
+
+
+// ==========================================
+// CONFIRMATION POPUP
+// ==========================================
+
+const restaurantReservationConfirmPopup =
+    document.getElementById(
+        "restaurantReservationConfirmPopup"
+    );
+
+const closeRestaurantReservationConfirm =
+    document.getElementById(
+        "closeRestaurantReservationConfirm"
+    );
+
+const cancelRestaurantReservation =
+    document.getElementById(
+        "cancelRestaurantReservation"
+    );
+
+const confirmRestaurantReservation =
+    document.getElementById(
+        "confirmRestaurantReservation"
+    );
+
+const restaurantReservationConfirmDetails =
+    document.getElementById(
+        "restaurantReservationConfirmDetails"
+    );
+
+
+// ==========================================
 // OPEN RESERVATION
+// ==========================================
 
 restaurantReservationButton.addEventListener("click", () => {
 
@@ -2501,18 +2548,25 @@ restaurantReservationButton.addEventListener("click", () => {
 });
 
 
+// ==========================================
 // CLOSE RESERVATION
+// ==========================================
 
 closeRestaurantReservation.addEventListener("click", () => {
 
     restaurantReservationPopup.style.display = "none";
 
-    restaurantBarPopup.style.display = "flex";
+    reservationDate.value = "";
+    reservationTime.value = "";
+    reservationGuests.value = "";
+    reservationNotes.value = "";
 
 });
 
 
-// CLOSE RESERVATION WHEN CLICKING OUTSIDE
+// ==========================================
+// CLICK OUTSIDE RESERVATION
+// ==========================================
 
 restaurantReservationPopup.addEventListener("click", (e) => {
 
@@ -2520,9 +2574,301 @@ restaurantReservationPopup.addEventListener("click", (e) => {
 
         restaurantReservationPopup.style.display = "none";
 
+        reservationDate.value = "";
+        reservationTime.value = "";
+        reservationGuests.value = "";
+        reservationNotes.value = "";
+
     }
 
 });
+
+
+// ==========================================
+// REQUEST RESERVATION
+// ==========================================
+
+sendRestaurantReservation.addEventListener("click", () => {
+
+    const date = reservationDate.value;
+    const time = reservationTime.value;
+    const guests = reservationGuests.value;
+    const notes = reservationNotes.value.trim();
+
+
+    // ======================================
+    // VALIDATE DATE
+    // ======================================
+
+    if (!date) {
+
+        showWarning(
+            "Please select your preferred reservation date."
+        );
+
+        reservationDate.focus();
+
+        return;
+    }
+
+
+    // ======================================
+    // VALIDATE TIME
+    // ======================================
+
+    if (!time) {
+
+        showWarning(
+            "Please select your preferred reservation time."
+        );
+
+        reservationTime.focus();
+
+        return;
+    }
+
+
+    // ======================================
+    // VALIDATE GUESTS
+    // ======================================
+
+    if (!guests) {
+
+        showWarning(
+            "Please select the number of guests."
+        );
+
+        reservationGuests.focus();
+
+        return;
+    }
+
+
+    // ======================================
+    // FORMAT DATE
+    // ======================================
+
+    const selectedDate =
+        new Date(date + "T00:00:00");
+
+    const formattedDate =
+        selectedDate.toLocaleDateString(
+            "en-GB",
+            {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    // ======================================
+    // BUILD CONFIRMATION
+    // ======================================
+
+    restaurantReservationConfirmDetails.innerHTML = `
+
+        <div class="reservation-confirm-item">
+
+            <small>RESERVATION DATE</small>
+
+            <strong>${formattedDate}</strong>
+
+        </div>
+
+
+        <div class="reservation-confirm-item">
+
+            <small>PREFERRED TIME</small>
+
+            <strong>${time}</strong>
+
+        </div>
+
+
+        <div class="reservation-confirm-item">
+
+            <small>NUMBER OF GUESTS</small>
+
+            <strong>${guests}</strong>
+
+        </div>
+
+
+        <div class="reservation-confirm-item">
+
+            <small>SPECIAL REQUEST</small>
+
+            <strong>
+                ${notes ? notes : "None"}
+            </strong>
+
+        </div>
+
+    `;
+
+
+    // ======================================
+    // SHOW CONFIRMATION
+    // ======================================
+
+    restaurantReservationPopup.style.display = "none";
+
+    restaurantReservationConfirmPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLOSE CONFIRMATION — X
+// ==========================================
+
+closeRestaurantReservationConfirm.addEventListener(
+    "click",
+    () => {
+
+        restaurantReservationConfirmPopup.style.display =
+            "none";
+
+        restaurantReservationPopup.style.display =
+            "flex";
+
+    }
+);
+
+
+// ==========================================
+// CANCEL CONFIRMATION
+// ==========================================
+
+cancelRestaurantReservation.addEventListener(
+    "click",
+    () => {
+
+        restaurantReservationConfirmPopup.style.display =
+            "none";
+
+        restaurantReservationPopup.style.display =
+            "flex";
+
+    }
+);
+
+
+// ==========================================
+// CLICK OUTSIDE CONFIRMATION
+// ==========================================
+
+restaurantReservationConfirmPopup.addEventListener(
+    "click",
+    (e) => {
+
+        if (e.target === restaurantReservationConfirmPopup) {
+
+            restaurantReservationConfirmPopup.style.display =
+                "none";
+
+            restaurantReservationPopup.style.display =
+                "flex";
+
+        }
+
+    }
+);
+
+
+// ==========================================
+// CONFIRM RESERVATION
+// ==========================================
+
+confirmRestaurantReservation.addEventListener(
+    "click",
+    () => {
+
+        const date = reservationDate.value;
+        const time = reservationTime.value;
+        const guests = reservationGuests.value;
+        const notes = reservationNotes.value.trim();
+
+
+        // Close confirmation
+        restaurantReservationConfirmPopup.style.display =
+            "none";
+
+
+        // ==================================
+        // SHOW LOADING
+        // ==================================
+
+        showLoading(
+            "Sending Reservation Request...",
+            "Please wait while we notify the restaurant."
+        );
+
+
+        // ==================================
+        // SEND RESERVATION
+        // ==================================
+
+        setTimeout(() => {
+
+            const requestName =
+                "Restaurant Reservation — " +
+                guests +
+                (guests === "1"
+                    ? " Guest"
+                    : " Guests");
+
+
+            // Add to My Requests
+            addRequest(
+                requestName,
+                "Pending"
+            );
+
+
+            // ==================================
+            // NOTIFICATION
+            // ==================================
+
+            showNotification(
+                "Reservation Requested",
+                "Your table reservation request has been sent to the restaurant."
+            );
+
+
+            // ==================================
+            // SUCCESS CONFIRMATION
+            // ==================================
+
+            showConfirmation(
+                "Reservation Request Sent",
+                "Your reservation request has been successfully sent to the restaurant."
+            );
+
+
+            // ==================================
+            // CLEAR FORM
+            // ==================================
+
+            reservationDate.value = "";
+
+            reservationTime.value = "";
+
+            reservationGuests.value = "";
+
+            reservationNotes.value = "";
+
+
+            // Clear confirmation details
+            restaurantReservationConfirmDetails.innerHTML =
+                "";
+
+
+        }, 1200);
+
+    }
+);
   // ==========================================
 // CRATER LAKE TOUR POPUP
 // ==========================================
