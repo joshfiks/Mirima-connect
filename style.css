@@ -17310,3 +17310,613 @@ padding:22px !important;
         font-size: 22px;
     }
 }
+/* ==========================================
+   EXPLORE POPUP — MAIN EXPERIENCE CARDS
+========================================== */
+
+#explorePopup .popup-content {
+    width: min(900px, 94%);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+
+/* ==========================================
+   EXPLORE HEADER
+========================================== */
+
+#explorePopup .explore-header {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+#explorePopup .explore-header-icon {
+    font-size: 38px;
+
+    margin-bottom: 5px;
+
+    filter:
+        drop-shadow(
+            0 5px 8px
+            rgba(212,175,55,.3)
+        );
+}
+
+
+#explorePopup .explore-header h2 {
+    margin: 0;
+
+    color: #e7c96a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 29px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+
+#explorePopup .explore-header h2::after {
+    content: "◆ ◆ ◆";
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #d4af37;
+
+    font-size: 8px;
+
+    letter-spacing: 7px;
+}
+
+
+#explorePopup .explore-header p {
+    margin: 10px auto 0;
+
+    max-width: 520px;
+
+    color: #c8c0b1;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   EXPERIENCE GRID
+========================================== */
+
+#explorePopup .explore-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 17px;
+
+    margin-top: 20px;
+}
+
+
+/* ==========================================
+   EXPERIENCE CARD
+========================================== */
+
+#explorePopup .explore-option {
+
+    position: relative;
+
+    min-height: 260px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff7df,
+            #ead5a2
+        );
+
+    border:
+        2px solid
+        #c99d35;
+
+    border-radius: 17px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 22px
+        rgba(0,0,0,.35),
+
+        inset 0 0 0 2px
+        rgba(255,255,255,.35);
+
+    transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        border-color .28s ease;
+}
+
+
+/* ==========================================
+   INNER FRAME
+========================================== */
+
+#explorePopup .explore-option::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 6px;
+
+    z-index: 5;
+
+    border:
+        1px solid
+        rgba(157,111,25,.42);
+
+    border-radius: 11px;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+#explorePopup .explore-image-wrap {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 170px;
+
+    overflow: hidden;
+
+    background: #1b140b;
+}
+
+
+#explorePopup .explore-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform .45s ease,
+        filter .35s ease;
+}
+
+
+/* ==========================================
+   IMAGE OVERLAY
+========================================== */
+
+#explorePopup .explore-image-wrap::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 45%,
+            rgba(15,10,5,.55) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   CARD INFORMATION
+========================================== */
+
+#explorePopup .explore-card-info {
+
+    position: relative;
+
+    z-index: 6;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding:
+        13px
+        14px
+        15px;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+#explorePopup .explore-card-info .title {
+
+    display: block;
+
+    color: #4a3109;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .7px;
+
+    line-height: 1.3;
+
+    margin-bottom: 6px;
+}
+
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+#explorePopup .explore-card-info small {
+
+    display: block;
+
+    max-width: 230px;
+
+    color: #6d5427;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   HOVER
+========================================== */
+
+#explorePopup .explore-option:hover {
+
+    transform: translateY(-6px);
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 16px 35px
+        rgba(0,0,0,.48),
+
+        0 0 25px
+        rgba(212,175,55,.22);
+}
+
+
+#explorePopup .explore-option:hover .explore-image {
+
+    transform: scale(1.07);
+
+    filter:
+        brightness(1.08)
+        saturate(1.08);
+}
+
+
+/* ==========================================
+   SELECTED STATE
+========================================== */
+
+#explorePopup .explore-option.selected {
+
+    transform: translateY(-5px);
+
+    border:
+        3px solid
+        #e5b93f;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff4d6,
+            #e4c68b
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.45),
+
+        0 0 0 3px
+        rgba(212,175,55,.20),
+
+        0 0 28px
+        rgba(212,175,55,.35);
+}
+
+
+#explorePopup .explore-option.selected::after {
+
+    content: "✓ SELECTED";
+
+    position: absolute;
+
+    top: 9px;
+
+    right: 9px;
+
+    z-index: 20;
+
+    padding:
+        5px 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8d641c,
+            #d4af37
+        );
+
+    color: #fff8df;
+
+    border:
+        1px solid
+        #f3d477;
+
+    border-radius: 7px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .6px;
+
+    box-shadow:
+        0 4px 10px
+        rgba(0,0,0,.35);
+}
+
+
+#explorePopup .explore-option.selected
+.explore-card-info .title {
+
+    color: #5a3b0d;
+}
+
+
+#explorePopup .explore-option.selected
+.explore-card-info small {
+
+    color: #6d5427;
+}
+
+
+/* ==========================================
+   BOOK EXPERIENCE BUTTON
+========================================== */
+
+#explorePopup #bookActivity {
+
+    position: relative;
+
+    z-index: 10;
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 15px 18px;
+
+    border:
+        1px solid
+        #f1d36c;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8d641c,
+            #d4af37 45%,
+            #f0cf65
+        );
+
+    color: #241706;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.45),
+
+        0 0 18px
+        rgba(212,175,55,.18);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+#explorePopup #bookActivity:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 26px
+        rgba(0,0,0,.55),
+
+        0 0 28px
+        rgba(212,175,55,.35);
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    #explorePopup .popup-content {
+
+        width: 94%;
+
+        padding:
+            35px
+            16px
+            22px;
+    }
+
+
+    #explorePopup .explore-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 11px;
+    }
+
+
+    #explorePopup .explore-option {
+
+        min-height: 225px;
+
+        border-radius: 14px;
+    }
+
+
+    #explorePopup .explore-image-wrap {
+
+        height: 135px;
+    }
+
+
+    #explorePopup .explore-card-info {
+
+        padding:
+            10px
+            8px
+            12px;
+    }
+
+
+    #explorePopup .explore-card-info .title {
+
+        font-size: 10px;
+
+        letter-spacing: .4px;
+    }
+
+
+    #explorePopup .explore-card-info small {
+
+        font-size: 8px;
+
+        line-height: 1.4;
+    }
+
+
+    #explorePopup .explore-header h2 {
+
+        font-size: 23px;
+    }
+
+
+    #explorePopup .explore-header p {
+
+        font-size: 10px;
+    }
+
+}
+
+
+/* ==========================================
+   VERY SMALL PHONES
+========================================== */
+
+@media (max-width: 420px) {
+
+    #explorePopup .explore-grid {
+
+        gap: 8px;
+    }
+
+
+    #explorePopup .explore-option {
+
+        min-height: 205px;
+    }
+
+
+    #explorePopup .explore-image-wrap {
+
+        height: 120px;
+    }
+
+
+    #explorePopup .explore-card-info .title {
+
+        font-size: 9px;
+    }
+
+
+    #explorePopup .explore-card-info small {
+
+        display: none;
+    }
+
+}
