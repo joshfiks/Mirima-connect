@@ -1892,9 +1892,8 @@ restaurantOrderConfirmPopup.addEventListener("click", (e) => {
     }
 
 });
-
 // ==========================================
-// BAR MENU POPUP
+// BAR MENU — COMPLETE FUNCTIONALITY
 // ==========================================
 
 const barMenuPopup =
@@ -1906,8 +1905,43 @@ const closeBarMenu =
 const barMenuButton =
     document.getElementById("barMenuButton");
 
+const barMenuItems =
+    barMenuPopup.querySelectorAll(".bar-item");
 
+const orderFromBar =
+    document.getElementById("orderFromBar");
+
+
+// ==========================================
+// BAR ORDER CONFIRMATION POPUP
+// ==========================================
+
+const barOrderConfirmPopup =
+    document.getElementById("barOrderConfirmPopup");
+
+const closeBarOrderConfirm =
+    document.getElementById("closeBarOrderConfirm");
+
+const cancelBarOrder =
+    document.getElementById("cancelBarOrder");
+
+const confirmBarOrder =
+    document.getElementById("confirmBarOrder");
+
+const barOrderDetails =
+    document.getElementById("barOrderDetails");
+
+
+// ==========================================
+// SELECTED DRINK
+// ==========================================
+
+let selectedBarDrink = null;
+
+
+// ==========================================
 // OPEN BAR MENU
+// ==========================================
 
 barMenuButton.addEventListener("click", () => {
 
@@ -1918,7 +1952,9 @@ barMenuButton.addEventListener("click", () => {
 });
 
 
+// ==========================================
 // CLOSE BAR MENU
+// ==========================================
 
 closeBarMenu.addEventListener("click", () => {
 
@@ -1929,7 +1965,9 @@ closeBarMenu.addEventListener("click", () => {
 });
 
 
-// CLOSE BAR MENU WHEN CLICKING OUTSIDE
+// ==========================================
+// CLOSE BAR MENU OUTSIDE
+// ==========================================
 
 barMenuPopup.addEventListener("click", (e) => {
 
@@ -1941,20 +1979,10 @@ barMenuPopup.addEventListener("click", (e) => {
 
 });
 
-  // ==========================================
-// BAR MENU — ORDER CONFIRMATION
+
 // ==========================================
-
-const barMenuItems =
-    barMenuPopup.querySelectorAll(".bar-item");
-
-const orderFromBar =
-    document.getElementById("orderFromBar");
-
-
-// SELECTED DRINK
-
-let selectedBarDrink = null;
+// SELECT A DRINK
+// ==========================================
 
 barMenuItems.forEach(item => {
 
@@ -1962,21 +1990,25 @@ barMenuItems.forEach(item => {
 
         // Remove previous selection
         barMenuItems.forEach(barItem => {
+
             barItem.classList.remove("selected");
+
         });
 
-        // Select this drink
+        // Select current drink
         item.classList.add("selected");
 
+        // Get drink information
         const name =
-            item.querySelector("strong").textContent;
+            item.querySelector("strong").textContent.trim();
 
         const description =
-            item.querySelector("small").textContent;
+            item.querySelector("small").textContent.trim();
 
         const price =
-            item.querySelector("span").textContent;
+            item.querySelector("span").textContent.trim();
 
+        // Save selected drink
         selectedBarDrink = {
             name: name,
             description: description,
@@ -1988,24 +2020,129 @@ barMenuItems.forEach(item => {
 });
 
 
+// ==========================================
 // ORDER FROM BAR
+// ==========================================
 
 orderFromBar.addEventListener("click", () => {
 
+    // Make sure a drink has been selected
     if (!selectedBarDrink) {
 
         showWarning("Please select a drink first.");
 
         return;
+
     }
 
-    // For now, we'll create the confirmation
-    // popup in the next step.
+    // Display selected drink in confirmation popup
+    barOrderDetails.innerHTML = `
+        <div class="bar-confirm-drink">
 
-    console.log("Selected Bar Drink:", selectedBarDrink);
+            <strong>${selectedBarDrink.name}</strong>
+
+            <small>
+                ${selectedBarDrink.description}
+            </small>
+
+            <span>
+                ${selectedBarDrink.price}
+            </span>
+
+        </div>
+    `;
+
+    // Hide Bar Menu
+    barMenuPopup.style.display = "none";
+
+    // Show Confirmation Popup
+    barOrderConfirmPopup.style.display = "flex";
 
 });
 
+
+// ==========================================
+// CLOSE CONFIRMATION — X
+// ==========================================
+
+closeBarOrderConfirm.addEventListener("click", () => {
+
+    barOrderConfirmPopup.style.display = "none";
+
+    barMenuPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CANCEL ORDER
+// ==========================================
+
+cancelBarOrder.addEventListener("click", () => {
+
+    barOrderConfirmPopup.style.display = "none";
+
+    barMenuPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CONFIRM BAR ORDER
+// ==========================================
+
+confirmBarOrder.addEventListener("click", () => {
+
+    // Hide confirmation popup
+    barOrderConfirmPopup.style.display = "none";
+
+    // Show loading
+    showLoading(
+        "Sending Bar Order...",
+        "Please wait while we notify the bar."
+    );
+
+    setTimeout(() => {
+
+        // Add request to My Requests
+        addRequest(
+            "Bar Order — " + selectedBarDrink.name,
+            "Pending"
+        );
+
+        // Show notification
+        showNotification(
+            "Bar Order Sent",
+            selectedBarDrink.name +
+            " has been sent to the bar."
+        );
+
+        // Show confirmation
+        showConfirmation(
+            "Order Confirmed",
+            "Your bar order has been successfully sent."
+        );
+
+    }, 1200);
+
+});
+
+
+// ==========================================
+// CLOSE CONFIRMATION OUTSIDE
+// ==========================================
+
+barOrderConfirmPopup.addEventListener("click", (e) => {
+
+    if (e.target === barOrderConfirmPopup) {
+
+        barOrderConfirmPopup.style.display = "none";
+
+        barMenuPopup.style.display = "flex";
+
+    }
+
+});
 // ==========================================
 // ROOM DINING POPUP
 // ==========================================
