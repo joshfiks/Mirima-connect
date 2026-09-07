@@ -1702,9 +1702,8 @@ explorePopup
     });
 
 });
-
-  // ==========================================
-// RESTAURANT MENU POPUP
+// ==========================================
+// RESTAURANT MENU — COMPLETE FUNCTIONALITY
 // ==========================================
 
 const restaurantMenuPopup =
@@ -1716,47 +1715,11 @@ const closeRestaurantMenu =
 const restaurantMenuButton =
     document.getElementById("restaurantMenuButton");
 
+const restaurantMenuItems =
+    restaurantMenuPopup.querySelectorAll(".menu-item");
 
-// OPEN RESTAURANT MENU
-
-restaurantMenuButton.addEventListener("click", () => {
-
-    restaurantBarPopup.style.display = "none";
-
-    restaurantMenuPopup.style.display = "flex";
-
-});
-
-
-// CLOSE RESTAURANT MENU
-
-closeRestaurantMenu.addEventListener("click", () => {
-
-    restaurantMenuPopup.style.display = "none";
-
-    restaurantBarPopup.style.display = "flex";
-
-});
-
-
-// CLOSE BY CLICKING OUTSIDE
-
-restaurantMenuPopup.addEventListener("click", (e) => {
-
-    if (e.target === restaurantMenuPopup) {
-
-        restaurantMenuPopup.style.display = "none";
-
-    }
-
-});
-  
-// ==========================================
-// RESTAURANT MENU — ORDER CONFIRMATION
-// ==========================================
-
-const restaurantMenuItems = restaurantMenuPopup.querySelectorAll(".menu-item");
-const orderFromRestaurant = document.getElementById("orderFromRestaurant");
+const orderFromRestaurant =
+    document.getElementById("orderFromRestaurant");
 
 const restaurantOrderConfirmPopup =
     document.getElementById("restaurantOrderConfirmPopup");
@@ -1776,25 +1739,47 @@ const restaurantOrderDetails =
 let selectedRestaurantMeal = null;
 
 
-// SELECT MEAL
+// ==========================================
+// OPEN RESTAURANT MENU
+// ==========================================
+
+restaurantMenuButton.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+    restaurantMenuPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// SELECT / DESELECT RESTAURANT MEAL
+// ==========================================
+
 restaurantMenuItems.forEach(item => {
 
     item.addEventListener("click", () => {
 
+        // Deselect if the same meal is tapped again
+        if (item.classList.contains("selected")) {
+
+            item.classList.remove("selected");
+            selectedRestaurantMeal = null;
+
+            return;
+        }
+
+        // Remove selection from other meals
         restaurantMenuItems.forEach(menuItem => {
             menuItem.classList.remove("selected");
         });
 
+        // Select this meal
         item.classList.add("selected");
 
-        const name = item.querySelector("strong").textContent;
-        const description = item.querySelector("small").textContent;
-        const price = item.querySelector("span").textContent;
-
         selectedRestaurantMeal = {
-            name: name,
-            description: description,
-            price: price
+            name: item.querySelector("strong").textContent.trim(),
+            description: item.querySelector("small").textContent.trim(),
+            price: item.querySelector("span").textContent.trim()
         };
 
     });
@@ -1802,16 +1787,61 @@ restaurantMenuItems.forEach(item => {
 });
 
 
-// ORDER BUTTON
+// ==========================================
+// CLOSE RESTAURANT MENU
+// ==========================================
+
+closeRestaurantMenu.addEventListener("click", () => {
+
+    restaurantMenuItems.forEach(item => {
+        item.classList.remove("selected");
+    });
+
+    selectedRestaurantMeal = null;
+
+    restaurantMenuPopup.style.display = "none";
+    restaurantBarPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLOSE RESTAURANT MENU OUTSIDE
+// ==========================================
+
+restaurantMenuPopup.addEventListener("click", (e) => {
+
+    if (e.target === restaurantMenuPopup) {
+
+        restaurantMenuItems.forEach(item => {
+            item.classList.remove("selected");
+        });
+
+        selectedRestaurantMeal = null;
+
+        restaurantMenuPopup.style.display = "none";
+
+    }
+
+});
+
+
+// ==========================================
+// ORDER FROM RESTAURANT
+// ==========================================
+
 orderFromRestaurant.addEventListener("click", () => {
 
     if (!selectedRestaurantMeal) {
+
         showWarning("Please select a meal first.");
+
         return;
     }
 
     restaurantOrderDetails.innerHTML = `
         <div class="restaurant-confirm-meal">
+
             <strong>${selectedRestaurantMeal.name}</strong>
 
             <small>
@@ -1821,6 +1851,7 @@ orderFromRestaurant.addEventListener("click", () => {
             <span>
                 ${selectedRestaurantMeal.price}
             </span>
+
         </div>
     `;
 
@@ -1830,7 +1861,10 @@ orderFromRestaurant.addEventListener("click", () => {
 });
 
 
-// CLOSE CONFIRMATION
+// ==========================================
+// CLOSE RESTAURANT CONFIRMATION
+// ==========================================
+
 closeRestaurantOrderConfirm.addEventListener("click", () => {
 
     restaurantOrderConfirmPopup.style.display = "none";
@@ -1839,7 +1873,10 @@ closeRestaurantOrderConfirm.addEventListener("click", () => {
 });
 
 
-// CANCEL
+// ==========================================
+// CANCEL RESTAURANT ORDER
+// ==========================================
+
 cancelRestaurantOrder.addEventListener("click", () => {
 
     restaurantOrderConfirmPopup.style.display = "none";
@@ -1848,7 +1885,10 @@ cancelRestaurantOrder.addEventListener("click", () => {
 });
 
 
-// CONFIRM ORDER
+// ==========================================
+// CONFIRM RESTAURANT ORDER
+// ==========================================
+
 confirmRestaurantOrder.addEventListener("click", () => {
 
     restaurantOrderConfirmPopup.style.display = "none";
@@ -1876,12 +1916,22 @@ confirmRestaurantOrder.addEventListener("click", () => {
             "Your restaurant order has been successfully sent."
         );
 
+        // Clear selection after successful order
+        restaurantMenuItems.forEach(item => {
+            item.classList.remove("selected");
+        });
+
+        selectedRestaurantMeal = null;
+
     }, 1200);
 
 });
 
 
-// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
+// CLOSE RESTAURANT CONFIRMATION OUTSIDE
+// ==========================================
+
 restaurantOrderConfirmPopup.addEventListener("click", (e) => {
 
     if (e.target === restaurantOrderConfirmPopup) {
@@ -1892,6 +1942,8 @@ restaurantOrderConfirmPopup.addEventListener("click", (e) => {
     }
 
 });
+
+
 // ==========================================
 // BAR MENU — COMPLETE FUNCTIONALITY
 // ==========================================
@@ -1911,11 +1963,6 @@ const barMenuItems =
 const orderFromBar =
     document.getElementById("orderFromBar");
 
-
-// ==========================================
-// BAR ORDER CONFIRMATION POPUP
-// ==========================================
-
 const barOrderConfirmPopup =
     document.getElementById("barOrderConfirmPopup");
 
@@ -1931,11 +1978,6 @@ const confirmBarOrder =
 const barOrderDetails =
     document.getElementById("barOrderDetails");
 
-
-// ==========================================
-// SELECTED DRINK
-// ==========================================
-
 let selectedBarDrink = null;
 
 
@@ -1946,8 +1988,43 @@ let selectedBarDrink = null;
 barMenuButton.addEventListener("click", () => {
 
     restaurantBarPopup.style.display = "none";
-
     barMenuPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// SELECT / DESELECT BAR DRINK
+// ==========================================
+
+barMenuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        // Deselect if the same drink is tapped again
+        if (item.classList.contains("selected")) {
+
+            item.classList.remove("selected");
+            selectedBarDrink = null;
+
+            return;
+        }
+
+        // Remove selection from other drinks
+        barMenuItems.forEach(barItem => {
+            barItem.classList.remove("selected");
+        });
+
+        // Select this drink
+        item.classList.add("selected");
+
+        selectedBarDrink = {
+            name: item.querySelector("strong").textContent.trim(),
+            description: item.querySelector("small").textContent.trim(),
+            price: item.querySelector("span").textContent.trim()
+        };
+
+    });
 
 });
 
@@ -1958,8 +2035,13 @@ barMenuButton.addEventListener("click", () => {
 
 closeBarMenu.addEventListener("click", () => {
 
-    barMenuPopup.style.display = "none";
+    barMenuItems.forEach(item => {
+        item.classList.remove("selected");
+    });
 
+    selectedBarDrink = null;
+
+    barMenuPopup.style.display = "none";
     restaurantBarPopup.style.display = "flex";
 
 });
@@ -1973,49 +2055,15 @@ barMenuPopup.addEventListener("click", (e) => {
 
     if (e.target === barMenuPopup) {
 
+        barMenuItems.forEach(item => {
+            item.classList.remove("selected");
+        });
+
+        selectedBarDrink = null;
+
         barMenuPopup.style.display = "none";
 
     }
-
-});
-
-
-// ==========================================
-// SELECT A DRINK
-// ==========================================
-
-barMenuItems.forEach(item => {
-
-    item.addEventListener("click", () => {
-
-        // Remove previous selection
-        barMenuItems.forEach(barItem => {
-
-            barItem.classList.remove("selected");
-
-        });
-
-        // Select current drink
-        item.classList.add("selected");
-
-        // Get drink information
-        const name =
-            item.querySelector("strong").textContent.trim();
-
-        const description =
-            item.querySelector("small").textContent.trim();
-
-        const price =
-            item.querySelector("span").textContent.trim();
-
-        // Save selected drink
-        selectedBarDrink = {
-            name: name,
-            description: description,
-            price: price
-        };
-
-    });
 
 });
 
@@ -2026,16 +2074,13 @@ barMenuItems.forEach(item => {
 
 orderFromBar.addEventListener("click", () => {
 
-    // Make sure a drink has been selected
     if (!selectedBarDrink) {
 
         showWarning("Please select a drink first.");
 
         return;
-
     }
 
-    // Display selected drink in confirmation popup
     barOrderDetails.innerHTML = `
         <div class="bar-confirm-drink">
 
@@ -2052,36 +2097,31 @@ orderFromBar.addEventListener("click", () => {
         </div>
     `;
 
-    // Hide Bar Menu
     barMenuPopup.style.display = "none";
-
-    // Show Confirmation Popup
     barOrderConfirmPopup.style.display = "flex";
 
 });
 
 
 // ==========================================
-// CLOSE CONFIRMATION — X
+// CLOSE BAR CONFIRMATION
 // ==========================================
 
 closeBarOrderConfirm.addEventListener("click", () => {
 
     barOrderConfirmPopup.style.display = "none";
-
     barMenuPopup.style.display = "flex";
 
 });
 
 
 // ==========================================
-// CANCEL ORDER
+// CANCEL BAR ORDER
 // ==========================================
 
 cancelBarOrder.addEventListener("click", () => {
 
     barOrderConfirmPopup.style.display = "none";
-
     barMenuPopup.style.display = "flex";
 
 });
@@ -2093,10 +2133,8 @@ cancelBarOrder.addEventListener("click", () => {
 
 confirmBarOrder.addEventListener("click", () => {
 
-    // Hide confirmation popup
     barOrderConfirmPopup.style.display = "none";
 
-    // Show loading
     showLoading(
         "Sending Bar Order...",
         "Please wait while we notify the bar."
@@ -2104,24 +2142,28 @@ confirmBarOrder.addEventListener("click", () => {
 
     setTimeout(() => {
 
-        // Add request to My Requests
         addRequest(
             "Bar Order — " + selectedBarDrink.name,
             "Pending"
         );
 
-        // Show notification
         showNotification(
             "Bar Order Sent",
             selectedBarDrink.name +
             " has been sent to the bar."
         );
 
-        // Show confirmation
         showConfirmation(
             "Order Confirmed",
             "Your bar order has been successfully sent."
         );
+
+        // Clear selection after successful order
+        barMenuItems.forEach(item => {
+            item.classList.remove("selected");
+        });
+
+        selectedBarDrink = null;
 
     }, 1200);
 
@@ -2129,7 +2171,7 @@ confirmBarOrder.addEventListener("click", () => {
 
 
 // ==========================================
-// CLOSE CONFIRMATION OUTSIDE
+// CLOSE BAR CONFIRMATION OUTSIDE
 // ==========================================
 
 barOrderConfirmPopup.addEventListener("click", (e) => {
@@ -2137,7 +2179,6 @@ barOrderConfirmPopup.addEventListener("click", (e) => {
     if (e.target === barOrderConfirmPopup) {
 
         barOrderConfirmPopup.style.display = "none";
-
         barMenuPopup.style.display = "flex";
 
     }
