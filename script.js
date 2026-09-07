@@ -1702,54 +1702,147 @@ explorePopup
     });
 
 });
- // ==========================================
-// RESTAURANT MENU POPUP
+// ==========================================
+// RESTAURANT MENU — ORDER CONFIRMATION
 // ==========================================
 
-const restaurantMenuPopup =
-    document.getElementById("restaurantMenuPopup");
+const restaurantMenuItems = restaurantMenuPopup.querySelectorAll(".menu-item");
+const orderFromRestaurant = document.getElementById("orderFromRestaurant");
 
-const closeRestaurantMenu =
-    document.querySelector(".closeRestaurantMenu");
+const restaurantOrderConfirmPopup =
+    document.getElementById("restaurantOrderConfirmPopup");
 
-const restaurantMenuButton =
-    document.getElementById("restaurantMenuButton");
+const closeRestaurantOrderConfirm =
+    document.getElementById("closeRestaurantOrderConfirm");
+
+const cancelRestaurantOrder =
+    document.getElementById("cancelRestaurantOrder");
+
+const confirmRestaurantOrder =
+    document.getElementById("confirmRestaurantOrder");
+
+const restaurantOrderDetails =
+    document.getElementById("restaurantOrderDetails");
+
+let selectedRestaurantMeal = null;
 
 
-// OPEN RESTAURANT MENU
+// SELECT MEAL
+restaurantMenuItems.forEach(item => {
 
-restaurantMenuButton.addEventListener("click", () => {
+    item.addEventListener("click", () => {
 
-    restaurantBarPopup.style.display = "none";
+        restaurantMenuItems.forEach(menuItem => {
+            menuItem.classList.remove("selected");
+        });
 
+        item.classList.add("selected");
+
+        const name = item.querySelector("strong").textContent;
+        const description = item.querySelector("small").textContent;
+        const price = item.querySelector("span").textContent;
+
+        selectedRestaurantMeal = {
+            name: name,
+            description: description,
+            price: price
+        };
+
+    });
+
+});
+
+
+// ORDER BUTTON
+orderFromRestaurant.addEventListener("click", () => {
+
+    if (!selectedRestaurantMeal) {
+        showWarning("Please select a meal first.");
+        return;
+    }
+
+    restaurantOrderDetails.innerHTML = `
+        <div class="restaurant-confirm-meal">
+            <strong>${selectedRestaurantMeal.name}</strong>
+
+            <small>
+                ${selectedRestaurantMeal.description}
+            </small>
+
+            <span>
+                ${selectedRestaurantMeal.price}
+            </span>
+        </div>
+    `;
+
+    restaurantMenuPopup.style.display = "none";
+    restaurantOrderConfirmPopup.style.display = "flex";
+
+});
+
+
+// CLOSE CONFIRMATION
+closeRestaurantOrderConfirm.addEventListener("click", () => {
+
+    restaurantOrderConfirmPopup.style.display = "none";
     restaurantMenuPopup.style.display = "flex";
 
 });
 
 
-// CLOSE RESTAURANT MENU
+// CANCEL
+cancelRestaurantOrder.addEventListener("click", () => {
 
-closeRestaurantMenu.addEventListener("click", () => {
-
-    restaurantMenuPopup.style.display = "none";
-
-    restaurantBarPopup.style.display = "flex";
+    restaurantOrderConfirmPopup.style.display = "none";
+    restaurantMenuPopup.style.display = "flex";
 
 });
 
 
-// CLOSE RESTAURANT MENU WHEN CLICKING OUTSIDE
+// CONFIRM ORDER
+confirmRestaurantOrder.addEventListener("click", () => {
 
-restaurantMenuPopup.addEventListener("click", (e) => {
+    restaurantOrderConfirmPopup.style.display = "none";
 
-    if (e.target === restaurantMenuPopup) {
+    showLoading(
+        "Sending Restaurant Order...",
+        "Please wait while we notify the restaurant."
+    );
 
-        restaurantMenuPopup.style.display = "none";
+    setTimeout(() => {
+
+        addRequest(
+            "Restaurant Order — " + selectedRestaurantMeal.name,
+            "Pending"
+        );
+
+        showNotification(
+            "Restaurant Order Sent",
+            selectedRestaurantMeal.name +
+            " has been sent to the restaurant."
+        );
+
+        showConfirmation(
+            "Order Confirmed",
+            "Your restaurant order has been successfully sent."
+        );
+
+    }, 1200);
+
+});
+
+
+// CLOSE WHEN CLICKING OUTSIDE
+restaurantOrderConfirmPopup.addEventListener("click", (e) => {
+
+    if (e.target === restaurantOrderConfirmPopup) {
+
+        restaurantOrderConfirmPopup.style.display = "none";
+        restaurantMenuPopup.style.display = "flex";
 
     }
 
 });
-
 
 // ==========================================
 // BAR MENU POPUP
