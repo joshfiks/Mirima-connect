@@ -1941,6 +1941,70 @@ barMenuPopup.addEventListener("click", (e) => {
 
 });
 
+  // ==========================================
+// BAR MENU — ORDER CONFIRMATION
+// ==========================================
+
+const barMenuItems =
+    barMenuPopup.querySelectorAll(".bar-item");
+
+const orderFromBar =
+    document.getElementById("orderFromBar");
+
+
+// SELECTED DRINK
+
+let selectedBarDrink = null;
+
+barMenuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        // Remove previous selection
+        barMenuItems.forEach(barItem => {
+            barItem.classList.remove("selected");
+        });
+
+        // Select this drink
+        item.classList.add("selected");
+
+        const name =
+            item.querySelector("strong").textContent;
+
+        const description =
+            item.querySelector("small").textContent;
+
+        const price =
+            item.querySelector("span").textContent;
+
+        selectedBarDrink = {
+            name: name,
+            description: description,
+            price: price
+        };
+
+    });
+
+});
+
+
+// ORDER FROM BAR
+
+orderFromBar.addEventListener("click", () => {
+
+    if (!selectedBarDrink) {
+
+        showWarning("Please select a drink first.");
+
+        return;
+    }
+
+    // For now, we'll create the confirmation
+    // popup in the next step.
+
+    console.log("Selected Bar Drink:", selectedBarDrink);
+
+});
 
 // ==========================================
 // ROOM DINING POPUP
