@@ -2184,21 +2184,40 @@ barOrderConfirmPopup.addEventListener("click", (e) => {
     }
 
 });
+
 // ==========================================
-// ROOM DINING POPUP
+// ROOM DINING — COMPLETE FUNCTIONALITY
 // ==========================================
 
-const roomDiningPopup =
-    document.getElementById("roomDiningPopup");
+const roomDiningButton = document.getElementById("roomDiningButton");
+const roomDiningPopup = document.getElementById("roomDiningPopup");
+const closeRoomDining = document.querySelector(".closeRoomDining");
 
-const closeRoomDining =
-    document.querySelector(".closeRoomDining");
+const roomDiningMeal = document.getElementById("roomDiningMeal");
+const roomDiningTime = document.getElementById("roomDiningTime");
+const roomDiningNotes = document.getElementById("roomDiningNotes");
+const sendRoomDiningRequest = document.getElementById("sendRoomDiningRequest");
 
-const roomDiningButton =
-    document.getElementById("roomDiningButton");
+// Confirmation popup
+const roomDiningConfirmPopup =
+    document.getElementById("roomDiningConfirmPopup");
+
+const closeRoomDiningConfirm =
+    document.getElementById("closeRoomDiningConfirm");
+
+const cancelRoomDining =
+    document.getElementById("cancelRoomDining");
+
+const confirmRoomDining =
+    document.getElementById("confirmRoomDining");
+
+const roomDiningConfirmDetails =
+    document.getElementById("roomDiningConfirmDetails");
 
 
+// ==========================================
 // OPEN ROOM DINING
+// ==========================================
 
 roomDiningButton.addEventListener("click", () => {
 
@@ -2209,18 +2228,24 @@ roomDiningButton.addEventListener("click", () => {
 });
 
 
+// ==========================================
 // CLOSE ROOM DINING
+// ==========================================
 
 closeRoomDining.addEventListener("click", () => {
 
     roomDiningPopup.style.display = "none";
 
-    restaurantBarPopup.style.display = "flex";
+    roomDiningMeal.value = "";
+    roomDiningTime.value = "";
+    roomDiningNotes.value = "";
 
 });
 
 
-// CLOSE ROOM DINING WHEN CLICKING OUTSIDE
+// ==========================================
+// CLICK OUTSIDE ROOM DINING
+// ==========================================
 
 roomDiningPopup.addEventListener("click", (e) => {
 
@@ -2228,11 +2253,229 @@ roomDiningPopup.addEventListener("click", (e) => {
 
         roomDiningPopup.style.display = "none";
 
+        roomDiningMeal.value = "";
+        roomDiningTime.value = "";
+        roomDiningNotes.value = "";
+
     }
 
 });
 
 
+// ==========================================
+// REQUEST ROOM DINING
+// ==========================================
+
+sendRoomDiningRequest.addEventListener("click", () => {
+
+    const meal = roomDiningMeal.value.trim();
+    const deliveryTime = roomDiningTime.value;
+    const notes = roomDiningNotes.value.trim();
+
+
+    // ======================================
+    // VALIDATION
+    // ======================================
+
+    if (!meal) {
+
+        showWarning("Please tell us what you would like to order.");
+
+        roomDiningMeal.focus();
+
+        return;
+    }
+
+
+    if (!deliveryTime) {
+
+        showWarning("Please select your preferred delivery time.");
+
+        roomDiningTime.focus();
+
+        return;
+    }
+
+
+    // ======================================
+    // BUILD CONFIRMATION
+    // ======================================
+
+    roomDiningConfirmDetails.innerHTML = `
+
+        <div class="room-dining-confirm-item">
+
+            <small>MEAL REQUEST</small>
+
+            <strong>${meal}</strong>
+
+        </div>
+
+
+        <div class="room-dining-confirm-item">
+
+            <small>DELIVERY TIME</small>
+
+            <strong>${deliveryTime}</strong>
+
+        </div>
+
+
+        ${
+            notes
+            ? `
+                <div class="room-dining-confirm-item">
+
+                    <small>SPECIAL REQUEST</small>
+
+                    <strong>${notes}</strong>
+
+                </div>
+              `
+            : `
+                <div class="room-dining-confirm-item">
+
+                    <small>SPECIAL REQUEST</small>
+
+                    <strong>None</strong>
+
+                </div>
+              `
+        }
+
+    `;
+
+
+    // ======================================
+    // SHOW CONFIRMATION
+    // ======================================
+
+    roomDiningPopup.style.display = "none";
+
+    roomDiningConfirmPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLOSE CONFIRMATION — X
+// ==========================================
+
+closeRoomDiningConfirm.addEventListener("click", () => {
+
+    roomDiningConfirmPopup.style.display = "none";
+
+    roomDiningPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CANCEL CONFIRMATION
+// ==========================================
+
+cancelRoomDining.addEventListener("click", () => {
+
+    roomDiningConfirmPopup.style.display = "none";
+
+    roomDiningPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLICK OUTSIDE CONFIRMATION
+// ==========================================
+
+roomDiningConfirmPopup.addEventListener("click", (e) => {
+
+    if (e.target === roomDiningConfirmPopup) {
+
+        roomDiningConfirmPopup.style.display = "none";
+
+        roomDiningPopup.style.display = "flex";
+
+    }
+
+});
+
+
+// ==========================================
+// CONFIRM ROOM DINING REQUEST
+// ==========================================
+
+confirmRoomDining.addEventListener("click", () => {
+
+    const meal = roomDiningMeal.value.trim();
+    const deliveryTime = roomDiningTime.value;
+    const notes = roomDiningNotes.value.trim();
+
+
+    // Close confirmation
+    roomDiningConfirmPopup.style.display = "none";
+
+
+    // ======================================
+    // SHOW LOADING
+    // ======================================
+
+    showLoading(
+        "Sending Room Dining Request...",
+        "Please wait while we notify the restaurant."
+    );
+
+
+    // ======================================
+    // SEND REQUEST
+    // ======================================
+
+    setTimeout(() => {
+
+        let requestName = "Room Dining Request";
+
+        if (meal) {
+            requestName += " — " + meal;
+        }
+
+
+        // Add to My Requests
+        addRequest(requestName, "Pending");
+
+
+        // Notification
+        showNotification(
+            "Room Dining Requested",
+            "Your room dining request has been sent to the restaurant."
+        );
+
+
+        // ==================================
+        // SUCCESS CONFIRMATION
+        // ==================================
+
+        showConfirmation(
+            "Room Dining Request Sent",
+            "Your request has been successfully sent to the restaurant."
+        );
+
+
+        // ==================================
+        // CLEAR FORM
+        // ==================================
+
+        roomDiningMeal.value = "";
+        roomDiningTime.value = "";
+        roomDiningNotes.value = "";
+
+
+        // Clear confirmation details
+        roomDiningConfirmDetails.innerHTML = "";
+
+
+    }, 1200);
+
+});
+  
 // ==========================================
 // RESTAURANT TABLE RESERVATION
 // ==========================================
