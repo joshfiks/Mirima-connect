@@ -16289,3 +16289,114 @@ padding:22px !important;
         line-height: 1.4 !important;
     }
 }
+/* ==========================================
+   LIVE NOTIFICATION — ICON FINAL FIX
+========================================== */
+
+#notification #notificationIcon {
+    width: 36px !important;
+    height: 36px !important;
+
+    min-width: 36px !important;
+    max-width: 36px !important;
+
+    flex: 0 0 36px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+
+    border-radius: 50% !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d4af37,
+            #9b721f
+        ) !important;
+
+    color: #fff8df !important;
+
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif !important;
+
+    font-size: 18px !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+
+    text-align: center !important;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.4),
+        0 0 12px rgba(212,175,55,.18) !important;
+}
+
+
+/* Keep notification text comfortably separated */
+
+#notification #notificationIcon + div {
+    flex: 1 1 auto !important;
+
+    min-width: 0 !important;
+
+    width: auto !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    justify-content: center !important;
+
+    align-items: flex-start !important;
+}
+
+
+/* Make longer notification titles easier to read */
+
+#notification #notificationTitle {
+    font-size: 12px !important;
+
+    line-height: 1.35 !important;
+
+    white-space: normal !important;
+
+    word-break: normal !important;
+
+    overflow-wrap: break-word !important;
+}
+
+
+#notification #notificationMessage {
+    font-size: 10.5px !important;
+
+    line-height: 1.45 !important;
+
+    white-space: normal !important;
+
+    word-break: normal !important;
+
+    overflow-wrap: break-word !important;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    #notification #notificationIcon {
+        width: 30px !important;
+        height: 30px !important;
+
+        min-width: 30px !important;
+        max-width: 30px !important;
+
+        flex-basis: 30px !important;
+
+        font-size: 15px !important;
+    }
+}
