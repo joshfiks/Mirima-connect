@@ -1843,7 +1843,28 @@ restaurantOrderConfirmPopup.addEventListener("click", (e) => {
     }
 
 });
+  
+// RESTAURANT MENU POPUP
+const restaurantMenuPopup = document.getElementById("restaurantMenuPopup");
+const closeRestaurantMenu = document.querySelector(".closeRestaurantMenu");
+const restaurantMenuButton = document.getElementById("restaurantMenuButton");
 
+restaurantMenuButton.addEventListener("click", () => {
+    restaurantBarPopup.style.display = "none";
+    restaurantMenuPopup.style.display = "flex";
+});
+
+closeRestaurantMenu.addEventListener("click", () => {
+    restaurantMenuPopup.style.display = "none";
+    restaurantBarPopup.style.display = "flex";
+});
+
+restaurantMenuPopup.addEventListener("click", (e) => {
+    if (e.target === restaurantMenuPopup) {
+        restaurantMenuPopup.style.display = "none";
+    }
+});
+  
 // ==========================================
 // BAR MENU POPUP
 // ==========================================
