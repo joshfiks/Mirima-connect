@@ -17310,24 +17310,25 @@ padding:22px !important;
         font-size: 22px;
     }
 }
-/* ==========================================
-   EXPLORE POPUP — MAIN EXPERIENCE CARDS
-========================================== */
-
-#explorePopup .popup-content {
-    width: min(900px, 94%);
-    max-height: 90vh;
-    overflow-y: auto;
-}
 /* =========================================================
-   EXPLORE POPUP — PREMIUM EXPERIENCE CARDS
+   EXPLORE POPUP — PREMIUM EXPERIENCE SECTION
+   CLEAN REPLACEMENT
+========================================================= */
+
+
+/* =========================================================
+   POPUP CONTAINER
 ========================================================= */
 
 #explorePopup .popup-content {
     width: min(920px, 94%);
     max-height: 90vh;
+
     overflow-y: auto;
+    overflow-x: hidden;
+
     box-sizing: border-box;
+
     padding: 38px 28px 28px;
 }
 
@@ -17338,19 +17339,28 @@ padding:22px !important;
 
 #explorePopup .explore-header {
     position: relative;
-    z-index: 2;
+    z-index: 20;
+
     text-align: center;
+
     margin-bottom: 22px;
 }
 
+
 #explorePopup .explore-header-icon {
     display: block;
+
     font-size: 34px;
-    margin-bottom: 4px;
+
+    margin-bottom: 5px;
 
     filter:
-        drop-shadow(0 5px 8px rgba(212,175,55,.3));
+        drop-shadow(
+            0 5px 8px
+            rgba(212,175,55,.30)
+        );
 }
+
 
 #explorePopup .explore-header h2 {
     margin: 0;
@@ -17360,11 +17370,14 @@ padding:22px !important;
     font-family: "Cinzel", serif;
 
     font-size: 28px;
+
     font-weight: 700;
 
     text-transform: uppercase;
+
     letter-spacing: 2px;
 }
+
 
 #explorePopup .explore-header h2::after {
     content: "◆ ◆ ◆";
@@ -17379,6 +17392,7 @@ padding:22px !important;
 
     letter-spacing: 7px;
 }
+
 
 #explorePopup .explore-header p {
     max-width: 520px;
@@ -17419,15 +17433,20 @@ padding:22px !important;
     position: relative;
 
     display: flex;
+
     flex-direction: column;
 
     width: 100%;
+
+    min-width: 0;
 
     min-height: 0;
 
     padding: 0;
 
     overflow: hidden;
+
+    box-sizing: border-box;
 
     background:
         linear-gradient(
@@ -17437,14 +17456,17 @@ padding:22px !important;
             #e2c88d 100%
         );
 
-    border: 1px solid #c99d35;
+    border:
+        1px solid
+        #c99d35;
 
     border-radius: 16px;
 
     cursor: pointer;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.38),
+        0 8px 20px
+        rgba(0,0,0,.38),
 
         inset 0 0 0 1px
         rgba(255,255,255,.45);
@@ -17467,7 +17489,7 @@ padding:22px !important;
 
     inset: 5px;
 
-    z-index: 8;
+    z-index: 15;
 
     border:
         1px solid
@@ -17498,13 +17520,11 @@ padding:22px !important;
 }
 
 
-/* IMAGE */
-
 #explorePopup .explore-image {
+    display: block;
+
     width: 100%;
     height: 100%;
-
-    display: block;
 
     object-fit: cover;
 
@@ -17514,7 +17534,9 @@ padding:22px !important;
 }
 
 
-/* IMAGE BOTTOM SHADOW */
+/* =========================================================
+   IMAGE SHADOW
+========================================================= */
 
 #explorePopup .explore-image-wrap::after {
     content: "";
@@ -17531,7 +17553,7 @@ padding:22px !important;
         linear-gradient(
             to bottom,
             transparent,
-            rgba(10,7,3,.38)
+            rgba(10,7,3,.40)
         );
 
     pointer-events: none;
@@ -17539,13 +17561,15 @@ padding:22px !important;
 
 
 /* =========================================================
-   CARD INFORMATION
+   CARD CONTENT
+   IMPORTANT:
+   Actual HTML uses .explore-card-content
 ========================================================= */
 
-#explorePopup .explore-card-info {
+#explorePopup .explore-card-content {
     position: relative;
 
-    z-index: 9;
+    z-index: 10;
 
     display: flex;
 
@@ -17557,9 +17581,16 @@ padding:22px !important;
 
     flex: 1;
 
-    text-align: center;
+    width: 100%;
 
-    padding: 11px 12px 12px;
+    box-sizing: border-box;
+
+    padding:
+        11px
+        12px
+        12px;
+
+    text-align: center;
 
     background:
         linear-gradient(
@@ -17567,13 +17598,16 @@ padding:22px !important;
             #fff9e8,
             #ecd8a8
         );
+
+    color: #3f2a08 !important;
 }
 
+
 /* =========================================================
-   CARD TITLE — FORCE DARK LUXURY TEXT
+   EXPERIENCE TITLE
 ========================================================= */
 
-#explorePopup .explore-option .explore-card-info .title {
+#explorePopup .explore-card-content .title {
     display: block;
 
     width: 100%;
@@ -17597,15 +17631,16 @@ padding:22px !important;
     line-height: 1.25;
 
     text-shadow:
-        0 1px 0 rgba(255,255,255,.45);
+        0 1px 0
+        rgba(255,255,255,.45);
 }
 
 
 /* =========================================================
-   CARD DESCRIPTION — FORCE DARK TEXT
+   EXPERIENCE DESCRIPTION
 ========================================================= */
 
-#explorePopup .explore-option .explore-card-info small {
+#explorePopup .explore-card-content p {
     display: block;
 
     width: 100%;
@@ -17634,7 +17669,7 @@ padding:22px !important;
    EXPLORE ACTION
 ========================================================= */
 
-#explorePopup .explore-option .explore-card-info::after {
+#explorePopup .explore-card-content::after {
     content: "EXPLORE  →";
 
     display: inline-block;
@@ -17659,60 +17694,6 @@ padding:22px !important;
 
     letter-spacing: 1px;
 }
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-#explorePopup .explore-card-info small {
-    display: block;
-
-    width: 100%;
-
-    max-width: 235px;
-
-    margin: 0 auto;
-
-    color: #624a20 !important;
-
-    font-family: "Poppins", sans-serif;
-
-    font-size: 9px;
-
-    font-weight: 400;
-
-    line-height: 1.45;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   EXPLORE ACTION
-========================================================= */
-
-#explorePopup .explore-card-info::after {
-    content: "EXPLORE  →";
-
-    display: inline-block;
-
-    margin-top: 9px;
-
-    padding-top: 6px;
-
-    border-top:
-        1px solid
-        rgba(157,111,25,.35);
-
-    color: #8a631c;
-
-    font-family: "Cinzel", serif;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
 
 
 /* =========================================================
@@ -17725,11 +17706,13 @@ padding:22px !important;
     border-color: #d4af37;
 
     box-shadow:
-        0 15px 30px rgba(0,0,0,.48),
+        0 15px 30px
+        rgba(0,0,0,.48),
 
         0 0 22px
         rgba(212,175,55,.20);
 }
+
 
 #explorePopup .explore-option:hover .explore-image {
     transform: scale(1.06);
@@ -17752,7 +17735,8 @@ padding:22px !important;
         #e5b93f;
 
     box-shadow:
-        0 13px 28px rgba(0,0,0,.48),
+        0 13px 28px
+        rgba(0,0,0,.48),
 
         0 0 0 3px
         rgba(212,175,55,.16),
@@ -17762,7 +17746,9 @@ padding:22px !important;
 }
 
 
-/* SELECTED IMAGE */
+/* =========================================================
+   SELECTED IMAGE
+========================================================= */
 
 #explorePopup .explore-option.selected .explore-image {
     transform: scale(1.04);
@@ -17773,7 +17759,9 @@ padding:22px !important;
 }
 
 
-/* SELECTED LABEL */
+/* =========================================================
+   SELECTED BADGE
+========================================================= */
 
 #explorePopup .explore-option.selected::after {
     content: "✓ SELECTED";
@@ -17783,9 +17771,10 @@ padding:22px !important;
     top: 9px;
     right: 9px;
 
-    z-index: 20;
+    z-index: 30;
 
-    padding: 5px 8px;
+    padding:
+        5px 8px;
 
     background:
         linear-gradient(
@@ -17795,6 +17784,8 @@ padding:22px !important;
         );
 
     color: #fff8df !important;
+
+    -webkit-text-fill-color: #fff8df !important;
 
     border:
         1px solid
@@ -17811,20 +17802,28 @@ padding:22px !important;
     letter-spacing: .6px;
 
     box-shadow:
-        0 4px 10px rgba(0,0,0,.38);
+        0 4px 10px
+        rgba(0,0,0,.38);
 }
 
 
-/* SELECTED TEXT */
+/* =========================================================
+   SELECTED TEXT
+========================================================= */
 
 #explorePopup .explore-option.selected
-.explore-card-info .title {
+.explore-card-content .title {
     color: #3d2807 !important;
+
+    -webkit-text-fill-color: #3d2807 !important;
 }
 
+
 #explorePopup .explore-option.selected
-.explore-card-info small {
+.explore-card-content p {
     color: #5f461b !important;
+
+    -webkit-text-fill-color: #5f461b !important;
 }
 
 
@@ -17835,7 +17834,7 @@ padding:22px !important;
 #explorePopup #bookActivity {
     position: relative;
 
-    z-index: 10;
+    z-index: 20;
 
     display: block;
 
@@ -17843,7 +17842,9 @@ padding:22px !important;
 
     margin-top: 19px;
 
-    padding: 14px 18px;
+    padding:
+        14px
+        18px;
 
     border:
         1px solid
@@ -17859,7 +17860,9 @@ padding:22px !important;
             #f0cf65
         );
 
-    color: #241706;
+    color: #241706 !important;
+
+    -webkit-text-fill-color: #241706 !important;
 
     font-family: "Cinzel", serif;
 
@@ -17874,7 +17877,8 @@ padding:22px !important;
     cursor: pointer;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.45),
+        0 8px 20px
+        rgba(0,0,0,.45),
 
         0 0 18px
         rgba(212,175,55,.18);
@@ -17884,11 +17888,13 @@ padding:22px !important;
         box-shadow .25s ease;
 }
 
+
 #explorePopup #bookActivity:hover {
     transform: translateY(-3px);
 
     box-shadow:
-        0 12px 26px rgba(0,0,0,.55),
+        0 12px 26px
+        rgba(0,0,0,.55),
 
         0 0 28px
         rgba(212,175,55,.35);
@@ -17896,7 +17902,7 @@ padding:22px !important;
 
 
 /* =========================================================
-   MOBILE — TABLET / PHONE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
@@ -17931,7 +17937,7 @@ padding:22px !important;
     }
 
 
-    #explorePopup .explore-card-info {
+    #explorePopup .explore-card-content {
         padding:
             9px
             8px
@@ -17939,7 +17945,7 @@ padding:22px !important;
     }
 
 
-    #explorePopup .explore-card-info .title {
+    #explorePopup .explore-card-content .title {
         font-size: 9px;
 
         letter-spacing: .35px;
@@ -17948,14 +17954,14 @@ padding:22px !important;
     }
 
 
-    #explorePopup .explore-card-info small {
+    #explorePopup .explore-card-content p {
         font-size: 7.5px;
 
         line-height: 1.4;
     }
 
 
-    #explorePopup .explore-card-info::after {
+    #explorePopup .explore-card-content::after {
         margin-top: 7px;
 
         padding-top: 5px;
@@ -17977,7 +17983,9 @@ padding:22px !important;
     #explorePopup #bookActivity {
         margin-top: 15px;
 
-        padding: 13px 12px;
+        padding:
+            13px
+            12px;
 
         font-size: 10px;
     }
@@ -18006,7 +18014,7 @@ padding:22px !important;
     }
 
 
-    #explorePopup .explore-card-info {
+    #explorePopup .explore-card-content {
         padding:
             8px
             6px
@@ -18014,44 +18022,21 @@ padding:22px !important;
     }
 
 
-    #explorePopup .explore-card-info .title {
+    #explorePopup .explore-card-content .title {
         font-size: 8px;
     }
 
 
-    #explorePopup .explore-card-info small {
+    #explorePopup .explore-card-content p {
         font-size: 7px;
 
         line-height: 1.35;
     }
 
 
-    #explorePopup .explore-card-info::after {
-        font-size: 6.5px;
-
+    #explorePopup .explore-card-content::after {
         margin-top: 6px;
+
+        font-size: 6.5px;
     }
-}
-/* =========================================================
-   EXPLORE CARD TEXT OVERRIDE
-   Prevent global card/text rules from turning text white
-========================================================= */
-
-#explorePopup .explore-option,
-#explorePopup .explore-option * {
-    box-sizing: border-box;
-}
-
-#explorePopup .explore-option .explore-card-info {
-    color: #3f2a08 !important;
-}
-
-#explorePopup .explore-option .explore-card-info .title {
-    color: #3f2a08 !important;
-    -webkit-text-fill-color: #3f2a08 !important;
-}
-
-#explorePopup .explore-option .explore-card-info small {
-    color: #624a20 !important;
-    -webkit-text-fill-color: #624a20 !important;
 }
