@@ -17332,83 +17332,68 @@ padding:22px !important;
     padding: 38px 28px 28px;
 }
 
-
-/* =========================================================
-   EXPLORE HEADER
-========================================================= */
-
-#explorePopup .explore-header {
-    position: relative;
-    z-index: 20;
-
-    text-align: center;
-
-    margin-bottom: 22px;
-}
-
-
-#explorePopup .explore-header-icon {
-    display: block;
-
-    font-size: 34px;
-
-    margin-bottom: 5px;
-
-    filter:
-        drop-shadow(
-            0 5px 8px
-            rgba(212,175,55,.30)
-        );
-}
-
+/* ==========================================
+   LUXURY EXPLORE MIRIMA HEADING
+   ========================================== */
 
 #explorePopup .explore-header h2 {
+    position: relative;
     margin: 0;
-
-    color: #e7c96a !important;
-
+    color: #e8c96a;
     font-family: "Cinzel", serif;
-
-    font-size: 28px;
-
+    font-size: 32px;
     font-weight: 700;
-
+    letter-spacing: 2.5px;
     text-transform: uppercase;
 
-    letter-spacing: 2px;
+    background: linear-gradient(
+        180deg,
+        #fff4b8 0%,
+        #e8c96a 35%,
+        #c89b32 70%,
+        #8d641c 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.7),
+        0 0 18px rgba(212,175,55,.25);
+
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.5));
 }
 
-
+/* Luxury ornamental divider */
 #explorePopup .explore-header h2::after {
-    content: "◆ ◆ ◆";
-
+    content: "◆  ◆  ◆";
     display: block;
-
     margin-top: 8px;
 
     color: #d4af37;
-
+    font-family: "Cinzel", serif;
     font-size: 8px;
-
     letter-spacing: 7px;
+
+    -webkit-text-fill-color: #d4af37;
+
+    text-shadow:
+        0 0 8px rgba(212,175,55,.45);
 }
 
+/* Mobile */
+@media (max-width: 600px) {
+    #explorePopup .explore-header h2 {
+        font-size: 24px;
+        letter-spacing: 1.7px;
+    }
 
-#explorePopup .explore-header p {
-    max-width: 520px;
-
-    margin: 9px auto 0;
-
-    color: #c8c0b1 !important;
-
-    font-family: "Poppins", sans-serif;
-
-    font-size: 11px;
-
-    line-height: 1.55;
+    #explorePopup .explore-header h2::after {
+        margin-top: 6px;
+        font-size: 7px;
+        letter-spacing: 5px;
+    }
 }
-
-
 /* =========================================================
    EXPERIENCE GRID
 ========================================================= */
