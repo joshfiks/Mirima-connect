@@ -996,7 +996,7 @@ receptionPopup.addEventListener("click", (e) => {
 
 });
 
-  // ==========================================
+// ==========================================
 // AIRPORT TRANSFER POPUP
 // ==========================================
 
@@ -1006,7 +1006,11 @@ closeTransfer.addEventListener("click", () => {
 
     transferPopup.style.display = "none";
 
+    // Return to Reception
+    receptionPopup.style.display = "flex";
+
 });
+
 
 transferPopup.addEventListener("click", (e) => {
 
@@ -1016,9 +1020,13 @@ transferPopup.addEventListener("click", (e) => {
 
         transferPopup.style.display = "none";
 
+        // Return to Reception
+        receptionPopup.style.display = "flex";
+
     }
 
 });
+
 
 transferPopup.querySelectorAll(".service-option").forEach(item => {
 
@@ -1036,7 +1044,7 @@ transferPopup.querySelectorAll(".service-option").forEach(item => {
 
 });
 
-  // ==========================================
+// ==========================================
 // LUGGAGE ASSISTANCE POPUP
 // ==========================================
 
@@ -1046,11 +1054,16 @@ const luggagePopup =
 const closeLuggage =
     document.querySelector(".closeLuggage");
 
+
 closeLuggage.addEventListener("click", () => {
 
     luggagePopup.style.display = "none";
 
+    // Return to Reception
+    receptionPopup.style.display = "flex";
+
 });
+
 
 luggagePopup.addEventListener("click", (e) => {
 
@@ -1058,10 +1071,14 @@ luggagePopup.addEventListener("click", (e) => {
 
         luggagePopup.style.display = "none";
 
+        // Return to Reception
+        receptionPopup.style.display = "flex";
+
     }
 
 });
-  // ==========================================
+
+// ==========================================
 // LUGGAGE ASSISTANCE REQUEST
 // ==========================================
 
@@ -1098,7 +1115,7 @@ document.getElementById("submitLuggage")
     }, btn);
 
 });
-  // ==========================================
+// ==========================================
 // MAINTENANCE REQUEST POPUP
 // ==========================================
 
@@ -1107,11 +1124,17 @@ const maintenancePopup =
 
 const closeMaintenance =
     document.querySelector(".closeMaintenance");
-  closeMaintenance.addEventListener("click", () => {
+
+
+closeMaintenance.addEventListener("click", () => {
 
     maintenancePopup.style.display = "none";
 
+    // Return to Reception
+    receptionPopup.style.display = "flex";
+
 });
+
 
 maintenancePopup.addEventListener("click", (e) => {
 
@@ -1119,11 +1142,15 @@ maintenancePopup.addEventListener("click", (e) => {
 
         maintenancePopup.style.display = "none";
 
+        // Return to Reception
+        receptionPopup.style.display = "flex";
+
     }
 
 });
 
-  // ==========================================
+
+// ==========================================
 // MAINTENANCE REQUEST
 // ==========================================
 
@@ -1166,7 +1193,7 @@ document.getElementById("submitMaintenance")
     }, btn);
 
 });
-  // ==========================================
+// ==========================================
 // EXTEND YOUR STAY POPUP
 // ==========================================
 
@@ -1175,11 +1202,17 @@ const extendStayPopup =
 
 const closeExtendStay =
     document.querySelector(".closeExtendStay");
-  closeExtendStay.addEventListener("click", () => {
+
+
+closeExtendStay.addEventListener("click", () => {
 
     extendStayPopup.style.display = "none";
 
+    // Return to Reception
+    receptionPopup.style.display = "flex";
+
 });
+
 
 extendStayPopup.addEventListener("click", (e) => {
 
@@ -1187,11 +1220,15 @@ extendStayPopup.addEventListener("click", (e) => {
 
         extendStayPopup.style.display = "none";
 
+        // Return to Reception
+        receptionPopup.style.display = "flex";
+
     }
 
 });
 
-  // ==========================================
+
+// ==========================================
 // EXTEND YOUR STAY REQUEST
 // ==========================================
 
@@ -1251,7 +1288,7 @@ document.getElementById("submitExtendStay")
     }, btn);
 
 });
-  // ==========================================
+// ==========================================
 // EMERGENCY POPUP
 // ==========================================
 
@@ -1261,11 +1298,16 @@ const emergencyPopup =
 const closeEmergency =
     document.querySelector(".closeEmergency");
 
-  closeEmergency.addEventListener("click", () => {
+
+closeEmergency.addEventListener("click", () => {
 
     emergencyPopup.style.display = "none";
 
+    // Return to Reception
+    receptionPopup.style.display = "flex";
+
 });
+
 
 emergencyPopup.addEventListener("click", (e) => {
 
@@ -1273,11 +1315,15 @@ emergencyPopup.addEventListener("click", (e) => {
 
         emergencyPopup.style.display = "none";
 
+        // Return to Reception
+        receptionPopup.style.display = "flex";
+
     }
 
 });
 
-  // ==========================================
+
+// ==========================================
 // EMERGENCY ASSISTANCE REQUEST
 // ==========================================
 
@@ -1347,8 +1393,7 @@ document.getElementById("submitEmergency")
     }, btn);
 
 });
-
-  // ==========================================
+ // ==========================================
 // SPEAK TO RECEPTION POPUP
 // ==========================================
 
@@ -1357,11 +1402,25 @@ const receptionChatPopup =
 
 const closeReceptionChat =
     document.querySelector(".closeReceptionChat");
-  closeReceptionChat.addEventListener("click", () => {
+
+
+// ==========================================
+// CLOSE SPEAK TO RECEPTION
+// ==========================================
+
+closeReceptionChat.addEventListener("click", () => {
 
     receptionChatPopup.style.display = "none";
 
+    // Return to Reception
+    receptionPopup.style.display = "flex";
+
 });
+
+
+// ==========================================
+// CLICK OUTSIDE SPEAK TO RECEPTION
+// ==========================================
 
 receptionChatPopup.addEventListener("click", (e) => {
 
@@ -1369,9 +1428,13 @@ receptionChatPopup.addEventListener("click", (e) => {
 
         receptionChatPopup.style.display = "none";
 
+        // Return to Reception
+        receptionPopup.style.display = "flex";
+
     }
 
 });
+
 
 // ==========================================
 // OTHER ASSISTANCE POPUP
@@ -1383,22 +1446,33 @@ const otherAssistancePopup =
 const closeOtherAssistance =
     document.querySelector(".closeOtherAssistance");
 
-// Close Other Assistance
+
+// ==========================================
+// CLOSE OTHER ASSISTANCE
+// ==========================================
+
 closeOtherAssistance.addEventListener("click", () => {
 
     otherAssistancePopup.style.display = "none";
 
+    // Return to Speak to Reception
+    receptionChatPopup.style.display = "flex";
+
 });
 
+
 // ==========================================
-// RECEPTION CONTACT ACTIONS
+// CLICK OUTSIDE OTHER ASSISTANCE
 // ==========================================
-// Close when clicking outside
+
 otherAssistancePopup.addEventListener("click", (e) => {
 
     if (e.target === otherAssistancePopup) {
 
         otherAssistancePopup.style.display = "none";
+
+        // Return to Speak to Reception
+        receptionChatPopup.style.display = "flex";
 
     }
 
@@ -1503,7 +1577,8 @@ document.getElementById("receptionAssistance")
 
 });
 
-  // ==========================================
+
+// ==========================================
 // RECEPTION FAQ POPUP
 // ==========================================
 
@@ -1536,11 +1611,14 @@ closeReceptionFAQ.addEventListener("click", () => {
 
     receptionFAQPopup.style.display = "none";
 
+    // Return to Speak to Reception
+    receptionChatPopup.style.display = "flex";
+
 });
 
 
 // ==========================================
-// CLOSE WHEN CLICKING OUTSIDE
+// CLOSE FAQ WHEN CLICKING OUTSIDE
 // ==========================================
 
 receptionFAQPopup.addEventListener("click", (e) => {
@@ -1548,6 +1626,9 @@ receptionFAQPopup.addEventListener("click", (e) => {
     if (e.target === receptionFAQPopup) {
 
         receptionFAQPopup.style.display = "none";
+
+        // Return to Speak to Reception
+        receptionChatPopup.style.display = "flex";
 
     }
 
@@ -1622,7 +1703,7 @@ receptionFAQPopup
 
     });
 
-});              
+});
 // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
