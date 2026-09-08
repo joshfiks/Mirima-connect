@@ -18025,7 +18025,7 @@ padding:22px !important;
 }
 /* =========================================================
    MIRIMA CONNECT
-   GUEST FEEDBACK — PREMIUM LUXURY CARDS
+   GUEST FEEDBACK — LUXURY RECEPTION STYLE
    ========================================================= */
 
 
@@ -18055,9 +18055,9 @@ padding:22px !important;
 
     position:relative;
 
-    min-height:175px;
+    min-height:190px;
 
-    padding:22px 15px 20px;
+    padding:20px 12px 16px;
 
     box-sizing:border-box;
 
@@ -18075,39 +18075,41 @@ padding:22px !important;
 
     overflow:hidden;
 
-    border-radius:18px;
+    border-radius:16px;
 
-    border:1px solid rgba(212,175,55,.65);
+    /* Main gold border */
+    border:2px solid #c9a43a;
 
+    /* Reception-style cream surface */
     background:
         linear-gradient(
             145deg,
-            #302619,
-            #21190f
+            #f7efd9,
+            #e9dcc0
         );
 
     box-shadow:
 
-        0 12px 25px rgba(0,0,0,.40),
+        0 7px 16px
+        rgba(0,0,0,.30),
 
-        inset 0 1px 0
-        rgba(255,255,255,.06),
+        inset 0 0 0 1px
+        rgba(255,255,255,.75),
 
-        inset 0 -8px 20px
-        rgba(0,0,0,.30);
+        inset 0 0 0 5px
+        rgba(201,164,58,.16);
 
     transition:
 
-        transform .35s ease,
-        box-shadow .35s ease,
-        border-color .35s ease,
-        background .35s ease;
+        transform .30s ease,
+        box-shadow .30s ease,
+        border-color .30s ease;
 
 }
 
 
 /* =========================================================
-   SUBTLE GOLD LIGHT
+   INNER GOLD FRAME
    ========================================================= */
 
 #feedbackPopup .feedback-card::before {
@@ -18116,22 +18118,49 @@ padding:22px !important;
 
     position:absolute;
 
-    top:-80px;
-    left:-70px;
+    inset:5px;
 
-    width:150px;
-    height:150px;
+    border:1px solid
+        rgba(165,126,28,.55);
 
-    border-radius:50%;
+    border-radius:11px;
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+
+/* =========================================================
+   CARD LIGHT
+   ========================================================= */
+
+#feedbackPopup .feedback-card::after {
+
+    content:"";
+
+    position:absolute;
+
+    top:-45px;
+    left:50%;
+
+    width:130px;
+    height:100px;
+
+    transform:
+        translateX(-50%);
 
     background:
         radial-gradient(
-            circle,
-            rgba(212,175,55,.16),
+            ellipse,
+            rgba(255,255,255,.55),
             transparent 70%
         );
 
     pointer-events:none;
+
+    opacity:.65;
 
 }
 
@@ -18143,24 +18172,24 @@ padding:22px !important;
 #feedbackPopup .feedback-card:hover {
 
     transform:
-        translateY(-7px);
+        translateY(-5px);
 
-    border-color:#e8c75a;
-
-    background:
-        linear-gradient(
-            145deg,
-            #3b2d1b,
-            #251b10
-        );
+    border-color:
+        #d8b64d;
 
     box-shadow:
 
-        0 18px 35px
-        rgba(0,0,0,.50),
+        0 12px 24px
+        rgba(0,0,0,.38),
 
-        0 0 22px
-        rgba(212,175,55,.18);
+        0 0 15px
+        rgba(212,175,55,.20),
+
+        inset 0 0 0 1px
+        rgba(255,255,255,.85),
+
+        inset 0 0 0 5px
+        rgba(201,164,58,.18);
 
 }
 
@@ -18171,9 +18200,13 @@ padding:22px !important;
 
 #feedbackPopup .feedback-icon {
 
-    width:105px;
+    position:relative;
 
-    height:95px;
+    z-index:2;
+
+    width:115px;
+
+    height:105px;
 
     display:flex;
 
@@ -18181,9 +18214,7 @@ padding:22px !important;
 
     justify-content:center;
 
-    margin-bottom:12px;
-
-    position:relative;
+    margin-bottom:9px;
 
 }
 
@@ -18194,31 +18225,35 @@ padding:22px !important;
 
 #feedbackPopup .feedback-icon img {
 
-    width:95px;
+    width:105px;
 
-    height:95px;
+    height:105px;
 
     object-fit:contain;
 
     display:block;
 
+    position:relative;
+
+    z-index:2;
+
     filter:
 
         drop-shadow(
             0 5px 5px
-            rgba(0,0,0,.60)
+            rgba(0,0,0,.38)
         )
 
         drop-shadow(
-            0 0 8px
+            0 0 7px
             rgba(212,175,55,.30)
         );
 
     transition:
 
-        transform .35s ease,
+        transform .30s ease,
 
-        filter .35s ease;
+        filter .30s ease;
 
 }
 
@@ -18231,18 +18266,18 @@ padding:22px !important;
 .feedback-icon img {
 
     transform:
-        scale(1.10);
+        scale(1.08);
 
     filter:
 
         drop-shadow(
             0 7px 7px
-            rgba(0,0,0,.65)
+            rgba(0,0,0,.45)
         )
 
         drop-shadow(
-            0 0 16px
-            rgba(212,175,55,.55)
+            0 0 13px
+            rgba(212,175,55,.45)
         );
 
 }
@@ -18254,23 +18289,27 @@ padding:22px !important;
 
 #feedbackPopup .feedback-card .title {
 
+    position:relative;
+
+    z-index:3;
+
     display:block;
 
-    margin-top:4px;
+    margin-top:3px;
 
-    color:#f5e6bd;
+    color:#3a2917;
 
     font-family:
         "Cinzel",
         serif;
 
-    font-size:18px;
+    font-size:17px;
 
-    font-weight:600;
+    font-weight:700;
 
-    letter-spacing:.8px;
+    letter-spacing:.6px;
 
-    line-height:1.35;
+    line-height:1.3;
 
     text-transform:uppercase;
 
@@ -18284,30 +18323,42 @@ padding:22px !important;
 #feedbackPopup .feedback-card.selected {
 
     transform:
-        translateY(-5px);
+        translateY(-4px);
 
     border:
-
         2px solid
-        #e8c75a;
+        #a97c18;
 
     background:
 
         linear-gradient(
             145deg,
-            #f2d47a,
-            #c49a32
+            #f3d77f,
+            #d6ad45
         );
-
-    color:#24180b;
 
     box-shadow:
 
-        0 15px 35px
-        rgba(0,0,0,.50),
+        0 12px 25px
+        rgba(0,0,0,.42),
 
-        0 0 28px
-        rgba(212,175,55,.45);
+        0 0 20px
+        rgba(212,175,55,.38),
+
+        inset 0 0 0 1px
+        rgba(255,255,255,.80);
+
+}
+
+
+/* =========================================================
+   SELECTED INNER FRAME
+   ========================================================= */
+
+#feedbackPopup .feedback-card.selected::before {
+
+    border-color:
+        rgba(128,91,13,.65);
 
 }
 
@@ -18320,7 +18371,7 @@ padding:22px !important;
 
     color:#24180b;
 
-    font-weight:700;
+    font-weight:800;
 
 }
 
@@ -18340,12 +18391,12 @@ padding:22px !important;
 
         drop-shadow(
             0 5px 5px
-            rgba(0,0,0,.50)
+            rgba(0,0,0,.45)
         )
 
         drop-shadow(
-            0 0 14px
-            rgba(255,255,255,.30)
+            0 0 12px
+            rgba(255,255,255,.35)
         );
 
 }
@@ -18356,35 +18407,16 @@ padding:22px !important;
    ========================================================= */
 
 #feedbackPopup
-.feedback-card.selected::after {
+.feedback-card.selected
+.title::after {
 
     content:
-        "✓ SELECTED";
+        "  ✓";
 
-    position:absolute;
+    color:
+        #9a7017;
 
-    top:10px;
-
-    right:11px;
-
-    padding:4px 8px;
-
-    border-radius:20px;
-
-    background:
-        rgba(45,30,10,.85);
-
-    color:#f8df8a;
-
-    font-family:
-        "Cinzel",
-        serif;
-
-    font-size:9px;
-
-    font-weight:700;
-
-    letter-spacing:.7px;
+    font-size:14px;
 
 }
 
@@ -18407,19 +18439,22 @@ padding:22px !important;
 
     margin-top:5px;
 
-    border-radius:15px;
+    border-radius:12px;
 
     border:
-
         1px solid
-        rgba(212,175,55,.55);
+        #b99435;
 
     outline:none;
 
     background:
-        #21180e;
+        linear-gradient(
+            145deg,
+            #f4ead2,
+            #e8dbc0
+        );
 
-    color:#f8ecd0;
+    color:#352514;
 
     font-family:
         "Poppins",
@@ -18431,8 +18466,11 @@ padding:22px !important;
 
     box-shadow:
 
-        inset 0 4px 12px
-        rgba(0,0,0,.30);
+        0 5px 14px
+        rgba(0,0,0,.20),
+
+        inset 0 1px 0
+        rgba(255,255,255,.70);
 
     transition:
 
@@ -18445,7 +18483,7 @@ padding:22px !important;
 #feedbackPopup textarea::placeholder {
 
     color:
-        rgba(245,230,190,.55);
+        rgba(67,48,27,.60);
 
 }
 
@@ -18453,15 +18491,18 @@ padding:22px !important;
 #feedbackPopup textarea:focus {
 
     border-color:
-        #d4af37;
+        #c59a2f;
 
     box-shadow:
 
         0 0 0 2px
-        rgba(212,175,55,.12),
+        rgba(212,175,55,.16),
 
-        inset 0 4px 12px
-        rgba(0,0,0,.30);
+        0 6px 15px
+        rgba(0,0,0,.22),
+
+        inset 0 1px 0
+        rgba(255,255,255,.75);
 
 }
 
@@ -18478,28 +18519,31 @@ padding:22px !important;
 
         linear-gradient(
             135deg,
-            #c79a2b,
+            #b98b25,
             #f0ce67,
-            #c79a2b
+            #c3972f
         );
 
     color:#21170c;
 
     border:
-
         1px solid
-        #f0cf69;
+        #e6c45c;
 
     box-shadow:
 
-        0 10px 25px
-        rgba(0,0,0,.35),
+        0 9px 20px
+        rgba(0,0,0,.30),
 
-        0 0 18px
+        0 0 14px
         rgba(212,175,55,.18);
 
 }
 
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
 
 #feedbackPopup #submitFeedback:hover {
 
@@ -18508,11 +18552,11 @@ padding:22px !important;
 
     box-shadow:
 
-        0 15px 32px
-        rgba(0,0,0,.45),
+        0 13px 27px
+        rgba(0,0,0,.38),
 
-        0 0 25px
-        rgba(212,175,55,.30);
+        0 0 20px
+        rgba(212,175,55,.28);
 
 }
 
@@ -18551,30 +18595,30 @@ padding:22px !important;
 
     #feedbackPopup .feedback-card {
 
-        min-height:155px;
+        min-height:165px;
 
         padding:
-            18px 10px;
+            16px 9px;
 
     }
 
 
     #feedbackPopup .feedback-icon {
 
-        width:85px;
+        width:90px;
 
-        height:78px;
+        height:82px;
 
-        margin-bottom:9px;
+        margin-bottom:8px;
 
     }
 
 
     #feedbackPopup .feedback-icon img {
 
-        width:78px;
+        width:82px;
 
-        height:78px;
+        height:82px;
 
     }
 
@@ -18583,23 +18627,10 @@ padding:22px !important;
 
         font-size:14px;
 
-        letter-spacing:.5px;
+        letter-spacing:.4px;
 
     }
 
-
-    #feedbackPopup
-    .feedback-card.selected::after {
-
-        top:7px;
-
-        right:7px;
-
-        font-size:7px;
-
-        padding:3px 6px;
-
-    }
 
 }
 
@@ -18619,7 +18650,7 @@ padding:22px !important;
 
     #feedbackPopup .feedback-card {
 
-        min-height:145px;
+        min-height:150px;
 
     }
 
