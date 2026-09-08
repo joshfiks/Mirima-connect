@@ -3106,6 +3106,16 @@ chimpanzeeTrekkingPopup.addEventListener("click", (e) => {
     }
 
 });
+  // ==========================================
+// PHOTOGRAPHY TOUR POPUP
+// ==========================================
+
+const photographyTourPopup =
+    document.getElementById("photographyTourPopup");
+
+const closePhotographyTour =
+    document.querySelector(".closePhotographyTour");
+  
 // ==========================================
 // CLOSE PHOTOGRAPHY TOUR
 // ==========================================
