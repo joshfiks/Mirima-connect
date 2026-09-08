@@ -2242,7 +2242,6 @@ roomDiningButton.addEventListener("click", () => {
 
 });
 
-
 // ==========================================
 // CLOSE ROOM DINING
 // ==========================================
@@ -2254,6 +2253,9 @@ closeRoomDining.addEventListener("click", () => {
     roomDiningMeal.value = "";
     roomDiningTime.value = "";
     roomDiningNotes.value = "";
+
+    // Return to Restaurant & Bar
+    restaurantBarPopup.style.display = "flex";
 
 });
 
@@ -2271,6 +2273,9 @@ roomDiningPopup.addEventListener("click", (e) => {
         roomDiningMeal.value = "";
         roomDiningTime.value = "";
         roomDiningNotes.value = "";
+
+        // Return to Restaurant & Bar
+        restaurantBarPopup.style.display = "flex";
 
     }
 
@@ -2310,7 +2315,6 @@ sendRoomDiningRequest.addEventListener("click", () => {
 
         return;
     }
-
 
     // ======================================
     // BUILD CONFIRMATION
@@ -2562,7 +2566,6 @@ restaurantReservationButton.addEventListener("click", () => {
 
 });
 
-
 // ==========================================
 // CLOSE RESERVATION
 // ==========================================
@@ -2575,6 +2578,9 @@ closeRestaurantReservation.addEventListener("click", () => {
     reservationTime.value = "";
     reservationGuests.value = "";
     reservationNotes.value = "";
+
+    // Return to Restaurant & Bar
+    restaurantBarPopup.style.display = "flex";
 
 });
 
@@ -2594,11 +2600,13 @@ restaurantReservationPopup.addEventListener("click", (e) => {
         reservationGuests.value = "";
         reservationNotes.value = "";
 
+        // Return to Restaurant & Bar
+        restaurantBarPopup.style.display = "flex";
+
     }
 
 });
-
-
+  
 // ==========================================
 // REQUEST RESERVATION
 // ==========================================
