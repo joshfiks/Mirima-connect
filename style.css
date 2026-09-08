@@ -18066,7 +18066,7 @@ padding:22px !important;
 
     gap: 10px;
 
-    color: #d4af37;
+    color: #f0d58a;
 
     font-family:
         "Cinzel",
@@ -18083,11 +18083,10 @@ padding:22px !important;
     text-transform: uppercase;
 
     text-shadow:
-        0 2px 5px
-        rgba(0,0,0,.55);
+        0 2px 3px rgba(0,0,0,.65),
+        0 0 8px rgba(212,175,55,.18);
 
 }
-
 
 /* =========================================================
    FEEDBACK SUBTITLE
