@@ -2926,14 +2926,17 @@ explorePopup
 
 });
 
-
 // ==========================================
 // CLOSE CRATER LAKE TOUR
 // ==========================================
 
 closeCraterLake.addEventListener("click", () => {
 
+    // Close Crater Lake Tour
     craterLakePopup.style.display = "none";
+
+    // Return to Explore
+    explorePopup.style.display = "flex";
 
 });
 
@@ -2946,11 +2949,16 @@ craterLakePopup.addEventListener("click", (e) => {
 
     if (e.target === craterLakePopup) {
 
+        // Close Crater Lake Tour
         craterLakePopup.style.display = "none";
+
+        // Return to Explore
+        explorePopup.style.display = "flex";
 
     }
 
 });
+  
   // ==========================================
 // WILDLIFE VIEWING POPUP
 // ==========================================
@@ -4700,22 +4708,39 @@ const receiptPopup =
 
 const closeReceipt =
     document.querySelector(".closeReceipt");
-  closeReceipt.addEventListener("click", () => {
 
+
+// ==========================================
+// CLOSE RECEIPT — RETURN TO BILLING
+// ==========================================
+
+closeReceipt.addEventListener("click", () => {
+
+    // Close Receipt
     receiptPopup.style.display = "none";
 
+    // Return to Billing
+    billingPopup.style.display = "flex";
+
 });
+
 
 receiptPopup.addEventListener("click", (e) => {
 
     if (e.target === receiptPopup) {
 
+        // Close Receipt
         receiptPopup.style.display = "none";
+
+        // Return to Billing
+        billingPopup.style.display = "flex";
 
     }
 
 });
-  // ==========================================
+
+
+// ==========================================
 // RECEIPT REQUEST
 // ==========================================
 
@@ -4751,9 +4776,9 @@ document.getElementById("requestReceipt")
 
         }, btn);
 
-    });     
+    });
 
-  // ==========================================
+// ==========================================
 // CURRENT BILL POPUP
 // ==========================================
 
@@ -4763,22 +4788,40 @@ const currentBillPopup =
 const closeCurrentBill =
     document.querySelector(".closeCurrentBill");
 
-  closeCurrentBill.addEventListener("click", () => {
 
+// ==========================================
+// CLOSE CURRENT BILL — RETURN TO BILLING
+// ==========================================
+
+closeCurrentBill.addEventListener("click", () => {
+
+    // Close Current Bill
     currentBillPopup.style.display = "none";
 
+    // Return to Billing
+    billingPopup.style.display = "flex";
+
 });
+
+
+// ==========================================
+// CLICK OUTSIDE — RETURN TO BILLING
+// ==========================================
 
 currentBillPopup.addEventListener("click", (e) => {
 
     if (e.target === currentBillPopup) {
 
+        // Close Current Bill
         currentBillPopup.style.display = "none";
+
+        // Return to Billing
+        billingPopup.style.display = "flex";
 
     }
 
 });
-  // ==========================================
+// ==========================================
 // EXCHANGE POPUP
 // ==========================================
 
@@ -4787,24 +4830,39 @@ const exchangePopup =
 
 const closeExchange =
     document.querySelector(".closeExchange");
-  
-  closeExchange.addEventListener("click", () => {
 
+
+// ==========================================
+// CLOSE EXCHANGE — RETURN TO BILLING
+// ==========================================
+
+closeExchange.addEventListener("click", () => {
+
+    // Close Exchange
     exchangePopup.style.display = "none";
 
+    // Return to Billing
+    billingPopup.style.display = "flex";
+
 });
+
 
 exchangePopup.addEventListener("click", (e) => {
 
     if (e.target === exchangePopup) {
 
+        // Close Exchange
         exchangePopup.style.display = "none";
+
+        // Return to Billing
+        billingPopup.style.display = "flex";
 
     }
 
 });
 
-  // ==========================================
+
+// ==========================================
 // EXCHANGE CALCULATION
 // ==========================================
 
@@ -4888,7 +4946,9 @@ function updateExchange() {
         `UGX ${result.toLocaleString()}`;
 
 }
-  // ==========================================
+
+
+// ==========================================
 // EXCHANGE REQUEST
 // ==========================================
 
@@ -4986,7 +5046,7 @@ document.getElementById("submitExchange")
     }, btn);
 
 });
-  // ==========================================
+// ==========================================
 // BILLING HELP POPUP
 // ==========================================
 
@@ -4995,7 +5055,12 @@ const billingHelpPopup =
 
 const closeBillingHelp =
     document.querySelector(".closeBillingHelp");
-  
+
+
+// ==========================================
+// CLOSE BILLING HELP — RETURN TO BILLING
+// ==========================================
+
 closeBillingHelp.addEventListener("click", () => {
 
     billingHelpPopup.style.display = "none";
@@ -5008,7 +5073,11 @@ closeBillingHelp.addEventListener("click", () => {
 
     document.getElementById("billingHelpMessage").value = "";
 
+    // Return to Billing
+    billingPopup.style.display = "flex";
+
 });
+
 
 billingHelpPopup.addEventListener("click", (e) => {
 
@@ -5016,10 +5085,23 @@ billingHelpPopup.addEventListener("click", (e) => {
 
         billingHelpPopup.style.display = "none";
 
+        billingHelpPopup
+            .querySelectorAll(".billing-help-card")
+            .forEach(item => {
+                item.classList.remove("selected");
+            });
+
+        document.getElementById("billingHelpMessage").value = "";
+
+        // Return to Billing
+        billingPopup.style.display = "flex";
+
     }
 
 });
-  // ==========================================
+
+
+// ==========================================
 // BILLING HELP
 // ==========================================
 
@@ -5040,6 +5122,7 @@ billingHelpPopup
         });
 
     });
+
 
 document.getElementById("submitBillingHelp")
     .addEventListener("click", () => {
@@ -5244,9 +5327,14 @@ closePayment.addEventListener("click", () => {
 
     clearSelections(paymentPopup, ".payment-card");
 
+    // Close Make Payment
     paymentPopup.style.display = "none";
 
+    // Return to Billing
+    billingPopup.style.display = "flex";
+
 });
+
 
 paymentPopup.addEventListener("click", (e) => {
 
@@ -5254,11 +5342,16 @@ paymentPopup.addEventListener("click", (e) => {
 
         clearSelections(paymentPopup, ".payment-card");
 
+        // Close Make Payment
         paymentPopup.style.display = "none";
+
+        // Return to Billing
+        billingPopup.style.display = "flex";
 
     }
 
 });
+
 
 paymentPopup.querySelectorAll(".payment-card").forEach(card => {
 
@@ -5275,6 +5368,7 @@ paymentPopup.querySelectorAll(".payment-card").forEach(card => {
         const paymentMethod =
             card.querySelector("strong").textContent.trim();
 
+
         if (paymentMethod === "Mobile Money") {
 
             paymentPopup.style.display = "none";
@@ -5282,34 +5376,38 @@ paymentPopup.querySelectorAll(".payment-card").forEach(card => {
             mobileMoneyPopup.style.display = "flex";
 
         }
-      if (paymentMethod === "Card Payment") {
 
-    paymentPopup.style.display = "none";
 
-    clearSelections(paymentPopup, ".payment-card");
+        if (paymentMethod === "Card Payment") {
 
-    cardPaymentPopup.style.display = "flex";
+            paymentPopup.style.display = "none";
 
-}
+            clearSelections(paymentPopup, ".payment-card");
 
-      if (paymentMethod === "Pay at Reception") {
+            cardPaymentPopup.style.display = "flex";
 
-    paymentPopup.style.display = "none";
+        }
 
-    const guestName =
-        localStorage.getItem("guestName") || "Guest";
 
-    document.getElementById("receptionPaymentGuest").textContent =
-        guestName;
+        if (paymentMethod === "Pay at Reception") {
 
-    receptionPaymentPopup.style.display = "flex";
+            paymentPopup.style.display = "none";
 
-}
+            const guestName =
+                localStorage.getItem("guestName") || "Guest";
+
+            document.getElementById("receptionPaymentGuest").textContent =
+                guestName;
+
+            receptionPaymentPopup.style.display = "flex";
+
+        }
+
     });
 
 });
-
-  // ==========================================
+  
+// ==========================================
 // MOBILE MONEY POPUP
 // ==========================================
 
@@ -5331,7 +5429,11 @@ closeMobileMoney.addEventListener("click", () => {
 
     mobileMoneyInstructions.style.display = "none";
 
+    // Close Mobile Money
     mobileMoneyPopup.style.display = "none";
+
+    // Return to Make Payment
+    paymentPopup.style.display = "flex";
 
 });
 
@@ -5346,12 +5448,16 @@ mobileMoneyPopup.addEventListener("click", (e) => {
 
         mobileMoneyInstructions.style.display = "none";
 
+        // Close Mobile Money
         mobileMoneyPopup.style.display = "none";
+
+        // Return to Make Payment
+        paymentPopup.style.display = "flex";
 
     }
 
 });
-
+  
 mobileMoneyPopup
     .querySelectorAll(".mobile-money-card")
     .forEach(card => {
@@ -5512,23 +5618,41 @@ const cardPaymentPopup =
 const closeCardPayment =
     document.querySelector(".closeCardPayment");
 
+
+// ==========================================
+// CLOSE CARD PAYMENT — RETURN TO MAKE PAYMENT
+// ==========================================
+
 closeCardPayment.addEventListener("click", () => {
 
+    // Close Card Payment
     cardPaymentPopup.style.display = "none";
 
+    // Return to Make Payment
+    paymentPopup.style.display = "flex";
+
 });
+
+
+// ==========================================
+// CLICK OUTSIDE — RETURN TO MAKE PAYMENT
+// ==========================================
 
 cardPaymentPopup.addEventListener("click", (e) => {
 
     if (e.target === cardPaymentPopup) {
 
+        // Close Card Payment
         cardPaymentPopup.style.display = "none";
+
+        // Return to Make Payment
+        paymentPopup.style.display = "flex";
 
     }
 
 });
 
-  // ==========================================
+// ==========================================
 // PAY AT RECEPTION POPUP
 // ==========================================
 
@@ -5538,21 +5662,40 @@ const receptionPaymentPopup =
 const closeReceptionPayment =
     document.querySelector(".closeReceptionPayment");
 
+
+// ==========================================
+// CLOSE PAY AT RECEPTION — RETURN TO MAKE PAYMENT
+// ==========================================
+
 closeReceptionPayment.addEventListener("click", () => {
 
+    // Close Pay at Reception
     receptionPaymentPopup.style.display = "none";
 
+    // Return to Make Payment
+    paymentPopup.style.display = "flex";
+
 });
+
 
 receptionPaymentPopup.addEventListener("click", (e) => {
 
     if (e.target === receptionPaymentPopup) {
 
+        // Close Pay at Reception
         receptionPaymentPopup.style.display = "none";
+
+        // Return to Make Payment
+        paymentPopup.style.display = "flex";
 
     }
 
 });
+
+
+// ==========================================
+// REQUEST RECEPTION PAYMENT
+// ==========================================
 
 document.getElementById("requestReceptionPayment")
     .addEventListener("click", () => {
@@ -5587,7 +5730,6 @@ document.getElementById("requestReceptionPayment")
         }, btn);
 
     });
-
 /* ==========================================
    LATE CHECKOUT POPUP
 ========================================== */
@@ -5598,23 +5740,38 @@ const lateCheckoutPopup =
 const closeLateCheckout =
     document.querySelector(".closeLateCheckout");
 
+
+// ==========================================
+// CLOSE LATE CHECKOUT — RETURN TO BILLING
+// ==========================================
+
 closeLateCheckout.addEventListener("click", () => {
 
+    // Close Late Checkout
     lateCheckoutPopup.style.display = "none";
 
+    // Return to Billing
+    billingPopup.style.display = "flex";
+
 });
+
 
 lateCheckoutPopup.addEventListener("click", (e) => {
 
     if (e.target === lateCheckoutPopup) {
 
+        // Close Late Checkout
         lateCheckoutPopup.style.display = "none";
+
+        // Return to Billing
+        billingPopup.style.display = "flex";
 
     }
 
 });
 
-  // ==========================================
+
+// ==========================================
 // LATE CHECKOUT REQUEST
 // ==========================================
 
