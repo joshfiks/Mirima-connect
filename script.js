@@ -1666,6 +1666,9 @@ closeRestaurantBar.addEventListener("click", () => {
 
     restaurantBarPopup.style.display = "none";
 
+    // Return to Explore
+    explorePopup.style.display = "flex";
+
 });
 
 
@@ -1676,11 +1679,12 @@ restaurantBarPopup.addEventListener("click", (e) => {
 
         restaurantBarPopup.style.display = "none";
 
+        // Return to Explore
+        explorePopup.style.display = "flex";
+
     }
 
 });
-
-
 // ==========================================
 // OPEN RESTAURANT & BAR
 // ==========================================
@@ -1811,8 +1815,6 @@ closeRestaurantMenu.addEventListener("click", () => {
     restaurantBarPopup.style.display = "flex";
 
 });
-
-
 // ==========================================
 // CLOSE RESTAURANT MENU OUTSIDE
 // ==========================================
@@ -1827,12 +1829,15 @@ restaurantMenuPopup.addEventListener("click", (e) => {
 
         selectedRestaurantMeal = null;
 
+        // Close Restaurant Menu
         restaurantMenuPopup.style.display = "none";
+
+        // Return to Restaurant & Bar
+        restaurantBarPopup.style.display = "flex";
 
     }
 
 });
-
 
 // ==========================================
 // ORDER FROM RESTAURANT
@@ -2054,7 +2059,6 @@ closeBarMenu.addEventListener("click", () => {
 
 });
 
-
 // ==========================================
 // CLOSE BAR MENU OUTSIDE
 // ==========================================
@@ -2069,12 +2073,15 @@ barMenuPopup.addEventListener("click", (e) => {
 
         selectedBarDrink = null;
 
+        // Close Bar Menu
         barMenuPopup.style.display = "none";
+
+        // Return to Restaurant & Bar
+        restaurantBarPopup.style.display = "flex";
 
     }
 
 });
-
 
 // ==========================================
 // ORDER FROM BAR
@@ -2985,14 +2992,17 @@ explorePopup
 
     });
 
-
 // ==========================================
 // CLOSE WILDLIFE VIEWING
 // ==========================================
 
 closeWildlifeViewing.addEventListener("click", () => {
 
+    // Close Wildlife Viewing
     wildlifeViewingPopup.style.display = "none";
+
+    // Return to Explore
+    explorePopup.style.display = "flex";
 
 });
 
@@ -3005,11 +3015,16 @@ wildlifeViewingPopup.addEventListener("click", (e) => {
 
     if (e.target === wildlifeViewingPopup) {
 
+        // Close Wildlife Viewing
         wildlifeViewingPopup.style.display = "none";
+
+        // Return to Explore
+        explorePopup.style.display = "flex";
 
     }
 
 });
+  
   // ==========================================
 // CHIMPANZEE TREKKING POPUP
 // ==========================================
@@ -3051,14 +3066,17 @@ explorePopup
 
     });
 
-
 // ==========================================
 // CLOSE CHIMPANZEE TREKKING
 // ==========================================
 
 closeChimpanzeeTrekking.addEventListener("click", () => {
 
+    // Close Chimpanzee Trekking
     chimpanzeeTrekkingPopup.style.display = "none";
+
+    // Return to Explore
+    explorePopup.style.display = "flex";
 
 });
 
@@ -3071,61 +3089,26 @@ chimpanzeeTrekkingPopup.addEventListener("click", (e) => {
 
     if (e.target === chimpanzeeTrekkingPopup) {
 
+        // Close Chimpanzee Trekking
         chimpanzeeTrekkingPopup.style.display = "none";
+
+        // Return to Explore
+        explorePopup.style.display = "flex";
 
     }
 
 });
-
-  // ==========================================
-// PHOTOGRAPHY TOUR POPUP
-// ==========================================
-
-const photographyTourPopup =
-    document.getElementById("photographyTourPopup");
-
-const closePhotographyTour =
-    document.querySelector(".closePhotographyTour");
-
-
-// ==========================================
-// OPEN PHOTOGRAPHY TOUR
-// ==========================================
-
-explorePopup
-    .querySelectorAll(".service-option")
-    .forEach(option => {
-
-        option.addEventListener("click", () => {
-
-            const title =
-                option.querySelector(".title");
-
-            if (
-                title &&
-                title.textContent.trim() === "Photography Tour"
-            ) {
-
-                explorePopup.style.display = "none";
-
-                option.classList.remove("selected");
-
-                photographyTourPopup.style.display = "flex";
-
-            }
-
-        });
-
-    });
-
-
 // ==========================================
 // CLOSE PHOTOGRAPHY TOUR
 // ==========================================
 
 closePhotographyTour.addEventListener("click", () => {
 
+    // Close Photography Tour
     photographyTourPopup.style.display = "none";
+
+    // Return to Explore
+    explorePopup.style.display = "flex";
 
 });
 
@@ -3138,7 +3121,11 @@ photographyTourPopup.addEventListener("click", (e) => {
 
     if (e.target === photographyTourPopup) {
 
+        // Close Photography Tour
         photographyTourPopup.style.display = "none";
+
+        // Return to Explore
+        explorePopup.style.display = "flex";
 
     }
 
@@ -3216,7 +3203,11 @@ document.getElementById("bookPhotographyTour")
 
 closeSpa.addEventListener("click", () => {
 
+    // Close Spa
     spaPopup.style.display = "none";
+
+    // Return to Explore
+    explorePopup.style.display = "flex";
 
 });
 
@@ -3224,13 +3215,16 @@ spaPopup.addEventListener("click", (e) => {
 
     if (e.target === spaPopup) {
 
+        // Close Spa
         spaPopup.style.display = "none";
+
+        // Return to Explore
+        explorePopup.style.display = "flex";
 
     }
 
 });
-
-  // ==========================================
+// ==========================================
 // NATURE WALK POPUP
 // ==========================================
 
@@ -3239,9 +3233,14 @@ const closeNatureWalk = document.querySelector(".closeNatureWalk");
 
 closeNatureWalk.addEventListener("click", () => {
 
+    // Clear selected nature walk
     clearSelections(natureWalkPopup, ".nature-card");
 
+    // Close Nature Walk
     natureWalkPopup.style.display = "none";
+
+    // Return to Explore
+    explorePopup.style.display = "flex";
 
 });
 
@@ -3249,9 +3248,14 @@ natureWalkPopup.addEventListener("click", (e) => {
 
     if (e.target === natureWalkPopup) {
 
+        // Clear selected nature walk
         clearSelections(natureWalkPopup, ".nature-card");
 
+        // Close Nature Walk
         natureWalkPopup.style.display = "none";
+
+        // Return to Explore
+        explorePopup.style.display = "flex";
 
     }
 
@@ -3554,42 +3558,45 @@ if (
         });
 
 
-    // ==========================================
-    // CLOSE ROMANTIC POPUP
-    // ==========================================
+  // ==========================================
+// CLOSE ROMANTIC POPUP
+// ==========================================
 
-    closeRomantic.addEventListener(
-        "click",
-        () => {
+closeRomantic.addEventListener(
+    "click",
+    () => {
 
-            romanticPopup.style.display =
-                "none";
+        romanticPopup.style.display = "none";
+
+        // Return to Housekeeping
+        housekeepingPopup.style.display = "flex";
+
+    }
+);
+
+
+// ==========================================
+// CLOSE ROMANTIC OUTSIDE
+// ==========================================
+
+romanticPopup.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            romanticPopup
+        ) {
+
+            romanticPopup.style.display = "none";
+
+            // Return to Housekeeping
+            housekeepingPopup.style.display = "flex";
 
         }
-    );
 
-
-    // ==========================================
-    // CLOSE ROMANTIC OUTSIDE
-    // ==========================================
-
-    romanticPopup.addEventListener(
-        "click",
-        event => {
-
-            if (
-                event.target ===
-                romanticPopup
-            ) {
-
-                romanticPopup.style.display =
-                    "none";
-
-            }
-
-        }
-    );
-
+    }
+);
 
     // ==========================================
     // CONFIRM ROMANTIC SETUP
@@ -3789,44 +3796,46 @@ if (babyCotPopup) {
 
         });
 
+// ==========================================
+// CLOSE BABY COT
+// ==========================================
 
-    // ==========================================
-    // CLOSE BABY COT
-    // ==========================================
+closeBabyCot.addEventListener(
+    "click",
+    () => {
 
-    closeBabyCot.addEventListener(
-        "click",
-        () => {
+        babyCotPopup.style.display = "none";
 
-            babyCotPopup.style.display =
-                "none";
+        // Return to Housekeeping
+        housekeepingPopup.style.display = "flex";
+
+    }
+);
+
+
+// ==========================================
+// CLOSE OUTSIDE
+// ==========================================
+
+babyCotPopup.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            babyCotPopup
+        ) {
+
+            babyCotPopup.style.display = "none";
+
+            // Return to Housekeeping
+            housekeepingPopup.style.display = "flex";
 
         }
-    );
 
-
-    // ==========================================
-    // CLOSE OUTSIDE
-    // ==========================================
-
-    babyCotPopup.addEventListener(
-        "click",
-        event => {
-
-            if (
-                event.target ===
-                babyCotPopup
-            ) {
-
-                babyCotPopup.style.display =
-                    "none";
-
-            }
-
-        }
-    );
-
-
+    }
+);
+ 
     // ==========================================
     // CONFIRM BABY COT
     // ==========================================
