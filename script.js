@@ -1623,13 +1623,17 @@ receptionFAQPopup
     });
 
 });              
-  // ==========================================
+// ==========================================
 // CAMPFIRE POPUP
 // ==========================================
 
 closeCampfire.addEventListener("click", () => {
 
+    // Close Campfire
     campfirePopup.style.display = "none";
+
+    // Return to Explore
+    explorePopup.style.display = "flex";
 
 });
 
@@ -1637,7 +1641,11 @@ campfirePopup.addEventListener("click", (e) => {
 
     if (e.target === campfirePopup) {
 
+        // Close Campfire
         campfirePopup.style.display = "none";
+
+        // Return to Explore
+        explorePopup.style.display = "flex";
 
     }
 
