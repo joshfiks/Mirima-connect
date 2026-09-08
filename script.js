@@ -4041,29 +4041,27 @@ exploreCard.addEventListener("click", () => {
 
     explorePopup.style.display = "flex";
 
-   explorePopup.querySelectorAll(".service-option").forEach(option => {
+    explorePopup.querySelectorAll(".service-option").forEach(option => {
 
-    option.onclick = () => {
+        option.onclick = () => {
 
-        explorePopup.querySelectorAll(".service-option").forEach(item => {
+            explorePopup.querySelectorAll(".service-option").forEach(item => {
+                item.classList.remove("selected");
+            });
 
-            item.classList.remove("selected");
+            option.classList.add("selected");
 
-        });
+        };
 
-        option.classList.add("selected");
-
-    };
-
-});
+    });
 
 });
 
 closeExplore.addEventListener("click", () => {
-   
+
     clearSelections(explorePopup, ".service-option");
 
-  explorePopup.style.display = "none";
+    explorePopup.style.display = "none";
 
 });
 
@@ -4071,14 +4069,13 @@ explorePopup.addEventListener("click", (e) => {
 
     if (e.target === explorePopup) {
 
-   clearSelections(explorePopup, ".service-option");
-      
+        clearSelections(explorePopup, ".service-option");
+
         explorePopup.style.display = "none";
-             
+
     }
 
 });
-
 
 // ==========================================
 // FEEDBACK POPUP
