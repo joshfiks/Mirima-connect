@@ -17332,70 +17332,6 @@ padding:22px !important;
     padding: 38px 28px 28px;
 }
 
-/* ==========================================
-   LUXURY EXPLORE MIRIMA HEADING
-   ========================================== */
-
-#explorePopup .popup-content > h2 {
-    position: relative;
-    margin: 0 0 18px;
-    text-align: center;
-
-    font-family: "Cinzel", serif;
-    font-size: 34px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-
-    background: linear-gradient(
-        180deg,
-        #fff6c9 0%,
-        #f0d477 30%,
-        #d4af37 60%,
-        #8d641c 100%
-    );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    text-shadow:
-        0 3px 8px rgba(0,0,0,.7);
-
-    filter:
-        drop-shadow(0 0 8px rgba(212,175,55,.28));
-}
-
-/* Elegant gold ornament underneath */
-#explorePopup .popup-content > h2::after {
-    content: "◆ ─── ◆ ─── ◆";
-    display: block;
-
-    margin-top: 10px;
-
-    color: #d4af37;
-    font-family: "Cinzel", serif;
-    font-size: 8px;
-    letter-spacing: 2px;
-
-    -webkit-text-fill-color: #d4af37;
-
-    text-shadow:
-        0 0 8px rgba(212,175,55,.45);
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    #explorePopup .popup-content > h2 {
-        font-size: 25px;
-        letter-spacing: 1.5px;
-    }
-
-    #explorePopup .popup-content > h2::after {
-        font-size: 7px;
-        margin-top: 7px;
-    }
-}
 /* =========================================================
    EXPERIENCE GRID
 ========================================================= */
@@ -18025,5 +17961,65 @@ padding:22px !important;
         margin-top: 6px;
 
         font-size: 6.5px;
+    }
+}
+/* ==========================================
+   LUXURY EXPLORE MIRIMA HEADING
+   ========================================== */
+
+#explorePopup .popup-content > h2 {
+    position: relative;
+    margin: 0 0 18px;
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        180deg,
+        #fff6c9 0%,
+        #f0d477 30%,
+        #d4af37 60%,
+        #8d641c 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 3px 8px rgba(0,0,0,.7);
+
+    filter: drop-shadow(0 0 8px rgba(212,175,55,.28));
+}
+
+/* Elegant gold ornament underneath */
+#explorePopup .popup-content > h2::after {
+    content: "◆ ─── ◆ ─── ◆";
+    display: block;
+    margin-top: 10px;
+
+    color: #d4af37;
+    font-family: "Cinzel", serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+
+    -webkit-text-fill-color: #d4af37;
+
+    text-shadow: 0 0 8px rgba(212,175,55,.45);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    #explorePopup .popup-content > h2 {
+        font-size: 25px;
+        letter-spacing: 1.5px;
+    }
+
+    #explorePopup .popup-content > h2::after {
+        font-size: 7px;
+        margin-top: 7px;
     }
 }
