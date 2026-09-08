@@ -4039,16 +4039,23 @@ billingPopup.addEventListener("click", (e) => {
 
 exploreCard.addEventListener("click", () => {
 
+    // Always start Explore with nothing selected
+    explorePopup.querySelectorAll(".service-option").forEach(option => {
+        option.classList.remove("selected");
+    });
+
     explorePopup.style.display = "flex";
 
     explorePopup.querySelectorAll(".service-option").forEach(option => {
 
         option.onclick = () => {
 
+            // Remove selection from every card
             explorePopup.querySelectorAll(".service-option").forEach(item => {
                 item.classList.remove("selected");
             });
 
+            // Select only the clicked card
             option.classList.add("selected");
 
         };
@@ -4059,7 +4066,10 @@ exploreCard.addEventListener("click", () => {
 
 closeExplore.addEventListener("click", () => {
 
-    clearSelections(explorePopup, ".service-option");
+    // FORCE CLEAR selected state
+    explorePopup.querySelectorAll(".service-option").forEach(option => {
+        option.classList.remove("selected");
+    });
 
     explorePopup.style.display = "none";
 
@@ -4069,7 +4079,10 @@ explorePopup.addEventListener("click", (e) => {
 
     if (e.target === explorePopup) {
 
-        clearSelections(explorePopup, ".service-option");
+        // FORCE CLEAR selected state
+        explorePopup.querySelectorAll(".service-option").forEach(option => {
+            option.classList.remove("selected");
+        });
 
         explorePopup.style.display = "none";
 
