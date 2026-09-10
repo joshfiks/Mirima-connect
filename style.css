@@ -9060,102 +9060,452 @@ transform:translateX(8px);
 box-shadow:0 0 20px rgba(212,175,55,.5);
 
 }
-/*==========================================
-ORDER CONFIRMATION
-==========================================*/
+/* =========================================================
+   MIRIMA CONNECT — LUXURY CONFIRMATION
+========================================================= */
 
-.confirmationBox{
+#orderConfirmation .confirmationBox {
 
-max-width:600px;
+    position: relative;
 
-text-align:center;
+    width: min(650px, 92vw);
 
-padding:45px;
+    max-width: 650px;
 
-}
+    box-sizing: border-box;
 
-.checkmark{
+    padding: 40px 34px 32px;
 
-font-size:90px;
+    text-align: center;
 
-color:#d4af37;
+    border: 2px solid #927328;
 
-margin-bottom:20px;
+    border-radius: 24px;
 
-animation:pop .6s ease;
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(212,175,55,.18),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #2a2012 0%,
+            #171108 52%,
+            #24190c 100%
+        );
 
-}
+    box-shadow:
+        0 22px 55px rgba(0,0,0,.68),
+        0 0 32px rgba(212,175,55,.16),
+        inset 0 0 0 1px rgba(255,255,255,.04);
 
-.confirmationBox p{
-
-font-family:"Cormorant Garamond", serif;
-
-font-size:28px;
-
-color:white;
-
-line-height:1.6;
-
-margin:20px 0;
-
-}
-
-#closeConfirmation{
-
-margin-top:30px;
-
-padding:16px 40px;
-
-border:none;
-
-border-radius:12px;
-
-background:#d4af37;
-
-color:#111;
-
-font-size:20px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.3s;
+    overflow: hidden;
 
 }
 
-#closeConfirmation:hover{
 
-transform:scale(1.05);
+/* =========================================================
+   INNER GOLD FRAME
+========================================================= */
 
-}
+#orderConfirmation .confirmationBox::before {
 
-@keyframes pop{
+    content: "";
 
-0%{
+    position: absolute;
 
-transform:scale(0);
+    inset: 7px;
 
-opacity:0;
+    border: 1px solid rgba(212,175,55,.34);
 
-}
+    border-radius: 18px;
 
-70%{
-
-transform:scale(1.2);
-
-}
-
-100%{
-
-transform:scale(1);
-
-opacity:1;
+    pointer-events: none;
 
 }
 
+
+/* =========================================================
+   GOLD LIGHT EFFECT
+========================================================= */
+
+#orderConfirmation .confirmationBox::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: -80px;
+
+    left: 50%;
+
+    width: 300px;
+
+    height: 150px;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(240,213,138,.16),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
 }
 
+
+/* =========================================================
+   CHECKMARK
+========================================================= */
+
+#orderConfirmation .checkmark {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 82px;
+
+    height: 82px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border: 2px solid #d4af37;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.20),
+            rgba(212,175,55,.04) 65%,
+            transparent 70%
+        );
+
+    color: #f0d58a;
+
+    font-size: 54px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 10px rgba(240,213,138,.45);
+
+    box-shadow:
+        0 0 20px rgba(212,175,55,.20),
+        inset 0 0 15px rgba(212,175,55,.08);
+
+    animation:
+        luxuryConfirmationCheck .65s ease;
+
+}
+
+
+/* =========================================================
+   CONFIRMATION TITLE
+========================================================= */
+
+#orderConfirmation #confirmTitle {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0 0 18px;
+
+    color: #f0d58a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.7),
+        0 0 12px rgba(212,175,55,.22);
+
+}
+
+
+/* =========================================================
+   MAIN MESSAGE
+========================================================= */
+
+#orderConfirmation #confirmMessage {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0 0 15px;
+
+    color: #eee4cf;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 23px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   THIRD MESSAGE / TIME / DETAILS
+========================================================= */
+
+#orderConfirmation #confirmTime {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    margin: 10px 0 4px;
+
+    padding: 12px 16px;
+
+    border-left: 3px solid #d4af37;
+
+    border-radius: 0 12px 12px 0;
+
+    background:
+        rgba(212,175,55,.055);
+
+    color: #d9c59c;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   STRONG DETAIL
+========================================================= */
+
+#orderConfirmation #confirmTime strong {
+
+    color: #f0d58a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 17px;
+
+    font-style: normal;
+
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+#orderConfirmation #closeConfirmation {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 25px;
+
+    padding: 15px 30px;
+
+    border: 1px solid #edc85b;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b88924,
+            #f2d267,
+            #c5952e
+        );
+
+    color: #241707;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 22px rgba(0,0,0,.42),
+        0 0 18px rgba(212,175,55,.20);
+
+    transition:
+        transform .3s ease,
+        filter .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+#orderConfirmation #closeConfirmation:hover {
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 13px 28px rgba(0,0,0,.45),
+        0 0 25px rgba(212,175,55,.35);
+
+}
+
+
+#orderConfirmation #closeConfirmation:active {
+
+    transform: scale(.98);
+
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes luxuryConfirmationCheck {
+
+    0% {
+
+        opacity: 0;
+
+        transform: scale(.35) rotate(-15deg);
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+        transform: scale(1.12) rotate(3deg);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform: scale(1) rotate(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    #orderConfirmation .confirmationBox {
+
+        width: 92vw;
+
+        padding: 30px 18px 24px;
+
+        border-radius: 20px;
+
+    }
+
+
+    #orderConfirmation .checkmark {
+
+        width: 70px;
+
+        height: 70px;
+
+        font-size: 45px;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    #orderConfirmation #confirmTitle {
+
+        font-size: 23px;
+
+        letter-spacing: .8px;
+
+    }
+
+
+    #orderConfirmation #confirmMessage {
+
+        font-size: 19px;
+
+    }
+
+
+    #orderConfirmation #confirmTime {
+
+        font-size: 17px;
+
+        padding: 11px 13px;
+
+    }
+
+
+    #orderConfirmation #confirmTime strong {
+
+        font-size: 15px;
+
+    }
+
+
+    #orderConfirmation #closeConfirmation {
+
+        padding: 13px 20px;
+
+        font-size: 13px;
+
+    }
+
+}
 /*==========================================
 POPUP ANIMATIONS
 ==========================================*/
