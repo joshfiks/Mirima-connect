@@ -20938,7 +20938,7 @@ padding:22px !important;
    PREMIUM MIRIMA LUXURY STYLE
 ========================================================= */
 
-#payReceptionPopup .popup-content {
+#receptionPaymentPopup .popup-content {
 
     position: relative;
 
@@ -20983,7 +20983,7 @@ padding:22px !important;
    INNER GOLD FRAME
 ========================================================= */
 
-#payReceptionPopup .popup-content::before {
+#receptionPaymentPopup .popup-content::before {
 
     content: "";
 
@@ -21004,7 +21004,7 @@ padding:22px !important;
    CLOSE BUTTON
 ========================================================= */
 
-#payReceptionPopup .closePayReception {
+#receptionPaymentPopup .closeReceptionPayment {
 
     position: absolute;
 
@@ -21050,7 +21050,7 @@ padding:22px !important;
 }
 
 
-#payReceptionPopup .closePayReception:hover {
+#receptionPaymentPopup .closeReceptionPayment:hover {
 
     transform: rotate(90deg);
 
@@ -21065,10 +21065,52 @@ padding:22px !important;
 
 
 /* =========================================================
+   RECEPTION ICON
+========================================================= */
+
+#receptionPaymentPopup .reception-payment-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 76px;
+
+    height: 76px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(212,175,55,.45);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212,175,55,.13),
+            rgba(255,255,255,.025)
+        );
+
+    font-size: 42px;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.35),
+        inset 0 0 0 1px rgba(255,255,255,.04);
+
+}
+
+
+/* =========================================================
    TITLE
 ========================================================= */
 
-#payReceptionPopup .popup-content h2 {
+#receptionPaymentPopup .popup-content h2 {
 
     margin: 0 45px 14px;
 
@@ -21094,12 +21136,12 @@ padding:22px !important;
 
 
 /* =========================================================
-   INTRO TEXT
+   INTRODUCTION
 ========================================================= */
 
-#payReceptionPopup .popup-content > p {
+#receptionPaymentPopup .popup-content > p {
 
-    margin: 0 0 18px;
+    margin: 0 0 20px;
 
     color: #d9c59c;
 
@@ -21114,6 +21156,8 @@ padding:22px !important;
 
     text-align: center;
 
+    line-height: 1.5;
+
 }
 
 
@@ -21121,13 +21165,16 @@ padding:22px !important;
    PAYMENT INFORMATION
 ========================================================= */
 
-#payReceptionPopup .reception-payment-info {
+#receptionPaymentPopup .reception-payment-info {
 
-    position: relative;
+    display: grid;
 
-    margin: 10px 0 20px;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
-    padding: 20px;
+    margin: 12px 0 20px;
+
+    padding: 6px 10px;
 
     border: 1px solid rgba(212,175,55,.42);
 
@@ -21148,39 +21195,35 @@ padding:22px !important;
 
 
 /* =========================================================
-   INFORMATION ROWS
+   INFORMATION COLUMNS
 ========================================================= */
 
-#payReceptionPopup .reception-payment-info > div {
+#receptionPaymentPopup .reception-payment-info > div {
 
-    padding: 12px 4px;
+    padding: 14px 16px;
 
-    color: #eee4cf;
-
-    font-family: "Poppins", Arial, sans-serif;
-
-    font-size: 14px;
-
-    line-height: 1.5;
+    text-align: center;
 
 }
 
 
-#payReceptionPopup .reception-payment-info > div + div {
+#receptionPaymentPopup .reception-payment-info > div + div {
 
-    border-top:
-        1px solid rgba(212,175,55,.20);
+    border-left:
+        1px solid rgba(212,175,55,.25);
 
 }
 
 
-/* LABELS */
+/* =========================================================
+   INFORMATION LABEL
+========================================================= */
 
-#payReceptionPopup .reception-payment-info small {
+#receptionPaymentPopup .reception-payment-info small {
 
-    display: inline-block;
+    display: block;
 
-    margin-right: 7px;
+    margin-bottom: 5px;
 
     color: #bda56f;
 
@@ -21190,16 +21233,20 @@ padding:22px !important;
 
     font-weight: 600;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
 
     text-transform: uppercase;
 
 }
 
 
-/* VALUES */
+/* =========================================================
+   INFORMATION VALUE
+========================================================= */
 
-#payReceptionPopup .reception-payment-info strong {
+#receptionPaymentPopup .reception-payment-info strong {
+
+    display: block;
 
     color: #f0d58a;
 
@@ -21209,16 +21256,18 @@ padding:22px !important;
 
     font-weight: 700;
 
+    line-height: 1.4;
+
 }
 
 
 /* =========================================================
-   ASSISTANCE MESSAGE
+   RECEPTION NOTE
 ========================================================= */
 
-#payReceptionPopup .reception-message {
+#receptionPaymentPopup .reception-payment-note {
 
-    margin: 14px 0 4px;
+    margin: 0 0 6px;
 
     padding: 16px 18px;
 
@@ -21240,6 +21289,8 @@ padding:22px !important;
 
     line-height: 1.55;
 
+    text-align: left;
+
 }
 
 
@@ -21247,7 +21298,7 @@ padding:22px !important;
    REQUEST BUTTON
 ========================================================= */
 
-#payReceptionPopup button {
+#receptionPaymentPopup #requestReceptionPayment {
 
     width: 100%;
 
@@ -21295,7 +21346,7 @@ padding:22px !important;
 }
 
 
-#payReceptionPopup button:hover {
+#receptionPaymentPopup #requestReceptionPayment:hover {
 
     transform: translateY(-3px);
 
@@ -21314,7 +21365,7 @@ padding:22px !important;
 
 @media (max-width: 600px) {
 
-    #payReceptionPopup .popup-content {
+    #receptionPaymentPopup .popup-content {
 
         width: 94vw;
 
@@ -21327,53 +21378,58 @@ padding:22px !important;
     }
 
 
-    #payReceptionPopup .popup-content h2 {
+    #receptionPaymentPopup .popup-content h2 {
 
-        margin-left: 25px;
+        margin-left: 20px;
 
-        margin-right: 25px;
+        margin-right: 20px;
 
         font-size: 25px;
 
     }
 
 
-    #payReceptionPopup .popup-content > p {
+    #receptionPaymentPopup .popup-content > p {
 
         font-size: 17px;
 
     }
 
 
-    #payReceptionPopup .reception-payment-info {
+    #receptionPaymentPopup .reception-payment-info {
 
-        padding: 15px;
+        grid-template-columns: 1fr;
 
-    }
-
-
-    #payReceptionPopup .reception-payment-info > div {
-
-        font-size: 12px;
+        padding: 5px 10px;
 
     }
 
 
-    #payReceptionPopup .reception-payment-info strong {
+    #receptionPaymentPopup .reception-payment-info > div {
 
-        font-size: 13px;
+        padding: 11px 8px;
 
     }
 
 
-    #payReceptionPopup .reception-message {
+    #receptionPaymentPopup .reception-payment-info > div + div {
+
+        border-left: none;
+
+        border-top:
+            1px solid rgba(212,175,55,.25);
+
+    }
+
+
+    #receptionPaymentPopup .reception-payment-note {
 
         font-size: 16px;
 
     }
 
 
-    #payReceptionPopup button {
+    #receptionPaymentPopup #requestReceptionPayment {
 
         padding: 13px 14px;
 
