@@ -8446,7 +8446,8 @@ margin-top:20px;
 }
 
 /* ==========================================
-   PAYMENT OPTIONS
+   MAKE PAYMENT OPTIONS
+   PREMIUM IMAGE CARDS
 ========================================== */
 
 #paymentPopup .payment-options {
@@ -8456,103 +8457,243 @@ margin-top:20px;
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 12px;
+    gap: 14px;
 
-    margin: 20px 0;
+    margin: 22px 0;
 
 }
 
 
-/* PAYMENT CARD */
+/* ==========================================
+   PAYMENT CARD
+========================================== */
 
 #paymentPopup .payment-card {
 
     box-sizing: border-box;
 
-    padding: 20px 12px;
+    min-width: 0;
 
-    border: 1px solid rgba(212,175,55,.3);
+    min-height: 170px;
+
+    padding: 14px 10px;
+
+    border: 1px solid rgba(212,175,55,.35);
 
     border-radius: 18px;
 
-    background: rgba(255,255,255,.06);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
 
     text-align: center;
 
     cursor: pointer;
 
-    transition: .3s;
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
 
 }
 
 
-/* PAYMENT ICON */
+/* ==========================================
+   PAYMENT ICON CONTAINER
+========================================== */
 
-#paymentPopup .payment-card span {
+#paymentPopup .payment-icon {
+
+    width: 82px;
+
+    height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 8px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+}
+
+
+/* ==========================================
+   PAYMENT PNG ICON
+========================================== */
+
+#paymentPopup .payment-icon img {
+
+    width: 82px;
+
+    height: 82px;
+
+    max-width: 100%;
+
+    max-height: 100%;
+
+    object-fit: contain;
 
     display: block;
 
-    font-size: 34px;
+    filter:
+        drop-shadow(0 5px 7px rgba(0,0,0,.4))
+        drop-shadow(0 0 8px rgba(212,175,55,.2));
 
-    margin-bottom: 10px;
+    transition:
+        transform .3s ease,
+        filter .3s ease;
 
 }
 
 
-/* PAYMENT TITLE */
+/* ==========================================
+   PAYMENT TITLE
+========================================== */
 
 #paymentPopup .payment-card strong {
 
     display: block;
 
+    max-width: 100%;
+
     font-family: "Cinzel", serif;
 
-    font-size: 16px;
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #f0d58a;
+
+    line-height: 1.25;
+
+    text-transform: uppercase;
 
 }
 
 
-/* PAYMENT DESCRIPTION */
+/* ==========================================
+   PAYMENT DESCRIPTION
+========================================== */
 
 #paymentPopup .payment-card small {
 
     display: block;
 
-    margin-top: 7px;
+    max-width: 180px;
 
-    font-size: 12px;
+    margin-top: 6px;
 
-    opacity: .75;
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    color: #d9c59c;
+
+    opacity: .9;
 
 }
 
 
-/* PAYMENT HOVER */
+/* ==========================================
+   PAYMENT HOVER
+========================================== */
 
 #paymentPopup .payment-card:hover {
 
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 
-    border-color: #D4AF37;
+    border-color: #d4af37;
+
+    box-shadow:
+        0 10px 22px rgba(0,0,0,.35),
+        0 0 16px rgba(212,175,55,.18);
 
 }
 
 
-/* PAYMENT SELECTED */
+#paymentPopup .payment-card:hover .payment-icon img {
+
+    transform: scale(1.06);
+
+    filter:
+        drop-shadow(0 7px 8px rgba(0,0,0,.45))
+        drop-shadow(0 0 12px rgba(212,175,55,.35));
+
+}
+
+
+/* ==========================================
+   PAYMENT SELECTED
+========================================== */
 
 #paymentPopup .payment-card.selected {
 
-    background: #D4AF37;
+    background:
+        linear-gradient(
+            145deg,
+            #f3d66f,
+            #d4a93b
+        );
 
     color: #111;
 
+    border-color: #e0b83f;
+
     box-shadow:
-        0 0 18px rgba(212,175,55,.35);
+        0 10px 24px rgba(0,0,0,.4),
+        0 0 20px rgba(212,175,55,.35);
+
+    transform: translateY(-3px);
 
 }
 
 
-/* PAYMENT BUTTON */
+#paymentPopup .payment-card.selected strong {
+
+    color: #3b270c;
+
+}
+
+
+#paymentPopup .payment-card.selected small {
+
+    color: #4a3510;
+
+}
+
+
+#paymentPopup .payment-card.selected .payment-icon img {
+
+    transform: scale(1.05);
+
+}
+
+
+/* ==========================================
+   PAYMENT BUTTON
+========================================== */
 
 #paymentPopup button {
 
@@ -8566,183 +8707,19 @@ margin-top:20px;
 
 
 /* ==========================================
-   MOBILE MONEY CARDS
+   PAYMENT OPTIONS — TABLET
 ========================================== */
 
-#mobileMoneyPopup .mobile-money-card {
+@media (max-width: 900px) {
 
-    padding: 20px;
+    #paymentPopup .payment-options {
 
-    margin: 10px 0;
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
 
-    border: 1px solid rgba(212,175,55,.35);
+        gap: 10px;
 
-    border-radius: 16px;
-
-    background: rgba(255,255,255,.06);
-
-    text-align: center;
-
-    cursor: pointer;
-
-    transition: .3s;
-
-}
-
-
-/* MOBILE MONEY LOGO */
-
-#mobileMoneyPopup .mobile-money-logo {
-
-    width: 60px;
-
-    height: 60px;
-
-    object-fit: contain;
-
-    display: block;
-
-    margin: 0 auto 10px;
-
-}
-
-
-/* MOBILE MONEY SELECTED */
-
-#mobileMoneyPopup .mobile-money-card.selected {
-
-    background: #D4AF37;
-
-    color: #111;
-
-    box-shadow:
-        0 0 18px rgba(212,175,55,.35);
-
-}
-
-
-/* ==========================================
-   MOBILE MONEY PAYMENT DETAILS
-========================================== */
-
-#mobileMoneyPopup #mobileMoneyInstructions {
-
-    margin-top: 20px;
-
-}
-
-
-#mobileMoneyPopup #mobileMoneyInstructions h3 {
-
-    margin-bottom: 8px;
-
-}
-
-
-#mobileMoneyPopup #mobileMoneyGuide {
-
-    line-height: 1.6;
-
-    margin-bottom: 15px;
-
-}
-
-
-#mobileMoneyPopup .merchant-box {
-
-    padding: 16px;
-
-    margin: 15px 0;
-
-    border: 1px solid rgba(212,175,55,.35);
-
-    border-radius: 16px;
-
-    background: rgba(212,175,55,.06);
-
-}
-
-
-#mobileMoneyPopup .merchant-box div {
-
-    padding: 10px 0;
-
-}
-
-
-#mobileMoneyPopup .merchant-box div + div {
-
-    border-top:
-        1px solid rgba(255,255,255,.1);
-
-}
-
-
-#mobileMoneyPopup .merchant-box small {
-
-    display: block;
-
-    font-size: 11px;
-
-    opacity: .65;
-
-    margin-bottom: 5px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-
-}
-
-
-#mobileMoneyPopup .merchant-box strong {
-
-    display: block;
-
-    font-size: 17px;
-
-}
-
-
-/* MOBILE MONEY INPUT */
-
-#mobileMoneyPopup input {
-
-    display: block;
-
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 13px 14px;
-
-    margin: 9px 0;
-
-    border: 1px solid rgba(212,175,55,.3);
-
-    border-radius: 12px;
-
-    background: rgba(255,255,255,.07);
-
-    color: inherit;
-
-    font-size: 15px;
-
-    outline: none;
-
-}
-
-
-#mobileMoneyPopup input:focus {
-
-    border-color: #D4AF37;
-
-}
-
-
-#mobileMoneyPopup input::placeholder {
-
-    opacity: .6;
+    }
 
 }
 
@@ -8765,44 +8742,45 @@ margin-top:20px;
 
     #paymentPopup .payment-card {
 
-        padding: 16px 10px;
+        min-height: 155px;
+
+        padding: 12px 7px;
 
     }
 
 
-    #paymentPopup .payment-card span {
+    #paymentPopup .payment-icon {
 
-        font-size: 28px;
+        width: 68px;
+
+        height: 68px;
+
+        margin-bottom: 7px;
+
+    }
+
+
+    #paymentPopup .payment-icon img {
+
+        width: 68px;
+
+        height: 68px;
 
     }
 
 
     #paymentPopup .payment-card strong {
 
-        font-size: 13px;
+        font-size: 12px;
 
     }
 
 
     #paymentPopup .payment-card small {
 
-        font-size: 10px;
+        font-size: 9px;
 
-    }
-
-
-    #mobileMoneyPopup .mobile-money-card {
-
-        padding: 16px;
-
-    }
-
-
-    #mobileMoneyPopup .mobile-money-logo {
-
-        width: 52px;
-
-        height: 52px;
+        line-height: 1.35;
 
     }
 
