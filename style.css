@@ -20463,3 +20463,473 @@ padding:22px !important;
     }
 
 }
+/* =========================================================
+   CARD PAYMENT POPUP
+   PREMIUM MIRIMA LUXURY STYLE
+========================================================= */
+
+#cardPaymentPopup .popup-content {
+
+    position: relative;
+
+    width: min(700px, 94vw);
+
+    max-width: 700px;
+
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    padding: 32px 28px 28px;
+
+    border: 2px solid #927328;
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(212,175,55,.16),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            #281e11 0%,
+            #171109 50%,
+            #241a0d 100%
+        );
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.65),
+        0 0 30px rgba(212,175,55,.16),
+        inset 0 0 0 1px rgba(255,255,255,.04);
+
+}
+
+
+/* =========================================================
+   INNER GOLD FRAME
+========================================================= */
+
+#cardPaymentPopup .popup-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(212,175,55,.32);
+
+    border-radius: 18px;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+#cardPaymentPopup .closeCardPayment {
+
+    position: absolute;
+
+    top: 17px;
+
+    right: 19px;
+
+    z-index: 20;
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(212,175,55,.65);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #3a2a0d,
+            #171109
+        );
+
+    color: #f0d58a;
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+}
+
+
+#cardPaymentPopup .closeCardPayment:hover {
+
+    transform: rotate(90deg);
+
+    background: #d4af37;
+
+    color: #171109;
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.45);
+
+}
+
+
+/* =========================================================
+   CARD PAYMENT TITLE
+========================================================= */
+
+#cardPaymentPopup .popup-content h2 {
+
+    margin: 0 45px 12px;
+
+    text-align: center;
+
+    color: #f0d58a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.7),
+        0 0 12px rgba(212,175,55,.22);
+
+}
+
+
+/* =========================================================
+   SECURITY INTRO
+========================================================= */
+
+#cardPaymentPopup .popup-content > p {
+
+    margin: 0 0 22px;
+
+    color: #d9c59c;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   PAYMENT INFORMATION AREA
+========================================================= */
+
+#cardPaymentPopup .card-payment-info {
+
+    position: relative;
+
+    margin: 10px 0 22px;
+
+    padding: 22px 20px;
+
+    border: 1px solid rgba(212,175,55,.42);
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.025),
+        0 8px 20px rgba(0,0,0,.25);
+
+}
+
+
+/* =========================================================
+   SMALL CARD ICON
+========================================================= */
+
+#cardPaymentPopup .card-payment-info img {
+
+    width: 55px;
+
+    height: 55px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 14px;
+
+    filter:
+        drop-shadow(0 5px 7px rgba(0,0,0,.45))
+        drop-shadow(0 0 8px rgba(212,175,55,.18));
+
+}
+
+
+/* =========================================================
+   "PAY SECURELY"
+========================================================= */
+
+#cardPaymentPopup .card-payment-info h3 {
+
+    margin: 0 0 8px;
+
+    text-align: center;
+
+    color: #f0d58a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   PAYMENT DESCRIPTION
+========================================================= */
+
+#cardPaymentPopup .card-payment-info p {
+
+    margin: 0;
+
+    text-align: center;
+
+    color: #e7dcc6;
+
+    font-family: "Poppins", Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   CURRENT BILL
+========================================================= */
+
+#cardPaymentPopup .payment-current-bill {
+
+    margin-top: 16px;
+
+    padding: 14px 16px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    background:
+        rgba(212,175,55,.06);
+
+    text-align: center;
+
+}
+
+
+#cardPaymentPopup .payment-current-bill strong {
+
+    color: #f0d58a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 15px;
+
+    letter-spacing: .5px;
+
+}
+
+
+/* =========================================================
+   ALL DIRECT TEXT ELEMENTS
+========================================================= */
+
+#cardPaymentPopup .popup-content strong {
+
+    color: #f0d58a;
+
+}
+
+
+#cardPaymentPopup .popup-content span {
+
+    color: #eee4cf;
+
+}
+
+
+/* =========================================================
+   CONTINUE TO SECURE PAYMENT
+========================================================= */
+
+#cardPaymentPopup button {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 18px;
+
+    padding: 15px 20px;
+
+    border: 1px solid #edc85b;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b88924,
+            #f2d267,
+            #c5952e
+        );
+
+    color: #241707;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: .8px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 22px rgba(0,0,0,.4),
+        0 0 18px rgba(212,175,55,.18);
+
+    transition:
+        transform .3s ease,
+        filter .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+#cardPaymentPopup button:hover {
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 13px 28px rgba(0,0,0,.45),
+        0 0 25px rgba(212,175,55,.32);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    #cardPaymentPopup .popup-content {
+
+        width: 94vw;
+
+        max-height: 90vh;
+
+        padding: 26px 17px 22px;
+
+        border-radius: 20px;
+
+    }
+
+
+    #cardPaymentPopup .popup-content h2 {
+
+        margin-left: 25px;
+
+        margin-right: 25px;
+
+        font-size: 25px;
+
+    }
+
+
+    #cardPaymentPopup .popup-content > p {
+
+        font-size: 17px;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    #cardPaymentPopup .card-payment-info {
+
+        padding: 18px 14px;
+
+    }
+
+
+    #cardPaymentPopup .card-payment-info h3 {
+
+        font-size: 19px;
+
+    }
+
+
+    #cardPaymentPopup .card-payment-info p {
+
+        font-size: 12px;
+
+    }
+
+
+    #cardPaymentPopup button {
+
+        padding: 13px 14px;
+
+        font-size: 13px;
+
+    }
+
+}
