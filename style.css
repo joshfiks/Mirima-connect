@@ -20933,3 +20933,452 @@ padding:22px !important;
     }
 
 }
+/* =========================================================
+   PAY AT RECEPTION POPUP
+   PREMIUM MIRIMA LUXURY STYLE
+========================================================= */
+
+#payReceptionPopup .popup-content {
+
+    position: relative;
+
+    width: min(700px, 94vw);
+
+    max-width: 700px;
+
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    padding: 32px 28px 28px;
+
+    border: 2px solid #927328;
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(212,175,55,.16),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            #281e11 0%,
+            #171109 50%,
+            #241a0d 100%
+        );
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.65),
+        0 0 30px rgba(212,175,55,.16),
+        inset 0 0 0 1px rgba(255,255,255,.04);
+
+}
+
+
+/* =========================================================
+   INNER GOLD FRAME
+========================================================= */
+
+#payReceptionPopup .popup-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(212,175,55,.32);
+
+    border-radius: 18px;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+#payReceptionPopup .closePayReception {
+
+    position: absolute;
+
+    top: 17px;
+
+    right: 19px;
+
+    z-index: 20;
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(212,175,55,.65);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #3a2a0d,
+            #171109
+        );
+
+    color: #f0d58a;
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+}
+
+
+#payReceptionPopup .closePayReception:hover {
+
+    transform: rotate(90deg);
+
+    background: #d4af37;
+
+    color: #171109;
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.45);
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+#payReceptionPopup .popup-content h2 {
+
+    margin: 0 45px 14px;
+
+    text-align: center;
+
+    color: #f0d58a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.7),
+        0 0 12px rgba(212,175,55,.22);
+
+}
+
+
+/* =========================================================
+   INTRO TEXT
+========================================================= */
+
+#payReceptionPopup .popup-content > p {
+
+    margin: 0 0 18px;
+
+    color: #d9c59c;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   PAYMENT INFORMATION
+========================================================= */
+
+#payReceptionPopup .reception-payment-info {
+
+    position: relative;
+
+    margin: 10px 0 20px;
+
+    padding: 20px;
+
+    border: 1px solid rgba(212,175,55,.42);
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.025),
+        0 8px 20px rgba(0,0,0,.25);
+
+}
+
+
+/* =========================================================
+   INFORMATION ROWS
+========================================================= */
+
+#payReceptionPopup .reception-payment-info > div {
+
+    padding: 12px 4px;
+
+    color: #eee4cf;
+
+    font-family: "Poppins", Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+
+#payReceptionPopup .reception-payment-info > div + div {
+
+    border-top:
+        1px solid rgba(212,175,55,.20);
+
+}
+
+
+/* LABELS */
+
+#payReceptionPopup .reception-payment-info small {
+
+    display: inline-block;
+
+    margin-right: 7px;
+
+    color: #bda56f;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* VALUES */
+
+#payReceptionPopup .reception-payment-info strong {
+
+    color: #f0d58a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   ASSISTANCE MESSAGE
+========================================================= */
+
+#payReceptionPopup .reception-message {
+
+    margin: 14px 0 4px;
+
+    padding: 16px 18px;
+
+    border-left: 3px solid #d4af37;
+
+    border-radius: 0 12px 12px 0;
+
+    background:
+        rgba(212,175,55,.055);
+
+    color: #e8deca;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.55;
+
+}
+
+
+/* =========================================================
+   REQUEST BUTTON
+========================================================= */
+
+#payReceptionPopup button {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 18px;
+
+    padding: 15px 20px;
+
+    border: 1px solid #edc85b;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b88924,
+            #f2d267,
+            #c5952e
+        );
+
+    color: #241707;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: .8px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 22px rgba(0,0,0,.4),
+        0 0 18px rgba(212,175,55,.18);
+
+    transition:
+        transform .3s ease,
+        filter .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+#payReceptionPopup button:hover {
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 13px 28px rgba(0,0,0,.45),
+        0 0 25px rgba(212,175,55,.32);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    #payReceptionPopup .popup-content {
+
+        width: 94vw;
+
+        max-height: 90vh;
+
+        padding: 26px 17px 22px;
+
+        border-radius: 20px;
+
+    }
+
+
+    #payReceptionPopup .popup-content h2 {
+
+        margin-left: 25px;
+
+        margin-right: 25px;
+
+        font-size: 25px;
+
+    }
+
+
+    #payReceptionPopup .popup-content > p {
+
+        font-size: 17px;
+
+    }
+
+
+    #payReceptionPopup .reception-payment-info {
+
+        padding: 15px;
+
+    }
+
+
+    #payReceptionPopup .reception-payment-info > div {
+
+        font-size: 12px;
+
+    }
+
+
+    #payReceptionPopup .reception-payment-info strong {
+
+        font-size: 13px;
+
+    }
+
+
+    #payReceptionPopup .reception-message {
+
+        font-size: 16px;
+
+    }
+
+
+    #payReceptionPopup button {
+
+        padding: 13px 14px;
+
+        font-size: 13px;
+
+    }
+
+}
