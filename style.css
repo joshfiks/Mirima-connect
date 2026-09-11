@@ -22048,75 +22048,211 @@ padding:22px !important;
 
 }
 /* ==========================================
-   WARNING POPUP — LUXURY STYLE
+   WARNING POPUP — ULTRA LUXURY
+   MIRIMA CONNECT
 ========================================== */
 
 #warningPopup .confirmationBox {
+    position: relative;
+
     width: min(650px, 92%);
     max-width: 650px;
+
     box-sizing: border-box;
-    padding: 45px 35px 35px;
+
+    padding: 48px 42px 38px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(38, 27, 13, .98),
-            rgba(25, 18, 9, .99)
+            rgba(43, 31, 17, .99) 0%,
+            rgba(24, 18, 10, .99) 48%,
+            rgba(37, 26, 14, .99) 100%
         );
 
-    border: 2px solid rgba(212, 175, 55, .75);
-    border-radius: 24px;
+    border: 1px solid rgba(212, 175, 55, .85);
+
+    border-radius: 28px;
 
     box-shadow:
         0 0 0 1px rgba(212, 175, 55, .18),
-        0 20px 60px rgba(0, 0, 0, .65),
-        inset 0 0 30px rgba(212, 175, 55, .05);
+        0 0 35px rgba(212, 175, 55, .10),
+        0 25px 70px rgba(0, 0, 0, .75),
+        inset 0 0 35px rgba(212, 175, 55, .045);
 
     text-align: center;
+
+    overflow: hidden;
 }
 
 
-/* Warning icon */
-#warningPopup .confirmationBox > div:first-child {
-    font-size: 78px !important;
-    color: #f0d05a !important;
+/* ==========================================
+   INNER GOLD FRAME
+========================================== */
 
-    margin: 0 auto 18px;
+#warningPopup .confirmationBox::before {
+    content: "";
+
+    position: absolute;
+    inset: 8px;
+
+    border: 1px solid rgba(212, 175, 55, .25);
+
+    border-radius: 21px;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   TOP LUXURY ACCENT
+========================================== */
+
+#warningPopup .confirmationBox::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 150px;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            #f4dc91,
+            #d4af37,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(212,175,55,.45);
+}
+
+
+/* ==========================================
+   WARNING EMBLEM
+========================================== */
+
+#warningPopup .confirmationBox > div:first-child {
+
+    width: 92px;
+    height: 92px;
+
+    margin: 0 auto 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 58px !important;
+
+    color: #f0d58a !important;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(255,255,255,.12),
+            rgba(212,175,55,.06) 45%,
+            rgba(0,0,0,.18) 100%
+        );
+
+    border: 1px solid rgba(212,175,55,.55);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 7px rgba(212,175,55,.045),
+        0 0 0 8px rgba(212,175,55,.14),
+        0 10px 30px rgba(0,0,0,.45),
+        inset 0 0 18px rgba(212,175,55,.10);
 
     filter:
-        drop-shadow(0 5px 10px rgba(0,0,0,.5))
-        drop-shadow(0 0 12px rgba(212,175,55,.25));
+        drop-shadow(0 0 10px rgba(212,175,55,.18));
+
+    position: relative;
+    z-index: 2;
 }
 
 
-/* Warning title */
+/* ==========================================
+   WARNING TITLE
+========================================== */
+
 #warningPopup #warningTitle {
-    margin: 0 0 22px;
 
-    color: #f0d58a;
+    margin: 0 0 18px;
 
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 34px;
+    color: #f1d98c;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 32px;
+
     font-weight: 700;
 
-    line-height: 1.2;
+    line-height: 1.25;
+
+    letter-spacing: 1.5px;
+
     text-align: center;
 
     text-transform: uppercase;
 
     text-shadow:
-        0 2px 5px rgba(0,0,0,.7),
-        0 0 12px rgba(212,175,55,.15);
+        0 2px 5px rgba(0,0,0,.75),
+        0 0 14px rgba(212,175,55,.14);
+
+    position: relative;
+    z-index: 2;
 }
 
 
-/* Warning message */
+/* ==========================================
+   SMALL GOLD DIVIDER
+========================================== */
+
+#warningPopup #warningTitle::after {
+
+    content: "";
+
+    display: block;
+
+    width: 65px;
+    height: 1px;
+
+    margin: 15px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+}
+
+
+/* ==========================================
+   WARNING MESSAGE
+========================================== */
+
 #warningPopup #warningMessage {
-    margin: 0 auto 28px;
 
-    max-width: 560px;
+    max-width: 520px;
 
-    color: #eee4cf;
+    margin: 0 auto 30px;
+
+    color: #eee5d2;
 
     font-family:
         "Cormorant Garamond",
@@ -22124,87 +22260,168 @@ padding:22px !important;
         serif;
 
     font-size: 21px;
+
     font-weight: 500;
 
-    line-height: 1.5;
-    letter-spacing: .2px;
+    line-height: 1.55;
+
+    letter-spacing: .25px;
 
     text-align: center;
+
+    position: relative;
+    z-index: 2;
 }
 
 
-/* OK button */
+/* ==========================================
+   OK BUTTON
+========================================== */
+
 #warningPopup #closeWarning {
-    width: 100%;
-    margin-top: 4px;
 
-    padding: 16px 30px;
+    position: relative;
+    z-index: 2;
 
-    border: none;
+    width: min(100%, 300px);
+
+    margin: 0 auto;
+
+    padding: 15px 32px;
+
+    border: 1px solid rgba(255,238,166,.55);
+
     border-radius: 50px;
 
     background:
         linear-gradient(
             135deg,
-            #d4af37,
-            #f4d46f
+            #b99124 0%,
+            #d4af37 35%,
+            #f2d77c 55%,
+            #d4af37 75%,
+            #a98220 100%
         );
 
-    color: #181109;
+    color: #181208;
 
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 18px;
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 16px;
+
     font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
 
     cursor: pointer;
 
     box-shadow:
-        0 8px 25px rgba(212,175,55,.25);
+        0 8px 22px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.35);
 
     transition:
         transform .25s ease,
-        box-shadow .25s ease;
+        box-shadow .25s ease,
+        filter .25s ease;
 }
 
 
 #warningPopup #closeWarning:hover {
+
     transform: translateY(-2px);
 
+    filter: brightness(1.08);
+
     box-shadow:
-        0 12px 30px rgba(212,175,55,.38);
+        0 12px 28px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.20),
+        inset 0 1px 0 rgba(255,255,255,.4);
+}
+
+
+#warningPopup #closeWarning:active {
+
+    transform: translateY(0);
+
 }
 
 
 /* ==========================================
-   WARNING POPUP — MOBILE
+   MOBILE
 ========================================== */
 
 @media (max-width: 600px) {
 
     #warningPopup .confirmationBox {
+
         width: 94%;
-        padding: 32px 20px 24px;
-        border-radius: 20px;
+
+        padding: 38px 22px 30px;
+
+        border-radius: 23px;
     }
+
+
+    #warningPopup .confirmationBox::before {
+
+        inset: 7px;
+
+        border-radius: 17px;
+    }
+
 
     #warningPopup .confirmationBox > div:first-child {
-        font-size: 64px !important;
-        margin-bottom: 14px;
+
+        width: 78px;
+        height: 78px;
+
+        font-size: 48px !important;
+
+        margin-bottom: 20px;
     }
+
 
     #warningPopup #warningTitle {
-        font-size: 26px;
-        margin-bottom: 18px;
+
+        font-size: 25px;
+
+        letter-spacing: 1px;
+
+        margin-bottom: 16px;
     }
+
+
+    #warningPopup #warningTitle::after {
+
+        margin-top: 12px;
+
+        width: 55px;
+    }
+
 
     #warningPopup #warningMessage {
+
         font-size: 18px;
-        line-height: 1.45;
-        margin-bottom: 24px;
+
+        line-height: 1.5;
+
+        margin-bottom: 25px;
     }
 
+
     #warningPopup #closeWarning {
-        padding: 14px 24px;
-        font-size: 16px;
+
+        width: 100%;
+
+        padding: 14px 22px;
+
+        font-size: 15px;
+
+        letter-spacing: .9px;
     }
 }
