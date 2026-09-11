@@ -1122,7 +1122,7 @@ document.getElementById("submitLuggage")
 
 
     // ==========================================
-    // VALIDATE REQUIRED INFORMATION
+    // CHECK REQUIRED INFORMATION
     // ==========================================
 
     if (
@@ -1137,12 +1137,61 @@ document.getElementById("submitLuggage")
         );
 
         return;
-
     }
 
 
     // ==========================================
-    // ALL REQUIRED INFORMATION IS COMPLETE
+    // CHECK COTTAGE / ROOM NUMBER
+    // ONLY COTTAGES 1–12 ARE VALID
+    // ==========================================
+
+    const roomNumber = Number(luggageLocation);
+
+    if (
+        !Number.isInteger(roomNumber) ||
+        roomNumber < 1 ||
+        roomNumber > 12
+    ) {
+
+        showWarning(
+            "Invalid Cottage Number",
+            "Please enter a valid cottage number between 1 and 12."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // CHECK TIME
+    // MUST BE AT LEAST 10 MINUTES FROM NOW
+    // ==========================================
+
+    const now = new Date();
+
+    const currentMinutes =
+        (now.getHours() * 60) + now.getMinutes();
+
+    const [hours, minutes] =
+        luggageTime.split(":").map(Number);
+
+    const selectedMinutes =
+        (hours * 60) + minutes;
+
+
+    if (selectedMinutes < currentMinutes + 10) {
+
+        showWarning(
+            "Invalid Preferred Time",
+            "Please select a time that is at least 10 minutes from now."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // ALL INFORMATION IS VALID
     // ==========================================
 
     const guestName =
@@ -1152,7 +1201,18 @@ document.getElementById("submitLuggage")
         document.getElementById("submitLuggage");
 
 
-    luggagePopup.style.display = "none";
+    // ==========================================
+    // CLEAR FORM AFTER SUCCESSFUL REQUEST
+    // ==========================================
+
+    const clearLuggageForm = () => {
+
+        document.getElementById("luggageService").value = "";
+        document.getElementById("luggageLocation").value = "";
+        document.getElementById("luggageTime").value = "";
+        document.getElementById("luggageMessage").value = "";
+
+    };
 
 
     showLoading(
@@ -1161,7 +1221,7 @@ document.getElementById("submitLuggage")
 
             addRequest(
                 "🧳 Luggage Assistance",
-                `${luggageService} — ${luggageLocation} — ${luggageTime}${luggageMessage ? " — " + luggageMessage : ""}`
+                `${luggageService} — Cottage ${luggageLocation} — ${luggageTime}${luggageMessage ? " — " + luggageMessage : ""}`
             );
 
             showNotification(
@@ -1169,6 +1229,10 @@ document.getElementById("submitLuggage")
                 "Luggage Assistance",
                 "Your luggage assistance request has been received."
             );
+
+            clearLuggageForm();
+
+            luggagePopup.style.display = "none";
 
             showConfirmation(
                 `Thank you, ${guestName}!`,
@@ -1181,6 +1245,7 @@ document.getElementById("submitLuggage")
     );
 
 });
+  
 // ==========================================
 // MAINTENANCE REQUEST POPUP
 // ==========================================
