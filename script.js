@@ -1593,7 +1593,7 @@ document.getElementById("submitEmergency")
 .addEventListener("click", () => {
 
     const emergencyType =
-        document.getElementById("emergencyType").value;
+        document.getElementById("emergencyType").value.trim();
 
     const emergencyLocation =
         document.getElementById("emergencyLocation").value.trim();
@@ -1603,6 +1603,11 @@ document.getElementById("submitEmergency")
 
     const guestName =
         localStorage.getItem("guestName") || "Guest";
+
+
+    // ==========================================
+    // EMERGENCY TYPE REQUIRED
+    // ==========================================
 
     if (!emergencyType) {
 
@@ -1614,6 +1619,11 @@ document.getElementById("submitEmergency")
         return;
     }
 
+
+    // ==========================================
+    // COTTAGE / ROOM REQUIRED
+    // ==========================================
+
     if (!emergencyLocation) {
 
         showWarning(
@@ -1624,37 +1634,90 @@ document.getElementById("submitEmergency")
         return;
     }
 
+
+    // ==========================================
+    // CHECK COTTAGE NUMBER
+    // ONLY COTTAGES 1–12 ARE VALID
+    // ==========================================
+
+    const roomNumber =
+        Number(emergencyLocation);
+
+    if (
+        !Number.isInteger(roomNumber) ||
+        roomNumber < 1 ||
+        roomNumber > 12
+    ) {
+
+        showWarning(
+            "Invalid Cottage Number",
+            "Please enter a valid cottage number between 1 and 12."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // DESCRIPTION REQUIRED
+    // ==========================================
+
+    if (!emergencyMessage) {
+
+        showWarning(
+            "Description Required",
+            "Please describe what happened before you continue."
+        );
+
+        return;
+    }
+
+    // ==========================================
+    // ALL INFORMATION IS VALID
+    // ==========================================
+
     const btn =
         document.getElementById("submitEmergency");
 
     emergencyPopup.style.display = "none";
 
-    showLoading("Sending Emergency Alert...", () => {
 
-        addRequest(
-            "🚨 Emergency Assistance",
-            `${emergencyType} — Location: ${emergencyLocation}${emergencyMessage ? " — " + emergencyMessage : ""}`
-        );
+    showLoading(
+        "Sending Emergency Alert...",
+        () => {
 
-        showNotification(
-            "🚨",
-            "Emergency Assistance",
-            "Your emergency request has been sent to reception."
-        );
+            addRequest(
+                "🚨 Emergency Assistance",
+                `${emergencyType} — Cottage ${emergencyLocation} — ${emergencyMessage}`
+            );
 
-        showConfirmation(
-            `We're here to help, ${guestName}.`,
-            "Your emergency assistance request has been received.",
-            "Reception has been alerted and will assist you immediately."
-        );
+            showNotification(
+                "🚨",
+                "Emergency Assistance",
+                "Your emergency request has been sent to reception."
+            );
 
-        document.getElementById("emergencyType").value = "";
-        document.getElementById("emergencyLocation").value = "";
-        document.getElementById("emergencyMessage").value = "";
+            showConfirmation(
+                `We're here to help, ${guestName}.`,
+                "Your emergency assistance request has been received.",
+                "Reception has been alerted and will assist you immediately."
+            );
 
-    }, btn);
+
+            // ==========================================
+            // CLEAR FORM AFTER SUCCESSFUL REQUEST
+            // ==========================================
+
+            document.getElementById("emergencyType").value = "";
+            document.getElementById("emergencyLocation").value = "";
+            document.getElementById("emergencyMessage").value = "";
+
+        },
+        btn
+    );
 
 });
+  
  // ==========================================
 // SPEAK TO RECEPTION POPUP
 // ==========================================
