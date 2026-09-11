@@ -6716,7 +6716,7 @@ document.getElementById("sendSpaRequest").addEventListener("click", () => {
 
 });
 
-  // ==========================================
+// ==========================================
 // NATURE WALK REQUEST
 // ==========================================
 
@@ -6725,11 +6725,23 @@ document.getElementById("sendNatureWalkRequest").addEventListener("click", () =>
     const selectedWalk =
         natureWalkPopup.querySelector(".nature-card.selected");
 
-    const date = document.getElementById("natureWalkDate").value;
-    const time = document.getElementById("natureWalkTime").value;
-    const guests = document.getElementById("natureWalkGuests").value;
+    const date =
+        document.getElementById("natureWalkDate").value;
 
-    if (!selectedWalk || date === "" || time === "" || guests === "") {
+    const time =
+        document.getElementById("natureWalkTime").value;
+
+    const guests =
+        document.getElementById("natureWalkGuests").value;
+
+    const notes =
+        document.getElementById("natureWalkNotes").value.trim();
+
+    // ==========================================
+    // REQUIRED INFORMATION
+    // ==========================================
+
+    if (!selectedWalk || !date || !time || !guests) {
 
         showWarning(
             "Incomplete Information",
@@ -6737,8 +6749,76 @@ document.getElementById("sendNatureWalkRequest").addEventListener("click", () =>
         );
 
         return;
-
     }
+
+    // ==========================================
+    // NUMBER OF GUESTS
+    // ==========================================
+
+    const guestCount = Number(guests);
+
+    if (!Number.isInteger(guestCount) || guestCount < 1) {
+
+        showWarning(
+            "Invalid Number of Guests",
+            "The number of guests must be at least 1."
+        );
+
+        return;
+    }
+
+    // ==========================================
+    // DATE VALIDATION
+    // ==========================================
+
+    const today = new Date();
+
+    const todayYear = today.getFullYear();
+    const todayMonth = String(today.getMonth() + 1).padStart(2, "0");
+    const todayDay = String(today.getDate()).padStart(2, "0");
+
+    const todayString =
+        `${todayYear}-${todayMonth}-${todayDay}`;
+
+    if (date < todayString) {
+
+        showWarning(
+            "Invalid Date",
+            "Please select today or a future date for your nature walk."
+        );
+
+        return;
+    }
+
+    // ==========================================
+    // TIME VALIDATION FOR TODAY
+    // ==========================================
+
+    if (date === todayString) {
+
+        const [hours, minutes] =
+            time.split(":").map(Number);
+
+        const currentMinutes =
+            (today.getHours() * 60) + today.getMinutes();
+
+        const selectedMinutes =
+            (hours * 60) + minutes;
+
+        if (selectedMinutes < currentMinutes + 10) {
+
+            showWarning(
+                "Invalid Time",
+                "For today's nature walk, please select a time that is at least 10 minutes from now."
+            );
+
+            return;
+        }
+    }
+
+    // ==========================================
+    // GET WALK NAME
+    // ==========================================
 
     const walkName =
         selectedWalk.querySelector("strong").textContent.trim();
@@ -6749,11 +6829,15 @@ document.getElementById("sendNatureWalkRequest").addEventListener("click", () =>
     const btn =
         document.getElementById("sendNatureWalkRequest");
 
+    // ==========================================
+    // SEND REQUEST
+    // ==========================================
+
     showLoading("Arranging Your Nature Walk...", () => {
 
         addRequest(
             "🌿 Forest Nature Walk",
-            "Waiting"
+            `${walkName} — ${date} at ${time} — ${guestCount} guest${guestCount > 1 ? "s" : ""}${notes ? " — " + notes : ""}`
         );
 
         showNotification(
@@ -6762,13 +6846,20 @@ document.getElementById("sendNatureWalkRequest").addEventListener("click", () =>
             `${walkName} request has been received.`
         );
 
-        natureWalkPopup.style.display = "none";
+        // Clear form
+        natureWalkPopup.querySelectorAll(".nature-card")
+            .forEach(card => card.classList.remove("selected"));
 
-        clearSelections(natureWalkPopup, ".nature-card");
+        document.getElementById("natureWalkDate").value = "";
+        document.getElementById("natureWalkTime").value = "";
+        document.getElementById("natureWalkGuests").value = "";
+        document.getElementById("natureWalkNotes").value = "";
+
+        natureWalkPopup.style.display = "none";
 
         showConfirmation(
             `Thank you, ${guestName}!`,
-            `${walkName} has been requested.`,
+            `${walkName} has been requested for ${guestCount} guest${guestCount > 1 ? "s" : ""}.`,
             "Our nature activities team will confirm the arrangements shortly."
         );
 
