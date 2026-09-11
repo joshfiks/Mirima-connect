@@ -3484,8 +3484,15 @@ if (
 
         });
 
+    if (item.classList.contains("selected")) {
+
+    item.classList.remove("selected");
+
+} else {
+
     item.classList.add("selected");
 
+}
 
     // Open Romantic customization
     const romanticPopup =
@@ -3533,12 +3540,20 @@ housekeepingPopup
     });
 
 
-item.classList.add("selected");
+if (item.classList.contains("selected")) {
 
+    item.classList.remove("selected");
+
+} else {
+
+    item.classList.add("selected");
+
+}
+              
 
 // ----------------------------------
 // SHOW IMAGE
-// ----------------------------------
+// ----------------------------------   
 
 if (item.dataset.image) {
 
