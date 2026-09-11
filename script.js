@@ -6979,56 +6979,212 @@ document.getElementById("submitLateCheckout").addEventListener("click", () => {
 });
  
 
-  // ==========================================
+// ==========================================
 // SPA REQUEST
 // ==========================================
 
 document.getElementById("sendSpaRequest").addEventListener("click", () => {
 
-    const service = document.getElementById("spaService").value;
-    const date = document.getElementById("spaDate").value;
-    const time = document.getElementById("spaTime").value;
-    const guests = document.getElementById("spaGuests").value;
+    const service =
+        document.getElementById("spaService").value.trim();
 
-    if (service === "" || date === "" || time === "" || guests === "") {
+    const room =
+        document.getElementById("spaRoom").value.trim();
+
+    const date =
+        document.getElementById("spaDate").value;
+
+    const time =
+        document.getElementById("spaTime").value;
+
+    const guests =
+        document.getElementById("spaGuests").value;
+
+
+    // ======================================
+    // VALIDATE REQUIRED INFORMATION
+    // ======================================
+
+    if (!service || !room || !date || !time || !guests) {
 
         showWarning(
             "Incomplete Information",
-            "Please complete the treatment, date, time, and number of guests."
+            "Please complete the cottage number, treatment, date, time, and number of guests."
         );
 
         return;
-
     }
+
+
+    // ======================================
+    // VALIDATE COTTAGE NUMBER
+    // ======================================
+
+    const roomNumber = Number(room);
+
+    if (
+        !Number.isInteger(roomNumber) ||
+        roomNumber < 1 ||
+        roomNumber > 12
+    ) {
+
+        showWarning(
+            "Invalid Cottage Number",
+            "Please enter a valid cottage number between 1 and 12."
+        );
+
+        document.getElementById("spaRoom").focus();
+
+        return;
+    }
+
+
+    // ======================================
+    // VALIDATE NUMBER OF GUESTS
+    // ======================================
+
+    const guestCount = Number(guests);
+
+    if (
+        !Number.isInteger(guestCount) ||
+        guestCount < 1
+    ) {
+
+        showWarning(
+            "Invalid Number of Guests",
+            "The number of guests must be at least 1."
+        );
+
+        document.getElementById("spaGuests").focus();
+
+        return;
+    }
+
+
+    // ======================================
+    // GET TODAY'S DATE
+    // ======================================
+
+    const today = new Date();
+
+    const todayYear =
+        today.getFullYear();
+
+    const todayMonth =
+        String(today.getMonth() + 1).padStart(2, "0");
+
+    const todayDay =
+        String(today.getDate()).padStart(2, "0");
+
+    const todayString =
+        `${todayYear}-${todayMonth}-${todayDay}`;
+
+
+    // ======================================
+    // REJECT PAST DATES
+    // ======================================
+
+    if (date < todayString) {
+
+        showWarning(
+            "Invalid Spa Date",
+            "Please select today or a future date."
+        );
+
+        document.getElementById("spaDate").focus();
+
+        return;
+    }
+
+
+    // ======================================
+    // CHECK TIME FOR TODAY
+    // ======================================
+
+    if (date === todayString) {
+
+        const [hours, minutes] =
+            time.split(":").map(Number);
+
+        const currentMinutes =
+            (today.getHours() * 60) +
+            today.getMinutes();
+
+        const selectedMinutes =
+            (hours * 60) + minutes;
+
+
+        if (selectedMinutes < currentMinutes + 10) {
+
+            showWarning(
+                "Invalid Spa Time",
+                "For today's appointment, please select a time that is at least 10 minutes from now."
+            );
+
+            document.getElementById("spaTime").focus();
+
+            return;
+        }
+    }
+
+
+    // ======================================
+    // GUEST NAME
+    // ======================================
 
     const guestName =
         document.getElementById("spaName").value || "Guest";
 
+
     const btn =
         document.getElementById("sendSpaRequest");
 
-    showLoading("Preparing Your Spa Experience...", () => {
 
-        addRequest(
-            "💆 Spa & Wellness",
-            "Waiting"
-        );
+    // ======================================
+    // SEND REQUEST
+    // ======================================
 
-        showNotification(
-            "💆",
-            "Spa & Wellness",
-            "Your spa request has been received."
-        );
+    showLoading(
+        "Preparing Your Spa Experience...",
+        () => {
 
-        spaPopup.style.display = "none";
+            addRequest(
+                "💆 Spa & Wellness",
+                `${service} — Cottage ${roomNumber} — ${date} at ${time} — ${guestCount} guest${guestCount > 1 ? "s" : ""}`
+            );
 
-        showConfirmation(
-            `Thank you, ${guestName}!`,
-            "Your spa request has been received.",
-            "Our wellness team will confirm your appointment shortly."
-        );
 
-    }, btn);
+            showNotification(
+                "💆",
+                "Spa & Wellness",
+                "Your spa request has been received."
+            );
+
+
+            // ==================================
+            // CLEAR FORM AFTER SUCCESS
+            // ==================================
+
+            document.getElementById("spaRoom").value = "";
+            document.getElementById("spaService").value = "";
+            document.getElementById("spaDate").value = "";
+            document.getElementById("spaTime").value = "";
+            document.getElementById("spaGuests").value = "";
+            document.getElementById("spaNotes").value = "";
+
+
+            spaPopup.style.display = "none";
+
+
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your spa request has been received.",
+                "Our wellness team will confirm your appointment shortly."
+            );
+
+        },
+        btn
+    );
 
 });
 
