@@ -6320,30 +6320,32 @@ overflow:hidden;
 
 
 /* ==========================================
-   CONTACT BUTTON
+   LUXURY CONTACT RESTAURANT & BAR BUTTON
 ========================================== */
 
 #restaurantBarPopup .dining-contact-button {
 
+    position: relative;
+
     width: 100%;
 
-    margin-top: 18px;
+    margin-top: 20px;
 
-    padding: 14px 18px;
+    padding: 16px 20px;
 
-    border: 1px solid #d4af37;
+    border: 1px solid rgba(212,175,55,.75);
 
-    border-radius: 13px;
+    border-radius: 16px;
 
     background:
         linear-gradient(
-            135deg,
-            #8e651b,
-            #d4af37,
-            #f0d477
+            145deg,
+            #17110b 0%,
+            #2a1d0f 45%,
+            #17110b 100%
         );
 
-    color: #171008;
+    color: #f3d77b;
 
     font-family: "Cinzel", serif;
 
@@ -6351,23 +6353,131 @@ overflow:hidden;
 
     font-weight: 700;
 
-    letter-spacing: .7px;
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
 
     cursor: pointer;
 
-    box-shadow:
-        0 9px 25px rgba(212,175,55,.18);
+    overflow: hidden;
 
-    transition: .25s;
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.08),
+        inset 0 0 0 1px rgba(212,175,55,.08);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease,
+        background .3s ease;
 }
 
 
+/* GOLD INNER FRAME */
+
+#restaurantBarPopup .dining-contact-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 4px;
+
+    border: 1px solid rgba(212,175,55,.22);
+
+    border-radius: 12px;
+
+    pointer-events: none;
+}
+
+
+/* SOFT GOLD LIGHT */
+
+#restaurantBarPopup .dining-contact-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,230,150,.16),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left .65s ease;
+
+    pointer-events: none;
+}
+
+
+/* HOVER */
+
 #restaurantBarPopup .dining-contact-button:hover {
 
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+
+    border-color: #e8c85b;
+
+    background:
+        linear-gradient(
+            145deg,
+            #21170b,
+            #3a2811,
+            #21170b
+        );
 
     box-shadow:
-        0 13px 32px rgba(212,175,55,.32);
+        0 13px 32px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.16),
+        inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+
+#restaurantBarPopup .dining-contact-button:hover::after {
+
+    left: 140%;
+}
+
+
+/* ACTIVE */
+
+#restaurantBarPopup .dining-contact-button:active {
+
+    transform: translateY(-1px) scale(.99);
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.35);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    #restaurantBarPopup .dining-contact-button {
+
+        margin-top: 17px;
+
+        padding: 15px 16px;
+
+        border-radius: 15px;
+
+        font-size: 11px;
+
+        letter-spacing: 1px;
+    }
 }
 
 
