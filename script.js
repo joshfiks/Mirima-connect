@@ -4960,18 +4960,22 @@ function showNotification(icon, title, message){
     },4000);
 
 }
-  // ==========================================
+  
+// ==========================================
 // WARNING FUNCTION
 // ==========================================
 
-function showWarning(title, message) {
+let warningReturnPopup = null;
+
+function showWarning(title, message, returnPopup = null) {
 
     document.getElementById("warningTitle").textContent = title;
 
     document.getElementById("warningMessage").textContent = message;
 
-    document.getElementById("warningPopup").style.display = "flex";
+    warningReturnPopup = returnPopup;
 
+    document.getElementById("warningPopup").style.display = "flex";
 }
 
 const closeWarning = document.getElementById("closeWarning");
@@ -4979,6 +4983,11 @@ const closeWarning = document.getElementById("closeWarning");
 closeWarning.addEventListener("click", () => {
 
     document.getElementById("warningPopup").style.display = "none";
+
+    if (warningReturnPopup) {
+        warningReturnPopup.style.display = "flex";
+        warningReturnPopup = null;
+    }
 
 });
 
@@ -4988,10 +4997,15 @@ warningPopup.addEventListener("click", (e) => {
 
         warningPopup.style.display = "none";
 
+        if (warningReturnPopup) {
+            warningReturnPopup.style.display = "flex";
+            warningReturnPopup = null;
+        }
+
     }
 
 });
-
+  
   // ==========================================
 // RECEPTION REQUEST
 // ==========================================
@@ -5388,6 +5402,58 @@ if (transferDate === todayString) {
 
 });
 
+// ==========================================
+// CAMPFIRE CLOSE & CLEAR
+// ==========================================
+
+const clearCampfireForm = () => {
+
+    // Keep the guest name
+    document.getElementById("campfireName").value =
+        localStorage.getItem("guestName") || "";
+
+    document.getElementById("campfireRoom").value = "";
+    document.getElementById("campfireType").value = "";
+    document.getElementById("campfireDate").value = "";
+    document.getElementById("campfireTime").value = "";
+    document.getElementById("campfireGuests").value = "";
+    document.getElementById("campfireExtras").value = "";
+    document.getElementById("campfireNotes").value = "";
+};
+
+
+// ==========================================
+// CLOSE CAMPFIRE WITH X
+// ==========================================
+
+const closeCampfire =
+    document.querySelector(".closeCampfire");
+
+closeCampfire.addEventListener("click", () => {
+
+    clearCampfireForm();
+
+    campfirePopup.style.display = "none";
+
+});
+
+
+// ==========================================
+// CLOSE CAMPFIRE BY CLICKING OUTSIDE
+// ==========================================
+
+campfirePopup.addEventListener("click", (e) => {
+
+    if (e.target === campfirePopup) {
+
+        clearCampfireForm();
+
+        campfirePopup.style.display = "none";
+
+    }
+
+});
+  
 // ==========================================
 // CAMPFIRE REQUEST
 // ==========================================
