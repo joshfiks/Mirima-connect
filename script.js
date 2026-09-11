@@ -4886,44 +4886,169 @@ showLoading("Connecting to Reception...", () => {
 
   });
 
-  // ==========================================
+// ==========================================
 // AIRPORT TRANSFER REQUEST
 // ==========================================
 
 document.getElementById("sendTransferRequest").addEventListener("click", () => {
 
-    const transferType = document.getElementById("transferType").value;
-    const transferDate = document.getElementById("transferDate").value;
-    const transferTime = document.getElementById("transferTime").value;
+    const transferName =
+        document.getElementById("transferName").value.trim();
+
+    const transferRoom =
+        document.getElementById("transferRoom").value.trim();
+
+    const transferType =
+        document.getElementById("transferType").value.trim();
+
+    const transferDate =
+        document.getElementById("transferDate").value.trim();
+
+    const transferTime =
+        document.getElementById("transferTime").value.trim();
+
+    const flightNumber =
+        document.getElementById("flightNumber").value.trim();
+
+    const airline =
+        document.getElementById("airline").value.trim();
+
+    const adults =
+        document.getElementById("adults").value.trim();
+
+    const children =
+        document.getElementById("children").value.trim();
+
+    const bags =
+        document.getElementById("bags").value.trim();
+
+    const pickupLocation =
+        document.getElementById("pickupLocation").value.trim();
+
+    const transferNotes =
+        document.getElementById("transferNotes").value.trim();
+
+
+    // ==========================================
+    // CHECK REQUIRED INFORMATION
+    // ==========================================
 
     if (
-        transferType === "" ||
-        transferDate === "" ||
-        transferTime === ""
+        !transferName ||
+        !transferRoom ||
+        !transferType ||
+        !transferDate ||
+        !transferTime ||
+        !flightNumber ||
+        !airline ||
+        !adults ||
+        !children ||
+        !bags ||
+        !pickupLocation
     ) {
 
         showWarning(
             "Incomplete Information",
-            "Please complete all required transfer details."
+            "Please fill in all required information before you continue."
         );
 
         return;
-
     }
 
-    const guestName = document.getElementById("transferName").value;
 
-    const btn = document.getElementById("sendTransferRequest");
+    // ==========================================
+    // CHECK COTTAGE / ROOM NUMBER
+    // ONLY COTTAGES 1–12 ARE VALID
+    // ==========================================
+
+    const roomNumber = Number(transferRoom);
+
+    if (
+        !Number.isInteger(roomNumber) ||
+        roomNumber < 1 ||
+        roomNumber > 12
+    ) {
+
+        showWarning(
+            "Invalid Cottage Number",
+            "Please enter a valid cottage number between 1 and 12."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // CHECK TRANSFER DATE & TIME
+    // MUST BE AT LEAST 10 MINUTES FROM NOW
+    // ==========================================
+
+    const selectedDateTime =
+        new Date(`${transferDate}T${transferTime}`);
+
+    const now = new Date();
+
+    const minimumTime =
+        new Date(now.getTime() + 10 * 60 * 1000);
+
+
+    if (selectedDateTime < minimumTime) {
+
+        showWarning(
+            "Invalid Transfer Time",
+            "Please select a transfer time that is at least 10 minutes from now."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // ALL INFORMATION IS VALID
+    // ==========================================
+
+    const guestName = transferName;
+
+    const btn =
+        document.getElementById("sendTransferRequest");
+
+
+    // ==========================================
+    // CLEAR FORM AFTER SUCCESSFUL REQUEST
+    // ==========================================
+
+    const clearTransferForm = () => {
+
+        document.getElementById("transferRoom").value = "";
+        document.getElementById("transferType").value = "";
+        document.getElementById("transferDate").value = "";
+        document.getElementById("transferTime").value = "";
+        document.getElementById("flightNumber").value = "";
+        document.getElementById("airline").value = "";
+        document.getElementById("adults").value = "";
+        document.getElementById("children").value = "";
+        document.getElementById("bags").value = "";
+        document.getElementById("pickupLocation").value = "";
+        document.getElementById("transferNotes").value = "";
+
+    };
+
 
     showLoading("Booking Airport Transfer...", () => {
 
-        addRequest("🚖 Airport Transfer", "Waiting");
+        addRequest(
+            "🚖 Airport Transfer",
+            `${transferType} — Cottage ${transferRoom} — ${transferDate} ${transferTime}`
+        );
 
         showNotification(
             "🚖",
             "Transport Team",
             "Your airport transfer request has been received."
         );
+
+        // Clear everything after successful request
+        clearTransferForm();
 
         transferPopup.style.display = "none";
 
