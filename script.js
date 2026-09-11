@@ -7489,52 +7489,112 @@ showLoading("Booking Your Activity...", () => {
 }, btn);
 
   });
+  
 // ==========================================
 // FEEDBACK SUBMISSION
 // ==========================================
 
 document.getElementById("submitFeedback").addEventListener("click", () => {
 
-    // Find all selected feedback options
-    const selectedItems = feedbackPopup.querySelectorAll(".service-option.selected");
+    // Find selected feedback options
+    const selectedItems =
+        feedbackPopup.querySelectorAll(".service-option.selected");
 
-    // Stop if nothing is selected
+    // Get guest experience
+    const experience =
+        feedbackPopup.querySelector("textarea").value.trim();
+
+
+    // ==========================================
+    // CHECK FEEDBACK RATING
+    // ==========================================
+
     if (selectedItems.length === 0) {
 
-    showWarning(
-    "No Feedback Selected",
-    "Please select at least one feedback option before submitting."
-);
- return;
+        showWarning(
+            "No Feedback Selected",
+            "Please select at least one feedback option before submitting."
+        );
 
+        return;
     }
 
-    const guestName = localStorage.getItem("guestName") || "Guest";
 
-  clearSelections(feedbackPopup, ".service-option");
-  
+    // ==========================================
+    // CHECK EXPERIENCE MESSAGE
+    // ==========================================
+
+    if (!experience) {
+
+        showWarning(
+            "Experience Required",
+            "Please tell us about your experience in the text area before submitting your feedback."
+        );
+
+        feedbackPopup.querySelector("textarea").focus();
+
+        return;
+    }
+
+
+    // ==========================================
+    // GUEST INFORMATION
+    // ==========================================
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("submitFeedback");
+
+
+    // ==========================================
+    // CLOSE FEEDBACK POPUP
+    // ==========================================
+
     feedbackPopup.style.display = "none";
 
-const btn = document.getElementById("submitFeedback");
 
-showLoading("Submitting Your Feedback...", () => {
+    // ==========================================
+    // SUBMIT FEEDBACK
+    // ==========================================
 
-  addRequest("⭐ Feedback", "Submitted");
+    showLoading("Submitting Your Feedback...", () => {
 
-  showNotification(
-    "⭐",
-    "Feedback",
-    "Thank you for sharing your feedback."
-);
-    showConfirmation(
-        `Thank you, ${guestName}!`,
-        "We appreciate your feedback.",
-        "Your comments help us improve."
-    );
+        addRequest(
+            "⭐ Feedback",
+            experience
+        );
 
-}, btn);
+        showNotification(
+            "⭐",
+            "Feedback",
+            "Thank you for sharing your feedback."
+        );
 
-  });
+
+        // Clear rating selection
+        clearSelections(
+            feedbackPopup,
+            ".service-option"
+        );
+
+
+        // Clear experience text
+        feedbackPopup.querySelector("textarea").value = "";
+
+
+        // Show confirmation
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "We appreciate your feedback.",
+            "Your comments help us improve."
+        );
+
+    }, btn);
+
+});
+  
 // ==========================================
 // GREETING
 // ==========================================
