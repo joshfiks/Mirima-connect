@@ -4979,32 +4979,61 @@ document.getElementById("sendTransferRequest").addEventListener("click", () => {
 
 
     // ==========================================
-    // CHECK TRANSFER DATE & TIME
-    // MUST BE AT LEAST 10 MINUTES FROM NOW
-    // ==========================================
+// CHECK TRANSFER DATE
+// DATE MUST BE TODAY OR A FUTURE DATE
+// ==========================================
 
-   const selectedDateTime =
-    new Date(`${transferDate}T${transferTime}`);
+const today = new Date();
 
-const now = new Date();
+const todayYear = today.getFullYear();
+const todayMonth = String(today.getMonth() + 1).padStart(2, "0");
+const todayDay = String(today.getDate()).padStart(2, "0");
 
-// Compare only to the current minute
-now.setSeconds(0, 0);
-
-const minimumTime =
-    new Date(now.getTime() + 10 * 60 * 1000);
+const todayString =
+    `${todayYear}-${todayMonth}-${todayDay}`;
 
 
-if (selectedDateTime < minimumTime) {
+if (transferDate < todayString) {
 
     showWarning(
-        "Invalid Transfer Time",
-        "Please select a transfer time that is at least 10 minutes from now."
+        "Invalid Transfer Date",
+        "Please select today or a future date for your airport transfer."
     );
 
     return;
 }
 
+
+// ==========================================
+// CHECK TRANSFER TIME
+// ONLY REQUIRED FOR TODAY
+// MUST BE AT LEAST 10 MINUTES FROM NOW
+// ==========================================
+
+if (transferDate === todayString) {
+
+    const [hours, minutes] =
+        transferTime.split(":").map(Number);
+
+    const now = new Date();
+
+    const currentMinutes =
+        (now.getHours() * 60) + now.getMinutes();
+
+    const selectedMinutes =
+        (hours * 60) + minutes;
+
+
+    if (selectedMinutes < currentMinutes + 10) {
+
+        showWarning(
+            "Invalid Transfer Time",
+            "For today's transfer, please select a time that is at least 10 minutes from now."
+        );
+
+        return;
+    }
+}
 
     // ==========================================
     // ALL INFORMATION IS VALID
