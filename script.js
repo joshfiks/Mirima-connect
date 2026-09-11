@@ -1395,7 +1395,6 @@ extendStayPopup.addEventListener("click", (e) => {
 
 });
 
-
 // ==========================================
 // EXTEND YOUR STAY REQUEST
 // ==========================================
@@ -1415,6 +1414,11 @@ document.getElementById("submitExtendStay")
     const guestName =
         localStorage.getItem("guestName") || "Guest";
 
+
+    // ==========================================
+    // CHECK REQUIRED INFORMATION
+    // ==========================================
+
     if (!newCheckoutDate || !additionalNights) {
 
         showWarning(
@@ -1425,37 +1429,106 @@ document.getElementById("submitExtendStay")
         return;
     }
 
+
+    // ==========================================
+    // CHECK CHECKOUT DATE
+    // DATE CANNOT BE BEFORE TODAY
+    // ==========================================
+
+    const today = new Date();
+
+    const todayYear =
+        today.getFullYear();
+
+    const todayMonth =
+        String(today.getMonth() + 1).padStart(2, "0");
+
+    const todayDay =
+        String(today.getDate()).padStart(2, "0");
+
+    const todayString =
+        `${todayYear}-${todayMonth}-${todayDay}`;
+
+
+    if (newCheckoutDate < todayString) {
+
+        showWarning(
+            "Invalid Checkout Date",
+            "Please select today or a future date for your new checkout."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // CHECK ADDITIONAL NIGHTS
+    // MUST BE AT LEAST 1
+    // ==========================================
+
+    const nights =
+        Number(additionalNights);
+
+    if (
+        !Number.isInteger(nights) ||
+        nights < 1
+    ) {
+
+        showWarning(
+            "Invalid Number of Nights",
+            "Please enter at least 1 additional night."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // ALL INFORMATION IS VALID
+    // ==========================================
+
     const btn =
         document.getElementById("submitExtendStay");
 
     extendStayPopup.style.display = "none";
 
-    showLoading("Sending Extension Request...", () => {
 
-        addRequest(
-            "📅 Extend Stay",
-            `${additionalNights} additional night(s) — New checkout: ${newCheckoutDate}${message ? " — " + message : ""}`
-        );
+    showLoading(
+        "Sending Extension Request...",
+        () => {
 
-        showNotification(
-            "📅",
-            "Stay Extension",
-            "Your stay extension request has been received."
-        );
+            addRequest(
+                "📅 Extend Stay",
+                `${nights} additional night(s) — New checkout: ${newCheckoutDate}${message ? " — " + message : ""}`
+            );
 
-        showConfirmation(
-            `Thank you, ${guestName}!`,
-            "Your stay extension request has been received.",
-            "Reception will check availability and confirm your new checkout date."
-        );
+            showNotification(
+                "📅",
+                "Stay Extension",
+                "Your stay extension request has been received."
+            );
 
-        document.getElementById("newCheckoutDate").value = "";
-        document.getElementById("additionalNights").value = "";
-        document.getElementById("extendStayMessage").value = "";
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your stay extension request has been received.",
+                "Reception will check availability and confirm your new checkout date."
+            );
 
-    }, btn);
+
+            // ==========================================
+            // CLEAR FORM AFTER SUCCESSFUL REQUEST
+            // ==========================================
+
+            document.getElementById("newCheckoutDate").value = "";
+            document.getElementById("additionalNights").value = "";
+            document.getElementById("extendStayMessage").value = "";
+
+        },
+        btn
+    );
 
 });
+
 // ==========================================
 // EMERGENCY POPUP
 // ==========================================
