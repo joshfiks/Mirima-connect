@@ -3813,65 +3813,587 @@ overflow:hidden;
     }
 
 }
-/*==========================================
-AIRPORT TRANSFER FORM
-==========================================*/
+
+/* ==========================================
+   AIRPORT TRANSFER POPUP
+   MIRIMA CONNECT — ULTRA LUXURY
+========================================== */
+
+#transferPopup {
+    background:
+        radial-gradient(circle at 8% 50%, rgba(212,175,55,.10), transparent 28%),
+        radial-gradient(circle at 92% 50%, rgba(212,175,55,.08), transparent 28%),
+        rgba(8,6,3,.88);
+}
+
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+#transferPopup .popup-content {
+    position: relative;
+    width: min(760px, 94%);
+    max-width: 760px;
+    max-height: 90vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    padding: 48px 42px 38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(48,35,19,.99),
+            rgba(20,15,9,.99) 48%,
+            rgba(39,27,14,.99)
+        );
+
+    border: 1px solid rgba(212,175,55,.85);
+    border-radius: 30px;
+
+    box-shadow:
+        0 0 0 1px rgba(212,175,55,.18),
+        0 0 45px rgba(212,175,55,.12),
+        0 25px 80px rgba(0,0,0,.80),
+        inset 0 0 45px rgba(212,175,55,.035);
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   INNER GOLD FRAME
+========================================== */
+
+#transferPopup .popup-content::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+
+    border: 1px solid rgba(212,175,55,.25);
+    border-radius: 22px;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   TOP GOLD DECORATIVE LINE
+========================================== */
+
+#transferPopup .popup-content::after {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 180px;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #b99124,
+            #f5dc91,
+            #d4af37,
+            transparent
+        );
+
+    box-shadow:
+        0 0 14px rgba(212,175,55,.45);
+}
+
+
+/* ==========================================
+   CLOSE BUTTON
+========================================== */
+
+#transferPopup .closeTransfer {
+    position: absolute;
+
+    top: 20px;
+    left: 22px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(240,213,138,.75);
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.35);
+
+    color: #f1d98c;
+
+    font-size: 23px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+#transferPopup .closeTransfer:hover {
+    transform: rotate(90deg);
+
+    background: rgba(212,175,55,.14);
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.28);
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+#transferPopup h2 {
+    position: relative;
+    z-index: 2;
+
+    margin: 4px 0 10px;
+
+    color: #f1d58a;
+
+    font-family: "Cinzel", Georgia, serif;
+
+    font-size: clamp(27px, 4vw, 42px);
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.8),
+        0 0 18px rgba(212,175,55,.14);
+}
+
+
+/* ==========================================
+   TITLE DECORATION
+========================================== */
+
+#transferPopup h2::after {
+    content: "";
+
+    display: block;
+
+    width: 170px;
+    height: 1px;
+
+    margin: 14px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            #f4dc91,
+            #d4af37,
+            transparent
+        );
+}
+
+
+/* ==========================================
+   INTRO TEXT
+========================================== */
+
+#transferPopup .popup-content > p {
+    position: relative;
+    z-index: 2;
+
+    margin: 18px 0 25px;
+
+    color: #eee4cf;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 20px;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+    letter-spacing: .25px;
+}
+
+
+/* ==========================================
+   FORM LAYOUT
+========================================== */
+
+#transferPopup .popup-content {
+    display: block;
+}
+
+
+/* ==========================================
+   INPUTS + SELECT
+========================================== */
 
 #transferPopup input,
 #transferPopup select,
-#transferPopup textarea{
+#transferPopup textarea {
 
-width:100%;
+    position: relative;
+    z-index: 2;
 
-padding:14px 16px;
+    box-sizing: border-box;
 
-margin:12px 0;
+    width: 100%;
 
-border:1px solid rgba(212,175,55,.35);
+    margin: 8px 0;
 
-border-radius:14px;
+    padding: 16px 17px;
 
-background:rgba(255,255,255,.08);
+    border: 1px solid rgba(212,175,55,.45);
 
-color:#fff;
+    border-radius: 16px;
 
-font-size:16px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
 
-font-family:"Poppins",sans-serif;
+    color: #f5efe2;
 
-box-sizing:border-box;
+    font-family:
+        "Poppins",
+        Arial,
+        sans-serif;
 
-outline:none;
+    font-size: 15px;
 
-transition:.3s;
+    outline: none;
 
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035);
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease,
+        transform .25s ease;
 }
+
+
+/* ==========================================
+   INPUT FOCUS
+========================================== */
 
 #transferPopup input:focus,
 #transferPopup select:focus,
-#transferPopup textarea:focus{
+#transferPopup textarea:focus {
 
-border-color:#D4AF37;
+    border-color: #e0c15d;
 
-box-shadow:0 0 15px rgba(212,175,55,.35);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212,175,55,.09),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+        0 0 0 2px rgba(212,175,55,.08),
+        0 0 18px rgba(212,175,55,.10),
+        inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+
+/* ==========================================
+   PLACEHOLDER
+========================================== */
+
+#transferPopup input::placeholder,
+#transferPopup textarea::placeholder {
+
+    color: #bdb5a7;
+
+    opacity: .9;
+}
+
+
+/* ==========================================
+   READONLY GUEST NAME
+========================================== */
+
+#transferPopup #transferName {
+
+    color: #f1d58a;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212,175,55,.10),
+            rgba(255,255,255,.035)
+        );
+}
+
+
+/* ==========================================
+   SELECT
+========================================== */
+
+#transferPopup select {
+
+    appearance: auto;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   DATE + TIME
+========================================== */
+
+#transferPopup input[type="date"],
+#transferPopup input[type="time"] {
+
+    color-scheme: dark;
+
+    color: #eee4cf;
+}
+
+
+/* ==========================================
+   NUMBER INPUTS
+========================================== */
+
+#transferPopup input[type="number"] {
+
+    appearance: textfield;
+}
+
+
+/* ==========================================
+   TEXTAREA
+========================================== */
+
+#transferPopup textarea {
+
+    min-height: 115px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   BOOK / REQUEST BUTTON
+========================================== */
+
+#transferPopup #sendTransferRequest {
+
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 17px 28px;
+
+    border: 1px solid rgba(255,238,166,.65);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a98220 0%,
+            #d4af37 30%,
+            #f5dc91 52%,
+            #d4af37 72%,
+            #a98220 100%
+        );
+
+    color: #171108;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.4),
+        0 0 20px rgba(212,175,55,.10),
+        inset 0 1px 0 rgba(255,255,255,.45);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+}
+
+
+#transferPopup #sendTransferRequest:hover {
+
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 14px 32px rgba(0,0,0,.5),
+        0 0 25px rgba(212,175,55,.22),
+        inset 0 1px 0 rgba(255,255,255,.5);
+}
+
+
+#transferPopup #sendTransferRequest:active {
+
+    transform: translateY(0);
 
 }
 
-#transferPopup textarea{
 
-resize:vertical;
+/* ==========================================
+   SCROLLBAR
+========================================== */
 
-min-height:100px;
+#transferPopup .popup-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+#transferPopup .popup-content::-webkit-scrollbar-track {
+    background: rgba(0,0,0,.25);
+    border-radius: 20px;
+}
+
+#transferPopup .popup-content::-webkit-scrollbar-thumb {
+    background: #8f7022;
+    border-radius: 20px;
+}
+
+#transferPopup .popup-content::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #transferPopup .popup-content {
+
+        width: 94%;
+
+        max-height: 88vh;
+
+        padding: 42px 18px 25px;
+
+        border-radius: 23px;
+    }
+
+
+    #transferPopup .popup-content::before {
+
+        inset: 7px;
+
+        border-radius: 17px;
+    }
+
+
+    #transferPopup .closeTransfer {
+
+        top: 15px;
+        left: 15px;
+
+        width: 34px;
+        height: 34px;
+
+        font-size: 20px;
+    }
+
+
+    #transferPopup h2 {
+
+        font-size: 25px;
+
+        letter-spacing: .8px;
+
+        margin-top: 5px;
+    }
+
+
+    #transferPopup h2::after {
+
+        width: 120px;
+
+        margin-top: 11px;
+    }
+
+
+    #transferPopup .popup-content > p {
+
+        font-size: 18px;
+
+        margin: 15px 0 20px;
+    }
+
+
+    #transferPopup input,
+    #transferPopup select,
+    #transferPopup textarea {
+
+        padding: 14px;
+
+        font-size: 14px;
+
+        border-radius: 14px;
+    }
+
+
+    #transferPopup #sendTransferRequest {
+
+        padding: 15px 20px;
+
+        font-size: 15px;
+
+        letter-spacing: 1px;
+    }
 
 }
 
-#transferPopup button{
 
-width:100%;
-
-margin-top:20px;
-
-}
 /* ==========================================
    🔥 CAMPFIRE EXPERIENCE — PREMIUM LODGE
 ========================================== */
