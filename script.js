@@ -3863,7 +3863,8 @@ document.getElementById("bookCraterLake")
 document.getElementById("bookPhotographyTour")
 .addEventListener("click", () => {
 
-    photographyTourPopup.style.display = "none";
+    // Keep the Photography Tour popup open
+    // and show the confirmation only after the request is submitted
 
     showConfirmation(
         "Request Received",
@@ -3872,6 +3873,8 @@ document.getElementById("bookPhotographyTour")
     );
 
 });
+
+  
 // ==========================================
 // SPA POPUP
 // ==========================================
