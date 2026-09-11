@@ -4811,71 +4811,118 @@ exploreCard.addEventListener("click", () => {
     explorePopup.style.display = "flex";
 
 
-    // ==========================================
-    // EXPLORE CARD SELECTION
-    // ==========================================
+// ==========================================
+// EXPLORE CARD SELECTION
+// ==========================================
 
-    explorePopup
-        .querySelectorAll(".service-option")
-        .forEach(option => {
+explorePopup
+    .querySelectorAll(".service-option")
+    .forEach(option => {
 
-            option.onclick = () => {
+        option.onclick = () => {
 
-                // Remove selection from other cards
-                explorePopup
-                    .querySelectorAll(".service-option.selected")
-                    .forEach(item => {
+            // ------------------------------------------
+            // REMOVE SELECTION FROM OTHER CARDS
+            // ------------------------------------------
 
-                        if (item !== option) {
-                            item.classList.remove("selected");
-                        }
+            explorePopup
+                .querySelectorAll(".service-option.selected")
+                .forEach(item => {
 
-                    });
+                    if (item !== option) {
+                        item.classList.remove("selected");
+                    }
+
+                });
 
 
-                // Toggle the clicked card
-                if (option.classList.contains("selected")) {
+            // ------------------------------------------
+            // TOGGLE SELECTED CARD
+            // ------------------------------------------
 
-                    option.classList.remove("selected");
+            if (option.classList.contains("selected")) {
 
-                } else {
+                option.classList.remove("selected");
 
-                    option.classList.add("selected");
+            } else {
 
-                }
+                option.classList.add("selected");
 
-            };
+            }
 
-        });
 
-});
+            // ------------------------------------------
+            // GET CARD TITLE
+            // ------------------------------------------
+
+            const titleElement = option.querySelector(".title");
+
+            if (!titleElement) {
+                return;
+            }
+
+            const title = titleElement.textContent.trim();
+
+
+            // ==========================================
+            // PHOTOGRAPHY TOUR
+            // ==========================================
+
+            if (title === "Photography Tour") {
+
+                explorePopup.style.display = "none";
+
+                option.classList.remove("selected");
+
+                photographyTourPopup.style.display = "flex";
+
+            }
+
+        };
+
+    });
+
+
+// ==========================================
+// CLOSE EXPLORE WITH X
+// ==========================================
 
 closeExplore.addEventListener("click", () => {
 
-    // FORCE CLEAR selected state
-    explorePopup.querySelectorAll(".service-option").forEach(option => {
-        option.classList.remove("selected");
-    });
+    // Clear all selected cards
+    explorePopup
+        .querySelectorAll(".service-option")
+        .forEach(option => {
+            option.classList.remove("selected");
+        });
 
+    // Close Explore
     explorePopup.style.display = "none";
 
 });
+
+
+// ==========================================
+// CLOSE EXPLORE BY CLICKING OUTSIDE
+// ==========================================
 
 explorePopup.addEventListener("click", (e) => {
 
     if (e.target === explorePopup) {
 
-        // FORCE CLEAR selected state
-        explorePopup.querySelectorAll(".service-option").forEach(option => {
-            option.classList.remove("selected");
-        });
+        // Clear all selected cards
+        explorePopup
+            .querySelectorAll(".service-option")
+            .forEach(option => {
+                option.classList.remove("selected");
+            });
 
+        // Close Explore
         explorePopup.style.display = "none";
 
     }
 
 });
-
 // ==========================================
 // FEEDBACK POPUP
 // ==========================================
