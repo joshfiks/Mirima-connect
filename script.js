@@ -4298,43 +4298,81 @@ feedbackCard.addEventListener("click", () => {
 
     feedbackPopup.style.display = "flex";
 
-    feedbackPopup.querySelectorAll(".service-option").forEach(option => {
 
-    option.onclick = () => {
+    // ==========================================
+    // FEEDBACK CARD SELECTION
+    // ==========================================
 
-        feedbackPopup.querySelectorAll(".service-option").forEach(item => {
+    feedbackPopup
+        .querySelectorAll(".service-option")
+        .forEach(option => {
 
-            item.classList.remove("selected");
+            option.onclick = () => {
+
+                // Remove selection from other cards
+                feedbackPopup
+                    .querySelectorAll(".service-option.selected")
+                    .forEach(item => {
+
+                        if (item !== option) {
+                            item.classList.remove("selected");
+                        }
+
+                    });
+
+
+                // Toggle the clicked card
+                if (option.classList.contains("selected")) {
+
+                    option.classList.remove("selected");
+
+                } else {
+
+                    option.classList.add("selected");
+
+                }
+
+            };
 
         });
 
-        option.classList.add("selected");
-
-    };
-
 });
 
-});
+
+// ==========================================
+// CLOSE FEEDBACK
+// ==========================================
 
 closeFeedback.addEventListener("click", () => {
 
-      clearSelections(feedbackPopup, ".service-option");
-  
-  feedbackPopup.style.display = "none";
+    clearSelections(
+        feedbackPopup,
+        ".service-option"
+    );
+
+    feedbackPopup.style.display = "none";
 
 });
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
 
 feedbackPopup.addEventListener("click", (e) => {
 
     if (e.target === feedbackPopup) {
 
-      clearSelections(feedbackPopup, ".service-option");      
+        clearSelections(
+            feedbackPopup,
+            ".service-option"
+        );
+
         feedbackPopup.style.display = "none";
-        
+
     }
 
 });
-
   // ==========================================
 // MY REQUESTS POPUP
 // ==========================================
