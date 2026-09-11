@@ -594,18 +594,26 @@ popupBody
 
                         selectedItem.classList.remove("selected");
 
-                    }
+                   }
 
-                });
+               });
+          
 
+           /*
+ * Toggle selection.
+ * Clicking the selected item again
+ * will deselect it.
+ */
 
-            /*
-             * Select this item.
-             */
+if (item.classList.contains("selected")) {
 
-            item.classList.add("selected");
+    item.classList.remove("selected");
 
+} else {
 
+    item.classList.add("selected");
+
+}
             /*
              * Show its image immediately.
              */
