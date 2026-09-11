@@ -1740,7 +1740,79 @@ otherAssistancePopup.addEventListener("click", (e) => {
 
 });
 
+// ==========================================
+// OTHER ASSISTANCE REQUEST
+// ==========================================
 
+document.getElementById("submitOtherAssistance")
+.addEventListener("click", () => {
+
+    const message =
+        document.getElementById("otherAssistanceMessage").value.trim();
+
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    const btn =
+        document.getElementById("submitOtherAssistance");
+
+
+    // ==========================================
+    // VALIDATE DESCRIPTION
+    // ==========================================
+
+    if (!message) {
+
+        showWarning(
+            "Incomplete Information",
+            "Please describe what you need before you continue."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // ALL INFORMATION IS COMPLETE
+    // ==========================================
+
+    otherAssistancePopup.style.display = "none";
+
+
+    showLoading(
+        "Sending Assistance Request...",
+        () => {
+
+            addRequest(
+                "🛎️ Other Assistance",
+                message
+            );
+
+            showNotification(
+                "🛎️",
+                "Reception",
+                "Your assistance request has been received."
+            );
+
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your assistance request has been received.",
+                "Reception will assist you shortly."
+            );
+
+
+            // ==========================================
+            // CLEAR MESSAGE AFTER SUCCESSFUL REQUEST
+            // ==========================================
+
+            document.getElementById("otherAssistanceMessage").value = "";
+
+        },
+        btn
+    );
+
+});
+  
 // ==========================================
 // WHATSAPP
 // ==========================================
