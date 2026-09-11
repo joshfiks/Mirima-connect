@@ -2787,13 +2787,44 @@ sendRoomDiningRequest.addEventListener("click", () => {
 
     if (!deliveryTime) {
 
-        showWarning("Please select your preferred delivery time.");
+    showWarning(
+        "Delivery Time Required",
+        "Please select your preferred delivery time."
+    );
 
-        roomDiningTime.focus();
+    roomDiningTime.focus();
 
-        return;
-    }
+    return;
+}
 
+// ======================================
+// VALIDATE DELIVERY TIME
+// ======================================
+
+const now = new Date();
+
+const [hours, minutes] = deliveryTime.split(":").map(Number);
+
+const currentMinutes =
+    (now.getHours() * 60) + now.getMinutes();
+
+const selectedMinutes =
+    (hours * 60) + minutes;
+
+
+// Must be at least 10 minutes from now
+if (selectedMinutes < currentMinutes + 10) {
+
+    showWarning(
+        "Invalid Delivery Time",
+        "Please select a delivery time that is at least 10 minutes from now."
+    );
+
+    roomDiningTime.focus();
+
+    return;
+}
+  
     // ======================================
     // BUILD CONFIRMATION
     // ======================================
