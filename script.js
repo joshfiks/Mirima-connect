@@ -4032,9 +4032,23 @@ babyCotPopup.addEventListener(
             );
 
 
+                      // Keep Baby Cot selected in Housekeeping
+            const babyCotItem =
+                Array.from(
+                    housekeepingPopup.querySelectorAll(".menuItem")
+                ).find(item =>
+                    item.textContent.includes("Baby Cot Request")
+                );
+
+            if (babyCotItem) {
+                babyCotItem.classList.add("selected");
+            }
+
             // Close popup
-            babyCotPopup.style.display =
-                "none";
+            babyCotPopup.style.display = "none";
+
+            // Return to Housekeeping
+            housekeepingPopup.style.display = "flex";
 
         }
     );
