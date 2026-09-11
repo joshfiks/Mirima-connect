@@ -3858,22 +3858,29 @@ document.getElementById("bookCraterLake")
 });
 
 
-// 📸 PHOTOGRAPHY TOUR
+// ==========================================
+// 📸 PHOTOGRAPHY TOUR BOOKING
+// ==========================================
 
-document.getElementById("bookPhotographyTour")
-.addEventListener("click", () => {
+const bookPhotographyTour =
+    document.getElementById("bookPhotographyTour");
 
-    // Keep the Photography Tour popup open
-    // and show the confirmation only after the request is submitted
+bookPhotographyTour.addEventListener("click", () => {
 
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    // Close Photography Tour popup
+    photographyTourPopup.style.display = "none";
+
+    // Show confirmation
     showConfirmation(
-        "Request Received",
+        `Thank you, ${guestName}!`,
         "Your Photography Tour request has been received successfully.",
         "Reception will confirm availability and details shortly."
     );
 
 });
-
   
 // ==========================================
 // SPA POPUP
