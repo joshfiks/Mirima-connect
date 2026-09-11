@@ -5426,9 +5426,6 @@ const clearCampfireForm = () => {
 // CLOSE CAMPFIRE WITH X
 // ==========================================
 
-const closeCampfire =
-    document.querySelector(".closeCampfire");
-
 closeCampfire.addEventListener("click", () => {
 
     clearCampfireForm();
