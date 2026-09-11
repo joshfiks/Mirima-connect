@@ -1108,34 +1108,77 @@ luggagePopup.addEventListener("click", (e) => {
 document.getElementById("submitLuggage")
 .addEventListener("click", () => {
 
+    const luggageService =
+        document.getElementById("luggageService").value.trim();
+
+    const luggageLocation =
+        document.getElementById("luggageLocation").value.trim();
+
+    const luggageTime =
+        document.getElementById("luggageTime").value.trim();
+
+    const luggageMessage =
+        document.getElementById("luggageMessage").value.trim();
+
+
+    // ==========================================
+    // VALIDATE REQUIRED INFORMATION
+    // ==========================================
+
+    if (
+        !luggageService ||
+        !luggageLocation ||
+        !luggageTime
+    ) {
+
+        showWarning(
+            "Incomplete Information",
+            "Please fill in all required information before you continue."
+        );
+
+        return;
+
+    }
+
+
+    // ==========================================
+    // ALL REQUIRED INFORMATION IS COMPLETE
+    // ==========================================
+
     const guestName =
         localStorage.getItem("guestName") || "Guest";
 
     const btn =
         document.getElementById("submitLuggage");
 
+
     luggagePopup.style.display = "none";
 
-    showLoading("Requesting Luggage Assistance...", () => {
 
-        addRequest(
-            "🧳 Luggage Assistance",
-            "Guest requested luggage assistance."
-        );
+    showLoading(
+        "Requesting Luggage Assistance...",
+        () => {
 
-        showNotification(
-            "🧳",
-            "Luggage Assistance",
-            "Your luggage assistance request has been received."
-        );
+            addRequest(
+                "🧳 Luggage Assistance",
+                `${luggageService} — ${luggageLocation} — ${luggageTime}${luggageMessage ? " — " + luggageMessage : ""}`
+            );
 
-        showConfirmation(
-            `Thank you, ${guestName}!`,
-            "Your luggage assistance request has been received.",
-            "Our reception team will assist you shortly."
-        );
+            showNotification(
+                "🧳",
+                "Luggage Assistance",
+                "Your luggage assistance request has been received."
+            );
 
-    }, btn);
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your luggage assistance request has been received.",
+                "Our reception team will assist you shortly."
+            );
+
+        },
+        btn
+    );
 
 });
 // ==========================================
@@ -1181,10 +1224,16 @@ document.getElementById("submitMaintenance")
 .addEventListener("click", () => {
 
     const maintenanceType =
-        document.getElementById("maintenanceType")?.value || "";
+        document.getElementById("maintenanceType").value.trim();
+
+    const maintenanceLocation =
+        document.getElementById("maintenanceLocation").value.trim();
+
+    const maintenancePriority =
+        document.getElementById("maintenancePriority").value.trim();
 
     const maintenanceMessage =
-        document.getElementById("maintenanceMessage")?.value.trim() || "";
+        document.getElementById("maintenanceMessage").value.trim();
 
     const guestName =
         localStorage.getItem("guestName") || "Guest";
@@ -1192,30 +1241,61 @@ document.getElementById("submitMaintenance")
     const btn =
         document.getElementById("submitMaintenance");
 
+
+    // ==========================================
+    // VALIDATE REQUIRED INFORMATION
+    // ==========================================
+
+    if (
+        !maintenanceType ||
+        !maintenanceLocation ||
+        !maintenanceMessage
+    ) {
+
+        showWarning(
+            "Incomplete Information",
+            "Please fill in all required information before you continue."
+        );
+
+        return;
+
+    }
+
+
+    // ==========================================
+    // ALL REQUIRED INFORMATION IS COMPLETE
+    // ==========================================
+
     maintenancePopup.style.display = "none";
 
-    showLoading("Sending Maintenance Request...", () => {
 
-        addRequest(
-            "🔧 Maintenance Request",
-            maintenanceType || maintenanceMessage || "Guest requested maintenance assistance."
-        );
+    showLoading(
+        "Sending Maintenance Request...",
+        () => {
 
-        showNotification(
-            "🔧",
-            "Maintenance",
-            "Your maintenance request has been received."
-        );
+            addRequest(
+                "🔧 Maintenance Request",
+                `${maintenanceType} — ${maintenanceLocation} — ${maintenancePriority} — ${maintenanceMessage}`
+            );
 
-        showConfirmation(
-            `Thank you, ${guestName}!`,
-            "Your maintenance request has been received.",
-            "Our maintenance team will assist you shortly."
-        );
+            showNotification(
+                "🔧",
+                "Maintenance",
+                "Your maintenance request has been received."
+            );
 
-    }, btn);
+            showConfirmation(
+                `Thank you, ${guestName}!`,
+                "Your maintenance request has been received.",
+                "Our maintenance team will assist you shortly."
+            );
+
+        },
+        btn
+    );
 
 });
+  
 // ==========================================
 // EXTEND YOUR STAY POPUP
 // ==========================================
