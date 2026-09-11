@@ -3164,16 +3164,39 @@ sendRestaurantReservation.addEventListener("click", () => {
     // VALIDATE GUESTS
     // ======================================
 
-    if (!guests) {
+if (!guests) {
+
+    showWarning(
+        "Guests Required",
+        "Please select the number of guests."
+    );
+
+    reservationGuests.focus();
+
+    return;
+}
+
+
+// Allow "6+" as a valid selection
+if (guests !== "6+") {
+
+    const guestCount = Number(guests);
+
+    if (
+        !Number.isInteger(guestCount) ||
+        guestCount < 1
+    ) {
 
         showWarning(
-            "Please select the number of guests."
+            "Invalid Number of Guests",
+            "Please select a valid number of guests."
         );
 
         reservationGuests.focus();
 
         return;
     }
+}
 
 
     // ======================================
