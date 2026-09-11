@@ -22047,3 +22047,164 @@ padding:22px !important;
     }
 
 }
+/* ==========================================
+   WARNING POPUP — LUXURY STYLE
+========================================== */
+
+#warningPopup .confirmationBox {
+    width: min(650px, 92%);
+    max-width: 650px;
+    box-sizing: border-box;
+    padding: 45px 35px 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(38, 27, 13, .98),
+            rgba(25, 18, 9, .99)
+        );
+
+    border: 2px solid rgba(212, 175, 55, .75);
+    border-radius: 24px;
+
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, .18),
+        0 20px 60px rgba(0, 0, 0, .65),
+        inset 0 0 30px rgba(212, 175, 55, .05);
+
+    text-align: center;
+}
+
+
+/* Warning icon */
+#warningPopup .confirmationBox > div:first-child {
+    font-size: 78px !important;
+    color: #f0d05a !important;
+
+    margin: 0 auto 18px;
+
+    filter:
+        drop-shadow(0 5px 10px rgba(0,0,0,.5))
+        drop-shadow(0 0 12px rgba(212,175,55,.25));
+}
+
+
+/* Warning title */
+#warningPopup #warningTitle {
+    margin: 0 0 22px;
+
+    color: #f0d58a;
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 34px;
+    font-weight: 700;
+
+    line-height: 1.2;
+    text-align: center;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.7),
+        0 0 12px rgba(212,175,55,.15);
+}
+
+
+/* Warning message */
+#warningPopup #warningMessage {
+    margin: 0 auto 28px;
+
+    max-width: 560px;
+
+    color: #eee4cf;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 21px;
+    font-weight: 500;
+
+    line-height: 1.5;
+    letter-spacing: .2px;
+
+    text-align: center;
+}
+
+
+/* OK button */
+#warningPopup #closeWarning {
+    width: 100%;
+    margin-top: 4px;
+
+    padding: 16px 30px;
+
+    border: none;
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #f4d46f
+        );
+
+    color: #181109;
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(212,175,55,.25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+#warningPopup #closeWarning:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(212,175,55,.38);
+}
+
+
+/* ==========================================
+   WARNING POPUP — MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #warningPopup .confirmationBox {
+        width: 94%;
+        padding: 32px 20px 24px;
+        border-radius: 20px;
+    }
+
+    #warningPopup .confirmationBox > div:first-child {
+        font-size: 64px !important;
+        margin-bottom: 14px;
+    }
+
+    #warningPopup #warningTitle {
+        font-size: 26px;
+        margin-bottom: 18px;
+    }
+
+    #warningPopup #warningMessage {
+        font-size: 18px;
+        line-height: 1.45;
+        margin-bottom: 24px;
+    }
+
+    #warningPopup #closeWarning {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+}
