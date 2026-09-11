@@ -1280,7 +1280,6 @@ maintenancePopup.addEventListener("click", (e) => {
 
 });
 
-
 // ==========================================
 // MAINTENANCE REQUEST
 // ==========================================
@@ -1323,12 +1322,34 @@ document.getElementById("submitMaintenance")
         );
 
         return;
-
     }
 
 
     // ==========================================
-    // ALL REQUIRED INFORMATION IS COMPLETE
+    // CHECK COTTAGE / ROOM NUMBER
+    // ONLY COTTAGES 1–12 ARE VALID
+    // ==========================================
+
+    const roomNumber =
+        Number(maintenanceLocation);
+
+    if (
+        !Number.isInteger(roomNumber) ||
+        roomNumber < 1 ||
+        roomNumber > 12
+    ) {
+
+        showWarning(
+            "Invalid Cottage Number",
+            "Please enter a valid cottage number between 1 and 12."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // ALL INFORMATION IS VALID
     // ==========================================
 
     maintenancePopup.style.display = "none";
@@ -1340,7 +1361,7 @@ document.getElementById("submitMaintenance")
 
             addRequest(
                 "🔧 Maintenance Request",
-                `${maintenanceType} — ${maintenanceLocation} — ${maintenancePriority} — ${maintenanceMessage}`
+                `${maintenanceType} — Cottage ${maintenanceLocation} — ${maintenancePriority} — ${maintenanceMessage}`
             );
 
             showNotification(
