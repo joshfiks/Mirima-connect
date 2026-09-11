@@ -972,13 +972,28 @@ receptionPopup.querySelectorAll(".service-option").forEach(item => {
 
     item.addEventListener("click", () => {
 
-        receptionPopup.querySelectorAll(".service-option").forEach(i => {
+        // Remove selection from other cards
+        receptionPopup
+            .querySelectorAll(".service-option.selected")
+            .forEach(selectedItem => {
 
-            i.classList.remove("selected");
+                if (selectedItem !== item) {
+                    selectedItem.classList.remove("selected");
+                }
 
-        });
+            });
 
-        item.classList.add("selected");
+
+        // Toggle this card
+        if (item.classList.contains("selected")) {
+
+            item.classList.remove("selected");
+
+        } else {
+
+            item.classList.add("selected");
+
+        }
 
     });
 
