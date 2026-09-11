@@ -4162,6 +4162,7 @@ housekeepingPopup.addEventListener(
 
     }
 );
+  
 // ==========================================
 // BILLING POPUP
 // ==========================================
@@ -4170,41 +4171,78 @@ billingCard.addEventListener("click", () => {
 
     billingPopup.style.display = "flex";
 
-    billingPopup.querySelectorAll(".service-option").forEach(option => {
 
-    option.onclick = () => {
+    // ==========================================
+    // BILLING CARD SELECTION
+    // ==========================================
 
-        billingPopup.querySelectorAll(".service-option").forEach(item => {
+    billingPopup
+        .querySelectorAll(".service-option")
+        .forEach(option => {
 
-            item.classList.remove("selected");
+            option.onclick = () => {
+
+                // Remove selection from other cards
+                billingPopup
+                    .querySelectorAll(".service-option.selected")
+                    .forEach(item => {
+
+                        if (item !== option) {
+                            item.classList.remove("selected");
+                        }
+
+                    });
+
+
+                // Toggle the clicked card
+                if (option.classList.contains("selected")) {
+
+                    option.classList.remove("selected");
+
+                } else {
+
+                    option.classList.add("selected");
+
+                }
+
+            };
 
         });
 
-        option.classList.add("selected");
-
-    };
-
 });
 
-});
+
+// ==========================================
+// CLOSE BILLING
+// ==========================================
 
 closeBilling.addEventListener("click", () => {
-   
-   clearSelections(billingPopup, ".service-option");
-  
- billingPopup.style.display = "none";
-  
+
+    clearSelections(
+        billingPopup,
+        ".service-option"
+    );
+
+    billingPopup.style.display = "none";
+
 });
+
+
+// ==========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ==========================================
 
 billingPopup.addEventListener("click", (e) => {
 
     if (e.target === billingPopup) {
 
-    clearSelections(billingPopup, ".service-option");
-      
+        clearSelections(
+            billingPopup,
+            ".service-option"
+        );
+
         billingPopup.style.display = "none";
 
-        
     }
 
 });
