@@ -5388,34 +5388,156 @@ if (transferDate === todayString) {
 
 });
 
-  // ==========================================
+// ==========================================
 // CAMPFIRE REQUEST
 // ==========================================
 
 document.getElementById("sendCampfireRequest").addEventListener("click", () => {
 
-    const type = document.getElementById("campfireType").value;
-    const date = document.getElementById("campfireDate").value;
-    const time = document.getElementById("campfireTime").value;
+    const name =
+        document.getElementById("campfireName").value.trim();
 
-    if (type === "" || date === "" || time === "") {
+    const room =
+        document.getElementById("campfireRoom").value.trim();
+
+    const type =
+        document.getElementById("campfireType").value;
+
+    const date =
+        document.getElementById("campfireDate").value;
+
+    const time =
+        document.getElementById("campfireTime").value;
+
+    const guests =
+        document.getElementById("campfireGuests").value;
+
+    const extras =
+        document.getElementById("campfireExtras").value;
+
+    const notes =
+        document.getElementById("campfireNotes").value.trim();
+
+    // ==========================================
+    // REQUIRED INFORMATION
+    // ==========================================
+
+    if (!name || !room || !type || !date || !time || !guests) {
 
         showWarning(
             "Incomplete Information",
-            "Please complete all required campfire details."
+            "Please complete your name, cottage number, experience, date, time, and number of guests before continuing."
         );
 
         return;
-
     }
 
-    const guestName = document.getElementById("campfireName").value;
+    // ==========================================
+    // COTTAGE NUMBER
+    // ==========================================
 
-    const btn = document.getElementById("sendCampfireRequest");
+    const roomNumber = Number(room);
+
+    if (
+        !Number.isInteger(roomNumber) ||
+        roomNumber < 1 ||
+        roomNumber > 12
+    ) {
+
+        showWarning(
+            "Invalid Cottage Number",
+            "Please enter a valid cottage number between 1 and 12."
+        );
+
+        return;
+    }
+
+    // ==========================================
+    // NUMBER OF GUESTS
+    // ==========================================
+
+    const guestCount = Number(guests);
+
+    if (
+        !Number.isInteger(guestCount) ||
+        guestCount < 1
+    ) {
+
+        showWarning(
+            "Invalid Number of Guests",
+            "The number of guests must be at least 1."
+        );
+
+        return;
+    }
+
+    // ==========================================
+    // DATE VALIDATION
+    // ==========================================
+
+    const today = new Date();
+
+    const todayYear = today.getFullYear();
+    const todayMonth = String(today.getMonth() + 1).padStart(2, "0");
+    const todayDay = String(today.getDate()).padStart(2, "0");
+
+    const todayString =
+        `${todayYear}-${todayMonth}-${todayDay}`;
+
+    if (date < todayString) {
+
+        showWarning(
+            "Invalid Date",
+            "Please select today or a future date for your campfire."
+        );
+
+        return;
+    }
+
+    // ==========================================
+    // TIME VALIDATION FOR TODAY
+    // ==========================================
+
+    if (date === todayString) {
+
+        const [hours, minutes] =
+            time.split(":").map(Number);
+
+        const currentMinutes =
+            (today.getHours() * 60) + today.getMinutes();
+
+        const selectedMinutes =
+            (hours * 60) + minutes;
+
+        if (selectedMinutes < currentMinutes + 10) {
+
+            showWarning(
+                "Invalid Time",
+                "For today's campfire, please select a time that is at least 10 minutes from now."
+            );
+
+            return;
+        }
+    }
+
+    // ==========================================
+    // SUBMIT REQUEST
+    // ==========================================
+
+    const guestName =
+        localStorage.getItem("guestName") ||
+        name ||
+        "Guest";
+
+    const btn =
+        document.getElementById("sendCampfireRequest");
 
     showLoading("Preparing Your Campfire...", () => {
 
-        addRequest("🔥 Campfire Experience", "Waiting");
+        addRequest(
+            "🔥 Campfire Experience",
+            `${type} — Cottage ${roomNumber} — ${date} at ${time} — ${guestCount} guest${guestCount > 1 ? "s" : ""}${extras ? " — " + extras : ""}${notes ? " — " + notes : ""}`
+        );
 
         showNotification(
             "🔥",
@@ -5423,12 +5545,24 @@ document.getElementById("sendCampfireRequest").addEventListener("click", () => {
             "Your campfire reservation has been received."
         );
 
+        // ==========================================
+        // CLEAR FORM
+        // ==========================================
+
+        document.getElementById("campfireRoom").value = "";
+        document.getElementById("campfireType").value = "";
+        document.getElementById("campfireDate").value = "";
+        document.getElementById("campfireTime").value = "";
+        document.getElementById("campfireGuests").value = "";
+        document.getElementById("campfireExtras").value = "";
+        document.getElementById("campfireNotes").value = "";
+
         campfirePopup.style.display = "none";
 
         showConfirmation(
             `Thank you, ${guestName}!`,
             "Your campfire has been reserved.",
-            "Estimated confirmation: 5–10 minutes"
+            "Our camp activities team will confirm the arrangements shortly."
         );
 
     }, btn);
