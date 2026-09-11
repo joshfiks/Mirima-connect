@@ -3216,76 +3216,105 @@ sendRestaurantReservation.addEventListener("click", () => {
     const notes = reservationNotes.value.trim();
 
 
-    // ======================================
-    // VALIDATE DATE
-    // ======================================
+// ======================================
+// VALIDATE DATE
+// ======================================
 
-    if (!date) {
+if (!date) {
+
+    showWarning(
+        "Date Required",
+        "Please select your preferred reservation date."
+    );
+
+    reservationDate.focus();
+
+    return;
+}
+
+
+// ======================================
+// GET TODAY'S DATE
+// ======================================
+
+const today = new Date();
+
+const todayYear = today.getFullYear();
+
+const todayMonth =
+    String(today.getMonth() + 1).padStart(2, "0");
+
+const todayDay =
+    String(today.getDate()).padStart(2, "0");
+
+const todayString =
+    `${todayYear}-${todayMonth}-${todayDay}`;
+
+    
+// ======================================
+// REJECT PAST DATES
+// ======================================
+
+if (date < todayString) {
+
+    showWarning(
+        "Invalid Reservation Date",
+        "Please select today or a future date."
+    );
+
+    reservationDate.focus();
+
+    return;
+}
+
+
+// ======================================
+// VALIDATE TIME
+// ======================================
+
+if (!time) {
+
+    showWarning(
+        "Time Required",
+        "Please select your preferred reservation time."
+    );
+
+    reservationTime.focus();
+
+    return;
+}
+
+
+// ======================================
+// CHECK TIME FOR TODAY
+// ======================================
+
+if (date === todayString) {
+
+    const [hours, minutes] =
+        time.split(":").map(Number);
+
+    const currentMinutes =
+        (today.getHours() * 60) +
+        today.getMinutes();
+
+    const selectedMinutes =
+        (hours * 60) + minutes;
+
+
+    // Must be at least 10 minutes from now
+    if (selectedMinutes < currentMinutes + 10) {
 
         showWarning(
-            "Please select your preferred reservation date."
-        );
-
-        reservationDate.focus();
-
-        return;
-    }
-
-
-    // ======================================
-    // VALIDATE TIME
-    // ======================================
-
-    if (!time) {
-
-        showWarning(
-            "Please select your preferred reservation time."
+            "Invalid Reservation Time",
+            "For today's reservation, please select a time that is at least 10 minutes from now."
         );
 
         reservationTime.focus();
 
         return;
     }
-
-
-    // ======================================
-    // VALIDATE GUESTS
-    // ======================================
-
-if (!guests) {
-
-    showWarning(
-        "Guests Required",
-        "Please select the number of guests."
-    );
-
-    reservationGuests.focus();
-
-    return;
 }
-
-
-// Allow "6+" as a valid selection
-if (guests !== "6+") {
-
-    const guestCount = Number(guests);
-
-    if (
-        !Number.isInteger(guestCount) ||
-        guestCount < 1
-    ) {
-
-        showWarning(
-            "Invalid Number of Guests",
-            "Please select a valid number of guests."
-        );
-
-        reservationGuests.focus();
-
-        return;
-    }
-}
-
 
     // ======================================
     // FORMAT DATE
