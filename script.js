@@ -4216,27 +4216,51 @@ billingPopup.addEventListener("click", (e) => {
 exploreCard.addEventListener("click", () => {
 
     // Always start Explore with nothing selected
-    explorePopup.querySelectorAll(".service-option").forEach(option => {
-        option.classList.remove("selected");
-    });
+    explorePopup
+        .querySelectorAll(".service-option")
+        .forEach(option => {
+            option.classList.remove("selected");
+        });
 
     explorePopup.style.display = "flex";
 
-    explorePopup.querySelectorAll(".service-option").forEach(option => {
 
-        option.onclick = () => {
+    // ==========================================
+    // EXPLORE CARD SELECTION
+    // ==========================================
 
-            // Remove selection from every card
-            explorePopup.querySelectorAll(".service-option").forEach(item => {
-                item.classList.remove("selected");
-            });
+    explorePopup
+        .querySelectorAll(".service-option")
+        .forEach(option => {
 
-            // Select only the clicked card
-            option.classList.add("selected");
+            option.onclick = () => {
 
-        };
+                // Remove selection from other cards
+                explorePopup
+                    .querySelectorAll(".service-option.selected")
+                    .forEach(item => {
 
-    });
+                        if (item !== option) {
+                            item.classList.remove("selected");
+                        }
+
+                    });
+
+
+                // Toggle the clicked card
+                if (option.classList.contains("selected")) {
+
+                    option.classList.remove("selected");
+
+                } else {
+
+                    option.classList.add("selected");
+
+                }
+
+            };
+
+        });
 
 });
 
