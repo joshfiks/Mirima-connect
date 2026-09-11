@@ -10745,31 +10745,46 @@ HERO MOBILE
 #lateCheckoutPopup .popup-content {
     width: 90% !important;
     max-width: 460px !important;
+    max-height: 90vh !important;
     padding: 0 !important;
+
     background: linear-gradient(160deg, #10231b, #07130e) !important;
     border: 1px solid rgba(212,175,55,.45) !important;
     border-radius: 28px !important;
-    overflow: hidden !important;
+
+    /* Allow the popup content to scroll */
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
     box-shadow: 0 30px 80px rgba(0,0,0,.7) !important;
+
+    /* Prevent scrollbar from affecting layout */
+    scrollbar-width: thin;
 }
+
 
 /* Gold header */
 #lateCheckoutPopup .popup-content::before {
     content: "LATE CHECKOUT";
     display: block;
     padding: 25px 20px;
+
     background: linear-gradient(
         135deg,
         #173b2a,
         #0a1c14
     );
+
     border-bottom: 1px solid rgba(212,175,55,.3);
+
     color: #f1d477;
     text-align: center;
+
     font-family: "Cinzel", serif;
     font-size: 13px;
     letter-spacing: 3px;
 }
+
 
 /* Close */
 #lateCheckoutPopup .closeLateCheckout {
@@ -10777,58 +10792,75 @@ HERO MOBILE
     top: 15px;
     right: 17px;
     z-index: 5;
+
     width: 32px;
     height: 32px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 50%;
     background: rgba(255,255,255,.08);
+
     color: white;
     font-size: 21px;
     cursor: pointer;
 }
 
+
 /* Title */
 #lateCheckoutPopup h2 {
     margin: 25px 25px 8px !important;
+
     font-family: "Cinzel", serif;
     font-size: 27px !important;
     text-align: center;
+
     color: #f4dc8a;
 }
+
 
 /* Description */
 #lateCheckoutPopup .popup-content > p {
     margin: 0 30px 25px !important;
+
     text-align: center;
     font-size: 13px;
     line-height: 1.7;
     opacity: .7;
 }
 
+
 /* Checkout information */
 #lateCheckoutPopup .checkout-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
+
     margin: 0 22px 24px;
     padding: 0;
 }
 
 #lateCheckoutPopup .checkout-info > div {
     padding: 16px;
+
     border-radius: 16px;
+
     background: rgba(255,255,255,.045);
     border: 1px solid rgba(212,175,55,.18);
+
     text-align: center;
 }
 
 #lateCheckoutPopup .checkout-info small {
     display: block;
+
     margin-bottom: 7px;
+
     color: #d4af37;
     font-size: 9px;
+
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -10837,27 +10869,40 @@ HERO MOBILE
     font-size: 12px;
 }
 
+
 /* Labels */
 #lateCheckoutPopup label {
     display: block;
+
     margin: 16px 22px 7px;
+
     font-size: 12px;
     color: #eadfbf;
 }
+
 
 /* Fields */
 #lateCheckoutPopup select,
 #lateCheckoutPopup textarea {
     width: calc(100% - 44px) !important;
+
     margin: 0 22px !important;
+
     box-sizing: border-box;
+
     padding: 14px;
+
     border-radius: 14px;
+
     border: 1px solid rgba(212,175,55,.22);
+
     background: rgba(0,0,0,.22);
+
     color: white;
+
     font-family: "Poppins", sans-serif;
     font-size: 13px;
+
     outline: none;
 }
 
@@ -10869,48 +10914,77 @@ HERO MOBILE
 #lateCheckoutPopup select:focus,
 #lateCheckoutPopup textarea:focus {
     border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212,175,55,.08);
+
+    box-shadow:
+        0 0 0 3px rgba(212,175,55,.08);
 }
+
 
 /* Note */
 #lateCheckoutPopup .late-checkout-note {
     margin: 18px 22px;
+
     padding: 13px 15px;
+
     border-radius: 14px;
+
     background: rgba(212,175,55,.07);
+
     border: 1px solid rgba(212,175,55,.15);
+
     color: #ddd;
+
     font-size: 11px;
     line-height: 1.6;
 }
 
+
 /* Button */
 #lateCheckoutPopup #submitLateCheckout {
     width: calc(100% - 44px) !important;
+
     margin: 20px 22px 25px !important;
+
     padding: 15px;
+
     border: none;
     border-radius: 15px;
-    background: linear-gradient(135deg,#d4af37,#f3d778);
+
+    background: linear-gradient(
+        135deg,
+        #d4af37,
+        #f3d778
+    );
+
     color: #172016;
+
     font-weight: 700;
     font-size: 13px;
+
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(212,175,55,.2);
+
+    box-shadow:
+        0 8px 25px rgba(212,175,55,.2);
 }
 
-/* Mobile */
+
+/* ==========================================
+   MOBILE
+========================================== */
+
 @media(max-width:600px){
+
+    #lateCheckoutPopup .popup-content {
+        width: 92% !important;
+        max-height: 88vh !important;
+    }
 
     #lateCheckoutPopup .checkout-info {
         grid-template-columns: 1fr;
     }
 
-    #lateCheckoutPopup .popup-content {
-        max-height: 90vh !important;
-    }
-
 }
+
 /* ==========================================
    BILLING HELP — DESKTOP + MOBILE
 ========================================== */
