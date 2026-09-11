@@ -2192,6 +2192,94 @@ explorePopup
     });
 
 });
+
+  // ==========================================
+// RESTAURANT & BAR CONTACT
+// ==========================================
+
+const restaurantContactButton =
+    document.getElementById("restaurantContactButton");
+
+const restaurantContactPopup =
+    document.getElementById("restaurantContactPopup");
+
+const closeRestaurantContact =
+    document.querySelector(".closeRestaurantContact");
+
+const callRestaurantButton =
+    document.getElementById("callRestaurantButton");
+
+const whatsappRestaurantButton =
+    document.getElementById("whatsappRestaurantButton");
+
+
+// ==========================================
+// OPEN CONTACT
+// ==========================================
+
+restaurantContactButton.addEventListener("click", () => {
+
+    restaurantBarPopup.style.display = "none";
+
+    restaurantContactPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLOSE CONTACT — X
+// ==========================================
+
+closeRestaurantContact.addEventListener("click", () => {
+
+    restaurantContactPopup.style.display = "none";
+
+    restaurantBarPopup.style.display = "flex";
+
+});
+
+
+// ==========================================
+// CLICK OUTSIDE CONTACT
+// ==========================================
+
+restaurantContactPopup.addEventListener("click", (e) => {
+
+    if (e.target === restaurantContactPopup) {
+
+        restaurantContactPopup.style.display = "none";
+
+        restaurantBarPopup.style.display = "flex";
+
+    }
+
+});
+
+
+// ==========================================
+// CALL RESTAURANT
+// ==========================================
+
+callRestaurantButton.addEventListener("click", () => {
+
+    window.location.href = "tel:+256700894459";
+
+});
+
+
+// ==========================================
+// WHATSAPP RESTAURANT
+// ==========================================
+
+whatsappRestaurantButton.addEventListener("click", () => {
+
+    window.open(
+        "https://wa.me/25742015605",
+        "_blank"
+    );
+
+});
+  
 // ==========================================
 // RESTAURANT MENU — COMPLETE FUNCTIONALITY
 // ==========================================
