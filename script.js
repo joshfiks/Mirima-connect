@@ -6759,7 +6759,7 @@ mobileMoneyPopup
 
     });
 
-  // ==========================================
+// ==========================================
 // MOBILE MONEY PAYMENT SUBMISSION
 // ==========================================
 
@@ -6777,7 +6777,11 @@ document.getElementById("submitMobileMoney").addEventListener("click", () => {
     const accountName =
         document.getElementById("paymentAccountName").value.trim();
 
-    // Check network
+
+    // ==========================================
+    // CHECK NETWORK
+    // ==========================================
+
     if (!selectedNetwork) {
 
         showWarning(
@@ -6788,53 +6792,134 @@ document.getElementById("submitMobileMoney").addEventListener("click", () => {
         return;
     }
 
-    // Check payment number
-    if (phone === "") {
+
+    // ==========================================
+    // CHECK PHONE NUMBER
+    // Must be exactly 12 digits
+    // Must start with 256
+    // ==========================================
+
+    if (!phone) {
 
         showWarning(
             "Payment Number Required",
-            "Please enter the number you used to make the payment."
+            "Please enter the mobile money number used to make the payment."
         );
+
+        document.getElementById("paymentPhone").focus();
 
         return;
     }
 
-    // Check transaction ID
-    if (transactionId === "") {
+    if (!/^256\d{9}$/.test(phone)) {
+
+        showWarning(
+            "Invalid Phone Number",
+            "The phone number must contain exactly 12 digits and start with 256. Example: 256700123456."
+        );
+
+        document.getElementById("paymentPhone").focus();
+
+        return;
+    }
+
+
+    // ==========================================
+    // CHECK TRANSACTION ID
+    // Must be exactly 12 numbers
+    // ==========================================
+
+    if (!transactionId) {
 
         showWarning(
             "Transaction ID Required",
             "Please enter your mobile money transaction ID."
         );
 
+        document.getElementById("transactionId").focus();
+
         return;
     }
 
-    // Check account name
-    if (accountName === "") {
+    if (!/^\d{12}$/.test(transactionId)) {
+
+        showWarning(
+            "Invalid Transaction ID",
+            "The transaction ID must contain exactly 12 numbers. Letters and other characters are not allowed."
+        );
+
+        document.getElementById("transactionId").focus();
+
+        return;
+    }
+
+
+    // ==========================================
+    // CHECK REGISTERED ACCOUNT NAME
+    // Letters and spaces only
+    // ==========================================
+
+    if (!accountName) {
 
         showWarning(
             "Account Name Required",
             "Please enter the name registered on the mobile money account."
         );
 
+        document.getElementById("paymentAccountName").focus();
+
         return;
     }
 
+    if (!/^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)*$/.test(accountName)) {
+
+        showWarning(
+            "Invalid Account Name",
+            "The registered account name must contain letters and spaces only. Numbers and special characters are not allowed."
+        );
+
+        document.getElementById("paymentAccountName").focus();
+
+        return;
+    }
+
+
+    // ==========================================
+    // GET NETWORK
+    // ==========================================
+
     const network =
-        selectedNetwork.querySelector("strong").textContent.trim();
+        selectedNetwork
+            .querySelector("strong")
+            .textContent
+            .trim();
+
+
+    // ==========================================
+    // GUEST NAME
+    // ==========================================
 
     const guestName =
         localStorage.getItem("guestName") || "Guest";
 
+
+    // ==========================================
+    // SUBMIT BUTTON
+    // ==========================================
+
     const btn =
         document.getElementById("submitMobileMoney");
+
+
+    // ==========================================
+    // SUBMIT PAYMENT
+    // ==========================================
 
     showLoading("Submitting Payment Details...", () => {
 
         addRequest(
             `📱 ${network} Payment`,
-            "Verification"
+            `Phone: ${phone} — Transaction ID: ${transactionId} — Account Name: ${accountName}`
         );
 
         showNotification(
@@ -6843,19 +6928,29 @@ document.getElementById("submitMobileMoney").addEventListener("click", () => {
             "Your payment details have been sent to reception for verification."
         );
 
+
+        // Close Mobile Money
         mobileMoneyPopup.style.display = "none";
 
+
+        // Clear selected network
         clearSelections(
             mobileMoneyPopup,
             ".mobile-money-card"
         );
 
+
+        // Hide instructions
         mobileMoneyInstructions.style.display = "none";
 
+
+        // Clear payment fields
         document.getElementById("paymentPhone").value = "";
         document.getElementById("transactionId").value = "";
         document.getElementById("paymentAccountName").value = "";
 
+
+        // Confirmation
         showConfirmation(
             `Thank you, ${guestName}!`,
             "Your mobile money payment details have been received.",
