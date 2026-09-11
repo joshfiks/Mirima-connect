@@ -10015,7 +10015,7 @@ HERO MOBILE
    LOADING MESSAGE
 ========================================================= */
 
-.loadingBox p {
+#loadingPopup .loadingBox > p {
 
     position: relative;
 
@@ -10032,7 +10032,13 @@ HERO MOBILE
 
     font-size: 20px;
 
+    font-weight: 500;
+
     line-height: 1.5;
+
+    letter-spacing: .2px;
+
+    text-align: center;
 
 }
 
@@ -10188,11 +10194,9 @@ HERO MOBILE
     }
 
 
-    .loadingBox p {
-
-        font-size: 18px;
-
-    }
+  #loadingPopup .loadingBox > p {
+    font-size: 18px;
+}
 
 
     .loadingBox .progressContainer {
