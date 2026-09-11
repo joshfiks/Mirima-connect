@@ -6340,6 +6340,11 @@ document.getElementById("submitBillingHelp")
                 ".billing-help-card.selected"
             );
 
+
+        // ==========================================
+        // CHECK HELP TOPIC
+        // ==========================================
+
         if (!selectedHelp) {
 
             showWarning(
@@ -6350,33 +6355,67 @@ document.getElementById("submitBillingHelp")
             return;
         }
 
+
         const helpTitle =
             selectedHelp.querySelector("strong")
                 .textContent
                 .trim();
+
+
+        // ==========================================
+        // GET BILLING PROBLEM DESCRIPTION
+        // ==========================================
 
         const message =
             document.getElementById("billingHelpMessage")
                 .value
                 .trim();
 
+
+        // ==========================================
+        // DESCRIPTION IS REQUIRED
+        // ==========================================
+
+        if (!message) {
+
+            showWarning(
+                "Description Required",
+                "Please describe your billing issue or problem before submitting."
+            );
+
+            document.getElementById("billingHelpMessage").focus();
+
+            return;
+        }
+
+
+        // ==========================================
+        // GUEST INFORMATION
+        // ==========================================
+
         const guestName =
             localStorage.getItem("guestName") || "Guest";
 
-        billingHelpPopup.style.display = "none";
-
-        selectedHelp.classList.remove("selected");
-
-        document.getElementById("billingHelpMessage").value = "";
-
         const btn =
             document.getElementById("submitBillingHelp");
+
+
+        // ==========================================
+        // CLOSE BILLING HELP
+        // ==========================================
+
+        billingHelpPopup.style.display = "none";
+
+
+        // ==========================================
+        // SUBMIT BILLING HELP
+        // ==========================================
 
         showLoading("Sending Billing Help...", () => {
 
             addRequest(
                 "❓ Billing Help",
-                `${helpTitle}${message ? " — " + message : ""}`
+                `${helpTitle} — ${message}`
             );
 
             showNotification(
@@ -6385,6 +6424,16 @@ document.getElementById("submitBillingHelp")
                 "Your billing help request has been received."
             );
 
+
+            // Clear selected topic
+            selectedHelp.classList.remove("selected");
+
+
+            // Clear description
+            document.getElementById("billingHelpMessage").value = "";
+
+
+            // Show confirmation
             showConfirmation(
                 `Thank you, ${guestName}!`,
                 "Your billing help request has been received.",
@@ -6394,6 +6443,7 @@ document.getElementById("submitBillingHelp")
         }, btn);
 
     });
+
   
 // ==========================================
 // BILLING REQUEST
