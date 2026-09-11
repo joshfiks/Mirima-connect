@@ -4983,24 +4983,27 @@ document.getElementById("sendTransferRequest").addEventListener("click", () => {
     // MUST BE AT LEAST 10 MINUTES FROM NOW
     // ==========================================
 
-    const selectedDateTime =
-        new Date(`${transferDate}T${transferTime}`);
+   const selectedDateTime =
+    new Date(`${transferDate}T${transferTime}`);
 
-    const now = new Date();
+const now = new Date();
 
-    const minimumTime =
-        new Date(now.getTime() + 10 * 60 * 1000);
+// Compare only to the current minute
+now.setSeconds(0, 0);
+
+const minimumTime =
+    new Date(now.getTime() + 10 * 60 * 1000);
 
 
-    if (selectedDateTime < minimumTime) {
+if (selectedDateTime < minimumTime) {
 
-        showWarning(
-            "Invalid Transfer Time",
-            "Please select a transfer time that is at least 10 minutes from now."
-        );
+    showWarning(
+        "Invalid Transfer Time",
+        "Please select a transfer time that is at least 10 minutes from now."
+    );
 
-        return;
-    }
+    return;
+}
 
 
     // ==========================================
