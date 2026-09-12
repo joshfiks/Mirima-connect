@@ -5987,267 +5987,393 @@ document.getElementById("requestReceipt")
     });
 
 // ==========================================
-// DOWNLOAD PAYMENT RECEIPT
+// DOWNLOAD PAYMENT RECEIPT — PDF
 // ==========================================
 
 document.getElementById("downloadReceipt")
     .addEventListener("click", () => {
 
-        // Get the information currently displayed
-        // in the receipt popup
+    const { jsPDF } = window.jspdf;
 
-        const guest =
-            document.getElementById("receiptGuestName").textContent.trim();
+    // ==========================================
+    // GET CURRENT RECEIPT INFORMATION
+    // ==========================================
 
-        const cottage =
-            document.getElementById("receiptCottage").textContent.trim();
+    const guest =
+        document.getElementById("receiptGuestName")
+            .textContent.trim();
 
-        const amount =
-            document.getElementById("receiptAmount").textContent.trim();
+    const cottage =
+        document.getElementById("receiptCottage")
+            .textContent.trim();
 
-        const method =
-            document.getElementById("receiptMethod").textContent.trim();
+    const amount =
+        document.getElementById("receiptAmount")
+            .textContent.trim();
 
-        const transaction =
-            document.getElementById("receiptTransaction").textContent.trim();
+    const method =
+        document.getElementById("receiptMethod")
+            .textContent.trim();
 
-        const date =
-            document.getElementById("receiptDate").textContent.trim();
+    const transaction =
+        document.getElementById("receiptTransaction")
+            .textContent.trim();
 
-        const status =
-            document.getElementById("receiptStatus").textContent.trim();
+    const date =
+        document.getElementById("receiptDate")
+            .textContent.trim();
 
+    const status =
+        document.getElementById("receiptStatus")
+            .textContent.trim();
 
-        // Create the downloadable receipt
 
-        const receiptHTML = `
-<!DOCTYPE html>
+    // ==========================================
+    // CREATE PDF
+    // ==========================================
 
-<html lang="en">
+    const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4"
+    });
 
-<head>
 
-<meta charset="UTF-8">
+    // ==========================================
+    // COLORS
+    // ==========================================
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    const gold = [212, 175, 55];
 
-<title>Payment Receipt - Mirima Kibale Lodge</title>
+    const darkGold = [150, 110, 25];
 
-<style>
+    const dark = [35, 25, 15];
 
-body {
-    margin: 0;
-    padding: 40px 20px;
-    background: #f3efe7;
-    font-family: Arial, sans-serif;
-    color: #2b2115;
-}
+    const cream = [250, 247, 238];
 
-.receipt {
-    max-width: 600px;
-    margin: auto;
-    padding: 35px;
+    const muted = [110, 100, 85];
 
-    background: #fffdf8;
 
-    border: 2px solid #d4af37;
-    border-radius: 18px;
+    // ==========================================
+    // BACKGROUND
+    // ==========================================
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.15);
-}
+    doc.setFillColor(...cream);
 
-.header {
-    text-align: center;
-    margin-bottom: 30px;
-}
+    doc.rect(
+        0,
+        0,
+        210,
+        297,
+        "F"
+    );
 
-.icon {
-    font-size: 45px;
-}
 
-h1 {
-    margin: 10px 0 5px;
+    // ==========================================
+    // OUTER GOLD FRAME
+    // ==========================================
 
-    color: #a77b1b;
+    doc.setDrawColor(...gold);
 
-    font-family: Georgia, serif;
+    doc.setLineWidth(1);
 
-    letter-spacing: 2px;
-}
+    doc.roundedRect(
+        12,
+        12,
+        186,
+        273,
+        5,
+        5,
+        "S"
+    );
 
-.subtitle {
-    color: #777;
-}
 
-.details {
-    border: 1px solid #dbc889;
-    border-radius: 12px;
-    overflow: hidden;
-}
+    // Inner frame
 
-.row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    doc.setLineWidth(.3);
 
-    padding: 16px;
+    doc.roundedRect(
+        16,
+        16,
+        178,
+        265,
+        4,
+        4,
+        "S"
+    );
 
-    border-bottom: 1px dashed #d8ccb0;
-}
 
-.row:last-child {
-    border-bottom: none;
-}
+    // ==========================================
+    // LODGE NAME
+    // ==========================================
 
-.label {
-    color: #777;
-}
+    doc.setTextColor(...darkGold);
 
-.value {
-    font-weight: bold;
-    text-align: right;
-}
+    doc.setFont(
+        "times",
+        "bold"
+    );
 
-.status {
-    margin-top: 20px;
-    padding: 15px;
+    doc.setFontSize(20);
 
-    text-align: center;
+    doc.text(
+        "MIRIMA KIBALE LODGE",
+        105,
+        35,
+        { align: "center" }
+    );
 
-    background: #f5ecd0;
 
-    border: 1px solid #d4af37;
+    // ==========================================
+    // RECEIPT TITLE
+    // ==========================================
 
-    border-radius: 10px;
+    doc.setFontSize(25);
 
-    font-weight: bold;
-}
+    doc.setTextColor(...dark);
 
-.footer {
-    margin-top: 30px;
+    doc.text(
+        "PAYMENT RECEIPT",
+        105,
+        51,
+        { align: "center" }
+    );
 
-    text-align: center;
 
-    color: #777;
+    doc.setFont(
+        "times",
+        "normal"
+    );
 
-    font-size: 13px;
-}
+    doc.setFontSize(12);
 
-</style>
+    doc.setTextColor(...muted);
 
-</head>
+    doc.text(
+        "Official Guest Payment Record",
+        105,
+        59,
+        { align: "center" }
+    );
 
-<body>
 
-<div class="receipt">
+    // ==========================================
+    // GOLD DIVIDER
+    // ==========================================
 
-    <div class="header">
+    doc.setDrawColor(...gold);
 
-        <div class="icon">🧾</div>
+    doc.setLineWidth(.8);
 
-        <h1>PAYMENT RECEIPT</h1>
+    doc.line(
+        70,
+        68,
+        140,
+        68
+    );
 
-        <div class="subtitle">
-            Mirima Kibale Lodge
-        </div>
 
-    </div>
+    // ==========================================
+    // RECEIPT DETAILS BOX
+    // ==========================================
 
+    doc.setDrawColor(
+        205,
+        190,
+        150
+    );
 
-    <div class="details">
+    doc.setLineWidth(.4);
 
-        <div class="row">
-            <span class="label">Guest</span>
-            <span class="value">${guest}</span>
-        </div>
+    doc.roundedRect(
+        27,
+        80,
+        156,
+        101,
+        4,
+        4,
+        "S"
+    );
 
-        <div class="row">
-            <span class="label">Cottage</span>
-            <span class="value">${cottage}</span>
-        </div>
 
-        <div class="row">
-            <span class="label">Amount</span>
-            <span class="value">${amount}</span>
-        </div>
+    // ==========================================
+    // DETAIL ROW FUNCTION
+    // ==========================================
 
-        <div class="row">
-            <span class="label">Payment Method</span>
-            <span class="value">${method}</span>
-        </div>
+    function addRow(label, value, y) {
 
-        <div class="row">
-            <span class="label">Transaction ID</span>
-            <span class="value">${transaction}</span>
-        </div>
-
-        <div class="row">
-            <span class="label">Date</span>
-            <span class="value">${date}</span>
-        </div>
-
-    </div>
-
-
-    <div class="status">
-        ${status}
-    </div>
-
-
-    <div class="footer">
-        Thank you for choosing Mirima Kibale Lodge.
-    </div>
-
-</div>
-
-</body>
-
-</html>
-`;
-
-
-        // Create downloadable file
-
-        const blob =
-            new Blob(
-                [receiptHTML],
-                { type: "text/html" }
-            );
-
-
-        const url =
-            URL.createObjectURL(blob);
-
-
-        const link =
-            document.createElement("a");
-
-        link.href = url;
-
-        link.download =
-            "Mirima-Kibale-Lodge-Payment-Receipt.html";
-
-
-        document.body.appendChild(link);
-
-        link.click();
-
-        document.body.removeChild(link);
-
-        URL.revokeObjectURL(url);
-
-
-        // Notify guest
-
-        showNotification(
-            "🧾",
-            "Receipt Downloaded",
-            "Your payment receipt has been downloaded successfully."
+        doc.setFont(
+            "helvetica",
+            "normal"
         );
 
-    });
+        doc.setFontSize(10);
+
+        doc.setTextColor(
+            120,
+            110,
+            95
+        );
+
+        doc.text(
+            label,
+            37,
+            y
+        );
+
+
+        doc.setFont(
+            "helvetica",
+            "bold"
+        );
+
+        doc.setFontSize(10);
+
+        doc.setTextColor(...dark);
+
+        doc.text(
+            value || "—",
+            173,
+            y,
+            { align: "right" }
+        );
+
+
+        doc.setDrawColor(
+            225,
+            215,
+            190
+        );
+
+        doc.setLineWidth(.25);
+
+        doc.line(
+            37,
+            y + 6,
+            173,
+            y + 6
+        );
+    }
+
+
+    addRow("Guest", guest, 94);
+
+    addRow("Cottage", cottage, 108);
+
+    addRow("Amount", amount, 122);
+
+    addRow("Payment Method", method, 136);
+
+    addRow("Transaction ID", transaction, 150);
+
+    addRow("Date", date, 164);
+
+
+    // ==========================================
+    // PAYMENT STATUS
+    // ==========================================
+
+    doc.setFillColor(
+        248,
+        241,
+        216
+    );
+
+    doc.setDrawColor(...gold);
+
+    doc.roundedRect(
+        27,
+        193,
+        156,
+        18,
+        4,
+        4,
+        "FD"
+    );
+
+
+    doc.setTextColor(
+        ...darkGold
+    );
+
+    doc.setFont(
+        "helvetica",
+        "bold"
+    );
+
+    doc.setFontSize(10);
+
+    doc.text(
+        status,
+        105,
+        204,
+        { align: "center" }
+    );
+
+
+    // ==========================================
+    // FOOTER MESSAGE
+    // ==========================================
+
+    doc.setFont(
+        "times",
+        "italic"
+    );
+
+    doc.setFontSize(12);
+
+    doc.setTextColor(...muted);
+
+    doc.text(
+        "Thank you for choosing Mirima Kibale Lodge.",
+        105,
+        238,
+        { align: "center" }
+    );
+
+
+    doc.setFont(
+        "helvetica",
+        "normal"
+    );
+
+    doc.setFontSize(8);
+
+    doc.setTextColor(
+        145,
+        135,
+        120
+    );
+
+    doc.text(
+        "This receipt reflects the payment information currently displayed in the guest portal.",
+        105,
+        249,
+        { align: "center" }
+    );
+
+
+    // ==========================================
+    // DOWNLOAD
+    // ==========================================
+
+    const fileName =
+        "Mirima-Kibale-Lodge-Payment-Receipt.pdf";
+
+    doc.save(fileName);
+
+
+    // ==========================================
+    // NOTIFICATION
+    // ==========================================
+
+    showNotification(
+        "🧾",
+        "Receipt Downloaded",
+        "Your payment receipt PDF has been downloaded successfully."
+    );
+
+});
   
 // ==========================================
 // CURRENT BILL POPUP
