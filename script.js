@@ -8611,5 +8611,3 @@ closeConfirmation.addEventListener("click", () => {
 
  
 });
-
-});
