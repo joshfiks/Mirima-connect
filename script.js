@@ -5111,36 +5111,124 @@ function showLoading(message, callback, button = null){
 }
 
 // ==========================================
-// SAVE REQUEST
+// SAVE REQUEST — ADVANCED REQUEST TRACKER
 // ==========================================
 
-function addRequest(service, status){
+function addRequest(service, status, details = "", estimatedMinutes = 0) {
 
-    const requestsList = document.getElementById("requestsList");
+    const requestsList =
+        document.getElementById("requestsList");
 
-    const badge = document.getElementById("requestBadge");
+    const badge =
+        document.getElementById("requestBadge");
 
-    if(requestsList.textContent.includes("You haven't made any requests yet")){
-
+    // Remove empty message
+    if (
+        requestsList.textContent.includes(
+            "You haven't made any requests yet"
+        )
+    ) {
         requestsList.innerHTML = "";
-
     }
+
+
+    // ==========================================
+    // REQUEST TIME
+    // ==========================================
+
+    const requestTime = Date.now();
+
+
+    // ==========================================
+    // REQUEST DATA
+    // ==========================================
 
     const request = document.createElement("div");
 
     request.className = "requestItem";
 
+    request.dataset.requestTime = requestTime;
+
+    request.dataset.estimatedMinutes =
+        estimatedMinutes || 0;
+
+    request.dataset.originalStatus =
+        status || "Pending";
+
+
+    // ==========================================
+    // REQUEST CONTENT
+    // ==========================================
+
     request.innerHTML = `
-        <strong>${service}</strong><br>
-        Status: <span class="requestStatus">${status}</span>
-        <hr>
+
+        <strong>${service}</strong>
+
+        ${details ? `
+            <div class="requestDetails">
+                ${details}
+            </div>
+        ` : ""}
+
+        <div class="requestMeta">
+
+            <span>
+                Status:
+            </span>
+
+            <span class="requestStatus">
+                ${status || "Pending"}
+            </span>
+
+        </div>
+
+        ${
+            estimatedMinutes
+                ? `
+                <div class="requestEstimated">
+                    Estimated:
+                    ${estimatedMinutes} minutes
+                </div>
+                `
+                : ""
+        }
+
+        <div class="requestTime">
+            Requested:
+            ${new Date(requestTime).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit"
+            })}
+        </div>
+
     `;
+
+
+    // ==========================================
+    // ADD TO TOP
+    // ==========================================
 
     requestsList.prepend(request);
 
-    badge.textContent = requestsList.querySelectorAll(".requestItem").length;
+
+    // ==========================================
+    // UPDATE BADGE
+    // ==========================================
+
+    badge.textContent =
+        requestsList.querySelectorAll(
+            ".requestItem"
+        ).length;
+
+
+    // ==========================================
+    // START STATUS TRACKING
+    // ==========================================
+
+    updateRequestStatus(request);
 
 }
+
   
 // ==========================================
 // CONFIRMATION FUNCTION
