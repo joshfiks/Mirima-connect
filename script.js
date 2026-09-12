@@ -881,43 +881,35 @@ document
             );
 
 
-showLoading(
-    "Contacting Room Service...",
-    () => {
+        showLoading(
+            "Contacting Room Service...",
+            () => {
 
-        const orderedItem =
-            selectedItems[0].textContent
-                .trim()
-                .replace(/\s*\([^)]*\)/g, "")
-                .trim();
+                addRequest(
+                    "🍽️ Room Service",
+                    "Preparing"
+                );
 
-        const estimatedMinutes =
-            longest === 0 ? 0 : longest;
 
-        addRequest(
-            "🍽️ Room Service",
-            "Preparing",
-            `Order: ${orderedItem}`,
-            estimatedMinutes
+                showNotification(
+                    "🍽️",
+                    "Room Service",
+                    "Your order has been received."
+                );
+
+
+                showConfirmation(
+                    `Thank you, ${guestName}!`,
+                    "Your order has been received.",
+                    estimate
+                );
+
+            },
+            btn
         );
 
-        showNotification(
-            "🍽️",
-            "Room Service",
-            "Your order has been received."
-        );
+    });
 
-        showConfirmation(
-            `Thank you, ${guestName}!`,
-            "Your order has been received.",
-            estimate
-        );
-
-    },
-    btn
-);
-
-      
 
 /* ==========================================
    CLOSE POPUP
@@ -6075,125 +6067,46 @@ document.getElementById("sendCampfireRequest").addEventListener("click", () => {
 
 document.getElementById("sendHousekeepingRequest").addEventListener("click", () => {
 
-    const selected =
-        housekeepingPopup.querySelectorAll(".menuItem.selected");
+    const selected = housekeepingPopup.querySelectorAll(".menuItem.selected");
 
     if (selected.length === 0) {
 
         showWarning(
-            "No Service Selected",
-            "Please choose at least one service before sending your request."
-        );
+    "No Service Selected",
+    "Please choose at least one service before sending your request."
+);
+return;
 
-        return;
     }
 
-    const guestName =
-        localStorage.getItem("guestName") || "Guest";
+    const guestName = localStorage.getItem("guestName") || "Guest";
 
-    const btn =
-        document.getElementById("sendHousekeepingRequest");
-
-    // Get selected housekeeping services
-    const services = [];
-
-    selected.forEach(item => {
-
-        const serviceText =
-            item.textContent.trim();
-
-        // Remove the emoji from the beginning
-        const serviceName =
-            serviceText.replace(/^[^\wÀ-ÿ]+/, "").trim();
-
-        services.push(serviceName);
-
-    });
-
-    clearSelections(
-        housekeepingPopup,
-        ".menuItem"
-    );
-
-    housekeepingPopup.style.display = "none";
-
-    showLoading(
-        "Notifying Housekeeping...",
-        () => {
-
-            // Add every selected service separately
-            services.forEach(service => {
-
-                let icon = "🧹";
-
-                if (service === "Make Up Room") {
-                    icon = "🛏️";
-                }
-
-                else if (service === "Fresh Towels") {
-                    icon = "🧺";
-                }
-
-                else if (service === "Toiletries") {
-                    icon = "🧼";
-                }
-
-                else if (service === "Toilet Paper") {
-                    icon = "🧻";
-                }
-
-                else if (service === "Bathroom Cleaning") {
-                    icon = "🛁";
-                }
-
-                else if (service === "Full Room Cleaning") {
-                    icon = "🧹";
-                }
-
-                else if (service === "Romantic Room Setup") {
-                    icon = "🌹";
-                }
-
-                else if (service === "Baby Cot Request") {
-                    icon = "🍼";
-                }
-
-                else if (service === "Laundry Collection") {
-                    icon = "🧺";
-                }
-
-                else if (service === "Extra Blanket") {
-                    icon = "🧥";
-                }
-
-                addRequest(
-                    `${icon} ${service}`,
-                    "Received",
-                    "Housekeeping request received.",
-                    20
-                );
-
-            });
-
-            showNotification(
-                "🧹",
-                "Housekeeping",
-                "Your housekeeping request has been received."
-            );
-
-            showConfirmation(
-                `Thank you, ${guestName}!`,
-                "Housekeeping has received your request.",
-                "Your selected services are being processed."
-            );
-
-        },
-        btn
-    );
-
-});
-
+  clearSelections(housekeepingPopup, ".menuItem");
   
+    housekeepingPopup.style.display = "none";
+  
+const btn = document.getElementById("sendHousekeepingRequest");
+
+showLoading("Notifying Housekeeping...", () => {
+
+  addRequest("🧹 Housekeeping", "Received");
+
+  showNotification(
+    "🧹",
+    "Housekeeping",
+    "Your request has been received."
+);
+  
+    showConfirmation(
+        `Thank you, ${guestName}!`,
+        "Housekeeping has received your request.",
+        "Estimated response: 10–20 minutes"
+    );
+
+}, btn);
+
+  });
+
 // ==========================================
 // RECEIPT POPUP
 // ==========================================
@@ -8610,4 +8523,6 @@ closeConfirmation.addEventListener("click", () => {
     document.getElementById("orderConfirmation").style.display = "none";
 
  
+});
+
 });
