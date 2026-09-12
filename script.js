@@ -5987,6 +5987,269 @@ document.getElementById("requestReceipt")
     });
 
 // ==========================================
+// DOWNLOAD PAYMENT RECEIPT
+// ==========================================
+
+document.getElementById("downloadReceipt")
+    .addEventListener("click", () => {
+
+        // Get the information currently displayed
+        // in the receipt popup
+
+        const guest =
+            document.getElementById("receiptGuestName").textContent.trim();
+
+        const cottage =
+            document.getElementById("receiptCottage").textContent.trim();
+
+        const amount =
+            document.getElementById("receiptAmount").textContent.trim();
+
+        const method =
+            document.getElementById("receiptMethod").textContent.trim();
+
+        const transaction =
+            document.getElementById("receiptTransaction").textContent.trim();
+
+        const date =
+            document.getElementById("receiptDate").textContent.trim();
+
+        const status =
+            document.getElementById("receiptStatus").textContent.trim();
+
+
+        // Create the downloadable receipt
+
+        const receiptHTML = `
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Payment Receipt - Mirima Kibale Lodge</title>
+
+<style>
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    background: #f3efe7;
+    font-family: Arial, sans-serif;
+    color: #2b2115;
+}
+
+.receipt {
+    max-width: 600px;
+    margin: auto;
+    padding: 35px;
+
+    background: #fffdf8;
+
+    border: 2px solid #d4af37;
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.15);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.icon {
+    font-size: 45px;
+}
+
+h1 {
+    margin: 10px 0 5px;
+
+    color: #a77b1b;
+
+    font-family: Georgia, serif;
+
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #777;
+}
+
+.details {
+    border: 1px solid #dbc889;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 16px;
+
+    border-bottom: 1px dashed #d8ccb0;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    color: #777;
+}
+
+.value {
+    font-weight: bold;
+    text-align: right;
+}
+
+.status {
+    margin-top: 20px;
+    padding: 15px;
+
+    text-align: center;
+
+    background: #f5ecd0;
+
+    border: 1px solid #d4af37;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 30px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="receipt">
+
+    <div class="header">
+
+        <div class="icon">🧾</div>
+
+        <h1>PAYMENT RECEIPT</h1>
+
+        <div class="subtitle">
+            Mirima Kibale Lodge
+        </div>
+
+    </div>
+
+
+    <div class="details">
+
+        <div class="row">
+            <span class="label">Guest</span>
+            <span class="value">${guest}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Cottage</span>
+            <span class="value">${cottage}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Amount</span>
+            <span class="value">${amount}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Payment Method</span>
+            <span class="value">${method}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Transaction ID</span>
+            <span class="value">${transaction}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Date</span>
+            <span class="value">${date}</span>
+        </div>
+
+    </div>
+
+
+    <div class="status">
+        ${status}
+    </div>
+
+
+    <div class="footer">
+        Thank you for choosing Mirima Kibale Lodge.
+    </div>
+
+</div>
+
+</body>
+
+</html>
+`;
+
+
+        // Create downloadable file
+
+        const blob =
+            new Blob(
+                [receiptHTML],
+                { type: "text/html" }
+            );
+
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const link =
+            document.createElement("a");
+
+        link.href = url;
+
+        link.download =
+            "Mirima-Kibale-Lodge-Payment-Receipt.html";
+
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url);
+
+
+        // Notify guest
+
+        showNotification(
+            "🧾",
+            "Receipt Downloaded",
+            "Your payment receipt has been downloaded successfully."
+        );
+
+    });
+  
+// ==========================================
 // CURRENT BILL POPUP
 // ==========================================
 
