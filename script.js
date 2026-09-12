@@ -2179,12 +2179,10 @@ campfirePopup.addEventListener("click", (e) => {
 });
 
 
-// Close Restaurant & Bar popup
-closeRestaurantBar.addEventListener("click", () => {
+window.closeRestaurantBar.addEventListener("click", () => {
 
-    restaurantBarPopup.style.display = "none";
+    window.restaurantBarPopup.style.display = "none";
 
-    // Return to Explore
     explorePopup.style.display = "flex";
 
 });
