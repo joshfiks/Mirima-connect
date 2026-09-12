@@ -2175,7 +2175,7 @@ campfirePopup.addEventListener("click", (e) => {
 
 });
 
-
+console.log("Restaurant variables:", restaurantBarPopup, closeRestaurantBar);
 // Close Restaurant & Bar popup
 closeRestaurantBar.addEventListener("click", () => {
 
