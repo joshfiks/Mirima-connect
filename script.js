@@ -2129,13 +2129,24 @@ receptionFAQPopup
     });
 
 });
+
 // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
 
+const campfirePopup =
+    document.getElementById("campfirePopup");
+
+const closeCampfire =
+    document.querySelector(".closeCampfire");
+
+
+// ==========================================
+// CLOSE CAMPFIRE
+// ==========================================
+
 closeCampfire.addEventListener("click", () => {
 
-    // Close Campfire
     campfirePopup.style.display = "none";
 
     // Return to Explore
@@ -2143,11 +2154,15 @@ closeCampfire.addEventListener("click", () => {
 
 });
 
+
+// ==========================================
+// CLICK OUTSIDE CAMPFIRE
+// ==========================================
+
 campfirePopup.addEventListener("click", (e) => {
 
     if (e.target === campfirePopup) {
 
-        // Close Campfire
         campfirePopup.style.display = "none";
 
         // Return to Explore
@@ -2156,6 +2171,8 @@ campfirePopup.addEventListener("click", (e) => {
     }
 
 });
+
+
 // ==========================================
 // RESTAURANT & BAR
 // ==========================================
