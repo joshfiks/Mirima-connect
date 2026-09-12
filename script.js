@@ -4856,6 +4856,12 @@ billingCard.addEventListener("click", () => {
 // CLOSE BILLING
 // ==========================================
 
+const billingPopup =
+    document.getElementById("billingPopup");
+
+const closeBilling =
+    document.querySelector(".closeBilling");
+
 closeBilling.addEventListener("click", () => {
 
     clearSelections(
