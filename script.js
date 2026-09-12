@@ -2177,13 +2177,6 @@ campfirePopup.addEventListener("click", (e) => {
 // RESTAURANT & BAR
 // ==========================================
 
-const restaurantBarPopup =
-    document.getElementById("restaurantBarPopup");
-
-const closeRestaurantBar =
-    document.querySelector(".closeRestaurantBar");
-
-
 // Close Restaurant & Bar popup
 closeRestaurantBar.addEventListener("click", () => {
 
