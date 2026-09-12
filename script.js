@@ -933,12 +933,12 @@ closePopup.addEventListener("click", () => {
         ".menuItem"
     );
 
-    foodPreview.classList.remove(
-        "show"
-    );
+    // Hide food image preview safely
+    if (foodPreview) {
+        foodPreview.classList.remove("show");
+    }
 
-    servicePopup.style.display =
-        "none";
+    servicePopup.style.display = "none";
 
 });
 
@@ -956,19 +956,18 @@ servicePopup.addEventListener("click", e => {
             ".menuItem"
         );
 
-        foodPreview.classList.remove(
-            "show"
-        );
+        // Hide food image preview safely
+        if (foodPreview) {
+            foodPreview.classList.remove("show");
+        }
 
-        servicePopup.style.display =
-            "none";
+        servicePopup.style.display = "none";
 
     }
 
 });
 
 });
-  
 
 // ==========================================
 // RECEPTION POPUP
@@ -1044,6 +1043,13 @@ receptionPopup.addEventListener("click", (e) => {
 // AIRPORT TRANSFER POPUP
 // ==========================================
 
+const transferPopup =
+    document.getElementById("transferPopup");
+
+const closeTransfer =
+    document.querySelector(".closeTransfer");
+
+
 closeTransfer.addEventListener("click", () => {
 
     clearSelections(transferPopup, ".service-option");
@@ -1076,18 +1082,19 @@ transferPopup.querySelectorAll(".service-option").forEach(item => {
 
     item.addEventListener("click", () => {
 
-        transferPopup.querySelectorAll(".service-option").forEach(i => {
+        transferPopup
+            .querySelectorAll(".service-option")
+            .forEach(i => {
 
-            i.classList.remove("selected");
+                i.classList.remove("selected");
 
-        });
+            });
 
         item.classList.add("selected");
 
     });
 
 });
-
 // ==========================================
 // LUGGAGE ASSISTANCE POPUP
 // ==========================================
