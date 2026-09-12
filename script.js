@@ -5424,29 +5424,49 @@ function showNotification(icon, title, message){
 
 let warningReturnPopup = null;
 
+const warningPopup =
+    document.getElementById("warningPopup");
+
+const closeWarning =
+    document.getElementById("closeWarning");
+
+
 function showWarning(title, message, returnPopup = null) {
 
-    document.getElementById("warningTitle").textContent = title;
+    document.getElementById("warningTitle").textContent =
+        title;
 
-    document.getElementById("warningMessage").textContent = message;
+    document.getElementById("warningMessage").textContent =
+        message;
 
     warningReturnPopup = returnPopup;
 
-    document.getElementById("warningPopup").style.display = "flex";
+    warningPopup.style.display = "flex";
 }
 
-const closeWarning = document.getElementById("closeWarning");
+
+// ==========================================
+// CLOSE WARNING
+// ==========================================
 
 closeWarning.addEventListener("click", () => {
 
-    document.getElementById("warningPopup").style.display = "none";
+    warningPopup.style.display = "none";
 
     if (warningReturnPopup) {
+
         warningReturnPopup.style.display = "flex";
+
         warningReturnPopup = null;
+
     }
 
 });
+
+
+// ==========================================
+// CLICK OUTSIDE WARNING
+// ==========================================
 
 warningPopup.addEventListener("click", (e) => {
 
@@ -5455,14 +5475,17 @@ warningPopup.addEventListener("click", (e) => {
         warningPopup.style.display = "none";
 
         if (warningReturnPopup) {
+
             warningReturnPopup.style.display = "flex";
+
             warningReturnPopup = null;
+
         }
 
     }
 
 });
-  
+
   // ==========================================
 // RECEPTION REQUEST
 // ==========================================
