@@ -5026,6 +5026,8 @@ const closeRequests = document.getElementById("closeRequests");
 
 myRequestsBtn.addEventListener("click", () => {
 
+    updateAllRequestStatuses();
+
     requestsPopup.style.display = "flex";
 
 });
@@ -5229,6 +5231,98 @@ function addRequest(service, status, details = "", estimatedMinutes = 0) {
 
 }
 
+  // ==========================================
+// UPDATE REQUEST STATUS
+// ==========================================
+
+function updateRequestStatus(request) {
+
+    const requestTime =
+        Number(request.dataset.requestTime);
+
+    const estimatedMinutes =
+        Number(request.dataset.estimatedMinutes);
+
+    const originalStatus =
+        request.dataset.originalStatus || "Pending";
+
+    const statusElement =
+        request.querySelector(".requestStatus");
+
+
+    if (!statusElement) return;
+
+
+    // ==========================================
+    // NO ESTIMATED TIME
+    // ==========================================
+
+    if (!estimatedMinutes || estimatedMinutes <= 0) {
+        statusElement.textContent = originalStatus;
+        return;
+    }
+
+
+    // ==========================================
+    // CHECK ELAPSED TIME
+    // ==========================================
+
+    const elapsedMinutes =
+        (Date.now() - requestTime) / 60000;
+
+
+    // ==========================================
+    // AUTOMATIC DELIVERY
+    // 5 MINUTES AFTER ESTIMATED MAXIMUM
+    // ==========================================
+
+    const deliveryTime =
+        estimatedMinutes + 5;
+
+
+    if (elapsedMinutes >= deliveryTime) {
+
+        statusElement.textContent =
+            "Delivered";
+
+        statusElement.classList.add(
+            "requestDelivered"
+        );
+
+    }
+
+    else {
+
+        statusElement.textContent =
+            originalStatus;
+
+    }
+
+}
+  // ==========================================
+// CHECK ALL REQUEST STATUSES
+// ==========================================
+
+function updateAllRequestStatuses() {
+
+    document
+        .querySelectorAll("#requestsList .requestItem")
+        .forEach(request => {
+
+            updateRequestStatus(request);
+
+        });
+
+}
+
+
+// Check every minute
+
+setInterval(() => {
+
+    updateAllRequestStatuses();
+
+}, 60000);
   
 // ==========================================
 // CONFIRMATION FUNCTION
