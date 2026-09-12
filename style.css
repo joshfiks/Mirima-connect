@@ -23131,3 +23131,344 @@ padding:22px !important;
         letter-spacing: .9px;
     }
 }
+/* ==========================================
+   LUXURY RESTAURANT & BAR CONTACT POPUP
+========================================== */
+
+#restaurantContactPopup .popup-content {
+
+    position: relative;
+
+    width: 90%;
+    max-width: 440px;
+
+    padding: 42px 30px 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #100c08 0%,
+            #21170d 48%,
+            #0d0a07 100%
+        );
+
+    border: 1px solid rgba(212,175,55,.65);
+
+    border-radius: 26px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.75),
+        0 0 35px rgba(212,175,55,.08);
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+/* INNER GOLD FRAME */
+
+#restaurantContactPopup .popup-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(212,175,55,.18);
+
+    border-radius: 20px;
+
+    pointer-events: none;
+}
+
+
+/* TOP GOLD GLOW */
+
+#restaurantContactPopup .popup-content::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100px;
+    left: 50%;
+
+    width: 220px;
+    height: 220px;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.12),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* CLOSE BUTTON */
+
+#restaurantContactPopup .closeRestaurantContact {
+
+    position: absolute;
+
+    top: 14px;
+    right: 16px;
+
+    z-index: 5;
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(212,175,55,.55);
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2b1e10,
+            #120d08
+        );
+
+    color: #e8c85b;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+
+#restaurantContactPopup .closeRestaurantContact:hover {
+
+    transform: rotate(90deg);
+
+    border-color: #f0d477;
+
+    color: #fff0a8;
+
+    box-shadow:
+        0 0 16px rgba(212,175,55,.25);
+}
+
+
+/* HEADER */
+
+#restaurantContactPopup .restaurant-contact-header {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 28px;
+}
+
+
+/* ICON */
+
+#restaurantContactPopup .restaurant-contact-icon {
+
+    width: 72px;
+    height: 72px;
+
+    margin: 0 auto 17px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(212,175,55,.65);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #3b2a13,
+            #171008 70%
+        );
+
+    font-size: 30px;
+
+    box-shadow:
+        0 0 25px rgba(212,175,55,.12),
+        inset 0 0 18px rgba(212,175,55,.08);
+}
+
+
+/* HEADING */
+
+#restaurantContactPopup .restaurant-contact-header h2 {
+
+    margin: 0 0 9px;
+
+    color: #f0d477;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* DESCRIPTION */
+
+#restaurantContactPopup .restaurant-contact-header p {
+
+    margin: 0 auto;
+
+    max-width: 310px;
+
+    color: #d8ccb5;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.45;
+}
+
+
+/* CONTACT BUTTONS */
+
+#restaurantContactPopup .dining-contact-action {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    margin-top: 13px;
+
+    padding: 16px 18px;
+
+    border: 1px solid rgba(212,175,55,.55);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2a1d0f,
+            #171008
+        );
+
+    color: #f1d77a;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 8px 22px rgba(0,0,0,.3);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+
+/* HOVER */
+
+#restaurantContactPopup .dining-contact-action:hover {
+
+    transform: translateY(-2px);
+
+    border-color: #e8c85b;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3b2912,
+            #21160a
+        );
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.13);
+}
+
+
+/* ACTIVE */
+
+#restaurantContactPopup .dining-contact-action:active {
+
+    transform: translateY(0) scale(.98);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    #restaurantContactPopup .popup-content {
+
+        width: 92%;
+
+        padding: 40px 20px 27px;
+
+        border-radius: 23px;
+    }
+
+    #restaurantContactPopup .restaurant-contact-icon {
+
+        width: 64px;
+        height: 64px;
+
+        font-size: 27px;
+    }
+
+    #restaurantContactPopup .restaurant-contact-header h2 {
+
+        font-size: 19px;
+
+        letter-spacing: .8px;
+    }
+
+    #restaurantContactPopup .restaurant-contact-header p {
+
+        font-size: 16px;
+    }
+
+    #restaurantContactPopup .dining-contact-action {
+
+        padding: 15px 14px;
+
+        font-size: 10px;
+    }
+}
