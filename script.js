@@ -969,16 +969,26 @@ servicePopup.addEventListener("click", e => {
 
 });
   
+
 // ==========================================
 // RECEPTION POPUP
 // ==========================================
 
+const receptionCard =
+    document.getElementById("receptionCard");
+
+const receptionPopup =
+    document.getElementById("receptionPopup");
+
+const closeReception =
+    document.querySelector(".closeReception");
+
 receptionCard.addEventListener("click", () => {
 
     receptionPopup.style.display = "flex";
+  
 
 });
-
 receptionPopup.querySelectorAll(".service-option").forEach(item => {
 
     item.addEventListener("click", () => {
