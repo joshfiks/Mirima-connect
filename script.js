@@ -3931,9 +3931,19 @@ bookPhotographyTour.addEventListener("click", () => {
 // SPA POPUP
 // ==========================================
 
+const spaPopup =
+    document.getElementById("spaPopup");
+
+const closeSpa =
+    document.querySelector(".closeSpa");
+
+
+// ==========================================
+// CLOSE SPA
+// ==========================================
+
 closeSpa.addEventListener("click", () => {
 
-    // Close Spa
     spaPopup.style.display = "none";
 
     // Return to Explore
@@ -3941,11 +3951,15 @@ closeSpa.addEventListener("click", () => {
 
 });
 
+
+// ==========================================
+// CLICK OUTSIDE SPA
+// ==========================================
+
 spaPopup.addEventListener("click", (e) => {
 
     if (e.target === spaPopup) {
 
-        // Close Spa
         spaPopup.style.display = "none";
 
         // Return to Explore
@@ -3954,6 +3968,7 @@ spaPopup.addEventListener("click", (e) => {
     }
 
 });
+
 // ==========================================
 // NATURE WALK POPUP
 // ==========================================
