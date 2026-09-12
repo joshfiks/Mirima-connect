@@ -340,6 +340,9 @@ const exploreCard = document.getElementById("exploreCard");
 const explorePopup = document.getElementById("explorePopup");
 const closeExplore = document.querySelector(".closeExplore");
 
+const restaurantBarPopup = document.getElementById("restaurantBarPopup");
+const closeRestaurantBar = document.querySelector(".closeRestaurantBar");
+  
 const feedbackCard = document.getElementById("feedbackCard");
 const feedbackPopup = document.getElementById("feedbackPopup");
 const closeFeedback = document.querySelector(".closeFeedback");
@@ -4890,12 +4893,6 @@ billingPopup.addEventListener("click", (e) => {
 // ==========================================
 // RESTAURANT & BAR
 // ==========================================
-
-const restaurantBarPopup =
-  document.getElementById("restaurantBarPopup"); 
-
-const closeRestaurantBar =
-    document.querySelector(".closeRestaurantBar");
 
 exploreCard.addEventListener("click", () => {
 
