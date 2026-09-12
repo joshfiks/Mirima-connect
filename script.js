@@ -4,6 +4,9 @@
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
+
+window.restaurantBarPopup = document.getElementById("restaurantBarPopup");
+window.closeRestaurantBar = document.querySelector(".closeRestaurantBar");
   
    let portalOpened = false;
   
