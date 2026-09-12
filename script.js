@@ -4025,6 +4025,13 @@ natureWalkPopup.querySelectorAll(".nature-card").forEach(card => {
 // HOUSEKEEPING POPUP
 // ==========================================
 
+const housekeepingPopup =
+    document.getElementById("housekeepingPopup");
+
+const closeHousekeeping =
+    document.querySelector(".closeHousekeeping");
+
+
 housekeepingCard.addEventListener("click", () => {
 
     housekeepingPopup.style.display = "flex";
