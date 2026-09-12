@@ -5,8 +5,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-window.restaurantBarPopup = document.getElementById("restaurantBarPopup");
-window.closeRestaurantBar = document.querySelector(".closeRestaurantBar");
+const restaurantBarPopup = document.getElementById("restaurantBarPopup");
+const closeRestaurantBar = document.querySelector(".closeRestaurantBar");
   
    let portalOpened = false;
   
@@ -2179,9 +2179,9 @@ campfirePopup.addEventListener("click", (e) => {
 });
 
 
-window.closeRestaurantBar.addEventListener("click", () => {
+closeRestaurantBar.addEventListener("click", () => {
 
-    window.restaurantBarPopup.style.display = "none";
+    restaurantBarPopup.style.display = "none";
 
     explorePopup.style.display = "flex";
 
@@ -2201,6 +2201,7 @@ restaurantBarPopup.addEventListener("click", (e) => {
     }
 
 });
+
 // ==========================================
 // OPEN RESTAURANT & BAR
 // ==========================================
