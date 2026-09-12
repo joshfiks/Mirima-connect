@@ -4,8 +4,7 @@
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
-
- 
+  
    let portalOpened = false;
   
     // Background
@@ -341,9 +340,6 @@ const exploreCard = document.getElementById("exploreCard");
 const explorePopup = document.getElementById("explorePopup");
 const closeExplore = document.querySelector(".closeExplore");
 
-const restaurantBarPopup = document.getElementById("restaurantBarPopup");
-const closeRestaurantBar = document.querySelector(".closeRestaurantBar");
-  
 const feedbackCard = document.getElementById("feedbackCard");
 const feedbackPopup = document.getElementById("feedbackPopup");
 const closeFeedback = document.querySelector(".closeFeedback");
@@ -921,10 +917,7 @@ showLoading(
     btn
 );
 
- 
-    });
-
-});     
+      
 
 /* ==========================================
    CLOSE POPUP
@@ -937,12 +930,12 @@ closePopup.addEventListener("click", () => {
         ".menuItem"
     );
 
-    // Hide food image preview safely
-    if (foodPreview) {
-        foodPreview.classList.remove("show");
-    }
+    foodPreview.classList.remove(
+        "show"
+    );
 
-    servicePopup.style.display = "none";
+    servicePopup.style.display =
+        "none";
 
 });
 
@@ -960,38 +953,29 @@ servicePopup.addEventListener("click", e => {
             ".menuItem"
         );
 
-        // Hide food image preview safely
-        if (foodPreview) {
-            foodPreview.classList.remove("show");
-        }
+        foodPreview.classList.remove(
+            "show"
+        );
 
-        servicePopup.style.display = "none";
+        servicePopup.style.display =
+            "none";
 
     }
 
 });
 
 });
-
+  
 // ==========================================
 // RECEPTION POPUP
 // ==========================================
 
-const receptionCard =
-    document.getElementById("receptionCard");
-
-const receptionPopup =
-    document.getElementById("receptionPopup");
-
-const closeReception =
-    document.querySelector(".closeReception");
-
 receptionCard.addEventListener("click", () => {
 
     receptionPopup.style.display = "flex";
-  
 
 });
+
 receptionPopup.querySelectorAll(".service-option").forEach(item => {
 
     item.addEventListener("click", () => {
@@ -1047,13 +1031,6 @@ receptionPopup.addEventListener("click", (e) => {
 // AIRPORT TRANSFER POPUP
 // ==========================================
 
-const transferPopup =
-    document.getElementById("transferPopup");
-
-const closeTransfer =
-    document.querySelector(".closeTransfer");
-
-
 closeTransfer.addEventListener("click", () => {
 
     clearSelections(transferPopup, ".service-option");
@@ -1086,19 +1063,18 @@ transferPopup.querySelectorAll(".service-option").forEach(item => {
 
     item.addEventListener("click", () => {
 
-        transferPopup
-            .querySelectorAll(".service-option")
-            .forEach(i => {
+        transferPopup.querySelectorAll(".service-option").forEach(i => {
 
-                i.classList.remove("selected");
+            i.classList.remove("selected");
 
-            });
+        });
 
         item.classList.add("selected");
 
     });
 
 });
+
 // ==========================================
 // LUGGAGE ASSISTANCE POPUP
 // ==========================================
@@ -2133,24 +2109,13 @@ receptionFAQPopup
     });
 
 });
-
 // ==========================================
 // CAMPFIRE POPUP
 // ==========================================
 
-const campfirePopup =
-    document.getElementById("campfirePopup");
-
-const closeCampfire =
-    document.querySelector(".closeCampfire");
-
-
-// ==========================================
-// CLOSE CAMPFIRE
-// ==========================================
-
 closeCampfire.addEventListener("click", () => {
 
+    // Close Campfire
     campfirePopup.style.display = "none";
 
     // Return to Explore
@@ -2158,15 +2123,11 @@ closeCampfire.addEventListener("click", () => {
 
 });
 
-
-// ==========================================
-// CLICK OUTSIDE CAMPFIRE
-// ==========================================
-
 campfirePopup.addEventListener("click", (e) => {
 
     if (e.target === campfirePopup) {
 
+        // Close Campfire
         campfirePopup.style.display = "none";
 
         // Return to Explore
@@ -2175,12 +2136,23 @@ campfirePopup.addEventListener("click", (e) => {
     }
 
 });
+// ==========================================
+// RESTAURANT & BAR
+// ==========================================
+
+const restaurantBarPopup =
+    document.getElementById("restaurantBarPopup");
+
+const closeRestaurantBar =
+    document.querySelector(".closeRestaurantBar");
 
 
+// Close Restaurant & Bar popup
 closeRestaurantBar.addEventListener("click", () => {
 
     restaurantBarPopup.style.display = "none";
 
+    // Return to Explore
     explorePopup.style.display = "flex";
 
 });
@@ -2193,12 +2165,12 @@ restaurantBarPopup.addEventListener("click", (e) => {
 
         restaurantBarPopup.style.display = "none";
 
+        // Return to Explore
         explorePopup.style.display = "flex";
 
     }
 
 });
-
 // ==========================================
 // OPEN RESTAURANT & BAR
 // ==========================================
@@ -3922,19 +3894,9 @@ bookPhotographyTour.addEventListener("click", () => {
 // SPA POPUP
 // ==========================================
 
-const spaPopup =
-    document.getElementById("spaPopup");
-
-const closeSpa =
-    document.querySelector(".closeSpa");
-
-
-// ==========================================
-// CLOSE SPA
-// ==========================================
-
 closeSpa.addEventListener("click", () => {
 
+    // Close Spa
     spaPopup.style.display = "none";
 
     // Return to Explore
@@ -3942,15 +3904,11 @@ closeSpa.addEventListener("click", () => {
 
 });
 
-
-// ==========================================
-// CLICK OUTSIDE SPA
-// ==========================================
-
 spaPopup.addEventListener("click", (e) => {
 
     if (e.target === spaPopup) {
 
+        // Close Spa
         spaPopup.style.display = "none";
 
         // Return to Explore
@@ -3959,7 +3917,6 @@ spaPopup.addEventListener("click", (e) => {
     }
 
 });
-
 // ==========================================
 // NATURE WALK POPUP
 // ==========================================
@@ -4015,13 +3972,6 @@ natureWalkPopup.querySelectorAll(".nature-card").forEach(card => {
 // ==========================================
 // HOUSEKEEPING POPUP
 // ==========================================
-
-const housekeepingPopup =
-    document.getElementById("housekeepingPopup");
-
-const closeHousekeeping =
-    document.querySelector(".closeHousekeeping");
-
 
 housekeepingCard.addEventListener("click", () => {
 
@@ -4847,12 +4797,6 @@ billingCard.addEventListener("click", () => {
 // CLOSE BILLING
 // ==========================================
 
-const billingPopup =
-    document.getElementById("billingPopup");
-
-const closeBilling =
-    document.querySelector(".closeBilling");
-
 closeBilling.addEventListener("click", () => {
 
     clearSelections(
@@ -4886,11 +4830,6 @@ billingPopup.addEventListener("click", (e) => {
 
 // ==========================================
 // EXPLORE POPUP
-// ==========================================
-
-
-// ==========================================
-// RESTAURANT & BAR
 // ==========================================
 
 exploreCard.addEventListener("click", () => {
@@ -5465,49 +5404,29 @@ function showNotification(icon, title, message){
 
 let warningReturnPopup = null;
 
-const warningPopup =
-    document.getElementById("warningPopup");
-
-const closeWarning =
-    document.getElementById("closeWarning");
-
-
 function showWarning(title, message, returnPopup = null) {
 
-    document.getElementById("warningTitle").textContent =
-        title;
+    document.getElementById("warningTitle").textContent = title;
 
-    document.getElementById("warningMessage").textContent =
-        message;
+    document.getElementById("warningMessage").textContent = message;
 
     warningReturnPopup = returnPopup;
 
-    warningPopup.style.display = "flex";
+    document.getElementById("warningPopup").style.display = "flex";
 }
 
-
-// ==========================================
-// CLOSE WARNING
-// ==========================================
+const closeWarning = document.getElementById("closeWarning");
 
 closeWarning.addEventListener("click", () => {
 
-    warningPopup.style.display = "none";
+    document.getElementById("warningPopup").style.display = "none";
 
     if (warningReturnPopup) {
-
         warningReturnPopup.style.display = "flex";
-
         warningReturnPopup = null;
-
     }
 
 });
-
-
-// ==========================================
-// CLICK OUTSIDE WARNING
-// ==========================================
 
 warningPopup.addEventListener("click", (e) => {
 
@@ -5516,17 +5435,14 @@ warningPopup.addEventListener("click", (e) => {
         warningPopup.style.display = "none";
 
         if (warningReturnPopup) {
-
             warningReturnPopup.style.display = "flex";
-
             warningReturnPopup = null;
-
         }
 
     }
 
 });
-
+  
   // ==========================================
 // RECEPTION REQUEST
 // ==========================================
@@ -8694,4 +8610,6 @@ closeConfirmation.addEventListener("click", () => {
     document.getElementById("orderConfirmation").style.display = "none";
 
  
+});
+
 });
