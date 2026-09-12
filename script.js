@@ -2176,6 +2176,13 @@ campfirePopup.addEventListener("click", (e) => {
 });
 
 console.log("Restaurant variables:", restaurantBarPopup, closeRestaurantBar);
+
+const closeRestaurantBar =
+    document.querySelector(".closeRestaurantBar");
+
+const restaurantBarPopup =
+    document.getElementById("restaurantBarPopup");
+
 // Close Restaurant & Bar popup
 closeRestaurantBar.addEventListener("click", () => {
 
