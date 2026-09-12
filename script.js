@@ -4366,7 +4366,16 @@ romanticPopup.addEventListener(
                 )
             );
 
+// ==========================================
+// ADD TO MY REQUESTS
+// ==========================================
 
+addRequest(
+    "🌹 Romantic Room Setup",
+    "Received",
+    `Setup: ${choices.join(", ")}${message ? ` — Special Request: ${message}` : ""}`,
+    0
+);
             // Close popup
             romanticPopup.style.display =
                 "none";
@@ -4601,7 +4610,16 @@ babyCotPopup.addEventListener(
                 )
             );
 
+// ==========================================
+// ADD TO MY REQUESTS
+// ==========================================
 
+addRequest(
+    "👶 Baby Cot Request",
+    "Received",
+    `Cot Options: ${choices.join(", ")}${message ? ` — Special Request: ${message}` : ""}`,
+    0
+);
                       // Keep Baby Cot selected in Housekeeping
             const babyCotItem =
                 Array.from(
