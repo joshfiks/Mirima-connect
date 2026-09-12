@@ -11297,7 +11297,10 @@ HERO MOBILE
         0 28px 70px rgba(0,0,0,.72),
         0 0 30px rgba(212,175,55,.07);
 
-    overflow: hidden;
+    max-height: 90vh;
+
+overflow-y: auto;
+overflow-x: hidden;
 }
 
 
