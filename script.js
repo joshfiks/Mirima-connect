@@ -881,35 +881,43 @@ document
             );
 
 
-        showLoading(
-            "Contacting Room Service...",
-            () => {
+showLoading(
+    "Contacting Room Service...",
+    () => {
 
-                addRequest(
-                    "🍽️ Room Service",
-                    "Preparing"
-                );
+        const orderedItem =
+            selectedItems[0].textContent
+                .trim()
+                .replace(/\s*\([^)]*\)/g, "")
+                .trim();
 
+        const estimatedMinutes =
+            longest === 0 ? 0 : longest;
 
-                showNotification(
-                    "🍽️",
-                    "Room Service",
-                    "Your order has been received."
-                );
-
-
-                showConfirmation(
-                    `Thank you, ${guestName}!`,
-                    "Your order has been received.",
-                    estimate
-                );
-
-            },
-            btn
+        addRequest(
+            "🍽️ Room Service",
+            "Preparing",
+            `Order: ${orderedItem}`,
+            estimatedMinutes
         );
 
-    });
+        showNotification(
+            "🍽️",
+            "Room Service",
+            "Your order has been received."
+        );
 
+        showConfirmation(
+            `Thank you, ${guestName}!`,
+            "Your order has been received.",
+            estimate
+        );
+
+    },
+    btn
+);
+
+      
 
 /* ==========================================
    CLOSE POPUP
