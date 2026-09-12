@@ -4897,6 +4897,13 @@ billingPopup.addEventListener("click", (e) => {
 // EXPLORE POPUP
 // ==========================================
 
+const explorePopup =
+    document.getElementById("explorePopup");
+
+const closeExplore =
+    document.querySelector(".closeExplore");
+
+
 exploreCard.addEventListener("click", () => {
 
     // Always start Explore with nothing selected
