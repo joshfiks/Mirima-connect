@@ -5,9 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-const restaurantBarPopup = document.getElementById("restaurantBarPopup");
-const closeRestaurantBar = document.querySelector(".closeRestaurantBar");
-  
+ 
    let portalOpened = false;
   
     // Background
@@ -2195,7 +2193,6 @@ restaurantBarPopup.addEventListener("click", (e) => {
 
         restaurantBarPopup.style.display = "none";
 
-        // Return to Explore
         explorePopup.style.display = "flex";
 
     }
