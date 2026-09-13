@@ -23952,3 +23952,15 @@ padding:22px !important;
     }
 
 }
+/* ==========================================
+   MOBILE WOOD PANEL DETAIL
+   ========================================== */
+
+@media (max-width: 768px){
+
+    .wood-panel{
+        background-size: auto 115%;
+        background-position: center;
+    }
+
+}
