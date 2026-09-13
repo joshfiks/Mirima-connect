@@ -23941,3 +23941,14 @@ padding:22px !important;
         font-size: 10px;
     }
 }
+/* ==========================================
+   MOBILE BIRD SIZE
+   ========================================== */
+
+@media (max-width: 768px){
+
+    .birds img{
+        width:100px;
+    }
+
+}
