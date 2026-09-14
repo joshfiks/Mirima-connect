@@ -845,15 +845,17 @@ PORTAL
 
 .portal{
 
-width:100%;
+position:relative;
 
-padding:80px 8%;
+overflow:visible;
 
-box-sizing:border-box;
+transform:translateY(120px);
 
-display:flex;
+opacity:0;
 
-justify-content:center;
+display:none;
+
+z-index:3;
 
 }
 
