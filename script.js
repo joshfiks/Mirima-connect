@@ -372,6 +372,8 @@ const closePopup = servicePopup.querySelector(".closePopup");
 
 roomServiceCard.addEventListener("click", () => {
 
+  playClickSound();
+  
     popupTitle.textContent = "🛎️ Room Service";
 
     popupBody.innerHTML = `
