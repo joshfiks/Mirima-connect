@@ -23980,21 +23980,22 @@ padding:22px !important;
     color: white;
     text-shadow: 0 2px 10px rgba(0,0,0,.6);
 
-    position: relative;
-    height: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    min-height: 168px;
 }
 
 .hero-phrases span {
-    position: absolute;
-    left: 0;
-    right: 0;
-
+    display: block;
     opacity: 0;
 
-    animation: phraseShow 25s infinite;
+    animation: phrasePile 25s infinite;
 }
 
-/* Phrase timing */
+
+/* Each phrase joins and stays */
 
 .hero-phrases span:nth-child(1) {
     animation-delay: 0s;
@@ -24013,9 +24014,9 @@ padding:22px !important;
 }
 
 
-/* Continuous animation */
+/* Piling animation */
 
-@keyframes phraseShow {
+@keyframes phrasePile {
 
     0% {
         opacity: 0;
@@ -24025,11 +24026,11 @@ padding:22px !important;
         opacity: 1;
     }
 
-    16% {
+    80% {
         opacity: 1;
     }
 
-    20% {
+    84% {
         opacity: 0;
     }
 
