@@ -78,6 +78,13 @@ function fadeIn(audio,targetVolume){
     },100);
 
 }
+  function playClickSound() {
+
+    clickSound.currentTime = 0;
+    clickSound.volume = 0.35;
+    clickSound.play();
+
+}
 
  function updateTheme(){
      
@@ -187,7 +194,9 @@ const continueBtn = document.getElementById("continueBtn");
 
 enterButton.addEventListener("click", () => {
 
-    playAmbience();
+  playClickSound();
+  
+  playAmbience();
 
     document.querySelector(".hero").style.display = "none";
     document.querySelector(".portal").style.display = "none";
