@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dayForest = document.getElementById("dayForest");
     const dayBirds = document.getElementById("dayBirds");
     const nightForest = document.getElementById("nightForest");
-
+    const clickSound = document.getElementById("clickSound");
     // Enter Button
     const enterButton = document.getElementById("enter");
 
