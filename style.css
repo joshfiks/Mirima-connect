@@ -1352,13 +1352,8 @@ color:#fff;
     position: relative;
     z-index: 30;
 
-    background:
-        linear-gradient(
-            145deg,
-            #4b351f,
-            #24180d
-        );
-
+    background: #2B1B10;
+            
     border: 1px solid rgba(212,175,55,.55);
 
     border-radius: 24px;
