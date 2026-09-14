@@ -981,6 +981,8 @@ servicePopup.addEventListener("click", e => {
 
 receptionCard.addEventListener("click", () => {
 
+  playClickSound();
+  
     receptionPopup.style.display = "flex";
 
 });
@@ -3984,6 +3986,8 @@ natureWalkPopup.querySelectorAll(".nature-card").forEach(card => {
 
 housekeepingCard.addEventListener("click", () => {
 
+  playClickSound();
+
     housekeepingPopup.style.display = "flex";
 
 
@@ -4758,7 +4762,9 @@ housekeepingPopup.addEventListener(
 // ==========================================
 
 billingCard.addEventListener("click", () => {
-
+  
+playClickSound();
+  
     billingPopup.style.display = "flex";
 
 
@@ -4842,6 +4848,8 @@ billingPopup.addEventListener("click", (e) => {
 // ==========================================
 
 exploreCard.addEventListener("click", () => {
+  
+playClickSound();
 
     // Always start Explore with nothing selected
     explorePopup
@@ -4971,6 +4979,8 @@ explorePopup.addEventListener("click", (e) => {
 // ==========================================
 
 feedbackCard.addEventListener("click", () => {
+
+  playClickSound();
 
     feedbackPopup.style.display = "flex";
 
@@ -5458,6 +5468,7 @@ warningPopup.addEventListener("click", (e) => {
 
 document.getElementById("sendReceptionRequest").addEventListener("click", () => {
 
+  
     const selected = receptionPopup.querySelectorAll(".service-option.selected");
 
     if (selected.length === 0) {
