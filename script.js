@@ -252,6 +252,8 @@ introVideo.addEventListener("ended", () => {
 
 continueBtn.addEventListener("click", async () => {
 
+  playClickSound();
+  
     const guestName = document.getElementById("guestName").value.trim();
 
     if (guestName === "") {
