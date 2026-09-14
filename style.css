@@ -23970,3 +23970,71 @@ padding:22px !important;
     }
 
 }
+/* ==========================================
+   HERO PHRASES ANIMATION
+========================================== */
+
+.hero-phrases {
+    margin-top: 35px;
+    font-size: 22px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,.6);
+
+    position: relative;
+    height: 42px;
+}
+
+.hero-phrases span {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+
+    animation: phraseShow 25s infinite;
+}
+
+/* Phrase timing */
+
+.hero-phrases span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.hero-phrases span:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.hero-phrases span:nth-child(3) {
+    animation-delay: 10s;
+}
+
+.hero-phrases span:nth-child(4) {
+    animation-delay: 15s;
+}
+
+
+/* Continuous animation */
+
+@keyframes phraseShow {
+
+    0% {
+        opacity: 0;
+    }
+
+    4% {
+        opacity: 1;
+    }
+
+    16% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
