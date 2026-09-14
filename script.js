@@ -244,16 +244,22 @@ introVideo.addEventListener("ended", () => {
 continueBtn.addEventListener("click", async () => {
 
     const guestName = document.getElementById("guestName").value.trim();
-  localStorage.setItem("guestName", guestName);
 
     if (guestName === "") {
 
-        alert("Please enter your name.");
+        showWarning(
+            "Guest Name Required",
+            "Please enter your name before continuing so we can personalize your stay."
+        );
+
+        document.getElementById("guestName").focus();
 
         return;
 
     }
 
+    localStorage.setItem("guestName", guestName);
+  
     document.getElementById("guestNameBox").style.display = "none";
 
     const welcomeScreen = document.getElementById("welcomeScreen");
