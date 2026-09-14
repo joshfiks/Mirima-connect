@@ -864,9 +864,13 @@ max-width:1250px;
 margin:auto;
 
 padding:60px;
-            
+
 box-sizing:border-box;
-            
+
+position:relative;
+
+z-index:3;
+
 background:
 
 url("texture/wood-dark.jpg");
