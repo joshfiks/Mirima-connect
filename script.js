@@ -1,3 +1,4 @@
+import { firebaseConfig } from "./firebase-config.js";
 // ==========================================
 // MIRIMA CONNECT
 // Main Script
