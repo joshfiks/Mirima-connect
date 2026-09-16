@@ -6189,7 +6189,7 @@ const babyCotRequest =
     })
 ) {
     housekeepingDetails.push(
-        "🌹 Romantic Room Setup: " +
+        "🌹 Romantic Room Setup:\n" +
         romanticRoomSetup.choices.join("\n") +
         (romanticRoomSetup.message
             ? "\nAdditional request: " + romanticRoomSetup.message
@@ -6204,7 +6204,7 @@ const babyCotRequest =
     })
 ) {
     housekeepingDetails.push(
-        "🍼 Baby Cot Request: " +
+       "🍼 Baby Cot Request:\n" +
 babyCotRequest.choices.join("\n") +
         (babyCotRequest.message
             ? "\nAdditional request: " + babyCotRequest.message
