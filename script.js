@@ -1,4 +1,8 @@
 import { firebaseConfig } from "./firebase-config.js";
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+const app = initializeApp(firebaseConfig);
 // ==========================================
 // MIRIMA CONNECT
 // Main Script
