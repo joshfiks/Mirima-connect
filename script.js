@@ -6178,7 +6178,12 @@ const babyCotRequest =
         localStorage.getItem("babyCotRequest") || "null"
     );
 
-    if (romanticRoomSetup) {
+    if (
+    romanticRoomSetup &&
+    Array.from(selected).some(function (item) {
+        return item.textContent.includes("Romantic Room Setup");
+    })
+) {
     housekeepingDetails.push(
         "🌹 Romantic Room Setup: " +
         romanticRoomSetup.choices.join(", ") +
@@ -6188,7 +6193,12 @@ const babyCotRequest =
     );
 }
 
-    if (babyCotRequest) {
+    if (
+    babyCotRequest &&
+    Array.from(selected).some(function (item) {
+        return item.textContent.includes("Baby Cot Request");
+    })
+) {
     housekeepingDetails.push(
         "🍼 Baby Cot Request: " +
         babyCotRequest.choices.join(", ") +
