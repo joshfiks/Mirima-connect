@@ -1,15 +1,27 @@
 import { firebaseConfig } from "./firebase-config.js";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 import {
+    getFirestore,
     collection,
     addDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+addDoc(collection(db, "test"), {
+    message: "Mirima Firestore test",
+    createdAt: serverTimestamp()
+})
+    .then(function () {
+        console.log("Mirima Firestore write successful");
+    })
+    .catch(function (error) {
+        console.error("Mirima Firestore write failed:", error);
+    });
+
 // ==========================================
 // MIRIMA CONNECT
 // Main Script
