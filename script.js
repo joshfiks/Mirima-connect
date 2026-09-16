@@ -6173,7 +6173,15 @@ const btn = document.getElementById("sendHousekeepingRequest");
 
 showLoading("Notifying Housekeeping...", () => {
 
-  addRequest("🧹 Housekeeping", "Received");
+ addRequest(
+    "🧹 Housekeeping",
+    "Received",
+    Array.from(selected)
+        .map(function (item) {
+            return item.textContent.trim();
+        })
+        .join(", ")
+);
 
   showNotification(
     "🧹",
