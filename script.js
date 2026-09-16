@@ -4441,12 +4441,6 @@ romanticPopup.addEventListener(
 // ADD TO MY REQUESTS
 // ==========================================
 
-addRequest(
-    "🌹 Romantic Room Setup",
-    "Received",
-    `Setup: ${choices.join(", ")}${message ? ` — Special Request: ${message}` : ""}`,
-    0
-);
             // Close popup
             romanticPopup.style.display =
                 "none";
@@ -4685,12 +4679,7 @@ babyCotPopup.addEventListener(
 // ADD TO MY REQUESTS
 // ==========================================
 
-addRequest(
-    "👶 Baby Cot Request",
-    "Received",
-    `Cot Options: ${choices.join(", ")}${message ? ` — Special Request: ${message}` : ""}`,
-    0
-);
+
                       // Keep Baby Cot selected in Housekeeping
             const babyCotItem =
                 Array.from(
@@ -6173,16 +6162,47 @@ const btn = document.getElementById("sendHousekeepingRequest");
 
 showLoading("Notifying Housekeeping...", () => {
 
- addRequest(
-    "🧹 Housekeeping",
-    "Received",
+    const housekeepingDetails =
     Array.from(selected)
         .map(function (item) {
             return item.textContent.trim();
-        })
-        .join(", ")
-);
+        });
 
+    const romanticRoomSetup =
+    JSON.parse(
+        localStorage.getItem("romanticRoomSetup") || "null"
+    );
+
+const babyCotRequest =
+    JSON.parse(
+        localStorage.getItem("babyCotRequest") || "null"
+    );
+
+    if (romanticRoomSetup) {
+    housekeepingDetails.push(
+        "🌹 Romantic Room Setup: " +
+        romanticRoomSetup.choices.join(", ") +
+        (romanticRoomSetup.message
+            ? " — " + romanticRoomSetup.message
+            : "")
+    );
+}
+
+    if (babyCotRequest) {
+    housekeepingDetails.push(
+        "🍼 Baby Cot Request: " +
+        babyCotRequest.choices.join(", ") +
+        (babyCotRequest.message
+            ? " — " + babyCotRequest.message
+            : "")
+    );
+}
+    
+ addRequest(
+    "🧹 Housekeeping",
+    "Received",
+   housekeepingDetails.join(", ")
+);
   showNotification(
     "🧹",
     "Housekeeping",
