@@ -4,6 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 // ==========================================
 // MIRIMA CONNECT
 // Main Script
