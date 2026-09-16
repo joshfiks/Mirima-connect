@@ -11,6 +11,41 @@ import {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+async function saveRequestToFirestore(
+    service,
+    status,
+    details = "",
+    estimatedMinutes = 0
+) {
+    try {
+        await addDoc(
+            collection(db, "requests"),
+            {
+                service: service,
+                status: status || "Pending",
+                details: details,
+                estimatedMinutes: estimatedMinutes || 0,
+                guestName:
+                    localStorage.getItem("guestName") || "Guest",
+                createdAt: serverTimestamp()
+            }
+        );
+
+        console.log(
+            "Request saved to Firestore:",
+            service
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Failed to save request:",
+            error
+        );
+
+    }
+}
 // ==========================================
 // MIRIMA CONNECT
 // Main Script
@@ -5178,6 +5213,12 @@ function showLoading(message, callback, button = null){
 
 function addRequest(service, status, details = "", estimatedMinutes = 0) {
 
+    saveRequestToFirestore(
+    service,
+    status,
+    details,
+    estimatedMinutes
+);
     const requestsList =
         document.getElementById("requestsList");
 
