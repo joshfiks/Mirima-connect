@@ -6190,9 +6190,9 @@ const babyCotRequest =
 ) {
     housekeepingDetails.push(
         "🌹 Romantic Room Setup: " +
-        romanticRoomSetup.choices.join(", ") +
+        romanticRoomSetup.choices.join("\n") +
         (romanticRoomSetup.message
-            ? " — " + romanticRoomSetup.message
+            ? "\nAdditional request: " + romanticRoomSetup.message
             : "")
     );
 }
