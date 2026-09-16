@@ -6162,8 +6162,12 @@ const btn = document.getElementById("sendHousekeepingRequest");
 
 showLoading("Notifying Housekeeping...", () => {
 
-    const housekeepingDetails =
+const housekeepingDetails =
     Array.from(selected)
+        .filter(function (item) {
+            return !item.textContent.includes("Romantic Room Setup") &&
+                   !item.textContent.includes("Baby Cot Request");
+        })
         .map(function (item) {
             return item.textContent.trim();
         });
@@ -6201,9 +6205,9 @@ const babyCotRequest =
 ) {
     housekeepingDetails.push(
         "🍼 Baby Cot Request: " +
-        babyCotRequest.choices.join(", ") +
+babyCotRequest.choices.join("\n") +
         (babyCotRequest.message
-            ? " — " + babyCotRequest.message
+            ? "\nAdditional request: " + babyCotRequest.message
             : "")
     );
 }
