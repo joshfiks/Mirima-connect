@@ -5,6 +5,11 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+import {
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 // ==========================================
 // MIRIMA CONNECT
 // Main Script
