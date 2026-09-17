@@ -6291,11 +6291,11 @@ document.getElementById("requestReceipt")
 
         showLoading("Requesting Receipt...", () => {
 
-            addRequest(
-                "🧾 Receipt",
-                "Guest requested a payment receipt."
-            );
-
+           addRequest(
+          "🧾 Receipt",
+          "Received",
+          "Guest requested a payment receipt."
+        );
             showNotification(
                 "🧾",
                 "Receipt",
@@ -7129,10 +7129,11 @@ document.getElementById("submitBillingHelp")
 
         showLoading("Sending Billing Help...", () => {
 
-            addRequest(
-                "❓ Billing Help",
-                `${helpTitle} — ${message}`
-            );
+         addRequest(
+           "❓ Billing Help",
+             "Received",
+          `${helpTitle} — ${message}`
+         );
 
             showNotification(
                 "❓",
@@ -7275,7 +7276,11 @@ const btn = document.getElementById("sendBillingRequest");
 
 showLoading("Processing Billing Request...", () => {
 
-  addRequest("💳 Billing", "Processing");
+ addRequest(
+    "💳 Make Payment",
+    "Received",
+    "Guest submitted a payment request."
+);
 
   showNotification(
     "💳",
@@ -7633,11 +7638,11 @@ document.getElementById("submitMobileMoney").addEventListener("click", () => {
 
     showLoading("Submitting Payment Details...", () => {
 
-        addRequest(
-            `📱 ${network} Payment`,
-            `Phone: ${phone} — Transaction ID: ${transactionId} — Account Name: ${accountName}`
-        );
-
+       addRequest(
+    `📱 ${network} Payment`,
+    "Received",
+    `Phone: ${phone} — Transaction ID: ${transactionId} — Account Name: ${accountName}`
+  );
         showNotification(
             "📱",
             "Payment Submitted",
@@ -7777,10 +7782,11 @@ document.getElementById("requestReceptionPayment")
 
         showLoading("Contacting Reception...", () => {
 
-            addRequest(
-                "🏨 Payment at Reception",
-                "Waiting"
-            );
+    addRequest(
+    "🏨 Payment at Reception",
+    "Received",
+    "Guest will make payment at reception."
+);
 
             showNotification(
                 "🏨",
@@ -7870,12 +7876,12 @@ document.getElementById("submitLateCheckout").addEventListener("click", () => {
         document.getElementById("submitLateCheckout");
 
     showLoading("Sending Late Checkout Request...", () => {
-
-        addRequest(
-            `🕒 Late Checkout - ${extraTime}`,
-            "Waiting"
-        );
-
+        
+       addRequest(
+       "🕒 Late Checkout",
+       "Received",
+       extraTime
+    );
         showNotification(
             "🕒",
             "Late Checkout",
