@@ -1288,11 +1288,11 @@ document.getElementById("submitLuggage")
         "Requesting Luggage Assistance...",
         () => {
 
-            addRequest(
-                "🧳 Luggage Assistance",
-                `${luggageService} — Cottage ${luggageLocation} — ${luggageTime}${luggageMessage ? " — " + luggageMessage : ""}`
-            );
-
+           addRequest(
+    "🧳 Luggage Assistance",
+    "Received",
+    `${luggageService} — Cottage ${luggageLocation} — ${luggageTime}${luggageMessage ? " — " + luggageMessage : ""}`
+);
             showNotification(
                 "🧳",
                 "Luggage Assistance",
@@ -1587,10 +1587,11 @@ document.getElementById("submitExtendStay")
         "Sending Extension Request...",
         () => {
 
-            addRequest(
-                "📅 Extend Stay",
-                `${nights} additional night(s) — New checkout: ${newCheckoutDate}${message ? " — " + message : ""}`
-            );
+           addRequest(
+    "📅 Extend Stay",
+    "Received",
+    `${nights} additional night(s) — New checkout: ${newCheckoutDate}${message ? " — " + message : ""}`
+);
 
             showNotification(
                 "📅",
@@ -1915,10 +1916,11 @@ document.getElementById("submitOtherAssistance")
         "Sending Assistance Request...",
         () => {
 
-            addRequest(
-                "🛎️ Other Assistance",
-                message
-            );
+           addRequest(
+         "🛎️ Other Assistance",
+        "Received",
+        message
+      );
 
             showNotification(
                 "🛎️",
@@ -5678,7 +5680,11 @@ const btn = document.getElementById("sendReceptionRequest");
 
 showLoading("Connecting to Reception...", () => {
 
-  addRequest("🛎️ Reception", "Waiting");
+ addRequest(
+    "🛎️ Reception",
+    "Received",
+    "Guest requested to speak with Reception."
+);
 
   showNotification(
     "🛎️",
@@ -5878,10 +5884,11 @@ if (transferDate === todayString) {
 
     showLoading("Booking Airport Transfer...", () => {
 
-        addRequest(
-            "🚖 Airport Transfer",
-            `${transferType} — Cottage ${transferRoom} — ${transferDate} ${transferTime}`
-        );
+       addRequest(
+    "🚖 Airport Transfer",
+    "Received",
+    `${transferType} — Cottage ${transferRoom} — ${transferDate} ${transferTime}`
+);
 
         showNotification(
             "🚖",
