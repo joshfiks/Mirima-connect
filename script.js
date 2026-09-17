@@ -46,6 +46,43 @@ async function saveRequestToFirestore(
 
     }
 }
+
+// ==========================================
+// SAVE FEEDBACK TO FIRESTORE
+// ==========================================
+
+async function saveFeedbackToFirestore(
+    feedbackType,
+    message = ""
+) {
+    try {
+
+        await addDoc(
+            collection(db, "feedback"),
+            {
+                feedbackType: feedbackType,
+                message: message,
+                guestName:
+                    localStorage.getItem("guestName") || "Guest",
+                createdAt: serverTimestamp()
+            }
+        );
+
+        console.log(
+            "Feedback saved to Firestore:",
+            feedbackType
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Failed to save feedback:",
+            error
+        );
+
+    }
+}
+
 // ==========================================
 // MIRIMA CONNECT
 // Main Script
@@ -8435,11 +8472,16 @@ document.getElementById("submitFeedback").addEventListener("click", () => {
 
     showLoading("Submitting Your Feedback...", () => {
 
-        addRequest(
-            "⭐ Feedback",
-            experience
-        );
+      const feedbackType =
+    selectedItems[0]
+        .querySelector(".title")
+        .textContent
+        .trim();
 
+saveFeedbackToFirestore(
+    feedbackType,
+    experience
+);
         showNotification(
             "⭐",
             "Feedback",
