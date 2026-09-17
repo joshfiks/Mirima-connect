@@ -6931,11 +6931,12 @@ document.getElementById("submitExchange")
 
     showLoading("Sending Exchange Request...", () => {
 
-        addRequest(
-            "💱 Currency Exchange",
-            `${amount} ${currency} → approximately UGX ${ugxAmount.toLocaleString()}`
-            + (note ? ` — ${note}` : "")
-        );
+       addRequest(
+      "💱 Currency Exchange",
+       "Received",
+       `${amount} ${currency} → approximately UGX ${ugxAmount.toLocaleString()}`
+       + (note ? ` — ${note}` : "")
+     );
 
 
         showNotification(
