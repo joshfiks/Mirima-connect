@@ -1465,10 +1465,11 @@ document.getElementById("submitMaintenance")
         "Sending Maintenance Request...",
         () => {
 
-            addRequest(
-                "🔧 Maintenance Request",
-                `${maintenanceType} — Cottage ${maintenanceLocation} — ${maintenancePriority} — ${maintenanceMessage}`
-            );
+          addRequest(
+    "🔧 Maintenance Request",
+    "Received",
+    `${maintenanceType} — Cottage ${maintenanceLocation} — ${maintenancePriority} — ${maintenanceMessage}`
+);
 
             showNotification(
                 "🔧",
@@ -1793,10 +1794,11 @@ document.getElementById("submitEmergency")
         "Sending Emergency Alert...",
         () => {
 
-            addRequest(
-                "🚨 Emergency Assistance",
-                `${emergencyType} — Cottage ${emergencyLocation} — ${emergencyMessage}`
-            );
+           addRequest(
+    "🚨 Emergency Assistance",
+    "Received",
+    `${emergencyType} — Cottage ${emergencyLocation} — ${emergencyMessage}`
+);
 
             showNotification(
                 "🚨",
