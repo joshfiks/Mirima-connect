@@ -989,11 +989,11 @@ document
             "Contacting Room Service...",
             () => {
 
-                addRequest(
-                    "🍽️ Room Service",
-                    "Preparing"
-                );
-
+               addRequest(
+               "🍽️ Room Service",
+                "Received",
+               "Preparing"
+            );
 
                 showNotification(
                     "🍽️",
@@ -1325,10 +1325,10 @@ document.getElementById("submitLuggage")
         "Requesting Luggage Assistance...",
         () => {
 
-           addRequest(
+         addRequest(
     "🧳 Luggage Assistance",
     "Received",
-    `${luggageService} — Cottage ${luggageLocation} — ${luggageTime}${luggageMessage ? " — " + luggageMessage : ""}`
+    `${luggageService}\nCottage ${luggageLocation}\n${luggageTime}${luggageMessage ? `\n${luggageMessage}` : ""}`
 );
             showNotification(
                 "🧳",
@@ -1465,10 +1465,10 @@ document.getElementById("submitMaintenance")
         "Sending Maintenance Request...",
         () => {
 
-          addRequest(
+     addRequest(
     "🔧 Maintenance Request",
     "Received",
-    `${maintenanceType} — Cottage ${maintenanceLocation} — ${maintenancePriority} — ${maintenanceMessage}`
+    `${maintenanceType}\nCottage ${maintenanceLocation}\n${maintenancePriority}\n${maintenanceMessage}`
 );
 
             showNotification(
@@ -1625,10 +1625,10 @@ document.getElementById("submitExtendStay")
         "Sending Extension Request...",
         () => {
 
-           addRequest(
+        addRequest(
     "📅 Extend Stay",
     "Received",
-    `${nights} additional night(s) — New checkout: ${newCheckoutDate}${message ? " — " + message : ""}`
+    `${nights} additional night(s)\nNew checkout: ${newCheckoutDate}${message ? `\n${message}` : ""}`
 );
 
             showNotification(
@@ -1797,7 +1797,7 @@ document.getElementById("submitEmergency")
            addRequest(
     "🚨 Emergency Assistance",
     "Received",
-    `${emergencyType} — Cottage ${emergencyLocation} — ${emergencyMessage}`
+    `${emergencyType}\nCottage ${emergencyLocation}\n${emergencyMessage}`
 );
 
             showNotification(
@@ -2589,10 +2589,11 @@ confirmRestaurantOrder.addEventListener("click", () => {
 
     setTimeout(() => {
 
-        addRequest(
-            "Restaurant Order — " + selectedRestaurantMeal.name,
-            "Pending"
-        );
+       addRequest(
+    "Restaurant Order",
+    "Received",
+    selectedRestaurantMeal.name
+);
 
         showNotification(
             "Restaurant Order Sent",
@@ -2833,10 +2834,11 @@ confirmBarOrder.addEventListener("click", () => {
 
     setTimeout(() => {
 
-        addRequest(
-            "Bar Order — " + selectedBarDrink.name,
-            "Pending"
-        );
+       addRequest(
+    "Bar Order",
+    "Received",
+    selectedBarDrink.name
+);
 
         showNotification(
             "Bar Order Sent",
@@ -3165,7 +3167,10 @@ confirmRoomDining.addEventListener("click", () => {
 
 
         // Add to My Requests
-        addRequest(requestName, "Pending");
+        addRequest(
+        requestName,
+        "Received"
+      );
 
 
         // Notification
@@ -3603,10 +3608,10 @@ confirmRestaurantReservation.addEventListener(
 
 
             // Add to My Requests
-            addRequest(
-                requestName,
-                "Pending"
-            );
+           addRequest(
+           requestName,
+          "Received"
+         );
 
 
             // ==================================
@@ -5926,7 +5931,7 @@ if (transferDate === todayString) {
        addRequest(
     "🚖 Airport Transfer",
     "Received",
-    `${transferType} — Cottage ${transferRoom} — ${transferDate} ${transferTime}`
+    `${transferType}\nCottage ${transferRoom}\n${transferDate}\n${transferTime}`
 );
 
         showNotification(
@@ -6146,9 +6151,10 @@ document.getElementById("sendCampfireRequest").addEventListener("click", () => {
     showLoading("Preparing Your Campfire...", () => {
 
         addRequest(
-            "🔥 Campfire Experience",
-            `${type} — Cottage ${roomNumber} — ${date} at ${time} — ${guestCount} guest${guestCount > 1 ? "s" : ""}${extras ? " — " + extras : ""}${notes ? " — " + notes : ""}`
-        );
+    "🔥 Campfire Experience",
+    "Received",
+    `${type}\nCottage ${roomNumber}\n${date} at ${time}\n${guestCount} guest${guestCount > 1 ? "s" : ""}${extras ? `\n${extras}` : ""}${notes ? `\n${notes}` : ""}`
+);
 
         showNotification(
             "🔥",
@@ -6977,14 +6983,12 @@ document.getElementById("submitExchange")
 
     showLoading("Sending Exchange Request...", () => {
 
-       addRequest(
-      "💱 Currency Exchange",
-       "Received",
-       `${amount} ${currency} → approximately UGX ${ugxAmount.toLocaleString()}`
-       + (note ? ` — ${note}` : "")
-     );
-
-
+      addRequest(
+    "💱 Currency Exchange",
+    "Received",
+    `${amount} ${currency}\nApproximately UGX ${ugxAmount.toLocaleString()}${note ? `\n${note}` : ""}`
+);
+        
         showNotification(
             "💱",
             "Exchange Request",
@@ -7176,10 +7180,10 @@ document.getElementById("submitBillingHelp")
         showLoading("Sending Billing Help...", () => {
 
          addRequest(
-           "❓ Billing Help",
-             "Received",
-          `${helpTitle} — ${message}`
-         );
+    "❓ Billing Help",
+    "Received",
+    `${helpTitle}\n${message}`
+);
 
             showNotification(
                 "❓",
@@ -7684,11 +7688,11 @@ document.getElementById("submitMobileMoney").addEventListener("click", () => {
 
     showLoading("Submitting Payment Details...", () => {
 
-       addRequest(
+    addRequest(
     `📱 ${network} Payment`,
     "Received",
-    `Phone: ${phone} — Transaction ID: ${transactionId} — Account Name: ${accountName}`
-  );
+    `Phone: ${phone}\nTransaction ID: ${transactionId}\nAccount Name: ${accountName}`
+);
         showNotification(
             "📱",
             "Payment Submitted",
@@ -8119,10 +8123,11 @@ document.getElementById("sendSpaRequest").addEventListener("click", () => {
         "Preparing Your Spa Experience...",
         () => {
 
-            addRequest(
-                "💆 Spa & Wellness",
-                `${service} — Cottage ${roomNumber} — ${date} at ${time} — ${guestCount} guest${guestCount > 1 ? "s" : ""}`
-            );
+           addRequest(
+    "💆 Spa & Wellness",
+    "Received",
+    `${service}\nCottage ${roomNumber}\n${date} at ${time}\n${guestCount} guest${guestCount > 1 ? "s" : ""}`
+);
 
 
             showNotification(
@@ -8278,10 +8283,11 @@ document.getElementById("sendNatureWalkRequest").addEventListener("click", () =>
 
     showLoading("Arranging Your Nature Walk...", () => {
 
-        addRequest(
-            "🌿 Forest Nature Walk",
-            `${walkName} — ${date} at ${time} — ${guestCount} guest${guestCount > 1 ? "s" : ""}${notes ? " — " + notes : ""}`
-        );
+       addRequest(
+    "🌿 Forest Nature Walk",
+    "Received",
+    `${walkName}\n${date} at ${time}\n${guestCount} guest${guestCount > 1 ? "s" : ""}${notes ? `\n${notes}` : ""}`
+);
 
         showNotification(
             "🌿",
@@ -8386,8 +8392,11 @@ const btn = document.getElementById("bookActivity");
 
 showLoading("Booking Your Activity...", () => {
 
-  addRequest("🗺️ Explore", "Booking");
-
+ addRequest(
+    "🗺️ Explore",
+    "Received",
+    "Booking"
+);
   showNotification(
     "🗺️",
     "Explore",
