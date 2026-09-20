@@ -3608,10 +3608,18 @@ confirmRestaurantReservation.addEventListener(
 
 
             // Add to My Requests
-           addRequest(
-           requestName,
-          "Received"
-         );
+          const reservationDetails = `
+Date: ${reservationDate.value}
+Preferred Time: ${reservationTime.value}
+Number of Guests: ${guests}
+Special Request: ${reservationNotes.value || "None"}
+`;
+
+addRequest(
+    requestName,
+    "Received",
+    reservationDetails
+);
 
 
             // ==================================
