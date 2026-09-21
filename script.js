@@ -8780,3 +8780,22 @@ closeConfirmation.addEventListener("click", () => {
 });
 
 });
+// ==========================================
+// GET ACTIVE GUEST FOR COTTAGE
+// ==========================================
+
+async function getActiveGuestForCottage(cottageId) {
+
+    const guestsQuery = query(
+        collection(db, "guests"),
+        where("cottageId", "==", cottageId)
+    );
+
+    const snapshot = await getDocs(guestsQuery);
+
+    if (snapshot.empty) {
+        return null;
+    }
+
+    return snapshot.docs[0].data();
+}
