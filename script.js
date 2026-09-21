@@ -7726,7 +7726,7 @@ document.getElementById("submitMobileMoney").addEventListener("click", () => {
     showLoading("Submitting Payment Details...", () => {
 
     addRequest(
-    `📱 ${network} Payment`,
+   "Make Payment",
     "Received",
     `Phone: ${phone}\nTransaction ID: ${transactionId}\nAccount Name: ${accountName}`
 );
@@ -7870,7 +7870,7 @@ document.getElementById("requestReceptionPayment")
         showLoading("Contacting Reception...", () => {
 
     addRequest(
-    "🏨 Payment at Reception",
+   "Make Payment",
     "Received",
     "Guest will make payment at reception."
 );
