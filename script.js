@@ -3938,10 +3938,19 @@ photographyTourPopup.addEventListener("click", (e) => {
 document.getElementById("bookChimpanzeeTrekking")
 .addEventListener("click", () => {
 
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    addRequest(
+        "Chimpanzee Trekking",
+        "Received",
+        "Booking"
+    );
+
     chimpanzeeTrekkingPopup.style.display = "none";
 
     showConfirmation(
-        "Request Received",
+        `Thank you, ${guestName}!`,
         "Your Chimpanzee Trekking request has been received successfully.",
         "Reception will confirm availability and details shortly."
     );
@@ -3954,10 +3963,19 @@ document.getElementById("bookChimpanzeeTrekking")
 document.getElementById("bookWildlifeViewing")
 .addEventListener("click", () => {
 
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    addRequest(
+        "Wildlife Viewing",
+        "Received",
+        "Booking"
+    );
+
     wildlifeViewingPopup.style.display = "none";
 
     showConfirmation(
-        "Request Received",
+        `Thank you, ${guestName}!`,
         "Your Wildlife Viewing request has been received successfully.",
         "Reception will confirm availability and details shortly."
     );
@@ -3970,10 +3988,19 @@ document.getElementById("bookWildlifeViewing")
 document.getElementById("bookCraterLake")
 .addEventListener("click", () => {
 
+    const guestName =
+        localStorage.getItem("guestName") || "Guest";
+
+    addRequest(
+        "Crater Lake Tour",
+        "Received",
+        "Booking"
+    );
+
     craterLakePopup.style.display = "none";
 
     showConfirmation(
-        "Request Received",
+        `Thank you, ${guestName}!`,
         "Your Crater Lake Tour request has been received successfully.",
         "Reception will confirm availability and details shortly."
     );
@@ -3981,9 +4008,7 @@ document.getElementById("bookCraterLake")
 });
 
 
-// ==========================================
-// 📸 PHOTOGRAPHY TOUR BOOKING
-// ==========================================
+// 📸 PHOTOGRAPHY TOUR
 
 const bookPhotographyTour =
     document.getElementById("bookPhotographyTour");
@@ -3993,10 +4018,14 @@ bookPhotographyTour.addEventListener("click", () => {
     const guestName =
         localStorage.getItem("guestName") || "Guest";
 
-    // Close Photography Tour popup
+    addRequest(
+        "Photography Tour",
+        "Received",
+        "Booking"
+    );
+
     photographyTourPopup.style.display = "none";
 
-    // Show confirmation
     showConfirmation(
         `Thank you, ${guestName}!`,
         "Your Photography Tour request has been received successfully.",
