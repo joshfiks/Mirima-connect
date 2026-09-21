@@ -6,11 +6,30 @@ import {
     getFirestore,
     collection,
     addDoc,
-    serverTimestamp
+    serverTimestamp,
+    getDocs,
+    query,
+    where
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+// ==========================================
+// IDENTIFY COTTAGE FROM URL
+// ==========================================
+
+const urlParams = new URLSearchParams(
+    window.location.search
+);
+
+const cottageNumber =
+    urlParams.get("cottage");
+
+const cottageId =
+    cottageNumber
+        ? `cottage-${cottageNumber}`
+        : null;
 
 async function saveRequestToFirestore(
     service,
