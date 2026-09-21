@@ -2835,7 +2835,7 @@ confirmBarOrder.addEventListener("click", () => {
     setTimeout(() => {
 
        addRequest(
-    "Bar menu",
+    "Bar Menu",
     "Received",
     selectedBarDrink.name
 );
