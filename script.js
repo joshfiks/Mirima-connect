@@ -8400,6 +8400,11 @@ const btn = document.getElementById("bookActivity");
 
 showLoading("Booking Your Activity...", () => {
 
+console.log(
+    "PHOTOGRAPHY BOOKING REACHED:",
+    selectedTitle
+);
+    
 addRequest(
     selectedTitle,
     "Received",
