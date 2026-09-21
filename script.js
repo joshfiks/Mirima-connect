@@ -6,30 +6,11 @@ import {
     getFirestore,
     collection,
     addDoc,
-    getDocs,
-    query,
-    where,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-// ==========================================
-// IDENTIFY COTTAGE FROM URL
-// ==========================================
-
-const urlParams = new URLSearchParams(
-    window.location.search
-);
-
-const cottageNumber =
-    urlParams.get("cottage");
-
-const cottageId =
-    cottageNumber
-        ? `cottage-${cottageNumber}`
-        : null;
 
 async function saveRequestToFirestore(
     service,
@@ -8766,40 +8747,17 @@ function updateClock(){
 updateClock();
 
 setInterval(updateClock, 1000);
-
- // ==========================================
+// ==========================================
 // CLOSE CONFIRMATION
 // ==========================================
 
-const closeConfirmation =
-    document.getElementById("closeConfirmation");
+const closeConfirmation = document.getElementById("closeConfirmation");
 
 closeConfirmation.addEventListener("click", () => {
 
     document.getElementById("orderConfirmation").style.display = "none";
 
+ 
 });
 
-
-// ==========================================
-// GET ACTIVE GUEST FOR COTTAGE
-// ==========================================
-
-async function getActiveGuestForCottage(cottageId) {
-
-    const guestsQuery = query(
-        collection(db, "guests"),
-        where("cottageId", "==", cottageId)
-    );
-
-    const snapshot = await getDocs(guestsQuery);
-
-    if (snapshot.empty) {
-        return null;
-    }
-
-    return snapshot.docs[0].data();
-
-}
-
-console.log("Mirima Cottage ID:", cottageId);
+});
