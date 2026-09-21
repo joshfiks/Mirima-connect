@@ -7364,7 +7364,7 @@ const btn = document.getElementById("sendBillingRequest");
 showLoading("Processing Billing Request...", () => {
 
  addRequest(
-    "💳 Make Payment",
+    "Make Payment",
     "Received",
     "Guest submitted a payment request."
 );
