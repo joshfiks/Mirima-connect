@@ -2590,7 +2590,7 @@ confirmRestaurantOrder.addEventListener("click", () => {
     setTimeout(() => {
 
        addRequest(
-    "Restaurant Order",
+    "Restaurant menu",
     "Received",
     selectedRestaurantMeal.name
 );
@@ -2835,7 +2835,7 @@ confirmBarOrder.addEventListener("click", () => {
     setTimeout(() => {
 
        addRequest(
-    "Bar Order",
+    "Bar menu",
     "Received",
     selectedBarDrink.name
 );
