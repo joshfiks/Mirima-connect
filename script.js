@@ -8400,8 +8400,8 @@ const btn = document.getElementById("bookActivity");
 
 showLoading("Booking Your Activity...", () => {
 
- addRequest(
-    "🗺️ Explore",
+addRequest(
+    selectedTitle,
     "Received",
     "Booking"
 );
