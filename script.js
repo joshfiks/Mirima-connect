@@ -6188,7 +6188,7 @@ document.getElementById("sendCampfireRequest").addEventListener("click", () => {
     showLoading("Preparing Your Campfire...", () => {
 
         addRequest(
-    "🔥 Campfire Experience",
+    "Evening Campfire",
     "Received",
     `${type}\nCottage ${roomNumber}\n${date} at ${time}\n${guestCount} guest${guestCount > 1 ? "s" : ""}${extras ? `\n${extras}` : ""}${notes ? `\n${notes}` : ""}`
 );
