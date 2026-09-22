@@ -415,10 +415,7 @@ welcomeScreen.style.display = "flex";
         }
 
     }
-
-    document.getElementById("guestNameBox").style.display =
-        "block";
-
+   
 })();
 
     },1200);
