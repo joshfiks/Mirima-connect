@@ -314,8 +314,8 @@ enterButton.addEventListener("click", () => {
 
 introVideo.addEventListener("ended", () => {
 
-    portalOpened = true;
-
+    portalOpened = false;
+    
     introScreen.style.display = "none";
 
     background.classList.add("fade");
