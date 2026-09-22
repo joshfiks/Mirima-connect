@@ -8799,3 +8799,19 @@ async function getActiveGuestForCottage(cottageId) {
 
     return snapshot.docs[0].data();
 }
+// ==========================================
+// CHECK GUEST STAY EXPIRY
+// ==========================================
+
+function isGuestStayExpired(guest) {
+
+    if (!guest.checkoutDate || !guest.checkoutTime) {
+        return false;
+    }
+
+    const checkoutDateTime = new Date(
+        `${guest.checkoutDate}T${guest.checkoutTime}`
+    );
+
+    return new Date() >= checkoutDateTime;
+}
