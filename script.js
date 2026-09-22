@@ -8914,6 +8914,35 @@ function startCurrentBillListener(cottageId) {
             services +
             other;
 
+        getActiveGuestForCottage(cottageId)
+    .then(function (guest) {
+
+        if (!guest) {
+            return;
+        }
+
+        document.getElementById("billGuestName").textContent =
+            guest.name || "Guest";
+
+        document.getElementById("billCottage").textContent =
+            cottageId
+                .replace("cottage-", "");
+
+        document.getElementById("billCheckIn").textContent =
+            guest.checkInDate || "—";
+
+        document.getElementById("billCheckOut").textContent =
+            guest.checkoutDate || "—";
+
+    })
+    .catch(function (error) {
+
+        console.error(
+            "Unable to load bill guest information:",
+            error
+        );
+
+    });
         const balanceDue =
             Math.max(
                 0,
