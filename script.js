@@ -359,7 +359,7 @@ introVideo.addEventListener("ended", () => {
 
     document.getElementById("stayExpiredBox").style.display = "block";
 
-    return;
+    return false;
 
 }
 
