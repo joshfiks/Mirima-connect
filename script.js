@@ -8845,9 +8845,10 @@ function startCurrentBillListener(cottageId) {
             where("status", "==", "Verified")
         );
 
-    let currentBill = null;
-    let totalPaid = 0;
-
+   let currentBill = null;
+   let totalPaid = 0;
+   let latestPayment = null;
+    
     function updateBillDisplay() {
 
         if (!currentBill) {
@@ -8970,6 +8971,32 @@ function startCurrentBillListener(cottageId) {
         document.getElementById("billBalance").textContent =
             `UGX ${balanceDue.toLocaleString()}`;
 
+document.getElementById("receiptTotal").textContent =
+    `UGX ${total.toLocaleString()}`;
+
+document.getElementById("receiptPaid").textContent =
+    `UGX ${totalPaid.toLocaleString()}`;
+
+document.getElementById("receiptBalance").textContent =
+    `UGX ${balanceDue.toLocaleString()}`;
+
+document.getElementById("receiptMethod").textContent =
+    latestPayment
+        ? latestPayment.paymentMethod || "—"
+        : "—";
+
+document.getElementById("receiptTransaction").textContent =
+    latestPayment
+        ? latestPayment.transactionId || "—"
+        : "—";
+
+document.getElementById("receiptDate").textContent =
+    latestPayment && latestPayment.createdAt
+        ? new Date(
+            latestPayment.createdAt
+        ).toLocaleString()
+        : "—";
+        
         const statusElement =
             document.getElementById("billStatus");
 
@@ -9037,17 +9064,28 @@ function startCurrentBillListener(cottageId) {
             paymentsQuery,
             function (snapshot) {
 
-                totalPaid = 0;
+               totalPaid = 0;
+latestPayment = null;
 
-                snapshot.forEach(function (paymentDoc) {
+snapshot.forEach(function (paymentDoc) {
 
-                    const payment =
-                        paymentDoc.data();
+    const payment =
+        paymentDoc.data();
 
-                    totalPaid +=
-                        Number(payment.amount || 0);
+    totalPaid +=
+        Number(payment.amount || 0);
 
-                });
+    if (
+        !latestPayment ||
+        new Date(payment.createdAt || 0) >
+        new Date(latestPayment.createdAt || 0)
+    ) {
+
+        latestPayment = payment;
+
+    }
+
+});
 
                 console.log(
                     "Payments updated:",
