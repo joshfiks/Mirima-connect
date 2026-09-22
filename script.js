@@ -314,7 +314,7 @@ enterButton.addEventListener("click", () => {
 
 introVideo.addEventListener("ended", () => {
 
-    portalOpened = false;
+    portalOpened = true;
     
     introScreen.style.display = "none";
 
@@ -338,11 +338,11 @@ introVideo.addEventListener("ended", () => {
 
         background.classList.remove("fade");
 
-        const welcomeScreen = document.getElementById("welcomeScreen");
+const welcomeScreen = document.getElementById("welcomeScreen");
 
-        welcomeScreen.style.display = "flex";
+welcomeScreen.style.display = "flex";
 
-        (async () => {
+(async () => {
 
     await typeMessage("Welcome to Mirima Kibale Lodge.");
 
@@ -353,15 +353,17 @@ introVideo.addEventListener("ended", () => {
 
         if (guest) {
 
-    if (isGuestStayExpired(guest)) {
+            if (isGuestStayExpired(guest)) {
 
-    document.getElementById("typingText").textContent = "";
+                document.getElementById("typingText").textContent = "";
 
-    document.getElementById("stayExpiredBox").style.display = "block";
+                document.getElementById("stayExpiredBox").style.display = "block";
 
-    return;
+                welcomeScreen.style.display = "flex";
 
-}
+                return;
+
+            }
 
     localStorage.setItem(
         "guestName",
