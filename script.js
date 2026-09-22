@@ -362,7 +362,15 @@ continueBtn.addEventListener("click", async () => {
 
     const guest = await getActiveGuestForCottage(cottageId);
 
-    console.log("Guest found for cottage:", guest);
+    if (guest) {
+
+        document.getElementById("guestName").value =
+            guest.name;
+
+        document.getElementById("guestNameBox").style.display =
+            "none";
+
+    }
 
 }
   
