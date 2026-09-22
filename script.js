@@ -353,10 +353,18 @@ introVideo.addEventListener("ended", () => {
 
         if (guest) {
 
-            localStorage.setItem(
-                "guestName",
-                guest.name
-            );
+    if (isGuestStayExpired(guest)) {
+
+        console.log("Guest stay has expired.");
+
+        return;
+
+    }
+
+    localStorage.setItem(
+        "guestName",
+        guest.name
+    );
 
             await typeMessage(
                 `Welcome, ${guest.name}.`
