@@ -355,11 +355,13 @@ introVideo.addEventListener("ended", () => {
 
     if (isGuestStayExpired(guest)) {
 
-        console.log("Guest stay has expired.");
+    document.getElementById("typingText").textContent = "";
 
-        return;
+    document.getElementById("stayExpiredBox").style.display = "block";
 
-    }
+    return;
+
+}
 
     localStorage.setItem(
         "guestName",
