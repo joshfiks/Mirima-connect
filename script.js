@@ -9,7 +9,9 @@ import {
     serverTimestamp,
     getDocs,
     query,
-    where
+    where,
+    onSnapshot,
+    doc
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 const app = initializeApp(firebaseConfig);
@@ -369,7 +371,7 @@ welcomeScreen.style.display = "flex";
         "guestName",
         guest.name
     );
-
+startCurrentBillListener(cottageId);
             await typeMessage(
                 `Welcome, ${guest.name}.`
             );
@@ -8818,6 +8820,72 @@ async function getActiveGuestForCottage(cottageId) {
     }
 
     return snapshot.docs[0].data();
+}
+
+// ==========================================
+// REAL-TIME CURRENT BILL LISTENER
+// ==========================================
+
+let stopCurrentBillListener = null;
+
+function startCurrentBillListener(cottageId) {
+
+    // Stop any previous listener
+    if (stopCurrentBillListener) {
+        stopCurrentBillListener();
+    }
+
+    const billRef =
+        doc(db, "bills", cottageId);
+
+    stopCurrentBillListener =
+        onSnapshot(
+            billRef,
+            function (snapshot) {
+
+                if (!snapshot.exists()) {
+
+                    document.getElementById("billTotal").textContent =
+                        "UGX 0";
+
+                    return;
+                }
+
+                const bill =
+                    snapshot.data();
+
+                const items =
+                    bill.items || [];
+
+                const total =
+                    items.reduce(
+                        function (sum, item) {
+                            return sum + Number(item.amount || 0);
+                        },
+                        0
+                    );
+
+                document.getElementById("billTotal").textContent =
+                    `UGX ${total.toLocaleString()}`;
+
+                document.getElementById("billOther").textContent =
+                    `UGX ${total.toLocaleString()}`;
+
+                console.log(
+                    "Current bill updated:",
+                    bill
+                );
+
+            },
+            function (error) {
+
+                console.error(
+                    "Current bill listener error:",
+                    error
+                );
+
+            }
+        );
 }
 // ==========================================
 // CHECK GUEST STAY EXPIRY
