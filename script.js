@@ -1667,12 +1667,11 @@ document.getElementById("submitExtendStay")
         "Sending Extension Request...",
         () => {
 
-        addRequest(
+     addRequest(
     "📅 Extend Stay",
     "Received",
-    `${nights} additional night(s)\nNew checkout: ${newCheckoutDate}${message ? `\n${message}` : ""}`
+    `${nights} additional night(s)\nNew checkout: ${newCheckoutDate}\nCottage: ${cottageId}${message ? `\n${message}` : ""}`
 );
-
             showNotification(
                 "📅",
                 "Stay Extension",
