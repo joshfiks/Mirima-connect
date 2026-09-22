@@ -357,6 +357,14 @@ introVideo.addEventListener("ended", () => {
 continueBtn.addEventListener("click", async () => {
 
   playClickSound();
+
+    if (cottageId) {
+
+    const guest = await getActiveGuestForCottage(cottageId);
+
+    console.log("Guest found for cottage:", guest);
+
+}
   
     const guestName = document.getElementById("guestName").value.trim();
 
@@ -8799,4 +8807,3 @@ async function getActiveGuestForCottage(cottageId) {
 
     return snapshot.docs[0].data();
 }
-window.getActiveGuestForCottage = getActiveGuestForCottage;
