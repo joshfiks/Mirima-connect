@@ -1553,6 +1553,18 @@ extendStayPopup.addEventListener("click", (e) => {
 
 });
 
+    // ==========================================
+// EXPIRED STAY - REQUEST EXTENSION
+// ==========================================
+
+document.getElementById("extendStayBtn")
+.addEventListener("click", () => {
+
+    document.getElementById("stayExpiredBox").style.display = "none";
+
+    extendStayPopup.style.display = "flex";
+
+});
 // ==========================================
 // EXTEND YOUR STAY REQUEST
 // ==========================================
