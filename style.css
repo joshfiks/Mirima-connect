@@ -24039,3 +24039,50 @@ padding:22px !important;
     }
 
 }
+/* ==========================================
+   STAY EXPIRED SCREEN
+   ========================================== */
+
+#stayExpiredBox {
+    width: min(90%, 520px);
+    padding: 35px 30px;
+    text-align: center;
+    background: rgba(20, 30, 25, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    color: white;
+    margin: auto;
+}
+
+#stayExpiredBox h2 {
+    margin: 0 0 12px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#stayExpiredBox p {
+    margin: 0 0 25px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#extendStayBtn {
+    border: none;
+    padding: 13px 24px;
+    border-radius: 10px;
+    background: white;
+    color: #1f3d2b;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#extendStayBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
