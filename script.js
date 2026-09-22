@@ -8830,7 +8830,7 @@ let stopCurrentBillListener = null;
 
 function startCurrentBillListener(cottageId) {
 
-    // Stop any previous listener
+    // Stop any previous bill listener
     if (stopCurrentBillListener) {
         stopCurrentBillListener();
     }
@@ -8838,43 +8838,159 @@ function startCurrentBillListener(cottageId) {
     const billRef =
         doc(db, "bills", cottageId);
 
-    stopCurrentBillListener =
+    const paymentsQuery =
+        query(
+            collection(db, "payments"),
+            where("cottageId", "==", cottageId),
+            where("status", "==", "Verified")
+        );
+
+    let currentBill = null;
+    let totalPaid = 0;
+
+    function updateBillDisplay() {
+
+        if (!currentBill) {
+            return;
+        }
+
+        const items =
+            currentBill.items || [];
+
+        let accommodation = 0;
+        let food = 0;
+        let services = 0;
+        let other = 0;
+
+        items.forEach(function (item) {
+
+            const description =
+                (item.description || "").toLowerCase();
+
+            const amount =
+                Number(item.amount || 0);
+
+            if (
+                description.includes("accommodation") ||
+                description.includes("room") ||
+                description.includes("cottage") ||
+                description.includes("stay")
+            ) {
+
+                accommodation += amount;
+
+            } else if (
+                description.includes("food") ||
+                description.includes("drink") ||
+                description.includes("restaurant") ||
+                description.includes("meal") ||
+                description.includes("bar")
+            ) {
+
+                food += amount;
+
+            } else if (
+                description.includes("service") ||
+                description.includes("trek") ||
+                description.includes("tour") ||
+                description.includes("campfire") ||
+                description.includes("transfer") ||
+                description.includes("housekeeping")
+            ) {
+
+                services += amount;
+
+            } else {
+
+                other += amount;
+
+            }
+
+        });
+
+        const total =
+            accommodation +
+            food +
+            services +
+            other;
+
+        const balanceDue =
+            Math.max(
+                0,
+                total - totalPaid
+            );
+
+        document.getElementById("billAccommodation").textContent =
+            `UGX ${accommodation.toLocaleString()}`;
+
+        document.getElementById("billFood").textContent =
+            `UGX ${food.toLocaleString()}`;
+
+        document.getElementById("billServices").textContent =
+            `UGX ${services.toLocaleString()}`;
+
+        document.getElementById("billOther").textContent =
+            `UGX ${other.toLocaleString()}`;
+
+        document.getElementById("billTotal").textContent =
+            `UGX ${total.toLocaleString()}`;
+
+        document.getElementById("billPaid").textContent =
+            `UGX ${totalPaid.toLocaleString()}`;
+
+        document.getElementById("billBalance").textContent =
+            `UGX ${balanceDue.toLocaleString()}`;
+
+        const statusElement =
+            document.getElementById("billStatus");
+
+        if (statusElement) {
+
+            if (total === 0) {
+
+                statusElement.textContent =
+                    "Awaiting Payment";
+
+            } else if (balanceDue === 0) {
+
+                statusElement.textContent =
+                    "Paid in Full";
+
+            } else {
+
+                statusElement.textContent =
+                    "Balance Due";
+            }
+
+        }
+
+    }
+
+    const stopBillListener =
         onSnapshot(
             billRef,
             function (snapshot) {
 
                 if (!snapshot.exists()) {
 
-                    document.getElementById("billTotal").textContent =
-                        "UGX 0";
+                    currentBill = {
+                        items: []
+                    };
+
+                    updateBillDisplay();
 
                     return;
                 }
 
-                const bill =
+                currentBill =
                     snapshot.data();
-
-                const items =
-                    bill.items || [];
-
-                const total =
-                    items.reduce(
-                        function (sum, item) {
-                            return sum + Number(item.amount || 0);
-                        },
-                        0
-                    );
-
-                document.getElementById("billTotal").textContent =
-                    `UGX ${total.toLocaleString()}`;
-
-                document.getElementById("billOther").textContent =
-                    `UGX ${total.toLocaleString()}`;
 
                 console.log(
                     "Current bill updated:",
-                    bill
+                    currentBill
                 );
+
+                updateBillDisplay();
 
             },
             function (error) {
@@ -8886,7 +9002,51 @@ function startCurrentBillListener(cottageId) {
 
             }
         );
+
+    const stopPaymentsListener =
+        onSnapshot(
+            paymentsQuery,
+            function (snapshot) {
+
+                totalPaid = 0;
+
+                snapshot.forEach(function (paymentDoc) {
+
+                    const payment =
+                        paymentDoc.data();
+
+                    totalPaid +=
+                        Number(payment.amount || 0);
+
+                });
+
+                console.log(
+                    "Payments updated:",
+                    totalPaid
+                );
+
+                updateBillDisplay();
+
+            },
+            function (error) {
+
+                console.error(
+                    "Payment listener error:",
+                    error
+                );
+
+            }
+        );
+
+    stopCurrentBillListener = function () {
+
+        stopBillListener();
+        stopPaymentsListener();
+
+    };
+
 }
+
 // ==========================================
 // CHECK GUEST STAY EXPIRY
 // ==========================================
