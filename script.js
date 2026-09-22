@@ -8799,3 +8799,4 @@ async function getActiveGuestForCottage(cottageId) {
 
     return snapshot.docs[0].data();
 }
+window.getActiveGuestForCottage = getActiveGuestForCottage;
