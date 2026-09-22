@@ -353,7 +353,8 @@ welcomeScreen.style.display = "flex";
 
         if (guest) {
 
-           if (true) {
+           if (isGuestStayExpired(guest)) {
+               
                 document.getElementById("typingText").textContent = "";
 
                 document.getElementById("stayExpiredBox").style.display = "block";
