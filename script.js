@@ -8929,6 +8929,12 @@ function startCurrentBillListener(cottageId) {
             cottageId
                 .replace("cottage-", "");
 
+        document.getElementById("receiptGuestName").textContent =
+         guest.name || "Guest";
+
+     document.getElementById("receiptCottage").textContent =
+      cottageId.replace("cottage-", "");
+
         document.getElementById("billCheckIn").textContent =
             guest.checkInDate || "—";
 
