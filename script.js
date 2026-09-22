@@ -344,11 +344,70 @@ introVideo.addEventListener("ended", () => {
 
         (async () => {
 
-            await typeMessage("Welcome to Mirima Kibale Lodge.");
+    await typeMessage("Welcome to Mirima Kibale Lodge.");
 
-            document.getElementById("guestNameBox").style.display = "block";
+    if (cottageId) {
 
-        })();
+        const guest =
+            await getActiveGuestForCottage(cottageId);
+
+        if (guest) {
+
+            localStorage.setItem(
+                "guestName",
+                guest.name
+            );
+
+            await typeMessage(
+                `Welcome, ${guest.name}.`
+            );
+
+            await typeMessage(
+                "We're delighted to host your stay."
+            );
+
+            await typeMessage(
+                "Please choose a service below."
+            );
+
+            welcomeScreen.style.display = "none";
+
+            const portal =
+                document.querySelector(".portal");
+
+            portal.classList.remove("show");
+
+            portal.style.display = "block";
+
+            setTimeout(() => {
+
+                portal.classList.add("show");
+
+                const cards =
+                    document.querySelectorAll(".card");
+
+                cards.forEach((card, index) => {
+
+                    setTimeout(() => {
+
+                        card.classList.add("show");
+
+                    }, index * 300);
+
+                });
+
+            }, 1500);
+
+            return;
+
+        }
+
+    }
+
+    document.getElementById("guestNameBox").style.display =
+        "block";
+
+})();
 
     },1200);
 
