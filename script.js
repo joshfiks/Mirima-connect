@@ -8815,3 +8815,4 @@ function isGuestStayExpired(guest) {
 
     return new Date() >= checkoutDateTime;
 }
+window.isGuestStayExpired = isGuestStayExpired;
