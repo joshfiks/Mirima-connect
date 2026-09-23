@@ -5701,6 +5701,11 @@ if (
         ".service-option"
     );
 
+document.getElementById("luggageLocation").value =
+    cottageId
+        ? cottageId.replace("cottage-", "")
+        : "";
+    
     luggagePopup.style.display = "flex";
 
     return;
@@ -5724,6 +5729,11 @@ if (
         receptionPopup,
         ".service-option"
     );
+
+    document.getElementById("maintenanceLocation").value =
+    cottageId
+        ? cottageId.replace("cottage-", "")
+        : "";
 
     maintenancePopup.style.display = "flex";
 
