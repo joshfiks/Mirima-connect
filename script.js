@@ -6456,34 +6456,41 @@ document.getElementById("downloadReceipt")
     // ==========================================
 
     const guest =
-        document.getElementById("receiptGuestName")
-            .textContent.trim();
+    document.getElementById("receiptGuestName")
+        .textContent.trim();
 
-    const cottage =
-        document.getElementById("receiptCottage")
-            .textContent.trim();
+const cottage =
+    document.getElementById("receiptCottage")
+        .textContent.trim();
 
-    const amount =
-        document.getElementById("receiptAmount")
-            .textContent.trim();
+const total =
+    document.getElementById("receiptTotal")
+        .textContent.trim();
 
-    const method =
-        document.getElementById("receiptMethod")
-            .textContent.trim();
+const paid =
+    document.getElementById("receiptPaid")
+        .textContent.trim();
 
-    const transaction =
-        document.getElementById("receiptTransaction")
-            .textContent.trim();
+const balance =
+    document.getElementById("receiptBalance")
+        .textContent.trim();
 
-    const date =
-        document.getElementById("receiptDate")
-            .textContent.trim();
+const method =
+    document.getElementById("receiptMethod")
+        .textContent.trim();
 
-    const status =
-        document.getElementById("receiptStatus")
-            .textContent.trim();
+const transaction =
+    document.getElementById("receiptTransaction")
+        .textContent.trim();
 
+const date =
+    document.getElementById("receiptDate")
+        .textContent.trim();
 
+const status =
+    document.getElementById("receiptStatus")
+        .textContent.trim();
+        
     // ==========================================
     // CREATE PDF
     // ==========================================
