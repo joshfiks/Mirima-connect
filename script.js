@@ -8459,6 +8459,11 @@ if (selectedTitle.includes("Campfire")) {
     document.getElementById("campfireName").value =
         localStorage.getItem("guestName") || "";
 
+document.getElementById("campfireRoom").value =
+    cottageId
+        ? cottageId.replace("cottage-", "")
+        : "";
+    
     campfirePopup.style.display = "flex";
 
     return;
@@ -8474,6 +8479,11 @@ if (selectedTitle.includes("Campfire")) {
     document.getElementById("spaName").value =
         localStorage.getItem("guestName") || "";
 
+document.getElementById("spaRoom").value =
+    cottageId
+        ? cottageId.replace("cottage-", "")
+        : "";
+      
     spaPopup.style.display = "flex";
 
     return;
