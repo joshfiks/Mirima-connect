@@ -5665,6 +5665,11 @@ if (airportTransfer && airportTransfer.textContent.trim() === "Airport Transfer"
 
     document.getElementById("transferName").value = guestName;
 
+        document.getElementById("transferRoom").value =
+    cottageId
+        ? cottageId.replace("cottage-", "")
+        : "";
+
     transferPopup.style.display = "flex";
 
 }, 150);
