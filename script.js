@@ -6723,7 +6723,7 @@ const status =
 
     addRow("Cottage", cottage, 108);
 
-    addRow("Amount", amount, 122);
+    addRow("Total Charges", total, 122);
 
     addRow("Payment Method", method, 136);
 
