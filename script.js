@@ -2065,6 +2065,11 @@ document.getElementById("receptionEmergency")
 
     receptionChatPopup.style.display = "none";
 
+    document.getElementById("emergencyLocation").value =
+        cottageId
+            ? cottageId.replace("cottage-", "")
+            : "";
+
     emergencyPopup.style.display = "flex";
 
 });
@@ -5768,6 +5773,11 @@ if (
         receptionPopup,
         ".service-option"
     );
+
+    document.getElementById("emergencyLocation").value =
+    cottageId
+        ? cottageId.replace("cottage-", "")
+        : "";
 
     emergencyPopup.style.display = "flex";
 
