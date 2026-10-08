@@ -24288,3 +24288,22 @@ padding:22px !important;
     }
 
 }
+/* ==========================================
+   CHAT MESSAGE BUBBLES
+========================================== */
+
+.chat-message {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.guest-message {
+    align-self: flex-end;
+    background: #25d366;
+    color: #ffffff;
+    border-bottom-right-radius: 5px;
+}
