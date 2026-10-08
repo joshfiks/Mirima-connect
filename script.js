@@ -2054,7 +2054,19 @@ document.querySelectorAll(".chat-department")
     });
 
 });
-    
+
+// ==========================================
+// BACK TO CHAT DEPARTMENTS
+// ==========================================
+
+document.getElementById("backToDepartments")
+.addEventListener("click", () => {
+
+    departmentChatPopup.style.display = "none";
+
+    receptionChatPopup.style.display = "flex";
+
+});
 // ==========================================
 // CALL RECEPTION
 // ==========================================
