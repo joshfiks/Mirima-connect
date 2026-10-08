@@ -2031,13 +2031,20 @@ document.getElementById("submitOtherAssistance")
 // WHATSAPP
 // ==========================================
 
-document.getElementById("openReceptionWhatsApp")
-.addEventListener("click", () => {
+document.querySelectorAll(".chat-department")
+.forEach((button) => {
 
-    receptionChatPopup.style.display = "none";
+    button.addEventListener("click", () => {
 
-    // Open the new in-app chat
-    otherAssistancePopup.style.display = "flex";
+        const department =
+            button.dataset.department;
+
+        console.log(
+            "Selected chat department:",
+            department
+        );
+
+    });
 
 });
 
