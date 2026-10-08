@@ -24377,3 +24377,96 @@ padding:22px !important;
 #chatDeleteMessage:hover {
     background: #fff0f0;
 }
+/* ==========================================
+   DELETE CHAT MESSAGE CONFIRMATION
+========================================== */
+
+.delete-chat-message-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.delete-chat-message-box {
+    width: min(100%, 360px);
+    padding: 24px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    text-align: center;
+}
+
+.delete-chat-message-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff0f0;
+    color: #c94b4b;
+}
+
+.delete-chat-message-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.delete-chat-message-box strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #222822;
+    font-size: 17px;
+}
+
+.delete-chat-message-box p {
+    margin: 0;
+    color: #737a75;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.delete-chat-message-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.delete-chat-message-actions button {
+    flex: 1;
+    height: 42px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#cancelDeleteChatMessage {
+    background: #eef1ee;
+    color: #404840;
+}
+
+#confirmDeleteChatMessage {
+    background: #c94b4b;
+    color: #ffffff;
+}
+
+#cancelDeleteChatMessage:hover {
+    background: #e2e7e2;
+}
+
+#confirmDeleteChatMessage:hover {
+    background: #b83f3f;
+}
