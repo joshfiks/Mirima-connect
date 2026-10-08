@@ -24307,3 +24307,15 @@ padding:22px !important;
     color: #ffffff;
     border-bottom-right-radius: 5px;
 }
+.chat-message-text {
+    display: block;
+}
+
+.chat-message-time {
+    display: block;
+    margin-top: 4px;
+    text-align: right;
+    font-size: 10px;
+    line-height: 1;
+    opacity: 0.75;
+}
