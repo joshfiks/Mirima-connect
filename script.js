@@ -33,6 +33,148 @@ const cottageId =
         ? `cottage-${cottageNumber}`
         : null;
 
+// ==========================================
+// CHAT CONVERSATION ID
+// ==========================================
+
+function getChatConversationId(department) {
+
+    if (!cottageId) {
+        return null;
+    }
+
+    return `${cottageId}_${department}`;
+}
+
+// ==========================================
+// CREATE / GET CHAT CONVERSATION
+// ==========================================
+
+async function getOrCreateChatConversation(department) {
+
+    const conversationId =
+        getChatConversationId(department);
+
+    if (!conversationId) {
+        return null;
+    }
+
+    const conversationRef =
+        doc(
+            db,
+            "chatConversations",
+            conversationId
+        );
+
+    const conversationSnapshot =
+        await getDoc(conversationRef);
+
+    if (!conversationSnapshot.exists()) {
+
+        await setDoc(
+            conversationRef,
+            {
+                cottageId: cottageId,
+                guestName:
+                    localStorage.getItem(
+                        "guestName"
+                    ) || "Guest",
+                department: department,
+                createdAt: serverTimestamp(),
+                updatedAt: serverTimestamp(),
+                guestMessageCount: 0
+            }
+        );
+
+    }
+
+    return conversationRef;
+}
+
+// ==========================================
+// SEND GUEST CHAT MESSAGE
+// ==========================================
+
+async function sendGuestChatMessage(
+    department,
+    message
+) {
+
+    const cleanMessage =
+        message.trim();
+
+    if (!cleanMessage) {
+        return {
+            success: false,
+            reason: "empty"
+        };
+    }
+
+    const conversationRef =
+        await getOrCreateChatConversation(
+            department
+        );
+
+    if (!conversationRef) {
+        return {
+            success: false,
+            reason: "no-conversation"
+        };
+    }
+
+    const conversationSnapshot =
+        await getDoc(conversationRef);
+
+    const conversation =
+        conversationSnapshot.data();
+
+    const guestMessageCount =
+        Number(
+            conversation.guestMessageCount || 0
+        );
+
+    if (guestMessageCount >= 10) {
+
+        return {
+            success: false,
+            reason: "limit-reached"
+        };
+
+    }
+
+    await addDoc(
+        collection(
+            conversationRef,
+            "messages"
+        ),
+        {
+            sender: "guest",
+            senderName:
+                localStorage.getItem(
+                    "guestName"
+                ) || "Guest",
+            message: cleanMessage,
+            createdAt: serverTimestamp()
+        }
+    );
+
+    await updateDoc(
+        conversationRef,
+        {
+            guestMessageCount:
+                guestMessageCount + 1,
+            updatedAt:
+                serverTimestamp()
+        }
+    );
+
+    return {
+        success: true,
+        messageCount:
+            guestMessageCount + 1
+    };
+}
+
 async function saveRequestToFirestore(
     service,
     status,
@@ -2051,10 +2193,67 @@ document.querySelectorAll(".chat-department")
             "departmentChatWelcomeName"
         ).textContent = department;
 
+        departmentChatPopup.dataset.department =
+            department;
+
     });
 
 });
 
+
+// ==========================================
+// SEND CHAT MESSAGE
+// ==========================================
+
+document.getElementById("departmentChatSend")
+.addEventListener("click", async () => {
+
+    const input =
+        document.getElementById(
+            "departmentChatInput"
+        );
+
+    const message =
+        input.value.trim();
+
+    const department =
+        departmentChatPopup.dataset.department;
+
+    if (!message || !department) {
+        return;
+    }
+
+    const result =
+        await sendGuestChatMessage(
+            department,
+            message
+        );
+
+    if (!result.success) {
+
+        if (
+            result.reason ===
+            "limit-reached"
+        ) {
+
+            alert(
+                "You have reached the 10 message limit for this conversation."
+            );
+
+        }
+
+        return;
+    }
+
+    input.value = "";
+
+    console.log(
+        "Guest message sent:",
+        message
+    );
+
+});
+    
 // ==========================================
 // BACK TO CHAT DEPARTMENTS
 // ==========================================
