@@ -274,6 +274,9 @@ async function loadDepartmentChatMessages(
                     ? "guest-message"
                     : "staff-message");
 
+            messageBubble.dataset.messageId =
+                 messageDoc.id;
+
            messageBubble.innerHTML = `
     <span class="chat-message-text">
         ${data.message || ""}
@@ -404,6 +407,68 @@ function showChatMessageActionMenu(
     menu.style.top =
         `${y}px`;
 }
+
+document.getElementById(
+    "chatCopyMessage"
+).addEventListener(
+    "click",
+    async function () {
+
+        const menu =
+            document.getElementById(
+                "chatMessageActionMenu"
+            );
+
+        const messageId =
+            menu.dataset.messageId;
+
+        const messageBubble =
+            document.querySelector(
+                `.chat-message .chat-message-text`
+            );
+
+        if (!messageId) {
+            return;
+        }
+
+        const messageElement =
+            Array.from(
+                document.querySelectorAll(
+                    ".chat-message"
+                )
+            ).find(function (bubble) {
+
+                return (
+                    bubble.querySelector(
+                        ".chat-message-text"
+                    ) &&
+                    bubble.dataset.messageId ===
+                    messageId
+                );
+
+            });
+
+        if (!messageElement) {
+            return;
+        }
+
+        const messageText =
+            messageElement
+                .querySelector(
+                    ".chat-message-text"
+                )
+                .textContent
+                .trim();
+
+        await navigator.clipboard.writeText(
+            messageText
+        );
+
+        menu.style.display = "none";
+
+    }
+);
+
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
