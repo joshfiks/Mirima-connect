@@ -2188,7 +2188,26 @@ document.querySelectorAll(".chat-department")
 
         departmentChatPopup.style.display = "flex";
 
-        document.getElementById("departmentChatMessages").innerHTML = "";
+        document.getElementById("departmentChatMessages").innerHTML = `
+    <div class="chat-welcome-message">
+
+        <div class="chat-welcome-icon">
+            💬
+        </div>
+
+        <strong>
+            Start a conversation
+        </strong>
+
+        <p>
+            Send a message to
+            <span id="departmentChatWelcomeName">
+                ${department}
+            </span>.
+        </p>
+
+    </div>
+`;
 
         document.getElementById(
             "departmentChatName"
