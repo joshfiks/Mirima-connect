@@ -296,6 +296,59 @@ async function loadDepartmentChatMessages(
                 messageBubble
             );
 
+            if (data.sender === "guest") {
+
+    let pressTimer;
+
+    messageBubble.addEventListener(
+        "touchstart",
+        function () {
+
+            pressTimer = setTimeout(
+                function () {
+
+                    console.log(
+                        "LONG PRESS:",
+                        messageDoc.id
+                    );
+
+                },
+                600
+            );
+
+        }
+    );
+
+    messageBubble.addEventListener(
+        "touchend",
+        function () {
+            clearTimeout(pressTimer);
+        }
+    );
+
+    messageBubble.addEventListener(
+        "touchmove",
+        function () {
+            clearTimeout(pressTimer);
+        }
+    );
+
+    messageBubble.addEventListener(
+        "contextmenu",
+        function (event) {
+
+            event.preventDefault();
+
+            console.log(
+                "MESSAGE MENU:",
+                messageDoc.id
+            );
+
+        }
+    );
+
+}
+
         });
 
         messagesContainer.scrollTop =
