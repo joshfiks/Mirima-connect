@@ -2034,15 +2034,12 @@ document.getElementById("submitOtherAssistance")
 document.getElementById("openReceptionWhatsApp")
 .addEventListener("click", () => {
 
-    const phoneNumber = "256742015605";
+    receptionChatPopup.style.display = "none";
 
-    window.open(
-        `https://wa.me/${phoneNumber}`,
-        "_blank"
-    );
+    // Open the new in-app chat
+    otherAssistancePopup.style.display = "flex";
 
 });
-
 
 // ==========================================
 // CALL RECEPTION
