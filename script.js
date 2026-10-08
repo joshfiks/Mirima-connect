@@ -230,13 +230,12 @@ async function loadDepartmentChatMessages(
         return;
     }
 
-    const messagesSnapshot =
-        await getDocs(
-            collection(
-                conversationRef,
-                "messages"
-            )
-        );
+   onSnapshot(
+    collection(
+        conversationRef,
+        "messages"
+    ),
+    function (messagesSnapshot) {
 
     const messagesContainer =
         document.getElementById(
@@ -284,10 +283,11 @@ async function loadDepartmentChatMessages(
 
         });
 
-    messagesContainer.scrollTop =
+     messagesContainer.scrollTop =
         messagesContainer.scrollHeight;
-}
 
+    }
+);
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
