@@ -2309,11 +2309,15 @@ document.querySelectorAll(".chat-department")
         ).textContent = department;
 
         departmentChatPopup.dataset.department =
-            department;
+       department;
 
-        loadDepartmentChatMessages(
-        department
-       );
+    document.getElementById(
+      "departmentChatInput"
+     ).value = "";
+
+loadDepartmentChatMessages(
+    department
+);
 
     });
 
