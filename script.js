@@ -664,15 +664,7 @@ document.getElementById(
             return;
         }
 
-        const confirmed =
-            confirm(
-                "Delete this message?"
-            );
-
-        if (!confirmed) {
-            return;
-        }
-
+        
         const result =
             await deleteGuestChatMessage(
                 department,
