@@ -2315,6 +2315,13 @@ document.querySelectorAll(".chat-department")
       "departmentChatInput"
      ).value = "";
 
+        console.log(
+    "INPUT AFTER CLEAR:",
+    document.getElementById(
+        "departmentChatInput"
+    ).value
+);
+        
 loadDepartmentChatMessages(
     department
 );
