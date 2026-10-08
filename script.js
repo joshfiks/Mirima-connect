@@ -283,11 +283,12 @@ async function loadDepartmentChatMessages(
 
         });
 
-     messagesContainer.scrollTop =
+        messagesContainer.scrollTop =
         messagesContainer.scrollHeight;
 
     }
 );
+}
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
