@@ -24195,3 +24195,198 @@ padding:22px !important;
 #extendStayBtn:active {
     transform: translateY(-1px);
 }
+/* ==========================================
+   DEPARTMENT CHAT
+========================================== */
+
+#departmentChatPopup {
+    padding: 0;
+}
+
+.department-chat-window {
+    width: min(100%, 520px);
+    height: min(90vh, 760px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #efeae2;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+
+/* Chat Header */
+
+.department-chat-header {
+    height: 70px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    background: #151b17;
+    color: #ffffff;
+}
+
+.chat-back-button {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.department-chat-avatar {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #25d366;
+    font-size: 20px;
+}
+
+.department-chat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.department-chat-info strong {
+    font-size: 15px;
+}
+
+.department-chat-info small {
+    color: #b7c0ba;
+    font-size: 12px;
+}
+
+
+/* Messages */
+
+.department-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-welcome-message {
+    align-self: center;
+    max-width: 85%;
+    margin: auto;
+    text-align: center;
+    color: #68716b;
+}
+
+.chat-welcome-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #d8e0da;
+    font-size: 22px;
+}
+
+.chat-welcome-message strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #303631;
+}
+
+.chat-welcome-message p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* Message Limit */
+
+.chat-message-limit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 14px;
+    background: #f7f7f7;
+    border-top: 1px solid #dfe3df;
+    color: #737a75;
+    font-size: 11px;
+}
+
+
+/* Input */
+
+.department-chat-input {
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    background: #f0f2f0;
+    border-top: 1px solid #d9ddd9;
+}
+
+.department-chat-input input {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid #d4d9d5;
+    border-radius: 22px;
+    outline: none;
+    background: #ffffff;
+    color: #222822;
+    font-size: 14px;
+}
+
+.department-chat-input input:focus {
+    border-color: #25d366;
+}
+
+.department-chat-input button {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #25d366;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    #departmentChatPopup {
+        padding: 0;
+    }
+
+    .department-chat-window {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .department-chat-header {
+        height: 64px;
+        padding: 0 12px;
+    }
+
+    .department-chat-messages {
+        padding: 16px 12px;
+    }
+
+}
