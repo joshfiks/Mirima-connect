@@ -870,55 +870,105 @@ AIRPORT TRANSFER POPUP
             </div>
         </div>
 
-      <!-- Live Chat Area -->
-<div class="reception-live-chat">
 
-    <div class="reception-chat-messages"
-         id="receptionChatMessages">
+       <!-- Chat Departments -->
+<div class="chat-departments">
 
-        <div class="reception-chat-empty">
-            <span>💬</span>
-            <p>
-                Start a conversation with Reception.
-            </p>
+    <div class="chat-departments-title">
+        <strong>Who would you like to chat with?</strong>
+        <small>Select a department</small>
+    </div>
+
+    <button
+        class="reception-contact primary chat-department"
+        data-department="Reception"
+    >
+        <span class="contact-icon">💬</span>
+
+        <div>
+            <strong>Reception</strong>
+            <small>General assistance and guest services</small>
         </div>
 
-    </div>
+        <span class="contact-arrow">›</span>
+    </button>
 
-    <div class="reception-chat-input">
 
-        <input
-            type="text"
-            id="receptionChatInput"
-            placeholder="Type your message..."
-            autocomplete="off"
-        >
+    <button
+        class="reception-contact chat-department"
+        data-department="Housekeeping"
+    >
+        <span class="contact-icon">🧹</span>
 
-        <button
-            type="button"
-            id="receptionChatSend"
-        >
-            Send
-        </button>
+        <div>
+            <strong>Housekeeping</strong>
+            <small>Room cleaning and amenities</small>
+        </div>
 
-    </div>
+        <span class="contact-arrow">›</span>
+    </button>
+
+
+    <button
+        class="reception-contact chat-department"
+        data-department="Spa"
+    >
+        <span class="contact-icon">🧖</span>
+
+        <div>
+            <strong>Spa</strong>
+            <small>Spa services and appointments</small>
+        </div>
+
+        <span class="contact-arrow">›</span>
+    </button>
+
+
+    <button
+        class="reception-contact chat-department"
+        data-department="Security"
+    >
+        <span class="contact-icon">🛡️</span>
+
+        <div>
+            <strong>Security</strong>
+            <small>Safety and security assistance</small>
+        </div>
+
+        <span class="contact-arrow">›</span>
+    </button>
+
+
+    <button
+        class="reception-contact chat-department"
+        data-department="Management"
+    >
+        <span class="contact-icon">👔</span>
+
+        <div>
+            <strong>Management</strong>
+            <small>Management assistance</small>
+        </div>
+
+        <span class="contact-arrow">›</span>
+    </button>
+
+
+    <button
+        class="reception-contact chat-department"
+        data-department="Kitchen"
+    >
+        <span class="contact-icon">🍽️</span>
+
+        <div>
+            <strong>Kitchen</strong>
+            <small>Food and dining assistance</small>
+        </div>
+
+        <span class="contact-arrow">›</span>
+    </button>
 
 </div>
-
-        <!-- WhatsApp -->
-        <button class="reception-contact primary"
-                id="openReceptionWhatsApp">
-
-            <span class="contact-icon">💬</span>
-
-            <div>
-               <strong>Chat with Reception</strong>
-               <small>Message our team directly</small>
-            </div>
-
-            <span class="contact-arrow">›</span>
-
-        </button>
 
         <!-- Quick Actions -->
         <div class="reception-quick-actions">
