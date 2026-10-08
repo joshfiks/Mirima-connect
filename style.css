@@ -24319,3 +24319,33 @@ padding:22px !important;
     line-height: 1;
     opacity: 0.75;
 }
+/* ==========================================
+   CHAT MESSAGE ACTION MENU
+========================================== */
+
+.chat-message-action-menu {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    min-width: 140px;
+    padding: 6px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    z-index: 9999;
+}
+
+.chat-message-action-menu button {
+    border: 0;
+    background: transparent;
+    padding: 10px 12px;
+    text-align: left;
+    border-radius: 7px;
+    color: #222822;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.chat-message-action-menu button:hover {
+    background: #f0f2f0;
+}
