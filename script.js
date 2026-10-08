@@ -2030,7 +2030,7 @@ document.getElementById("submitOtherAssistance")
 // ==========================================
 // WHATSAPP
 // ==========================================
-
+    
 document.querySelectorAll(".chat-department")
 .forEach((button) => {
 
@@ -2039,15 +2039,22 @@ document.querySelectorAll(".chat-department")
         const department =
             button.dataset.department;
 
-        console.log(
-            "Selected chat department:",
-            department
-        );
+        receptionChatPopup.style.display = "none";
+
+        departmentChatPopup.style.display = "flex";
+
+        document.getElementById(
+            "departmentChatName"
+        ).textContent = department;
+
+        document.getElementById(
+            "departmentChatWelcomeName"
+        ).textContent = department;
 
     });
 
 });
-
+    
 // ==========================================
 // CALL RECEPTION
 // ==========================================
