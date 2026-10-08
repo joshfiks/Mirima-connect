@@ -2350,28 +2350,7 @@ document.getElementById("departmentChatSend")
     }
 
     input.value = "";
-
-    const messagesContainer =
-    document.getElementById(
-        "departmentChatMessages"
-    );
-
-const messageBubble =
-    document.createElement("div");
-
-messageBubble.className =
-    "chat-message guest-message";
-
-messageBubble.textContent =
-    message;
-
-messagesContainer.appendChild(
-    messageBubble
-);
-
-messagesContainer.scrollTop =
-    messagesContainer.scrollHeight;
-
+    
     console.log(
         "Guest message sent:",
         message
