@@ -678,6 +678,50 @@ document.getElementById(
     }
 );
 
+document.getElementById(
+    "confirmDeleteChatMessage"
+).addEventListener(
+    "click",
+    async function () {
+
+        const deletePopup =
+            document.getElementById(
+                "deleteChatMessagePopup"
+            );
+
+        const messageId =
+            deletePopup.dataset.messageId;
+
+        const department =
+            departmentChatPopup.dataset.department;
+
+        if (!messageId || !department) {
+            return;
+        }
+
+        const result =
+            await deleteGuestChatMessage(
+                department,
+                messageId
+            );
+
+        if (!result.success) {
+            return;
+        }
+
+        deletePopup.style.display =
+            "none";
+
+        delete deletePopup.dataset.messageId;
+
+        console.log(
+            "Guest message deleted:",
+            messageId
+        );
+
+    }
+);
+
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
