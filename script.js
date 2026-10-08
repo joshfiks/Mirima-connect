@@ -178,6 +178,67 @@ async function sendGuestChatMessage(
     };
 }
 
+
+// ==========================================
+// EDIT GUEST CHAT MESSAGE
+// ==========================================
+
+async function editGuestChatMessage(
+    department,
+    messageId,
+    newMessage
+) {
+
+    const cleanMessage =
+        newMessage.trim();
+
+    if (!cleanMessage) {
+        return {
+            success: false,
+            reason: "empty"
+        };
+    }
+
+    const conversationRef =
+        await getOrCreateChatConversation(
+            department
+        );
+
+    if (!conversationRef) {
+        return {
+            success: false,
+            reason: "no-conversation"
+        };
+    }
+
+    const messageRef =
+        doc(
+            conversationRef,
+            "messages",
+            messageId
+        );
+
+    await updateDoc(
+        messageRef,
+        {
+            message: cleanMessage,
+            edited: true,
+            editedAt: serverTimestamp()
+        }
+    );
+
+    await updateDoc(
+        conversationRef,
+        {
+            updatedAt: serverTimestamp()
+        }
+    );
+
+    return {
+        success: true
+    };
+}
+
 async function saveRequestToFirestore(
     service,
     status,
@@ -2577,9 +2638,47 @@ document.getElementById("departmentChatSend")
     const department =
         departmentChatPopup.dataset.department;
 
+    const editingMessageId =
+        input.dataset.editingMessageId;
+
     if (!message || !department) {
         return;
     }
+
+
+    // ==========================================
+    // EDIT EXISTING MESSAGE
+    // ==========================================
+
+    if (editingMessageId) {
+
+        const result =
+            await editGuestChatMessage(
+                department,
+                editingMessageId,
+                message
+            );
+
+        if (!result.success) {
+            return;
+        }
+
+        input.value = "";
+
+        delete input.dataset.editingMessageId;
+
+        console.log(
+            "Guest message edited:",
+            message
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // SEND NEW MESSAGE
+    // ==========================================
 
     const result =
         await sendGuestChatMessage(
@@ -2604,7 +2703,7 @@ document.getElementById("departmentChatSend")
     }
 
     input.value = "";
-    
+
     console.log(
         "Guest message sent:",
         message
