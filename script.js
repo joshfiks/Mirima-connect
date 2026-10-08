@@ -307,10 +307,10 @@ async function loadDepartmentChatMessages(
             pressTimer = setTimeout(
                 function () {
 
-                    console.log(
-                        "LONG PRESS:",
-                        messageDoc.id
-                    );
+                   showChatMessageActionMenu(
+                   messageDoc.id,
+                    event
+                     );
 
                 },
                 600
@@ -339,11 +339,10 @@ async function loadDepartmentChatMessages(
 
             event.preventDefault();
 
-            console.log(
-                "MESSAGE MENU:",
-                messageDoc.id
-            );
-
+            showChatMessageActionMenu(
+               messageDoc.id,
+                 event
+             );
         }
     );
 
@@ -356,6 +355,54 @@ async function loadDepartmentChatMessages(
 
     }
 );
+}
+
+function showChatMessageActionMenu(
+    messageId,
+    event
+) {
+
+    const menu =
+        document.getElementById(
+            "chatMessageActionMenu"
+        );
+
+    if (!menu) {
+        return;
+    }
+
+    menu.dataset.messageId =
+        messageId;
+
+    menu.style.display =
+        "flex";
+
+    let x;
+    let y;
+
+    if (
+        event.type === "touchstart" &&
+        event.touches.length
+    ) {
+
+        x =
+            event.touches[0].clientX;
+
+        y =
+            event.touches[0].clientY;
+
+    } else {
+
+        x = event.clientX;
+        y = event.clientY;
+
+    }
+
+    menu.style.left =
+        `${x}px`;
+
+    menu.style.top =
+        `${y}px`;
 }
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
