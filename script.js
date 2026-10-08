@@ -722,6 +722,25 @@ document.getElementById(
     }
 );
 
+document.getElementById(
+    "cancelDeleteChatMessage"
+).addEventListener(
+    "click",
+    function () {
+
+        const deletePopup =
+            document.getElementById(
+                "deleteChatMessagePopup"
+            );
+
+        deletePopup.style.display =
+            "none";
+
+        delete deletePopup.dataset.messageId;
+
+    }
+);
+
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
