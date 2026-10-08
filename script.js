@@ -14,7 +14,8 @@ import {
     doc,
     getDoc,
     setDoc,
-    updateDoc
+    updateDoc,
+    deleteDoc
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 const app = initializeApp(firebaseConfig);
@@ -226,6 +227,55 @@ async function editGuestChatMessage(
             editedAt: serverTimestamp()
         }
     );
+
+    await updateDoc(
+        conversationRef,
+        {
+            updatedAt: serverTimestamp()
+        }
+    );
+
+    return {
+        success: true
+    };
+}
+
+// ==========================================
+// DELETE GUEST CHAT MESSAGE
+// ==========================================
+
+async function deleteGuestChatMessage(
+    department,
+    messageId
+) {
+
+    if (!department || !messageId) {
+        return {
+            success: false,
+            reason: "invalid-message"
+        };
+    }
+
+    const conversationRef =
+        await getOrCreateChatConversation(
+            department
+        );
+
+    if (!conversationRef) {
+        return {
+            success: false,
+            reason: "no-conversation"
+        };
+    }
+
+    const messageRef =
+        doc(
+            conversationRef,
+            "messages",
+            messageId
+        );
+
+    await deleteDoc(messageRef);
 
     await updateDoc(
         conversationRef,
@@ -589,6 +639,57 @@ document.getElementById(
 
         input.dataset.editingMessageId =
             messageId;
+
+    }
+);
+
+document.getElementById(
+    "chatDeleteMessage"
+).addEventListener(
+    "click",
+    async function () {
+
+        const menu =
+            document.getElementById(
+                "chatMessageActionMenu"
+            );
+
+        const messageId =
+            menu.dataset.messageId;
+
+        const department =
+            departmentChatPopup.dataset.department;
+
+        if (!messageId || !department) {
+            return;
+        }
+
+        const confirmed =
+            confirm(
+                "Delete this message?"
+            );
+
+        if (!confirmed) {
+            return;
+        }
+
+        const result =
+            await deleteGuestChatMessage(
+                department,
+                messageId
+            );
+
+        if (!result.success) {
+            return;
+        }
+
+        menu.style.display =
+            "none";
+
+        console.log(
+            "Guest message deleted:",
+            messageId
+        );
 
     }
 );
