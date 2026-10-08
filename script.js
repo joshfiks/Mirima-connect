@@ -741,6 +741,37 @@ document.getElementById(
     }
 );
 
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const menu =
+            document.getElementById(
+                "chatMessageActionMenu"
+            );
+
+        if (!menu) {
+            return;
+        }
+
+        if (
+            menu.style.display === "none" ||
+            menu.style.display === ""
+        ) {
+            return;
+        }
+
+        if (
+            menu.contains(event.target)
+        ) {
+            return;
+        }
+
+        menu.style.display =
+            "none";
+
+    }
+);
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
