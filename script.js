@@ -469,6 +469,69 @@ document.getElementById(
     }
 );
 
+document.getElementById(
+    "chatEditMessage"
+).addEventListener(
+    "click",
+    async function () {
+
+        const menu =
+            document.getElementById(
+                "chatMessageActionMenu"
+            );
+
+        const messageId =
+            menu.dataset.messageId;
+
+        if (!messageId) {
+            return;
+        }
+
+        const messageElement =
+            Array.from(
+                document.querySelectorAll(
+                    ".chat-message"
+                )
+            ).find(function (bubble) {
+
+                return (
+                    bubble.dataset.messageId ===
+                    messageId
+                );
+
+            });
+
+        if (!messageElement) {
+            return;
+        }
+
+        const messageText =
+            messageElement
+                .querySelector(
+                    ".chat-message-text"
+                )
+                .textContent
+                .trim();
+
+        const input =
+            document.getElementById(
+                "departmentChatInput"
+            );
+
+        input.value =
+            messageText;
+
+        input.focus();
+
+        menu.style.display =
+            "none";
+
+        input.dataset.editingMessageId =
+            messageId;
+
+    }
+);
+
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
