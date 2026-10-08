@@ -274,8 +274,23 @@ async function loadDepartmentChatMessages(
                     ? "guest-message"
                     : "staff-message");
 
-            messageBubble.textContent =
-                data.message || "";
+           messageBubble.innerHTML = `
+    <span class="chat-message-text">
+        ${data.message || ""}
+    </span>
+
+    <small class="chat-message-time">
+        ${data.createdAt
+            ? new Date(
+                data.createdAt.toMillis()
+              ).toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit"
+            })
+            : ""
+        }
+    </small>
+`;
 
             messagesContainer.appendChild(
                 messageBubble
