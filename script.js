@@ -647,41 +647,33 @@ document.getElementById(
     "chatDeleteMessage"
 ).addEventListener(
     "click",
-    async function () {
+    function () {
 
         const menu =
             document.getElementById(
                 "chatMessageActionMenu"
             );
 
+        const deletePopup =
+            document.getElementById(
+                "deleteChatMessagePopup"
+            );
+
         const messageId =
             menu.dataset.messageId;
 
-        const department =
-            departmentChatPopup.dataset.department;
-
-        if (!messageId || !department) {
+        if (!messageId) {
             return;
         }
 
-        
-        const result =
-            await deleteGuestChatMessage(
-                department,
-                messageId
-            );
+        deletePopup.dataset.messageId =
+            messageId;
 
-        if (!result.success) {
-            return;
-        }
+        deletePopup.style.display =
+            "flex";
 
         menu.style.display =
             "none";
-
-        console.log(
-            "Guest message deleted:",
-            messageId
-        );
 
     }
 );
