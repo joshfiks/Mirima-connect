@@ -2188,6 +2188,8 @@ document.querySelectorAll(".chat-department")
 
         departmentChatPopup.style.display = "flex";
 
+        document.getElementById("departmentChatMessages").innerHTML = "";
+
         document.getElementById(
             "departmentChatName"
         ).textContent = department;
