@@ -24349,3 +24349,31 @@ padding:22px !important;
 .chat-message-action-menu button:hover {
     background: #f0f2f0;
 }
+.chat-message-action-menu button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-message-action-menu button svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.chat-message-action-menu button span {
+    font-size: 13px;
+}
+
+#chatDeleteMessage {
+    color: #c94b4b;
+}
+
+#chatDeleteMessage:hover {
+    background: #fff0f0;
+}
