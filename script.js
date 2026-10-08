@@ -214,6 +214,81 @@ async function saveRequestToFirestore(
 }
 
 // ==========================================
+// LOAD DEPARTMENT CHAT MESSAGES
+// ==========================================
+
+async function loadDepartmentChatMessages(
+    department
+) {
+
+    const conversationRef =
+        await getOrCreateChatConversation(
+            department
+        );
+
+    if (!conversationRef) {
+        return;
+    }
+
+    const messagesSnapshot =
+        await getDocs(
+            collection(
+                conversationRef,
+                "messages"
+            )
+        );
+
+    const messagesContainer =
+        document.getElementById(
+            "departmentChatMessages"
+        );
+
+    if (!messagesContainer) {
+        return;
+    }
+
+    messagesContainer.innerHTML = "";
+
+    messagesSnapshot.docs
+        .sort(function (a, b) {
+
+            const timeA =
+                a.data().createdAt?.toMillis() || 0;
+
+            const timeB =
+                b.data().createdAt?.toMillis() || 0;
+
+            return timeA - timeB;
+
+        })
+        .forEach(function (messageDoc) {
+
+            const data =
+                messageDoc.data();
+
+            const messageBubble =
+                document.createElement("div");
+
+            messageBubble.className =
+                "chat-message " +
+                (data.sender === "guest"
+                    ? "guest-message"
+                    : "staff-message");
+
+            messageBubble.textContent =
+                data.message || "";
+
+            messagesContainer.appendChild(
+                messageBubble
+            );
+
+        });
+
+    messagesContainer.scrollTop =
+        messagesContainer.scrollHeight;
+}
+
+// ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
 
@@ -2219,6 +2294,10 @@ document.querySelectorAll(".chat-department")
 
         departmentChatPopup.dataset.department =
             department;
+
+        loadDepartmentChatMessages(
+        department
+       );
 
     });
 
