@@ -491,28 +491,6 @@ if (data.attachmentUrl) {
     attachmentLink.style.marginTop = "6px";
 
     messageBubble.appendChild(attachmentLink);
-
-
-    const downloadLink =
-        document.createElement("a");
-
-    downloadLink.href = data.attachmentUrl;
-    downloadLink.download = data.attachmentName || "download";
-    downloadLink.target = "_blank";
-    downloadLink.rel = "noopener noreferrer";
-    downloadLink.textContent = "⬇ Download";
-    downloadLink.className = "chat-attachment-download";
-
-    downloadLink.style.display = "inline-block";
-    downloadLink.style.marginTop = "8px";
-    downloadLink.style.padding = "6px 10px";
-    downloadLink.style.border = "1px solid #ddd";
-    downloadLink.style.borderRadius = "8px";
-    downloadLink.style.textDecoration = "none";
-    downloadLink.style.fontSize = "13px";
-
-    messageBubble.appendChild(downloadLink);
-
     
   }
 
@@ -677,7 +655,7 @@ function showChatMessageActionMenu(
     const copyButton =
         document.getElementById(
             "chatCopyMessage"
-        );
+             );
 
     const downloadButton =
         document.getElementById(
@@ -814,6 +792,56 @@ document.getElementById(
 
     }
 );
+
+
+document.getElementById(
+    "chatDownloadMessage"
+).addEventListener("click", function () {
+    const menu =
+        document.getElementById("chatMessageActionMenu");
+
+    const messageId = menu.dataset.messageId;
+
+    if (!messageId) {
+        return;
+    }
+
+    const messageElement =
+        Array.from(
+            document.querySelectorAll(".chat-message")
+        ).find(function (bubble) {
+            return bubble.dataset.messageId === messageId;
+        });
+
+    if (!messageElement) {
+        menu.style.display = "none";
+        return;
+    }
+
+    const attachmentLink =
+        messageElement.querySelector(".chat-attachment-link");
+
+    if (!attachmentLink || !attachmentLink.href) {
+        alert("No attachment found in this message.");
+        menu.style.display = "none";
+        return;
+    }
+
+    const downloadLink =
+        document.createElement("a");
+
+    downloadLink.href = attachmentLink.href;
+    downloadLink.download =
+        attachmentLink.textContent.replace(/^📎\s*/, "") || "download";
+    downloadLink.target = "_blank";
+    downloadLink.rel = "noopener noreferrer";
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+
+    menu.style.display = "none";
+});
 
 document.getElementById(
     "chatEditMessage"
