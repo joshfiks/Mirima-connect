@@ -514,23 +514,8 @@ messageTime.textContent =
           })
         : "";
 
-messageBubble.appendChild(messageTime);
 
-            
 if (data.attachmentUrl) {
-    const attachmentLink =
-        document.createElement("a");
-
-    attachmentLink.href = data.attachmentUrl;
-    attachmentLink.target = "_blank";
-    attachmentLink.rel = "noopener noreferrer";
-    attachmentLink.textContent =
-        "📎 " + (data.attachmentName || "Open attachment");
-
-    attachmentLink.className = "chat-attachment-link";
-    attachmentLink.style.display = "block";
-    attachmentLink.style.marginTop = "6px";
-
     if (
         data.attachmentType &&
         data.attachmentType.startsWith("image/")
@@ -552,10 +537,24 @@ if (data.attachmentUrl) {
         messageBubble.appendChild(attachmentImage);
     }
 
+    const attachmentLink =
+        document.createElement("a");
+
+    attachmentLink.href = data.attachmentUrl;
+    attachmentLink.target = "_blank";
+    attachmentLink.rel = "noopener noreferrer";
+    attachmentLink.textContent =
+        "📎 " + (data.attachmentName || "Open attachment");
+
+    attachmentLink.className = "chat-attachment-link";
+    attachmentLink.style.display = "block";
+    attachmentLink.style.marginTop = "6px";
+
     messageBubble.appendChild(attachmentLink);
 }
 
-
+messageBubble.appendChild(messageTime);
+ 
 
             messagesContainer.appendChild(
                 messageBubble
