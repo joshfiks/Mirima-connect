@@ -24470,3 +24470,51 @@ padding:22px !important;
 #confirmDeleteChatMessage:hover {
     background: #b83f3f;
 }
+/* ==========================================
+   CHAT MEDIA ICONS
+========================================== */
+
+.department-chat-input button.chat-media-button {
+    width: 36px;
+    min-width: 36px;
+    height: 44px;
+    flex: 0 0 36px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #657068;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.department-chat-input button.chat-media-button svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.department-chat-input button.chat-media-button:hover {
+    background: #e1e7e2;
+    color: #222822;
+}
+
+/* Keep the Send button green */
+
+.department-chat-input button#departmentChatSend svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
