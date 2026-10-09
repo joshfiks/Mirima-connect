@@ -830,7 +830,11 @@ document.getElementById(
     const downloadLink =
         document.createElement("a");
 
-    downloadLink.href = attachmentLink.href;
+    downloadLink.href =
+    attachmentLink.href.replace(
+        "/upload/",
+        "/upload/fl_attachment/"
+    );
     downloadLink.download =
         attachmentLink.textContent.replace(/^📎\s*/, "") || "download";
     downloadLink.target = "_blank";
