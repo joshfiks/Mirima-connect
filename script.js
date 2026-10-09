@@ -414,6 +414,8 @@ async function loadDepartmentChatMessages(
             const data =
                 messageDoc.data();
 
+            console.log("CHAT MESSAGE DATA:", data);
+
             const messageBubble =
                 document.createElement("div");
 
