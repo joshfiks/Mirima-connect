@@ -497,6 +497,7 @@ if (data.attachmentUrl) {
             document.createElement("audio");
 
         audioPlayer.controls = true;
+        audioPlayer.volume = 1;
         audioPlayer.preload = "metadata";
         audioPlayer.src = data.attachmentUrl;
 
