@@ -219,6 +219,42 @@ async function editGuestChatMessage(
             messageId
         );
 
+    const messageSnapshot =
+        await getDoc(messageRef);
+
+    if (!messageSnapshot.exists()) {
+        return {
+            success: false,
+            reason: "not-found"
+        };
+    }
+
+    const originalMessage =
+        messageSnapshot.data();
+
+    if (originalMessage.sender !== "guest") {
+        return {
+            success: false,
+            reason: "not-guest-message"
+        };
+    }
+
+    const createdAt =
+        originalMessage.createdAt?.toMillis();
+
+    const twoMinutes =
+        2 * 60 * 1000;
+
+    if (
+        !createdAt ||
+        Date.now() - createdAt >= twoMinutes
+    ) {
+        return {
+            success: false,
+            reason: "edit-expired"
+        };
+    }
+
     await updateDoc(
         messageRef,
         {
@@ -239,6 +275,7 @@ async function editGuestChatMessage(
         success: true
     };
 }
+
 
 // ==========================================
 // DELETE GUEST CHAT MESSAGE
@@ -388,6 +425,11 @@ async function loadDepartmentChatMessages(
             messageBubble.dataset.messageId =
                  messageDoc.id;
 
+            messageBubble.dataset.createdAt =
+    data.createdAt
+        ? data.createdAt.toMillis()
+        : "";
+
            messageBubble.innerHTML = `
     <span class="chat-message-text">
         ${data.message || ""}
@@ -485,6 +527,40 @@ function showChatMessageActionMenu(
         return;
     }
 
+    const messageElement =
+        Array.from(
+            document.querySelectorAll(
+                ".chat-message"
+            )
+        ).find(function (bubble) {
+            return (
+                bubble.dataset.messageId ===
+                messageId
+            );
+        });
+
+    const editButton =
+        document.getElementById(
+            "chatEditMessage"
+        );
+
+    const createdAt =
+        Number(
+            messageElement?.dataset.createdAt || 0
+        );
+
+    const twoMinutes =
+        2 * 60 * 1000;
+
+    const canEdit =
+        createdAt > 0 &&
+        Date.now() - createdAt < twoMinutes;
+
+    if (editButton) {
+        editButton.style.display =
+            canEdit ? "flex" : "none";
+    }
+
     menu.dataset.messageId =
         messageId;
 
@@ -498,25 +574,15 @@ function showChatMessageActionMenu(
         event.type === "touchstart" &&
         event.touches.length
     ) {
-
-        x =
-            event.touches[0].clientX;
-
-        y =
-            event.touches[0].clientY;
-
+        x = event.touches[0].clientX;
+        y = event.touches[0].clientY;
     } else {
-
         x = event.clientX;
         y = event.clientY;
-
     }
 
-    menu.style.left =
-        `${x}px`;
-
-    menu.style.top =
-        `${y}px`;
+    menu.style.left = `${x}px`;
+    menu.style.top = `${y}px`;
 }
 
 document.getElementById(
