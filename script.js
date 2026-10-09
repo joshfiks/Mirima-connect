@@ -442,6 +442,61 @@ messageText.textContent =
 
 messageBubble.appendChild(messageText);
 
+            
+if (data.attachmentUrl) {
+    const attachmentLink =
+        document.createElement("a");
+
+    attachmentLink.href =
+        data.attachmentUrl;
+
+    attachmentLink.target = "_blank";
+    attachmentLink.rel = "noopener noreferrer";
+    attachmentLink.textContent =
+        "📎 " + (data.attachmentName || "Open attachment");
+
+    attachmentLink.className =
+        "chat-attachment-link";
+
+    if (
+        data.attachmentType &&
+        data.attachmentType.startsWith("image/")
+    ) {
+        const attachmentImage =
+            document.createElement("img");
+
+        attachmentImage.src =
+            data.attachmentUrl;
+
+        attachmentImage.alt =
+            data.attachmentName || "Chat image";
+
+        attachmentImage.className =
+            "chat-attachment-image";
+
+        attachmentImage.style.maxWidth = "220px";
+        attachmentImage.style.maxHeight = "220px";
+        attachmentImage.style.display = "block";
+        attachmentImage.style.objectFit = "contain";
+        attachmentImage.style.borderRadius = "10px";
+        attachmentImage.style.marginTop = "6px";
+
+        messageBubble.insertBefore(
+            attachmentImage,
+            messageTime
+        );
+    }
+
+    attachmentLink.style.display = "block";
+    attachmentLink.style.marginTop = "6px";
+
+    messageBubble.insertBefore(
+        attachmentLink,
+        messageTime
+    );
+}
+
+
 const messageTime =
     document.createElement("small");
 
