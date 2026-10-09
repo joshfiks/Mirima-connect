@@ -484,20 +484,14 @@ if (data.attachmentUrl) {
         attachmentImage.style.borderRadius = "10px";
         attachmentImage.style.marginTop = "6px";
 
-        messageBubble.insertBefore(
-            attachmentImage,
-            messageTime
-        );
+       messageBubble.appendChild(attachmentImage);         
     }
 
     attachmentLink.style.display = "block";
     attachmentLink.style.marginTop = "6px";
 
-    messageBubble.insertBefore(
-        attachmentLink,
-        messageTime
-    );
-}
+    messageBubble.appendChild(attachmentLink);
+  }
 
 
 const messageTime =
