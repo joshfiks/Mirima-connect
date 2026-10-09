@@ -491,7 +491,31 @@ if (data.attachmentUrl) {
     attachmentLink.style.marginTop = "6px";
 
     messageBubble.appendChild(attachmentLink);
- 
+
+
+    const downloadLink =
+        document.createElement("a");
+
+    downloadLink.href = data.attachmentUrl;
+    downloadLink.download = data.attachmentName || "download";
+    downloadLink.target = "_blank";
+    downloadLink.rel = "noopener noreferrer";
+    downloadLink.textContent = "⬇ Download";
+    downloadLink.className = "chat-attachment-download";
+
+    downloadLink.style.display = "inline-block";
+    downloadLink.style.marginTop = "8px";
+    downloadLink.style.padding = "6px 10px";
+    downloadLink.style.border = "1px solid #ddd";
+    downloadLink.style.borderRadius = "8px";
+    downloadLink.style.textDecoration = "none";
+    downloadLink.style.fontSize = "13px";
+
+    messageBubble.appendChild(downloadLink);
+
+    
+  }
+
 
 const messageTime =
     document.createElement("small");
