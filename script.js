@@ -644,7 +644,6 @@ function showChatMessageActionMenu(
     messageId,
     event
 ) {
-
     const menu =
         document.getElementById(
             "chatMessageActionMenu"
@@ -666,26 +665,68 @@ function showChatMessageActionMenu(
             );
         });
 
+    if (!messageElement) {
+        return;
+    }
+
     const editButton =
         document.getElementById(
             "chatEditMessage"
         );
 
+    const copyButton =
+        document.getElementById(
+            "chatCopyMessage"
+        );
+
+    const downloadButton =
+        document.getElementById(
+            "chatDownloadMessage"
+        );
+
+    const deleteButton =
+        document.getElementById(
+            "chatDeleteMessage"
+        );
+
+    const attachmentLink =
+        messageElement.querySelector(
+            ".chat-attachment-link"
+        );
+
+    const isAttachment =
+        !!attachmentLink;
+
     const createdAt =
         Number(
-            messageElement?.dataset.createdAt || 0
+            messageElement.dataset.createdAt || 0
         );
 
     const twoMinutes =
         2 * 60 * 1000;
 
     const canEdit =
+        !isAttachment &&
         createdAt > 0 &&
         Date.now() - createdAt < twoMinutes;
 
     if (editButton) {
         editButton.style.display =
             canEdit ? "flex" : "none";
+    }
+
+    if (copyButton) {
+        copyButton.style.display =
+            isAttachment ? "none" : "flex";
+    }
+
+    if (downloadButton) {
+        downloadButton.style.display =
+            isAttachment ? "flex" : "none";
+    }
+
+    if (deleteButton) {
+        deleteButton.style.display = "flex";
     }
 
     menu.dataset.messageId =
@@ -699,6 +740,7 @@ function showChatMessageActionMenu(
 
     if (
         event.type === "touchstart" &&
+        event.touches &&
         event.touches.length
     ) {
         x = event.touches[0].clientX;
