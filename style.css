@@ -24311,6 +24311,15 @@ padding:22px !important;
     display: block;
 }
 
+/* Audio player spacing */
+.chat-message audio {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    box-sizing: border-box;
+    margin: 8px 0;
+}
+
 .chat-message-time {
     display: block;
     margin-top: 4px;
