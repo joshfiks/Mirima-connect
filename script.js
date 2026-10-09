@@ -444,8 +444,8 @@ messageText.textContent =
     data.message || "";
 
 messageBubble.appendChild(messageText);
+           
 
-            
 if (data.attachmentUrl) {
     const attachmentLink =
         document.createElement("a");
@@ -461,6 +461,7 @@ if (data.attachmentUrl) {
     attachmentLink.className =
         "chat-attachment-link";
 
+    // Image preview
     if (
         data.attachmentType &&
         data.attachmentType.startsWith("image/")
@@ -484,17 +485,36 @@ if (data.attachmentUrl) {
         attachmentImage.style.borderRadius = "10px";
         attachmentImage.style.marginTop = "6px";
 
-       messageBubble.appendChild(attachmentImage);         
+        messageBubble.appendChild(attachmentImage);
+    }
+
+    // Audio player
+    if (
+        data.attachmentType &&
+        data.attachmentType.startsWith("audio/")
+    ) {
+        const audioPlayer =
+            document.createElement("audio");
+
+        audioPlayer.controls = true;
+        audioPlayer.preload = "metadata";
+        audioPlayer.src = data.attachmentUrl;
+
+        audioPlayer.style.display = "block";
+        audioPlayer.style.width = "100%";
+        audioPlayer.style.maxWidth = "280px";
+        audioPlayer.style.marginTop = "8px";
+
+        messageBubble.appendChild(audioPlayer);
     }
 
     attachmentLink.style.display = "block";
     attachmentLink.style.marginTop = "6px";
 
     messageBubble.appendChild(attachmentLink);
-    
-  }
+}
 
-
+            
 const messageTime =
     document.createElement("small");
 
@@ -1019,13 +1039,20 @@ document.getElementById("chatFileInput")
 
     if (!file) return;
 
-    const allowedTypes = [
-        "image/jpeg",
-        "image/png",
-        "image/webp",
-        "application/pdf",
-        "text/plain"
-    ];
+   
+const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "application/pdf",
+    "text/plain",
+    "audio/mpeg",
+    "audio/mp4",
+    "audio/wav",
+    "audio/x-wav",
+    "audio/ogg",
+    "audio/flac"
+];
 
     if (!allowedTypes.includes(file.type)) {
         alert("Choose a JPG, PNG, WebP, PDF, or TXT file.");
@@ -1033,11 +1060,12 @@ document.getElementById("chatFileInput")
         return;
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-        alert("The file must be 10 MB or smaller.");
-        this.value = "";
-        return;
-    }
+  
+if (file.size > 100 * 1024 * 1024) {
+    alert("The file must be 100 MB or smaller.");
+    this.value = "";
+    return;
+}
 
     try {
         const department =
