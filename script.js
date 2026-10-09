@@ -502,8 +502,9 @@ if (data.attachmentUrl) {
         audioPlayer.src = data.attachmentUrl;
 
         audioPlayer.style.display = "block";
-        audioPlayer.style.width = "100%";
-        audioPlayer.style.maxWidth = "280px";
+        audioPlayer.style.width = "240px";
+        audioPlayer.style.maxWidth = "100%";
+        audioPlayer.style.boxSizing = "border-box";
         audioPlayer.style.marginTop = "8px";
 
         messageBubble.appendChild(audioPlayer);
