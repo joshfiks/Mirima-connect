@@ -430,23 +430,36 @@ async function loadDepartmentChatMessages(
         ? data.createdAt.toMillis()
         : "";
 
-           messageBubble.innerHTML = `
-    <span class="chat-message-text">
-        ${data.message || ""}
-    </span>
+         
+const messageText =
+    document.createElement("span");
 
-    <small class="chat-message-time">
-        ${data.createdAt
-            ? new Date(
-                data.createdAt.toMillis()
-              ).toLocaleTimeString([], {
-                hour: "numeric",
-                minute: "2-digit"
-            })
-            : ""
-        }
-    </small>
-`;
+messageText.className =
+    "chat-message-text";
+
+messageText.textContent =
+    data.message || "";
+
+messageBubble.appendChild(messageText);
+
+const messageTime =
+    document.createElement("small");
+
+messageTime.className =
+    "chat-message-time";
+
+messageTime.textContent =
+    data.createdAt
+        ? new Date(
+            data.createdAt.toMillis()
+          ).toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit"
+          })
+        : "";
+
+messageBubble.appendChild(messageTime);
+
 
             messagesContainer.appendChild(
                 messageBubble
@@ -840,45 +853,112 @@ document.addEventListener(
 );
 
 
+
  // ==========================================
  // CHAT ATTACH FILE
  // ==========================================
 
- document.getElementById("chatAttachFile")
- .addEventListener("click", function () {
-     document.getElementById("chatFileInput").click();
- });
+document.getElementById("chatAttachFile")
+.addEventListener("click", function () {
+    document.getElementById("chatFileInput").click();
+});
 
- document.getElementById("chatFileInput")
- .addEventListener("change", async function () {
-     const file = this.files[0];
+document.getElementById("chatFileInput")
+.addEventListener("change", async function () {
+    const file = this.files[0];
 
-     if (!file) return;
+    if (!file) return;
 
-     const allowedTypes = [
-         "image/jpeg",
-         "image/png",
-         "image/webp",
-         "application/pdf",
-         "text/plain"
-     ];
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp",
+        "application/pdf",
+        "text/plain"
+    ];
 
-     if (!allowedTypes.includes(file.type)) {
-         alert("Please choose a JPG, PNG, WebP, PDF, or TXT file.");
-         this.value = "";
-         return;
-     }
+    if (!allowedTypes.includes(file.type)) {
+        alert("Choose a JPG, PNG, WebP, PDF, or TXT file.");
+        this.value = "";
+        return;
+    }
 
-     if (file.size > 10 * 1024 * 1024) {
-         alert("The file must be 10 MB or smaller.");
-         this.value = "";
-         return;
-     }
+    if (file.size > 10 * 1024 * 1024) {
+        alert("The file must be 10 MB or smaller.");
+        this.value = "";
+        return;
+    }
 
-     alert("File selected successfully: " + file.name);
+    try {
+        const department =
+            departmentChatPopup.dataset.department;
 
-     this.value = "";
- });
+        if (!department) {
+            alert("Please open a department chat first.");
+            return;
+        }
+
+        const conversationRef =
+            await getOrCreateChatConversation(department);
+
+        if (!conversationRef) {
+            alert("Could not open the chat conversation.");
+            return;
+        }
+
+        const uploadData = new FormData();
+        uploadData.append("file", file);
+        uploadData.append(
+            "upload_preset",
+            "mirima_chat_uploads"
+        );
+
+        const response = await fetch(
+            "https://api.cloudinary.com/v1_1/cqsnkbge/auto/upload",
+            {
+                method: "POST",
+                body: uploadData
+            }
+        );
+
+        const uploadResult = await response.json();
+
+        if (!response.ok || !uploadResult.secure_url) {
+            console.error("Cloudinary upload error:", uploadResult);
+            alert("Upload failed. Please try again.");
+            return;
+        }
+
+        await addDoc(
+            collection(conversationRef, "messages"),
+            {
+                sender: "guest",
+                senderName:
+                    localStorage.getItem("guestName") || "Guest",
+                message: "",
+                attachmentUrl: uploadResult.secure_url,
+                attachmentName: file.name,
+                attachmentType: file.type,
+                attachmentSize: file.size,
+                createdAt: serverTimestamp()
+            }
+        );
+
+        await updateDoc(conversationRef, {
+            guestMessageCount: increment(1),
+            updatedAt: serverTimestamp()
+        });
+
+        alert("File uploaded successfully.");
+
+    } catch (error) {
+        console.error("Attachment upload error:", error);
+        alert("Could not upload the file. Please try again.");
+    } finally {
+        this.value = "";
+    }
+});
+
 
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
