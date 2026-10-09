@@ -616,49 +616,46 @@ messageBubble.appendChild(messageTime);
 );
 }
 
-
 function showChatMessageActionMenu(
     messageId,
     event
 ) {
-    const menu =
-        document.getElementById("chatMessageActionMenu");
 
-    if (!menu) return;
+    const menu =
+        document.getElementById(
+            "chatMessageActionMenu"
+        );
+
+    if (!menu) {
+        return;
+    }
 
     const messageElement =
         Array.from(
-            document.querySelectorAll(".chat-message")
+            document.querySelectorAll(
+                ".chat-message"
+            )
         ).find(function (bubble) {
-            return bubble.dataset.messageId === messageId;
+            return (
+                bubble.dataset.messageId ===
+                messageId
+            );
         });
 
-    if (!messageElement) return;
-
     const editButton =
-        document.getElementById("chatEditMessage");
-
-    const copyButton =
-        document.getElementById("chatCopyMessage");
-
-    const downloadButton =
-        document.getElementById("chatDownloadMessage");
-
-    const deleteButton =
-        document.getElementById("chatDeleteMessage");
-
-    const attachmentLink =
-        messageElement.querySelector(".chat-attachment-link");
-
-    const isAttachment = !!attachmentLink;
+        document.getElementById(
+            "chatEditMessage"
+        );
 
     const createdAt =
-        Number(messageElement.dataset.createdAt || 0);
+        Number(
+            messageElement?.dataset.createdAt || 0
+        );
 
-    const twoMinutes = 2 * 60 * 1000;
+    const twoMinutes =
+        2 * 60 * 1000;
 
     const canEdit =
-        !isAttachment &&
         createdAt > 0 &&
         Date.now() - createdAt < twoMinutes;
 
@@ -667,29 +664,17 @@ function showChatMessageActionMenu(
             canEdit ? "flex" : "none";
     }
 
-    if (copyButton) {
-        copyButton.style.display =
-            isAttachment ? "none" : "flex";
-    }
+    menu.dataset.messageId =
+        messageId;
 
-    if (downloadButton) {
-        downloadButton.style.display =
-            isAttachment ? "flex" : "none";
-    }
-
-    if (deleteButton) {
-        deleteButton.style.display = "flex";
-    }
-
-    menu.dataset.messageId = messageId;
-    menu.style.display = "flex";
+    menu.style.display =
+        "flex";
 
     let x;
     let y;
 
     if (
         event.type === "touchstart" &&
-        event.touches &&
         event.touches.length
     ) {
         x = event.touches[0].clientX;
@@ -763,53 +748,6 @@ document.getElementById(
 
     }
 );
-
-
-document.getElementById("chatDownloadMessage")
-.addEventListener("click", function () {
-    const menu =
-        document.getElementById("chatMessageActionMenu");
-
-    const messageId = menu.dataset.messageId;
-
-    if (!messageId) return;
-
-    const messageElement =
-        Array.from(
-            document.querySelectorAll(".chat-message")
-        ).find(function (bubble) {
-            return bubble.dataset.messageId === messageId;
-        });
-
-    if (!messageElement) return;
-
-    const attachmentLink =
-        messageElement.querySelector(".chat-attachment-link");
-
-    if (!attachmentLink || !attachmentLink.href) {
-        alert("No attachment found in this message.");
-        menu.style.display = "none";
-        return;
-    }
-
-    const downloadLink =
-        document.createElement("a");
-
-    downloadLink.href = attachmentLink.href;
-    downloadLink.download =
-        attachmentLink.textContent.replace(/^📎\s*/, "") ||
-        "download";
-
-    downloadLink.target = "_blank";
-    downloadLink.rel = "noopener noreferrer";
-
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    downloadLink.remove();
-
-    menu.style.display = "none";
-});
-
 
 document.getElementById(
     "chatEditMessage"
