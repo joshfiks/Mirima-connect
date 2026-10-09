@@ -458,7 +458,7 @@ async function loadDepartmentChatMessages(
 
     messageBubble.addEventListener(
         "touchstart",
-        function () {
+        function (event) {
 
             pressTimer = setTimeout(
                 function () {
