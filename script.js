@@ -18,15 +18,7 @@ import {
     deleteDoc
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-import {
-    getStorage,
-    ref as storageRef,
-    uploadBytes,
-    getDownloadURL
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
-
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
 const db = getFirestore(app);
 
 // ==========================================
@@ -847,18 +839,46 @@ document.addEventListener(
     }
 );
 
-// ==========================================
-// CHAT ATTACH FILE
-// ==========================================
 
-document.getElementById("chatAttachFile")
-.addEventListener("click", function () {
+ // ==========================================
+ // CHAT ATTACH FILE
+ // ==========================================
 
-    document.getElementById(
-        "chatFileInput"
-    ).click();
+ document.getElementById("chatAttachFile")
+ .addEventListener("click", function () {
+     document.getElementById("chatFileInput").click();
+ });
 
-});
+ document.getElementById("chatFileInput")
+ .addEventListener("change", async function () {
+     const file = this.files[0];
+
+     if (!file) return;
+
+     const allowedTypes = [
+         "image/jpeg",
+         "image/png",
+         "image/webp",
+         "application/pdf",
+         "text/plain"
+     ];
+
+     if (!allowedTypes.includes(file.type)) {
+         alert("Please choose a JPG, PNG, WebP, PDF, or TXT file.");
+         this.value = "";
+         return;
+     }
+
+     if (file.size > 10 * 1024 * 1024) {
+         alert("The file must be 10 MB or smaller.");
+         this.value = "";
+         return;
+     }
+
+     alert("File selected successfully: " + file.name);
+
+     this.value = "";
+ });
 
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
