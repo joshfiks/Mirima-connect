@@ -838,6 +838,20 @@ document.addEventListener(
 
     }
 );
+
+// ==========================================
+// CHAT ATTACH FILE
+// ==========================================
+
+document.getElementById("chatAttachFile")
+.addEventListener("click", function () {
+
+    document.getElementById(
+        "chatFileInput"
+    ).click();
+
+});
+
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
