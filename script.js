@@ -512,44 +512,6 @@ messageTime.textContent =
         : "";
 
 
-if (data.attachmentUrl) {
-    if (
-        data.attachmentType &&
-        data.attachmentType.startsWith("image/")
-    ) {
-        const attachmentImage =
-            document.createElement("img");
-
-        attachmentImage.src = data.attachmentUrl;
-        attachmentImage.alt =
-            data.attachmentName || "Chat image";
-
-        attachmentImage.style.maxWidth = "220px";
-        attachmentImage.style.maxHeight = "220px";
-        attachmentImage.style.display = "block";
-        attachmentImage.style.objectFit = "contain";
-        attachmentImage.style.borderRadius = "10px";
-        attachmentImage.style.marginTop = "6px";
-
-        messageBubble.appendChild(attachmentImage);
-    }
-
-    const attachmentLink =
-        document.createElement("a");
-
-    attachmentLink.href = data.attachmentUrl;
-    attachmentLink.target = "_blank";
-    attachmentLink.rel = "noopener noreferrer";
-    attachmentLink.textContent =
-        "📎 " + (data.attachmentName || "Open attachment");
-
-    attachmentLink.className = "chat-attachment-link";
-    attachmentLink.style.display = "block";
-    attachmentLink.style.marginTop = "6px";
-
-    messageBubble.appendChild(attachmentLink);
-}
-
 messageBubble.appendChild(messageTime);
  
 
