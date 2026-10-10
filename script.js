@@ -1112,9 +1112,14 @@ if (chatVoiceNoteButton) {
 
                         chatVoiceStream = null;
 
-                        alert(
-                            "Recording stopped. In the next step, we'll add preview and send."
-                        );
+                        chatVoiceNoteButton.title = "Record voice note";
+
+                     chatVoiceNoteButton.setAttribute(
+                    "aria-label",
+                     "Record voice note"
+                   );
+
+                  console.log("Voice recording stopped. Preview is not added yet.");
 
                         chatVoiceNoteButton.title =
                             "Record voice note";
