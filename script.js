@@ -1025,6 +1025,145 @@ document.addEventListener(
 );
 
 
+ // ==========================================
+ // CHAT VOICE NOTE - RECORDING STEP
+ // ==========================================
+
+const chatVoiceNoteButton =
+    document.getElementById("chatVoiceNote");
+
+let chatVoiceRecorder = null;
+let chatVoiceStream = null;
+let chatVoiceChunks = [];
+let chatVoiceRecording = false;
+
+if (chatVoiceNoteButton) {
+    chatVoiceNoteButton.addEventListener(
+        "click",
+        async function () {
+
+            // Stop recording when the button is tapped again
+            if (chatVoiceRecording) {
+                chatVoiceRecorder.stop();
+                return;
+            }
+
+            if (!navigator.mediaDevices ||
+                !navigator.mediaDevices.getUserMedia ||
+                !window.MediaRecorder) {
+                alert(
+                    "Voice recording is not supported by this browser or connection."
+                );
+                return;
+            }
+
+            try {
+                chatVoiceStream =
+                    await navigator.mediaDevices.getUserMedia({
+                        audio: true
+                    });
+
+                chatVoiceChunks = [];
+
+                const preferredTypes = [
+                    "audio/webm;codecs=opus",
+                    "audio/webm",
+                    "audio/mp4"
+                ];
+
+                let recordingOptions = {};
+
+                if (MediaRecorder.isTypeSupported) {
+                    const supportedType =
+                        preferredTypes.find(type =>
+                            MediaRecorder.isTypeSupported(type)
+                        );
+
+                    if (supportedType) {
+                        recordingOptions.mimeType =
+                            supportedType;
+                    }
+                }
+
+                chatVoiceRecorder =
+                    new MediaRecorder(
+                        chatVoiceStream,
+                        recordingOptions
+                    );
+
+                chatVoiceRecorder.addEventListener(
+                    "dataavailable",
+                    function (event) {
+                        if (event.data.size > 0) {
+                            chatVoiceChunks.push(event.data);
+                        }
+                    }
+                );
+
+                chatVoiceRecorder.addEventListener(
+                    "stop",
+                    function () {
+                        chatVoiceRecording = false;
+
+                        chatVoiceStream
+                            .getTracks()
+                            .forEach(track => track.stop());
+
+                        chatVoiceStream = null;
+
+                        alert(
+                            "Recording stopped. In the next step, we'll add preview and send."
+                        );
+
+                        chatVoiceNoteButton.title =
+                            "Record voice note";
+
+                        chatVoiceNoteButton.setAttribute(
+                            "aria-label",
+                            "Record voice note"
+                        );
+                    }
+                );
+
+                chatVoiceRecorder.start();
+                chatVoiceRecording = true;
+
+                chatVoiceNoteButton.title =
+                    "Stop recording";
+
+                chatVoiceNoteButton.setAttribute(
+                    "aria-label",
+                    "Stop recording"
+                );
+
+                alert(
+                    "Recording started. Tap the microphone again to stop."
+                );
+
+            } catch (error) {
+                console.error(
+                    "Voice recording error:",
+                    error
+                );
+
+                if (chatVoiceStream) {
+                    chatVoiceStream
+                        .getTracks()
+                        .forEach(track => track.stop());
+
+                    chatVoiceStream = null;
+                }
+
+                chatVoiceRecording = false;
+
+                alert(
+                    "Could not access the microphone. Please allow microphone access and try again."
+                );
+            }
+        }
+    );
+}
+
 
  // ==========================================
  // CHAT ATTACH FILE
