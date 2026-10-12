@@ -1124,10 +1124,19 @@ if (chatVoiceNoteButton) {
          );
 
          chatVoicePreviewUrl = URL.createObjectURL(chatVoiceBlob);
-
                        
 
-                 console.log("Voice note ready:", chatVoiceBlob.size, "bytes");
+        console.log("Voice note ready:", chatVoiceBlob.size, "bytes");
+
+                        
+const chatVoicePreview = document.getElementById("chatVoicePreview");
+const chatVoicePreviewPlayer = document.getElementById("chatVoicePreviewPlayer");
+
+if (chatVoicePreview && chatVoicePreviewPlayer && chatVoiceBlob.size > 0) {
+    chatVoicePreviewPlayer.src = chatVoicePreviewUrl;
+    chatVoicePreview.style.display = "block";
+}
+
 
 
                         chatVoiceNoteButton.title =
