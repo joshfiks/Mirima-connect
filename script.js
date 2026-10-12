@@ -1137,9 +1137,15 @@ if (chatVoiceNoteButton) {
                     "Stop recording"
                 );
 
-                alert(
-                    "Recording started. Tap the microphone again to stop."
-                );
+                chatVoiceNoteButton.classList.add("recording");
+
+              chatVoiceNoteButton.title =
+            "Recording... Tap to stop";
+
+        chatVoiceNoteButton.setAttribute(
+        "aria-label",
+       "Recording. Tap to stop."
+         );
 
             } catch (error) {
                 console.error(
@@ -1156,6 +1162,7 @@ if (chatVoiceNoteButton) {
                 }
 
                 chatVoiceRecording = false;
+                chatVoiceNoteButton.classList.remove("recording");
 
                 alert(
                     "Could not access the microphone. Please allow microphone access and try again."
