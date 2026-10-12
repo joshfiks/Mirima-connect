@@ -1154,6 +1154,12 @@ if (chatVoicePreview && chatVoicePreviewPlayer && chatVoiceBlob.size > 0) {
 
                 chatVoiceRecorder.start();
                 chatVoiceRecording = true;
+                const recordingIndicator =
+    document.getElementById("chatVoiceRecordingIndicator");
+
+if (recordingIndicator) {
+    recordingIndicator.style.display = "flex";
+}
                 
 chatVoiceSeconds = 0;
 
@@ -1168,7 +1174,13 @@ chatVoiceTimer = setInterval(function () {
         chatVoiceSeconds % 60
     ).padStart(2, "0");
 
-    console.log("Recording:", minutes + ":" + seconds);
+   
+const timerDisplay = document.getElementById("chatVoiceRecordingTimer");
+
+if (timerDisplay) {
+    timerDisplay.textContent = minutes + ":" + seconds;
+}
+
 }, 1000);
 
 
@@ -1206,6 +1218,13 @@ chatVoiceTimer = setInterval(function () {
 
                 chatVoiceRecording = false;
                 chatVoiceNoteButton.classList.remove("recording");
+
+                const recordingIndicator =
+             document.getElementById("chatVoiceRecordingIndicator");
+
+           if (recordingIndicator) {
+         recordingIndicator.style.display = "none";
+          }
 
                 clearInterval(chatVoiceTimer);
                 chatVoiceTimer = null;
