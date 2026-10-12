@@ -1037,6 +1037,8 @@ let chatVoiceRecorder = null;
 let chatVoiceStream = null;
 let chatVoiceChunks = [];
 let chatVoiceRecording = false;
+let chatVoicePreviewUrl = null;
+let chatVoiceBlob = null;
 
 if (chatVoiceNoteButton) {
     chatVoiceNoteButton.addEventListener(
@@ -1113,9 +1115,20 @@ if (chatVoiceNoteButton) {
 
                         chatVoiceStream = null;
 
-                        alert(
-                            "Recording stopped. In the next step, we'll add preview and send."
-                        );
+                        
+                           chatVoiceBlob = new Blob(
+                          chatVoiceChunks,
+                        {
+                  type: chatVoiceRecorder.mimeType || "audio/webm"
+             }
+         );
+
+         chatVoicePreviewUrl = URL.createObjectURL(chatVoiceBlob);
+
+                       
+
+                 console.log("Voice note ready:", chatVoiceBlob.size, "bytes");
+
 
                         chatVoiceNoteButton.title =
                             "Record voice note";
