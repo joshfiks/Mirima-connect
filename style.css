@@ -24634,6 +24634,7 @@ padding:22px !important;
 }
 
 /* Voice-note preview: full row above the chat composer */
+
 #chatVoicePreview {
     display: none;
     align-items: center;
@@ -24646,7 +24647,7 @@ padding:22px !important;
     background: #f5f7f5;
     border-top: 1px solid #e2e6e2;
     border-radius: 12px;
-    flex: 0 0 100%;
+    position: relative;
     clear: both;
 }
 
