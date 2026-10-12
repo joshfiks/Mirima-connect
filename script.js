@@ -1039,6 +1039,9 @@ let chatVoiceChunks = [];
 let chatVoiceRecording = false;
 let chatVoicePreviewUrl = null;
 let chatVoiceBlob = null;
+let chatVoiceTimer = null;
+let chatVoiceSeconds = 0;
+
 
 if (chatVoiceNoteButton) {
     chatVoiceNoteButton.addEventListener(
@@ -1151,6 +1154,23 @@ if (chatVoicePreview && chatVoicePreviewPlayer && chatVoiceBlob.size > 0) {
 
                 chatVoiceRecorder.start();
                 chatVoiceRecording = true;
+                
+chatVoiceSeconds = 0;
+
+chatVoiceTimer = setInterval(function () {
+    chatVoiceSeconds++;
+
+    const minutes = String(
+        Math.floor(chatVoiceSeconds / 60)
+    ).padStart(2, "0");
+
+    const seconds = String(
+        chatVoiceSeconds % 60
+    ).padStart(2, "0");
+
+    console.log("Recording:", minutes + ":" + seconds);
+}, 1000);
+
 
                 chatVoiceNoteButton.title =
                     "Stop recording";
@@ -1186,6 +1206,9 @@ if (chatVoicePreview && chatVoicePreviewPlayer && chatVoiceBlob.size > 0) {
 
                 chatVoiceRecording = false;
                 chatVoiceNoteButton.classList.remove("recording");
+
+                clearInterval(chatVoiceTimer);
+                chatVoiceTimer = null;
 
                 alert(
                     "Could not access the microphone. Please allow microphone access and try again."
