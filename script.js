@@ -1153,7 +1153,7 @@ console.log(
 
 console.log(
     "Send button position:",
-    sendButton.getBoundingClientRect()
+    document.getElementById("departmentChatSend").getBoundingClientRect()
 );
 
 console.log(
