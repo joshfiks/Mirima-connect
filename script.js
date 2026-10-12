@@ -1218,96 +1218,7 @@ if (chatVoicePreviewUrl) {
        console.log("Voice note deleted");
     });
 }                        
-
-// Custom voice-note preview controls
-const chatVoicePlayer = document.getElementById("chatVoicePreviewPlayer");
-const chatVoicePlayPause = document.getElementById("chatVoicePlayPause");
-const chatVoicePlayIcon = document.getElementById("chatVoicePlayIcon");
-const chatVoiceWaveform = document.getElementById("chatVoiceWaveform");
-const chatVoiceDuration = document.getElementById("chatVoiceDuration");
-
-function formatChatVoiceTime(seconds) {
-    if (!Number.isFinite(seconds) || seconds < 0) {
-        seconds = 0;
-    }
-
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-
-    return (
-        String(minutes).padStart(2, "0") +
-        ":" +
-        String(remainingSeconds).padStart(2, "0")
-    );
-}
-
-// Create decorative waveform bars
-if (chatVoiceWaveform && !chatVoiceWaveform.dataset.created) {
-    const heights = [
-        7, 12, 18, 10, 22, 14, 8, 17, 24, 11,
-        19, 9, 15, 23, 12, 7, 18, 25, 13, 9,
-        20, 14, 8, 22, 16, 10, 19, 12, 24, 7,
-        15, 21, 11, 17, 8, 23, 13, 19, 9, 16
-    ];
-
-    heights.forEach((height) => {
-        const bar = document.createElement("span");
-        bar.className = "chat-voice-wave-bar";
-        bar.style.setProperty("--bar-height", height + "px");
-        chatVoiceWaveform.appendChild(bar);
-    });
-
-    chatVoiceWaveform.dataset.created = "true";
-}
-
-// Play / pause button
-if (chatVoicePlayPause && chatVoicePlayer) {
-    chatVoicePlayPause.addEventListener("click", async () => {
-        if (chatVoicePlayer.paused) {
-            try {
-                await chatVoicePlayer.play();
-            } catch (error) {
-                console.error("Could not play voice note:", error);
-            }
-        } else {
-            chatVoicePlayer.pause();
-        }
-    });
-
-    chatVoicePlayer.addEventListener("play", () => {
-        chatVoicePlayPause.setAttribute("aria-label", "Pause voice note");
-        chatVoicePlayPause.title = "Pause voice note";
-
-        chatVoicePlayIcon.innerHTML =
-            '<path d="M7 5h4v14H7zM14 5h4v14h-4z"/>';
-    });
-
-    chatVoicePlayer.addEventListener("pause", () => {
-        chatVoicePlayPause.setAttribute("aria-label", "Play voice note");
-        chatVoicePlayPause.title = "Play voice note";
-
-        chatVoicePlayIcon.innerHTML =
-            '<path d="M8 5v14l11-7z"/>';
-    });
-
-    chatVoicePlayer.addEventListener("ended", () => {
-        chatVoicePlayer.currentTime = 0;
-        chatVoiceDuration.textContent =
-            formatChatVoiceTime(chatVoicePlayer.duration);
-    });
-
-    chatVoicePlayer.addEventListener("loadedmetadata", () => {
-        chatVoiceDuration.textContent =
-            formatChatVoiceTime(chatVoicePlayer.duration);
-    });
-
-    chatVoicePlayer.addEventListener("timeupdate", () => {
-        chatVoiceDuration.textContent =
-            formatChatVoiceTime(chatVoicePlayer.currentTime);
-    });
-}
-
-                        
+                       
 
     chatVoiceNoteButton.title =
          "Record voice note";
@@ -1418,6 +1329,95 @@ chatVoiceTimer = setInterval(function () {
             }
         }
     );
+}
+
+
+// Custom voice-note preview controls
+const chatVoicePlayer = document.getElementById("chatVoicePreviewPlayer");
+const chatVoicePlayPause = document.getElementById("chatVoicePlayPause");
+const chatVoicePlayIcon = document.getElementById("chatVoicePlayIcon");
+const chatVoiceWaveform = document.getElementById("chatVoiceWaveform");
+const chatVoiceDuration = document.getElementById("chatVoiceDuration");
+
+function formatChatVoiceTime(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) {
+        seconds = 0;
+    }
+
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    return (
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(remainingSeconds).padStart(2, "0")
+    );
+}
+
+// Create decorative waveform bars
+if (chatVoiceWaveform && !chatVoiceWaveform.dataset.created) {
+    const heights = [
+        7, 12, 18, 10, 22, 14, 8, 17, 24, 11,
+        19, 9, 15, 23, 12, 7, 18, 25, 13, 9,
+        20, 14, 8, 22, 16, 10, 19, 12, 24, 7,
+        15, 21, 11, 17, 8, 23, 13, 19, 9, 16
+    ];
+
+    heights.forEach((height) => {
+        const bar = document.createElement("span");
+        bar.className = "chat-voice-wave-bar";
+        bar.style.setProperty("--bar-height", height + "px");
+        chatVoiceWaveform.appendChild(bar);
+    });
+
+    chatVoiceWaveform.dataset.created = "true";
+}
+
+// Play / pause button
+if (chatVoicePlayPause && chatVoicePlayer) {
+    chatVoicePlayPause.addEventListener("click", async () => {
+        if (chatVoicePlayer.paused) {
+            try {
+                await chatVoicePlayer.play();
+            } catch (error) {
+                console.error("Could not play voice note:", error);
+            }
+        } else {
+            chatVoicePlayer.pause();
+        }
+    });
+
+    chatVoicePlayer.addEventListener("play", () => {
+        chatVoicePlayPause.setAttribute("aria-label", "Pause voice note");
+        chatVoicePlayPause.title = "Pause voice note";
+
+        chatVoicePlayIcon.innerHTML =
+            '<path d="M7 5h4v14H7zM14 5h4v14h-4z"/>';
+    });
+
+    chatVoicePlayer.addEventListener("pause", () => {
+        chatVoicePlayPause.setAttribute("aria-label", "Play voice note");
+        chatVoicePlayPause.title = "Play voice note";
+
+        chatVoicePlayIcon.innerHTML =
+            '<path d="M8 5v14l11-7z"/>';
+    });
+
+    chatVoicePlayer.addEventListener("ended", () => {
+        chatVoicePlayer.currentTime = 0;
+        chatVoiceDuration.textContent =
+            formatChatVoiceTime(chatVoicePlayer.duration);
+    });
+
+    chatVoicePlayer.addEventListener("loadedmetadata", () => {
+        chatVoiceDuration.textContent =
+            formatChatVoiceTime(chatVoicePlayer.duration);
+    });
+
+    chatVoicePlayer.addEventListener("timeupdate", () => {
+        chatVoiceDuration.textContent =
+            formatChatVoiceTime(chatVoicePlayer.currentTime);
+    });
 }
 
 
