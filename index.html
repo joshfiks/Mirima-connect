@@ -1197,9 +1197,11 @@ AIRPORT TRANSFER POPUP
         capture="environment"
         hidden
     >
-   
-<!-- Voice Note Preview: above the message input -->
+ 
+<!-- Compact Voice Note Preview -->
 <div id="chatVoicePreview" style="display: none;">
+
+    <!-- Delete Voice Note -->
     <button
         type="button"
         id="chatVoiceDelete"
@@ -1214,7 +1216,27 @@ AIRPORT TRANSFER POPUP
         </svg>
     </button>
 
-    <audio id="chatVoicePreviewPlayer" controls></audio>
+    <!-- Play / Pause -->
+    <button
+        type="button"
+        id="chatVoicePlayPause"
+        aria-label="Play voice note"
+        title="Play voice note"
+    >
+        <svg id="chatVoicePlayIcon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+    </button>
+
+    <!-- Waveform and duration -->
+    <div id="chatVoiceWaveformArea">
+        <div id="chatVoiceWaveform" aria-label="Voice note waveform"></div>
+        <span id="chatVoiceDuration">00:00</span>
+    </div>
+
+    <!-- Keep the existing audio element for playback -->
+    <audio id="chatVoicePreviewPlayer" preload="metadata"></audio>
+
 </div>
 
 <!-- Message Text -->
