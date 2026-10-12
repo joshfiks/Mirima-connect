@@ -1105,6 +1105,7 @@ if (chatVoiceNoteButton) {
                     "stop",
                     function () {
                         chatVoiceRecording = false;
+                        chatVoiceNoteButton.classList.remove("recording");
 
                         chatVoiceStream
                             .getTracks()
