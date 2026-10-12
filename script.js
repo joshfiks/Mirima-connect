@@ -1161,10 +1161,30 @@ if (recordingIndicator) {
     recordingIndicator.style.display = "flex";
 }
                 
+
 chatVoiceSeconds = 0;
 
+const chatVoiceStartTime = Date.now();
+
+const timerDisplay =
+    document.getElementById("chatVoiceRecordingTimer");
+
+if (timerDisplay) {
+    timerDisplay.textContent = "00:00";
+}
+
+clearInterval(chatVoiceTimer);
+
 chatVoiceTimer = setInterval(function () {
-    chatVoiceSeconds++;
+    if (!chatVoiceRecording) {
+        clearInterval(chatVoiceTimer);
+        chatVoiceTimer = null;
+        return;
+    }
+
+    chatVoiceSeconds = Math.floor(
+        (Date.now() - chatVoiceStartTime) / 1000
+    );
 
     const minutes = String(
         Math.floor(chatVoiceSeconds / 60)
@@ -1174,14 +1194,10 @@ chatVoiceTimer = setInterval(function () {
         chatVoiceSeconds % 60
     ).padStart(2, "0");
 
-   
-const timerDisplay = document.getElementById("chatVoiceRecordingTimer");
-
-if (timerDisplay) {
-    timerDisplay.textContent = minutes + ":" + seconds;
-}
-
-}, 1000);
+    if (timerDisplay) {
+        timerDisplay.textContent = minutes + ":" + seconds;
+    }
+}, 250);
 
 
                 chatVoiceNoteButton.title =
