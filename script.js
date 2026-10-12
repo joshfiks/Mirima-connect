@@ -1166,16 +1166,29 @@ console.log(
 const chatVoiceDelete = document.getElementById("chatVoiceDelete");
 
 if (chatVoiceDelete) {
-    chatVoiceDelete.addEventListener("click", () => {
-        chatVoicePreviewPlayer.pause();
-        chatVoicePreviewPlayer.removeAttribute("src");
-        chatVoicePreviewPlayer.load();
+chatVoiceDelete.addEventListener("click", () => {
+chatVoicePreviewPlayer.pause();
+chatVoicePreviewPlayer.removeAttribute("src");
+chatVoicePreviewPlayer.load();
 
-        chatVoicePreview.style.display = "none";
-        chatVoiceChunks = [];
-        chatVoiceSeconds = 0;
-        if (chatVoiceTimer) clearInterval(chatVoiceTimer);
-        chatVoiceBlob = null;
+chatVoicePreview.style.display = "none";
+chatVoiceChunks = [];
+chatVoiceSeconds = 0;
+chatVoiceRecording = false;
+
+if (chatVoiceTimer) {
+    clearInterval(chatVoiceTimer);
+    chatVoiceTimer = null;
+}
+
+const recordingIndicator =
+    document.getElementById("chatVoiceRecordingIndicator");
+
+if (recordingIndicator) {
+    recordingIndicator.style.display = "none";
+}
+
+chatVoiceBlob = null;
 
 // Reset the recording timer
 const chatVoiceTimerDisplay =
