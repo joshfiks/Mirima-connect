@@ -24633,26 +24633,26 @@ padding:22px !important;
     }
 }
 
-/* Compact voice-note preview */
+/* Voice-note preview: full row above the chat composer */
 #chatVoicePreview {
     display: none;
     align-items: center;
     gap: 10px;
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
     padding: 8px 12px;
+    margin: 0;
     background: #f5f7f5;
     border-top: 1px solid #e2e6e2;
     border-radius: 12px;
+    flex: 0 0 100%;
+    clear: both;
 }
 
-/* Keep the audio element functional without showing browser controls */
+/* Keep the audio element available for playback */
 #chatVoicePreview audio {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
+    display: none;
 }
 
 /* Delete voice note button */
