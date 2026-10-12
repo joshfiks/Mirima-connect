@@ -24681,3 +24681,80 @@ padding:22px !important;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+/* Voice-note preview layout */
+#chatVoicePreview {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    margin: 0;
+    background: #f5f7f5;
+    border-top: 1px solid #e2e6e2;
+    border-radius: 12px;
+    position: relative;
+}
+
+/* Play/pause button */
+#chatVoicePlayPause {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    background: #e2f5e9;
+    color: #168447;
+    cursor: pointer;
+}
+
+#chatVoicePlayPause svg {
+    width: 21px;
+    height: 21px;
+    fill: currentColor;
+}
+
+/* Waveform and duration */
+#chatVoiceWaveformArea {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#chatVoiceWaveform {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3px;
+    width: 100%;
+    height: 27px;
+    overflow: hidden;
+}
+
+.chat-voice-wave-bar {
+    flex: 1;
+    min-width: 2px;
+    max-width: 4px;
+    border-radius: 3px;
+    background: #23a565;
+    height: var(--bar-height, 12px);
+    opacity: 0.8;
+}
+
+#chatVoiceDuration {
+    color: #66736b;
+    font-size: 11px;
+    line-height: 1;
+}
+
+/* Hide native browser audio controls */
+#chatVoicePreviewPlayer {
+    display: none;
+}
