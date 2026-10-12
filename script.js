@@ -1174,18 +1174,23 @@ if (chatVoiceDelete) {
         chatVoicePreview.style.display = "none";
         chatVoiceChunks = [];
         chatVoiceSeconds = 0;
+        if (chatVoiceTimer) clearInterval(chatVoiceTimer);
         chatVoiceBlob = null;
 
-// Reset the recording timer display
-const chatVoiceTimerDisplay = document.getElementById("chatVoiceTimer");
+// Reset the recording timer
+const chatVoiceTimerDisplay =
+    document.getElementById("chatVoiceRecordingTimer");
+
 if (chatVoiceTimerDisplay) {
     chatVoiceTimerDisplay.textContent = "00:00";
 }
 
-// Hide the red recording indicator
-const chatVoiceRecordingDot = document.getElementById("chatVoiceRecordingDot");
-if (chatVoiceRecordingDot) {
-    chatVoiceRecordingDot.style.display = "none";
+// Hide the recording indicator, including its red dot
+const chatVoiceRecordingIndicator =
+    document.getElementById("chatVoiceRecordingIndicator");
+
+if (chatVoiceRecordingIndicator) {
+    chatVoiceRecordingIndicator.style.display = "none";
 }
 
         if (typeof chatVoicePreviewUrl !== "undefined") {
