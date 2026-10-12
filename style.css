@@ -24632,3 +24632,47 @@ padding:22px !important;
         opacity: 0.3;
     }
 }
+
+/* Compact voice-note preview above the chat composer */
+#chatVoicePreview {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    background: #f5f7f5;
+    border-top: 1px solid #e2e6e2;
+}
+
+#chatVoicePreview audio {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    height: 38px;
+}
+
+#chatVoiceDelete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #dc2626;
+    cursor: pointer;
+}
+
+#chatVoiceDelete svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
