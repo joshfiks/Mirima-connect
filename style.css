@@ -24633,7 +24633,7 @@ padding:22px !important;
     }
 }
 
-/* Compact voice-note preview above the chat composer */
+/* Compact voice-note preview */
 #chatVoicePreview {
     display: none;
     align-items: center;
@@ -24643,15 +24643,19 @@ padding:22px !important;
     padding: 8px 12px;
     background: #f5f7f5;
     border-top: 1px solid #e2e6e2;
+    border-radius: 12px;
 }
 
+/* Keep the audio element functional without showing browser controls */
 #chatVoicePreview audio {
-    flex: 1;
-    min-width: 0;
-    width: 100%;
-    height: 38px;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
 }
 
+/* Delete voice note button */
 #chatVoiceDelete {
     display: flex;
     align-items: center;
@@ -24662,7 +24666,7 @@ padding:22px !important;
     padding: 8px;
     border: none;
     border-radius: 50%;
-    background: transparent;
+    background: #fee2e2;
     color: #dc2626;
     cursor: pointer;
 }
