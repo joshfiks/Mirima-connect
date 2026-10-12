@@ -1138,6 +1138,17 @@ const chatVoicePreviewPlayer = document.getElementById("chatVoicePreviewPlayer")
 if (chatVoicePreview && chatVoicePreviewPlayer && chatVoiceBlob.size > 0) {
     chatVoicePreviewPlayer.src = chatVoicePreviewUrl;
     chatVoicePreview.style.display = "block";
+
+    console.log("Voice preview shown");
+console.log("Send button:", document.getElementById("departmentChatSend"));
+console.log(
+    "Send button display:",
+    getComputedStyle(document.getElementById("departmentChatSend")).display
+);
+console.log(
+    "Send button visibility:",
+    getComputedStyle(document.getElementById("departmentChatSend")).visibility
+);
 }
 
 
