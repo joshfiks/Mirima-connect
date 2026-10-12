@@ -1176,12 +1176,23 @@ if (chatVoiceDelete) {
         chatVoiceSeconds = 0;
         chatVoiceBlob = null;
 
+// Reset the recording timer display
+const chatVoiceTimerDisplay = document.getElementById("chatVoiceTimer");
+if (chatVoiceTimerDisplay) {
+    chatVoiceTimerDisplay.textContent = "00:00";
+}
+
+// Hide the red recording indicator
+const chatVoiceRecordingDot = document.getElementById("chatVoiceRecordingDot");
+if (chatVoiceRecordingDot) {
+    chatVoiceRecordingDot.style.display = "none";
+}
+
         if (typeof chatVoicePreviewUrl !== "undefined") {
             URL.revokeObjectURL(chatVoicePreviewUrl);
         }
 
-        chatVoiceBlob = null;
-        console.log("Voice note deleted");
+       console.log("Voice note deleted");
     });
 }                        
 
