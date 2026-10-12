@@ -1206,7 +1206,32 @@ AIRPORT TRANSFER POPUP
         autocomplete="off"
     >
 
+<!-- Voice Note Preview: above the message input -->
+<div id="chatVoicePreview" style="display: none;">
+    <button
+        type="button"
+        id="chatVoiceDelete"
+        aria-label="Delete voice note"
+        title="Delete voice note"
+    >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 6h18"/>
+            <path d="M8 6V4h8v2"/>
+            <path d="m19 6-1 14H6L5 6"/>
+            <path d="M10 11v5M14 11v5"/>
+        </svg>
+    </button>
 
+    <audio id="chatVoicePreviewPlayer" controls></audio>
+</div>
+
+<!-- Message Text -->
+<input
+    type="text"
+    id="departmentChatInput"
+    placeholder="Type a message..."
+    autocomplete="off"
+>
 
 <!-- Voice Recording Indicator -->
 <div id="chatVoiceRecordingIndicator" style="display: none;">
@@ -1243,28 +1268,9 @@ AIRPORT TRANSFER POPUP
     </svg>
 </button>
 
-<!-- Voice Note Preview -->
-<div id="chatVoicePreview" style="display: none;">
-    <!-- Delete / Cancel Voice Note -->
-    <button
-        type="button"
-        id="chatVoiceDelete"
-        aria-label="Delete voice note"
-        title="Delete voice note"
-    >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3 6h18"/>
-            <path d="M8 6V4h8v2"/>
-            <path d="m19 6-1 14H6L5 6"/>
-            <path d="M10 11v5M14 11v5"/>
-        </svg>
-    </button>
-
-    <!-- Recorded Audio -->
-    <audio id="chatVoicePreviewPlayer" controls></audio>
-</div>
-
 </div> <!-- Close department-chat-window -->
+
+
 <!-- ==========================================
      CHAT MESSAGE ACTION MENU
   ========================================== -->
