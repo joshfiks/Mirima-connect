@@ -1126,7 +1126,12 @@ if (chatVoiceNoteButton) {
              }
          );
 
-         chatVoicePreviewUrl = URL.createObjectURL(chatVoiceBlob);
+         if (chatVoicePreviewUrl) {
+    URL.revokeObjectURL(chatVoicePreviewUrl);
+    chatVoicePreviewUrl = null;
+}
+
+chatVoicePreviewUrl = URL.createObjectURL(chatVoiceBlob);
                        
 
         console.log("Voice note ready:", chatVoiceBlob.size, "bytes");
@@ -1206,10 +1211,10 @@ if (chatVoiceRecordingIndicator) {
     chatVoiceRecordingIndicator.style.display = "none";
 }
 
-        if (typeof chatVoicePreviewUrl !== "undefined") {
-            URL.revokeObjectURL(chatVoicePreviewUrl);
-        }
-
+if (chatVoicePreviewUrl) {
+    URL.revokeObjectURL(chatVoicePreviewUrl);
+    chatVoicePreviewUrl = null;
+}
        console.log("Voice note deleted");
     });
 }                        
