@@ -1207,48 +1207,45 @@ AIRPORT TRANSFER POPUP
     >
 
 
+
 <!-- Voice Recording Indicator -->
 <div id="chatVoiceRecordingIndicator" style="display: none;">
     <span class="chat-voice-recording-dot"></span>
     <span id="chatVoiceRecordingTimer">00:00</span>
 </div>
 
-  
-    <!-- Voice Note -->
-    <button
-        type="button"
-        id="chatVoiceNote"
-        class="chat-media-button"
-        aria-label="Record voice note"
-        title="Record voice note"
-    >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="9" y="2" width="6" height="12" rx="3"/>
-            <path d="M5 10a7 7 0 0 0 14 0"/>
-            <path d="M12 17v5"/>
-            <path d="M8 22h8"/>
-        </svg>
-    </button>
+<!-- Voice Note Button -->
+<button
+    type="button"
+    id="chatVoiceNote"
+    class="chat-media-button"
+    aria-label="Record voice note"
+    title="Record voice note"
+>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="9" y="2" width="6" height="12" rx="3"/>
+        <path d="M5 10a7 7 0 0 0 14 0"/>
+        <path d="M12 17v5"/>
+        <path d="M8 22h8"/>
+    </svg>
+</button>
 
-    <!-- Send Message -->
-    <button
-        type="button"
-        id="departmentChatSend"
-        aria-label="Send message"
-        title="Send message"
-    >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m22 2-7 20-4-9-9-4Z"/>
-            <path d="M22 2 11 13"/>
-        </svg>
-    </button>
+<!-- Existing Send Message Button -->
+<button
+    type="button"
+    id="departmentChatSend"
+    aria-label="Send message"
+    title="Send message"
+>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m22 2-7 20-4-9-9-4Z"/>
+        <path d="M22 2 11 13"/>
+    </svg>
+</button>
 
-</div>
-
-      
-
-<!-- Compact Voice Note Preview -->
+<!-- Voice Note Preview -->
 <div id="chatVoicePreview" style="display: none;">
+    <!-- Delete / Cancel Voice Note -->
     <button
         type="button"
         id="chatVoiceDelete"
@@ -1263,14 +1260,14 @@ AIRPORT TRANSFER POPUP
         </svg>
     </button>
 
+    <!-- Recorded Audio -->
     <audio id="chatVoicePreviewPlayer" controls></audio>
 </div>
 
-
-      </div> <!-- Close department-chat-window -->
-  <!-- ==========================================
+</div> <!-- Close department-chat-window -->
+<!-- ==========================================
      CHAT MESSAGE ACTION MENU
-========================================== -->
+  ========================================== -->
 
 <div
     id="chatMessageActionMenu"
