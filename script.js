@@ -1149,16 +1149,27 @@ console.log(
     "Send button visibility:",
     getComputedStyle(document.getElementById("departmentChatSend")).visibility
 );
+
+
+console.log(
+    "Send button position:",
+    sendButton.getBoundingClientRect()
+);
+
+console.log(
+    "Preview position:",
+    chatVoicePreview.getBoundingClientRect()
+);
+
 }
 
 
+    chatVoiceNoteButton.title =
+         "Record voice note";
 
-                        chatVoiceNoteButton.title =
-                            "Record voice note";
-
-                        chatVoiceNoteButton.setAttribute(
-                            "aria-label",
-                            "Record voice note"
+         chatVoiceNoteButton.setAttribute(
+                        "aria-label",
+                       "Record voice note"
                         );
                     }
                 );
