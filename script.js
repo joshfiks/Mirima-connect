@@ -1162,6 +1162,28 @@ console.log(
 );
 
 }
+// Delete the recorded voice note
+const chatVoiceDelete = document.getElementById("chatVoiceDelete");
+
+if (chatVoiceDelete) {
+    chatVoiceDelete.addEventListener("click", () => {
+        chatVoicePreviewPlayer.pause();
+        chatVoicePreviewPlayer.removeAttribute("src");
+        chatVoicePreviewPlayer.load();
+
+        chatVoicePreview.style.display = "none";
+        chatVoiceChunks = [];
+        chatVoiceSeconds = 0;
+        chatVoiceBlob = null;
+
+        if (typeof chatVoicePreviewUrl !== "undefined") {
+            URL.revokeObjectURL(chatVoicePreviewUrl);
+        }
+
+        chatVoiceBlob = null;
+        console.log("Voice note deleted");
+    });
+}                        
 
 // Custom voice-note preview controls
 const chatVoicePlayer = document.getElementById("chatVoicePreviewPlayer");
