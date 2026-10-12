@@ -24602,3 +24602,33 @@ padding:22px !important;
   background-color: rgba(255, 59, 59, 0.12);
   border-radius: 50%;
 }
+
+/* Chat voice recording indicator */
+#chatVoiceRecordingIndicator {
+    display: none;
+    align-items: center;
+    gap: 7px;
+    padding: 0 8px;
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.chat-voice-recording-dot {
+    width: 9px;
+    height: 9px;
+    background: #dc2626;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: chatVoiceRecordingPulse 1s infinite;
+}
+
+@keyframes chatVoiceRecordingPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
