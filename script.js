@@ -3676,11 +3676,93 @@ document.getElementById("departmentChatSend")
     const editingMessageId =
         input.dataset.editingMessageId;
 
-    if (!message || !department) {
-        return;
+   if (!department) {
+    return;
+}
+
+// If a voice note is ready, send it using the same Send button.
+if (chatVoiceBlob) {
+    document.getElementById("departmentChatSend").disabled = true;
+    document.getElementById("departmentChatSend").textContent = "Sending...";
+
+    try {
+        const sendButton = document.getElementById("departmentChatSend");
+        const conversationRef = await getOrCreateChatConversation(department);
+
+        if (!conversationRef) {
+            throw new Error("Could not open the chat conversation.");
+        }
+
+        const uploadData = new FormData();
+        uploadData.append("file", chatVoiceBlob, "voice-note.webm");
+        uploadData.append("upload_preset", "mirima_chat_uploads");
+
+        const response = await fetch(
+            "https://api.cloudinary.com/v1_1/cqsnkbge/auto/upload",
+            {
+                method: "POST",
+                body: uploadData
+            }
+        );
+
+        const uploadResult = await response.json();
+
+        if (!response.ok || !uploadResult.secure_url) {
+            console.error("Voice upload error:", uploadResult);
+            throw new Error("Voice note upload failed.");
+        }
+
+        await addDoc(collection(conversationRef, "messages"), {
+            sender: "guest",
+            senderName: localStorage.getItem("guestName") || "Guest",
+            message: "",
+            attachmentUrl: uploadResult.secure_url,
+            attachmentName: "voice-note.webm",
+            attachmentType: chatVoiceBlob.type || "audio/webm",
+            attachmentSize: chatVoiceBlob.size,
+            createdAt: serverTimestamp()
+        });
+
+        await updateDoc(conversationRef, {
+            guestMessageCount: increment(1),
+            updatedAt: serverTimestamp()
+        });
+
+        const preview = document.getElementById("chatVoicePreview");
+        const player = document.getElementById("chatVoicePreviewPlayer");
+
+        player.pause();
+        player.removeAttribute("src");
+        player.load();
+        preview.style.display = "none";
+
+        chatVoiceChunks = [];
+        chatVoiceBlob = null;
+
+        if (chatVoicePreviewUrl) {
+            URL.revokeObjectURL(chatVoicePreviewUrl);
+            chatVoicePreviewUrl = null;
+        }
+
+        input.value = "";
+
+        await loadDepartmentChatMessages(department);
+
+    } catch (error) {
+        console.error("Voice note send error:", error);
+        alert("Could not send the voice note. Please try again.");
+    } finally {
+        const sendButton = document.getElementById("departmentChatSend");
+        sendButton.disabled = false;
+        sendButton.textContent = "Send";
     }
 
+    return;
+}
 
+if (!message) {
+    return;
+}
     // ==========================================
     // EDIT EXISTING MESSAGE
     // ==========================================
