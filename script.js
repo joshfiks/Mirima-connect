@@ -510,12 +510,16 @@ if (data.attachmentUrl) {
         messageBubble.appendChild(audioPlayer);
     }
 
+   
+if (
+    !data.attachmentType ||
+    !data.attachmentType.startsWith("audio/")
+) {
     attachmentLink.style.display = "block";
     attachmentLink.style.marginTop = "6px";
 
     messageBubble.appendChild(attachmentLink);
 }
-
             
 const messageTime =
     document.createElement("small");
