@@ -487,8 +487,8 @@ if (data.attachmentUrl) {
 
         messageBubble.appendChild(attachmentImage);
     }
-
-   
+    
+    
     // Custom audio and voice-note players
     if (
         data.attachmentType &&
@@ -521,28 +521,81 @@ if (data.attachmentUrl) {
             ? "🎙 Voice note"
             : "♫ " + (data.attachmentName || "Audio");
 
-        const progress = document.createElement("input");
-        progress.type = "range";
-        progress.min = "0";
-        progress.max = "100";
-        progress.value = "0";
-        progress.className = "mirima-audio-progress";
-        progress.setAttribute("aria-label", "Audio progress");
+        const waveform = document.createElement("div");
+        waveform.className = isVoiceNote
+            ? "mirima-audio-waveform mirima-voice-waveform"
+            : "mirima-audio-waveform mirima-music-waveform";
+
+        waveform.setAttribute("role", "slider");
+        waveform.setAttribute("aria-label", "Audio progress");
+        waveform.setAttribute("aria-valuemin", "0");
+        waveform.setAttribute("aria-valuemax", "100");
+        waveform.setAttribute("aria-valuenow", "0");
+        waveform.tabIndex = 0;
+
+        const waveBars = [];
+        const barCount = 30;
 
         const duration = document.createElement("span");
         duration.className = "mirima-audio-duration";
         duration.textContent = "00:00";
 
-        details.append(title, progress, duration);
+        details.append(title, waveform, duration);
         player.append(playButton, details, audioPlayer);
         messageBubble.appendChild(player);
 
         function formatTime(seconds) {
             if (!Number.isFinite(seconds)) return "00:00";
+
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
+
             return String(mins).padStart(2, "0") + ":" +
                 String(secs).padStart(2, "0");
+        }
+
+        // Create waveform bars
+        for (let i = 0; i < barCount; i++) {
+            const bar = document.createElement("span");
+            bar.className = "mirima-audio-wave-bar";
+
+            const height = 20 +
+                Math.abs(Math.sin(i * 1.7) * Math.cos(i * 0.43)) * 80;
+
+            bar.style.height = height + "%";
+
+            waveform.appendChild(bar);
+            waveBars.push(bar);
+        }
+
+        function updateWaveform() {
+            if (
+                !Number.isFinite(audioPlayer.duration) ||
+                audioPlayer.duration <= 0
+            ) {
+                return;
+            }
+
+            const percentage =
+                audioPlayer.currentTime / audioPlayer.duration * 100;
+
+            waveform.setAttribute(
+                "aria-valuenow",
+                String(Math.round(percentage))
+            );
+
+            const activeBars = Math.floor(
+                percentage / 100 * waveBars.length
+            );
+
+            waveBars.forEach((bar, index) => {
+                bar.classList.toggle(
+                    "mirima-audio-wave-bar-played",
+                    index < activeBars
+                );
+            });
+
+            duration.textContent = formatTime(audioPlayer.currentTime);
         }
 
         playButton.addEventListener("click", async () => {
@@ -571,31 +624,61 @@ if (data.attachmentUrl) {
             duration.textContent = formatTime(audioPlayer.duration);
         });
 
-        audioPlayer.addEventListener("timeupdate", () => {
-            if (Number.isFinite(audioPlayer.duration) &&
-                audioPlayer.duration > 0) {
-                progress.value = String(
-                    audioPlayer.currentTime / audioPlayer.duration * 100
-                );
-                duration.textContent = formatTime(audioPlayer.currentTime);
-            }
-        });
+        audioPlayer.addEventListener("timeupdate", updateWaveform);
 
         audioPlayer.addEventListener("ended", () => {
-            progress.value = "0";
-            duration.textContent = formatTime(audioPlayer.duration);
+            audioPlayer.currentTime = 0;
+            updateWaveform();
             playButton.textContent = "▶";
         });
 
-        progress.addEventListener("input", () => {
-            if (Number.isFinite(audioPlayer.duration) &&
-                audioPlayer.duration > 0) {
-                audioPlayer.currentTime =
-                    Number(progress.value) / 100 * audioPlayer.duration;
+        function seekWaveform(event) {
+            if (
+                !Number.isFinite(audioPlayer.duration) ||
+                audioPlayer.duration <= 0
+            ) {
+                return;
+            }
+
+            const rect = waveform.getBoundingClientRect();
+
+            if (rect.width <= 0) return;
+
+            const percentage = Math.max(
+                0,
+                Math.min(1, (event.clientX - rect.left) / rect.width)
+            );
+
+            audioPlayer.currentTime =
+                percentage * audioPlayer.duration;
+
+            updateWaveform();
+        }
+
+        waveform.addEventListener("click", seekWaveform);
+
+        waveform.addEventListener("keydown", event => {
+            if (
+                event.key === "ArrowRight" ||
+                event.key === "ArrowLeft"
+            ) {
+                event.preventDefault();
+
+                const step =
+                    event.key === "ArrowRight" ? 5 : -5;
+
+                audioPlayer.currentTime = Math.max(
+                    0,
+                    Math.min(
+                        audioPlayer.duration || 0,
+                        audioPlayer.currentTime + step
+                    )
+                );
+
+                updateWaveform();
             }
         });
     }
-
 
     
     attachmentLink.style.display = "block";
