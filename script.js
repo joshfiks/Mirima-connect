@@ -3588,9 +3588,9 @@ document.getElementById("departmentChatSend")
 
 // If a voice note is ready, send it using the same Send button.
 if (chatVoiceBlob) {
-    const sendButton = document.getElementById("departmentChatSend");
-    sendButton.disabled = true;
-    
+    document.getElementById("departmentChatSend").disabled = true;
+    document.getElementById("departmentChatSend").textContent = "Sending...";
+
     try {
         const sendButton = document.getElementById("departmentChatSend");
         const conversationRef = await getOrCreateChatConversation(department);
@@ -3640,37 +3640,10 @@ if (chatVoiceBlob) {
         player.pause();
         player.removeAttribute("src");
         player.load();
-       
-preview.style.display = "none";
+        preview.style.display = "none";
 
-chatVoiceChunks = [];
-chatVoiceSeconds = 0;
-chatVoiceRecording = false;
-chatVoiceBlob = null;
-
-// Stop and reset the recording timer
-if (chatVoiceTimer) {
-    clearInterval(chatVoiceTimer);
-    chatVoiceTimer = null;
-}
-
-// Reset and hide the timer
-const timerDisplay =
-    document.getElementById("chatVoiceRecordingTimer");
-
-if (timerDisplay) {
-    timerDisplay.textContent = "00:00";
-    timerDisplay.style.display = "none";
-}
-
-// Hide the recording indicator and red dot
-const recordingIndicator =
-    document.getElementById("chatVoiceRecordingIndicator");
-
-if (recordingIndicator) {
-    recordingIndicator.style.display = "none";
-}
-
+        chatVoiceChunks = [];
+        chatVoiceBlob = null;
 
         if (chatVoicePreviewUrl) {
             URL.revokeObjectURL(chatVoicePreviewUrl);
@@ -3684,10 +3657,11 @@ if (recordingIndicator) {
     } catch (error) {
         console.error("Voice note send error:", error);
         alert("Could not send the voice note. Please try again.");
-        
-    finally {
-    sendButton.disabled = false;
-}
+    } finally {
+        const sendButton = document.getElementById("departmentChatSend");
+        sendButton.disabled = false;
+        sendButton.textContent = "Send";
+    }
 
     return;
 }
