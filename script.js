@@ -488,28 +488,116 @@ if (data.attachmentUrl) {
         messageBubble.appendChild(attachmentImage);
     }
 
-    // Audio player
+   
+    // Custom audio and voice-note players
     if (
         data.attachmentType &&
         data.attachmentType.startsWith("audio/")
     ) {
-        const audioPlayer =
-            document.createElement("audio");
+        const isVoiceNote =
+            data.attachmentName === "voice-note.webm";
 
-        audioPlayer.controls = true;
-        audioPlayer.volume = 1;
+        const audioPlayer = document.createElement("audio");
         audioPlayer.preload = "metadata";
         audioPlayer.src = data.attachmentUrl;
 
-        audioPlayer.style.display = "block";
-        audioPlayer.style.width = "240px";
-        audioPlayer.style.maxWidth = "100%";
-        audioPlayer.style.boxSizing = "border-box";
-        audioPlayer.style.marginTop = "8px";
+        const player = document.createElement("div");
+        player.className = isVoiceNote
+            ? "mirima-audio-player mirima-voice-player"
+            : "mirima-audio-player mirima-music-player";
 
-        messageBubble.appendChild(audioPlayer);
+        const playButton = document.createElement("button");
+        playButton.type = "button";
+        playButton.className = "mirima-audio-play";
+        playButton.textContent = "▶";
+        playButton.setAttribute("aria-label", "Play audio");
+
+        const details = document.createElement("div");
+        details.className = "mirima-audio-details";
+
+        const title = document.createElement("div");
+        title.className = "mirima-audio-title";
+        title.textContent = isVoiceNote
+            ? "🎙 Voice note"
+            : "♫ " + (data.attachmentName || "Audio");
+
+        const progress = document.createElement("input");
+        progress.type = "range";
+        progress.min = "0";
+        progress.max = "100";
+        progress.value = "0";
+        progress.className = "mirima-audio-progress";
+        progress.setAttribute("aria-label", "Audio progress");
+
+        const duration = document.createElement("span");
+        duration.className = "mirima-audio-duration";
+        duration.textContent = "00:00";
+
+        details.append(title, progress, duration);
+        player.append(playButton, details, audioPlayer);
+        messageBubble.appendChild(player);
+
+        function formatTime(seconds) {
+            if (!Number.isFinite(seconds)) return "00:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return String(mins).padStart(2, "0") + ":" +
+                String(secs).padStart(2, "0");
+        }
+
+        playButton.addEventListener("click", async () => {
+            if (audioPlayer.paused) {
+                try {
+                    await audioPlayer.play();
+                } catch (error) {
+                    console.error("Audio playback failed:", error);
+                }
+            } else {
+                audioPlayer.pause();
+            }
+        });
+
+        audioPlayer.addEventListener("play", () => {
+            playButton.textContent = "Ⅱ";
+            playButton.setAttribute("aria-label", "Pause audio");
+        });
+
+        audioPlayer.addEventListener("pause", () => {
+            playButton.textContent = "▶";
+            playButton.setAttribute("aria-label", "Play audio");
+        });
+
+        audioPlayer.addEventListener("loadedmetadata", () => {
+            duration.textContent = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener("timeupdate", () => {
+            if (Number.isFinite(audioPlayer.duration) &&
+                audioPlayer.duration > 0) {
+                progress.value = String(
+                    audioPlayer.currentTime / audioPlayer.duration * 100
+                );
+                duration.textContent = formatTime(audioPlayer.currentTime);
+            }
+        });
+
+        audioPlayer.addEventListener("ended", () => {
+            progress.value = "0";
+            duration.textContent = formatTime(audioPlayer.duration);
+            playButton.textContent = "▶";
+        });
+
+        progress.addEventListener("input", () => {
+            if (Number.isFinite(audioPlayer.duration) &&
+                audioPlayer.duration > 0) {
+                audioPlayer.currentTime =
+                    Number(progress.value) / 100 * audioPlayer.duration;
+            }
+        });
     }
 
+
+    
     attachmentLink.style.display = "block";
     attachmentLink.style.marginTop = "6px";
 
