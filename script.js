@@ -3681,13 +3681,13 @@ if (recordingIndicator) {
 
         await loadDepartmentChatMessages(department);
 
-   
     } catch (error) {
         console.error("Voice note send error:", error);
         alert("Could not send the voice note. Please try again.");
-    } finally {
-        sendButton.disabled = false;
-    }
+        
+    finally {
+    sendButton.disabled = false;
+}
 
     return;
 }
