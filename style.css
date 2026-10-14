@@ -24770,3 +24770,58 @@ padding:22px !important;
     color: #606770;
     font-variant-numeric: tabular-nums;
 }
+
+/* ===== Mirima Audio Waveforms ===== */
+
+.mirima-audio-waveform {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3px;
+    width: 100%;
+    height: 32px;
+    min-width: 0;
+    padding: 3px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    outline-offset: 4px;
+}
+
+.mirima-audio-wave-bar {
+    display: block;
+    flex: 1 1 0;
+    min-width: 2px;
+    max-width: 5px;
+    height: 50%;
+    border-radius: 4px;
+    background: #a8b6ad;
+    transition: background-color 0.12s ease;
+}
+
+.mirima-voice-waveform .mirima-audio-wave-bar {
+    background: #9acbb0;
+}
+
+.mirima-voice-waveform
+.mirima-audio-wave-bar-played {
+    background: #168c58;
+}
+
+.mirima-music-waveform .mirima-audio-wave-bar {
+    background: #a9bfe9;
+}
+
+.mirima-music-waveform
+.mirima-audio-wave-bar-played {
+    background: #3267c8;
+}
+
+.mirima-audio-waveform:focus-visible {
+    outline: 2px solid #168c58;
+    border-radius: 4px;
+}
+
+.mirima-music-waveform:focus-visible {
+    outline-color: #3267c8;
+}
