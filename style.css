@@ -24825,3 +24825,64 @@ padding:22px !important;
 .mirima-music-waveform:focus-visible {
     outline-color: #3267c8;
 }
+
+/* Fix audio player overflow inside chat bubbles */
+
+.mirima-audio-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 270px;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.mirima-audio-player * {
+    box-sizing: border-box;
+}
+
+.mirima-audio-details {
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.mirima-audio-title {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mirima-audio-waveform {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 32px;
+    overflow: hidden;
+    gap: 2px;
+}
+
+.mirima-audio-wave-bar {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+}
+
+.mirima-audio-play {
+    flex: 0 0 42px;
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    padding: 0;
+}
