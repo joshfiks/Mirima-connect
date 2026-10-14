@@ -24953,3 +24953,50 @@ padding:22px !important;
 .mirima-audio-player * {
     box-sizing: border-box;
 }
+
+/* ===== Extra-compact WhatsApp-style audio ===== */
+
+.mirima-audio-player {
+    width: 185px;
+    max-width: 100%;
+    gap: 6px;
+    padding: 6px;
+    margin-top: 4px;
+    border-radius: 10px;
+}
+
+.mirima-audio-play {
+    flex: 0 0 28px;
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    font-size: 12px;
+}
+
+.mirima-audio-details {
+    gap: 2px;
+}
+
+.mirima-audio-title {
+    font-size: 10px;
+}
+
+.mirima-audio-waveform {
+    height: 19px;
+    gap: 1px;
+}
+
+.mirima-audio-wave-bar {
+    max-width: 3px;
+    border-radius: 2px;
+}
+
+.mirima-audio-duration {
+    font-size: 9px;
+}
+
+/* Reduce space around the attachment link */
+.mirima-audio-player + a {
+    margin-top: 3px !important;
+    font-size: 11px;
+}
