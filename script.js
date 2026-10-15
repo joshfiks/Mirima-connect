@@ -2296,6 +2296,15 @@ chatTakePhoto.addEventListener("click", function () {
     }, "image/jpeg", 0.9);
 });
 console.log("Camera listener registered");
+    console.log(
+    "Take Photo element:",
+    document.getElementById("chatTakePhoto")
+);
+
+console.log(
+    "Take Photo buttons:",
+    document.querySelectorAll("#chatTakePhoto").length
+);
     chatCameraModal.addEventListener("click", function (event) {
         if (event.target === chatCameraModal) {
             closeMirimaCamera();
