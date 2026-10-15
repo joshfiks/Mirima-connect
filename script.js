@@ -1004,13 +1004,12 @@ if (
         });
     }
 
- 
-
 if (
     !data.attachmentType ||
     (
         !data.attachmentType.startsWith("audio/") &&
-        !data.attachmentType.startsWith("image/")
+        !data.attachmentType.startsWith("image/") &&
+        !data.attachmentType.startsWith("video/")
     )
 ) {
     attachmentLink.style.display = "block";
