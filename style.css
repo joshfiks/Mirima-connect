@@ -25000,3 +25000,24 @@ padding:22px !important;
     margin-top: 3px !important;
     font-size: 11px;
 }
+
+/* Remove outer bubble styling only for audio messages */
+.chat-message.guest-message.has-audio-attachment {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    max-width: 75%;
+}
+
+/* Keep the compact audio player as the visible message card */
+.chat-message.has-audio-attachment .mirima-audio-player {
+    margin-top: 0;
+}
+
+/* Keep the timestamp visible below the player */
+.chat-message.has-audio-attachment .chat-message-time {
+    margin-top: 4px;
+    padding-right: 2px;
+    color: #666;
+}
