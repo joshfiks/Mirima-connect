@@ -486,6 +486,46 @@ if (data.attachmentUrl) {
         attachmentImage.style.marginTop = "6px";
 
         messageBubble.appendChild(attachmentImage);
+        attachmentImage.style.cursor = "pointer";
+
+attachmentImage.addEventListener("click", () => {
+    const previewOverlay = document.createElement("div");
+
+    previewOverlay.style.position = "fixed";
+    previewOverlay.style.inset = "0";
+    previewOverlay.style.background = "rgba(0, 0, 0, 0.85)";
+    previewOverlay.style.display = "flex";
+    previewOverlay.style.alignItems = "center";
+    previewOverlay.style.justifyContent = "center";
+    previewOverlay.style.padding = "20px";
+    previewOverlay.style.boxSizing = "border-box";
+    previewOverlay.style.zIndex = "99999";
+    previewOverlay.style.cursor = "zoom-out";
+
+    const previewImage = document.createElement("img");
+    previewImage.src = attachmentImage.src;
+    previewImage.alt = attachmentImage.alt;
+
+    previewImage.style.maxWidth = "95%";
+    previewImage.style.maxHeight = "90%";
+    previewImage.style.objectFit = "contain";
+    previewImage.style.borderRadius = "8px";
+    previewImage.style.cursor = "default";
+
+    previewOverlay.appendChild(previewImage);
+    document.body.appendChild(previewOverlay);
+
+    previewOverlay.addEventListener("click", () => {
+        previewOverlay.remove();
+    });
+
+    document.addEventListener("keydown", function closePreview(event) {
+        if (event.key === "Escape") {
+            previewOverlay.remove();
+            document.removeEventListener("keydown", closePreview);
+        }
+    });
+});
     }
     
     
