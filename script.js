@@ -2228,6 +2228,9 @@ if (
     });
 
    console.log("Camera setup reached");
+    chatTakePhoto.onclick = function () {
+    console.log("DIRECT BUTTON CLICK WORKS");
+};
 chatTakePhoto.addEventListener("click", function () {
     console.log("TAKE PHOTO BUTTON CLICKED");
     if (
