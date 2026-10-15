@@ -691,7 +691,7 @@ if (
     attachmentLink.style.marginTop = "6px";
     messageBubble.appendChild(attachmentLink);
 }
-            
+}            
 const messageTime =
     document.createElement("small");
 
