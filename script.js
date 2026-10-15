@@ -502,30 +502,171 @@ attachmentImage.addEventListener("click", () => {
     previewOverlay.style.zIndex = "99999";
     previewOverlay.style.cursor = "zoom-out";
 
+ 
+attachmentImage.style.cursor = "zoom-in";
+
+attachmentImage.addEventListener("click", () => {
+    const previewOverlay = document.createElement("div");
+
+    Object.assign(previewOverlay.style, {
+        position: "fixed",
+        inset: "0",
+        background: "rgba(0, 0, 0, 0.9)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "60px 20px 20px",
+        boxSizing: "border-box",
+        zIndex: "99999",
+        overflow: "hidden"
+    });
+
     const previewImage = document.createElement("img");
     previewImage.src = attachmentImage.src;
     previewImage.alt = attachmentImage.alt;
 
-    previewImage.style.maxWidth = "95%";
-    previewImage.style.maxHeight = "90%";
-    previewImage.style.objectFit = "contain";
-    previewImage.style.borderRadius = "8px";
-    previewImage.style.cursor = "default";
+    Object.assign(previewImage.style, {
+        maxWidth: "100%",
+        maxHeight: "100%",
+        width: "auto",
+        height: "auto",
+        objectFit: "contain",
+        transformOrigin: "center center",
+        transition: "transform 0.15s ease",
+        cursor: "grab"
+    });
 
-    previewOverlay.appendChild(previewImage);
-    document.body.appendChild(previewOverlay);
+    let zoom = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
 
-    previewOverlay.addEventListener("click", () => {
+    function updateImage() {
+        previewImage.style.transform =
+            `translate(${translateX}px, ${translateY}px) scale(${zoom})`;
+        previewImage.style.cursor = zoom > 1 ? "grab" : "default";
+    }
+
+    const controls = document.createElement("div");
+
+    Object.assign(controls.style, {
+        position: "absolute",
+        top: "12px",
+        right: "12px",
+        display: "flex",
+        gap: "8px",
+        zIndex: "2"
+    });
+
+    function makeButton(label, title, action) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = label;
+        button.title = title;
+
+        Object.assign(button.style, {
+            width: "42px",
+            height: "42px",
+            border: "1px solid #666",
+            borderRadius: "50%",
+            background: "#292929",
+            color: "#fff",
+            fontSize: "22px",
+            cursor: "pointer"
+        });
+
+        button.addEventListener("click", event => {
+            event.stopPropagation();
+            action();
+        });
+
+        controls.appendChild(button);
+    }
+
+    makeButton("+", "Zoom in", () => {
+        zoom = Math.min(zoom + 0.25, 4);
+        updateImage();
+    });
+
+    makeButton("−", "Zoom out", () => {
+        zoom = Math.max(zoom - 0.25, 1);
+        if (zoom === 1) {
+            translateX = 0;
+            translateY = 0;
+        }
+        updateImage();
+    });
+
+    makeButton("↺", "Reset zoom", () => {
+        zoom = 1;
+        translateX = 0;
+        translateY = 0;
+        updateImage();
+    });
+
+    makeButton("×", "Close preview", () => {
         previewOverlay.remove();
     });
 
-    document.addEventListener("keydown", function closePreview(event) {
-        if (event.key === "Escape") {
+    previewOverlay.append(previewImage, controls);
+    document.body.appendChild(previewOverlay);
+
+    previewOverlay.addEventListener("click", event => {
+        if (event.target === previewOverlay) {
             previewOverlay.remove();
-            document.removeEventListener("keydown", closePreview);
         }
     });
+
+    previewOverlay.addEventListener("wheel", event => {
+        event.preventDefault();
+        zoom = Math.max(1, Math.min(4, zoom + (event.deltaY < 0 ? 0.25 : -0.25)));
+
+        if (zoom === 1) {
+            translateX = 0;
+            translateY = 0;
+        }
+
+        updateImage();
+    }, { passive: false });
+
+    previewImage.addEventListener("pointerdown", event => {
+        if (zoom <= 1) return;
+
+        dragging = true;
+        startX = event.clientX - translateX;
+        startY = event.clientY - translateY;
+        previewImage.style.cursor = "grabbing";
+        previewImage.setPointerCapture(event.pointerId);
+    });
+
+    previewImage.addEventListener("pointermove", event => {
+        if (!dragging) return;
+
+        translateX = event.clientX - startX;
+        translateY = event.clientY - startY;
+        updateImage();
+    });
+
+    function stopDragging() {
+        dragging = false;
+        updateImage();
+    }
+
+    previewImage.addEventListener("pointerup", stopDragging);
+    previewImage.addEventListener("pointercancel", stopDragging);
+
+    function closeOnEscape(event) {
+        if (event.key === "Escape") {
+            previewOverlay.remove();
+            document.removeEventListener("keydown", closeOnEscape);
+        }
+    }
+
+    document.addEventListener("keydown", closeOnEscape);
 });
+
     }
     
     
