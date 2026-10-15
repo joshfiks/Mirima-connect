@@ -2121,6 +2121,22 @@ if (file.size > 100 * 1024 * 1024) {
 });
 
 
+ // ==========================================
+ // MIRIMA CONNECT — CAMERA BUTTON
+ // ==========================================
+
+const chatCameraButton =
+    document.getElementById("chatCamera");
+
+const chatCameraInput =
+    document.getElementById("chatCameraInput");
+
+if (chatCameraButton && chatCameraInput) {
+    chatCameraButton.addEventListener("click", function () {
+        chatCameraInput.click();
+    });
+}
+
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
 // ==========================================
