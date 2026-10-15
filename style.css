@@ -25109,3 +25109,85 @@ padding:22px !important;
     background: #263a43;
     color: #e9edef;
 }
+
+/* Mirima Connect — Live Camera */
+.chat-camera-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.chat-camera-modal[hidden] {
+    display: none !important;
+}
+
+.chat-camera-panel {
+    width: 100%;
+    max-width: 520px;
+    padding: 16px;
+    border-radius: 16px;
+    background: #fff;
+    color: #222;
+    box-sizing: border-box;
+}
+
+.chat-camera-header,
+.chat-camera-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.chat-camera-header {
+    font-weight: 600;
+}
+
+.chat-camera-header button,
+.chat-camera-actions button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#chatCameraPreview {
+    display: block;
+    width: 100%;
+    max-height: 60vh;
+    min-height: 180px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #111;
+}
+
+#chatCameraStatus {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#chatTakePhoto {
+    background: #128c7e;
+    color: #fff;
+}
+
+#chatCameraFallback {
+    background: #e8e8e8;
+    color: #222;
+}
+
+@media (max-width: 480px) {
+    .chat-camera-panel {
+        padding: 12px;
+    }
+
+    .chat-camera-actions {
+        flex-wrap: wrap;
+    }
+}
