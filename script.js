@@ -668,7 +668,7 @@ attachmentImage.addEventListener("click", () => {
 });
 
     }
-    
+    }
     
     // Custom audio and voice-note players
     if (
