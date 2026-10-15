@@ -2227,63 +2227,73 @@ if (
         chatCameraInput.click();
     });
 
-    chatTakePhoto.addEventListener("click", function () {
-        if (!mirimaCameraStream ||
-            !chatCameraPreview.videoWidth) {
+   
+chatTakePhoto.addEventListener("click", function () {
+    if (
+        !mirimaCameraStream ||
+        !chatCameraPreview.videoWidth ||
+        !chatCameraPreview.videoHeight
+    ) {
+        chatCameraStatus.textContent =
+            "Camera is not ready yet. Please wait and try again.";
+        return;
+    }
+
+    chatCameraCanvas.width = chatCameraPreview.videoWidth;
+    chatCameraCanvas.height = chatCameraPreview.videoHeight;
+
+    const context = chatCameraCanvas.getContext("2d");
+
+    if (!context) {
+        chatCameraStatus.textContent =
+            "Could not capture the photo. Please try again.";
+        return;
+    }
+
+    context.drawImage(
+        chatCameraPreview,
+        0,
+        0,
+        chatCameraCanvas.width,
+        chatCameraCanvas.height
+    );
+
+    chatCameraCanvas.toBlob(function (blob) {
+        if (!blob || blob.size === 0) {
             chatCameraStatus.textContent =
-                "Wait for the camera preview to appear.";
+                "No photo was captured. Please try again.";
             return;
         }
 
-        chatCameraCanvas.width =
-            chatCameraPreview.videoWidth;
-
-        chatCameraCanvas.height =
-            chatCameraPreview.videoHeight;
-
-        const context =
-            chatCameraCanvas.getContext("2d");
-
-        context.drawImage(
-            chatCameraPreview,
-            0,
-            0,
-            chatCameraCanvas.width,
-            chatCameraCanvas.height
+        const photoFile = new File(
+            [blob],
+            "mirima-photo-" + Date.now() + ".jpg",
+            { type: "image/jpeg" }
         );
 
-        chatCameraCanvas.toBlob(function (blob) {
-            if (!blob) {
-                chatCameraStatus.textContent =
-                    "Could not capture the photo. Please try again.";
-                return;
-            }
+        console.log(
+            "Camera photo captured:",
+            photoFile.name,
+            photoFile.size,
+            "bytes"
+        );
 
-            const photoFile = new File(
-                [blob],
-                "mirima-photo-" + Date.now() + ".jpg",
-                { type: "image/jpeg" }
-            );
+        closeMirimaCamera();
 
-            try {
-                const transfer = new DataTransfer();
-                transfer.items.add(photoFile);
+        const transfer = new DataTransfer();
+        transfer.items.add(photoFile);
+        chatCameraInput.files = transfer.files;
 
-                chatCameraInput.files = transfer.files;
+        if (!chatCameraInput.files.length) {
+            alert("The photo was captured, but could not be prepared for upload.");
+            return;
+        }
 
-                closeMirimaCamera();
-
-                chatCameraInput.dispatchEvent(
-                    new Event("change", { bubbles: true })
-                );
-            } catch (error) {
-                console.error("Photo preparation error:", error);
-
-                chatCameraStatus.textContent =
-                    "Could not prepare the photo. Please try again.";
-            }
-        }, "image/jpeg", 0.9);
-    });
+        chatCameraInput.dispatchEvent(
+            new Event("change", { bubbles: true })
+        );
+    }, "image/jpeg", 0.9);
+});
 
     chatCameraModal.addEventListener("click", function (event) {
         if (event.target === chatCameraModal) {
