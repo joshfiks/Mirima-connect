@@ -502,6 +502,7 @@ if (data.attachmentUrl) {
         audioPlayer.src = data.attachmentUrl;
 
         const player = document.createElement("div");
+        player.closest(".chat-message")?.classList.add("has-audio-attachment");
         player.className = isVoiceNote
             ? "mirima-audio-player mirima-voice-player"
             : "mirima-audio-player mirima-music-player";
@@ -543,6 +544,7 @@ if (data.attachmentUrl) {
         details.append(title, waveform, duration);
         player.append(playButton, details, audioPlayer);
         messageBubble.appendChild(player);
+        messageBubble.classList.add("has-audio-attachment");
 
         function formatTime(seconds) {
             if (!Number.isFinite(seconds)) return "00:00";
