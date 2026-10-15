@@ -397,6 +397,8 @@ async function loadDepartmentChatMessages(
 
     messagesContainer.innerHTML = "";
 
+     let previousMessageDate = "";
+        
     messagesSnapshot.docs
         .sort(function (a, b) {
 
@@ -408,11 +410,58 @@ async function loadDepartmentChatMessages(
 
             return timeA - timeB;
 
-        })
+        })                
         .forEach(function (messageDoc) {
 
             const data =
                 messageDoc.data();
+
+            const messageTimestamp = data.createdAt
+    ? data.createdAt.toDate()
+    : null;
+
+if (messageTimestamp) {
+    const messageDateKey =
+        messageTimestamp.getFullYear() + "-" +
+        String(messageTimestamp.getMonth() + 1).padStart(2, "0") + "-" +
+        String(messageTimestamp.getDate()).padStart(2, "0");
+
+    if (messageDateKey !== previousMessageDate) {
+        const dateSeparator = document.createElement("div");
+
+        const today = new Date();
+        const yesterday = new Date();
+        yesterday.setDate(today.getDate() - 1);
+
+        const isToday =
+            messageDateKey ===
+            today.getFullYear() + "-" +
+            String(today.getMonth() + 1).padStart(2, "0") + "-" +
+            String(today.getDate()).padStart(2, "0");
+
+        const isYesterday =
+            messageDateKey ===
+            yesterday.getFullYear() + "-" +
+            String(yesterday.getMonth() + 1).padStart(2, "0") + "-" +
+            String(yesterday.getDate()).padStart(2, "0");
+
+        dateSeparator.textContent = isToday
+            ? "Today"
+            : isYesterday
+                ? "Yesterday"
+                : messageTimestamp.toLocaleDateString("en-GB", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                });
+
+        dateSeparator.className = "chat-date-separator";
+        messagesContainer.appendChild(dateSeparator);
+
+        previousMessageDate = messageDateKey;
+    }
+}
 
             console.log("CHAT MESSAGE DATA:", data);
 
