@@ -701,7 +701,38 @@ attachmentImage.addEventListener("click", () => {
 });
 
     }
-  
+      // Inline video player
+    if (
+        data.attachmentType &&
+        data.attachmentType.startsWith("video/")
+    ) {
+        const videoPlayer = document.createElement("video");
+
+        videoPlayer.src = data.attachmentUrl;
+        videoPlayer.controls = true;
+        videoPlayer.preload = "metadata";
+        videoPlayer.playsInline = true;
+
+        videoPlayer.className = "chat-attachment-video";
+        videoPlayer.setAttribute(
+            "aria-label",
+            data.attachmentName || "Chat video"
+        );
+
+        Object.assign(videoPlayer.style, {
+            display: "block",
+            width: "100%",
+            maxWidth: "320px",
+            maxHeight: "320px",
+            height: "auto",
+            marginTop: "8px",
+            borderRadius: "10px",
+            backgroundColor: "#000",
+            objectFit: "contain"
+        });
+
+        messageBubble.appendChild(videoPlayer);
+    }
     
     // Custom audio and voice-note players
     if (
