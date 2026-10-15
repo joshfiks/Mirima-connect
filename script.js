@@ -489,24 +489,8 @@ if (data.attachmentUrl) {
         attachmentImage.style.cursor = "pointer";
 
 attachmentImage.addEventListener("click", () => {
-    const previewOverlay = document.createElement("div");
-
-    previewOverlay.style.position = "fixed";
-    previewOverlay.style.inset = "0";
-    previewOverlay.style.background = "rgba(0, 0, 0, 0.85)";
-    previewOverlay.style.display = "flex";
-    previewOverlay.style.alignItems = "center";
-    previewOverlay.style.justifyContent = "center";
-    previewOverlay.style.padding = "20px";
-    previewOverlay.style.boxSizing = "border-box";
-    previewOverlay.style.zIndex = "99999";
-    previewOverlay.style.cursor = "zoom-out";
-
- 
-attachmentImage.style.cursor = "zoom-in";
-
-attachmentImage.addEventListener("click", () => {
-    const previewOverlay = document.createElement("div");
+    
+      const previewOverlay = document.createElement("div");
 
     Object.assign(previewOverlay.style, {
         position: "fixed",
@@ -668,7 +652,7 @@ attachmentImage.addEventListener("click", () => {
 });
 
     }
-    }
+  
     
     // Custom audio and voice-note players
     if (
