@@ -510,6 +510,16 @@ if (data.attachmentUrl) {
     attachmentLink.className =
         "chat-attachment-link";
 
+   
+// Hide the filename link for videos because
+// videos already have an inline preview.
+if (
+    data.attachmentType &&
+    data.attachmentType.startsWith("video/")
+) {
+    attachmentLink.style.display = "none";
+}
+
     // Image preview
     if (
         data.attachmentType &&
