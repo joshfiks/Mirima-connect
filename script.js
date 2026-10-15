@@ -2227,7 +2227,7 @@ if (
         chatCameraInput.click();
     });
 
-   
+   console.log("Camera setup reached");
 chatTakePhoto.addEventListener("click", function () {
     console.log("TAKE PHOTO BUTTON CLICKED");
     if (
@@ -2295,7 +2295,7 @@ chatTakePhoto.addEventListener("click", function () {
         );
     }, "image/jpeg", 0.9);
 });
-
+console.log("Camera listener registered");
     chatCameraModal.addEventListener("click", function (event) {
         if (event.target === chatCameraModal) {
             closeMirimaCamera();
