@@ -1071,10 +1071,11 @@ function showChatMessageActionMenu(
             canEdit ? "flex" : "none";
     }
 
-    if (copyButton) {
-        copyButton.style.display =
-            isAttachment ? "none" : "flex";
-    }
+    
+     if (copyButton) {
+      copyButton.style.display = "flex";
+   }
+
 
     if (downloadButton) {
         downloadButton.style.display =
@@ -1171,7 +1172,6 @@ document.getElementById(
     }
 );
 
-
 document.getElementById(
     "chatDownloadMessage"
 ).addEventListener("click", function () {
@@ -1196,25 +1196,75 @@ document.getElementById(
         return;
     }
 
+    // Find a document, image, or audio attachment.
     const attachmentLink =
         messageElement.querySelector(".chat-attachment-link");
 
-    if (!attachmentLink || !attachmentLink.href) {
-        alert("No attachment found in this message.");
+    const image =
+        messageElement.querySelector(".chat-attachment-image");
+
+    const audio =
+        messageElement.querySelector(
+            ".mirima-audio-player audio, audio"
+        );
+
+    const attachmentUrl =
+        attachmentLink?.href ||
+        image?.src ||
+        audio?.currentSrc ||
+        audio?.src;
+
+    if (!attachmentUrl) {
+        alert("No downloadable attachment found in this message.");
         menu.style.display = "none";
         return;
+    }
+
+    // Get a suitable filename.
+    let filename = "mirima-attachment";
+
+    if (attachmentLink) {
+        filename =
+            attachmentLink.textContent
+                .replace(/^📎\s*/, "")
+                .trim() || filename;
+    } else {
+        try {
+            const pathname =
+                new URL(attachmentUrl).pathname;
+
+            const lastPart =
+                pathname.split("/").pop();
+
+            if (lastPart && lastPart.includes(".")) {
+                filename = decodeURIComponent(lastPart);
+            } else if (image) {
+                filename = "mirima-image.jpg";
+            } else if (audio) {
+                filename = "mirima-audio";
+            }
+        } catch (error) {
+            filename = image
+                ? "mirima-image.jpg"
+                : "mirima-audio";
+        }
+    }
+
+    // Ask Cloudinary to deliver the file as an attachment.
+    let downloadUrl = attachmentUrl;
+
+    if (downloadUrl.includes("/upload/")) {
+        downloadUrl = downloadUrl.replace(
+            "/upload/",
+            "/upload/fl_attachment/"
+        );
     }
 
     const downloadLink =
         document.createElement("a");
 
-    downloadLink.href =
-    attachmentLink.href.replace(
-        "/upload/",
-        "/upload/fl_attachment/"
-    );
-    downloadLink.download =
-        attachmentLink.textContent.replace(/^📎\s*/, "") || "download";
+    downloadLink.href = downloadUrl;
+    downloadLink.download = filename;
     downloadLink.target = "_blank";
     downloadLink.rel = "noopener noreferrer";
 
@@ -1224,6 +1274,7 @@ document.getElementById(
 
     menu.style.display = "none";
 });
+
 
 document.getElementById(
     "chatEditMessage"
