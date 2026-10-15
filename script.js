@@ -2229,6 +2229,7 @@ if (
 
    
 chatTakePhoto.addEventListener("click", function () {
+    console.log("TAKE PHOTO BUTTON CLICKED");
     if (
         !mirimaCameraStream ||
         !chatCameraPreview.videoWidth ||
