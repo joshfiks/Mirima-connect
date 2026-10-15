@@ -25086,3 +25086,26 @@ padding:22px !important;
     border-radius: 8px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
+
+/* Mirima Connect — WhatsApp-inspired chat wallpaper */
+.department-chat-messages {
+    background-color: #0b141a;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(120, 150, 140, 0.07) 2px, transparent 3px),
+        radial-gradient(circle at 70% 65%, rgba(120, 150, 140, 0.06) 3px, transparent 4px);
+    background-size: 55px 55px, 75px 75px;
+}
+
+/* Dark welcome message styling */
+.department-chat-messages .chat-welcome-message {
+    color: #b5c4cc;
+}
+
+.department-chat-messages .chat-welcome-message strong {
+    color: #e9edef;
+}
+
+.department-chat-messages .chat-welcome-icon {
+    background: #263a43;
+    color: #e9edef;
+}
