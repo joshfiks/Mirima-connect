@@ -822,6 +822,17 @@ if (
         const audioPlayer = document.createElement("audio");
         audioPlayer.preload = "metadata";
         audioPlayer.src = data.attachmentUrl;
+       
+// Pause other Mirima audio players when this one starts.
+audioPlayer.addEventListener("play", function () {
+    document.querySelectorAll(
+        ".mirima-audio-player audio"
+    ).forEach(function (otherAudio) {
+        if (otherAudio !== audioPlayer) {
+            otherAudio.pause();
+        }
+    });
+});
 
         const player = document.createElement("div");
         player.closest(".chat-message")?.classList.add("has-audio-attachment");
