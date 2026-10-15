@@ -701,38 +701,105 @@ attachmentImage.addEventListener("click", () => {
 });
 
     }
-      // Inline video player
-    if (
-        data.attachmentType &&
-        data.attachmentType.startsWith("video/")
-    ) {
-        const videoPlayer = document.createElement("video");
+ 
+// Inline video preview
+if (
+    data.attachmentType &&
+    data.attachmentType.startsWith("video/")
+) {
+    const videoPreview = document.createElement("video");
 
-        videoPlayer.src = data.attachmentUrl;
-        videoPlayer.controls = true;
-        videoPlayer.preload = "metadata";
-        videoPlayer.playsInline = true;
+    videoPreview.src = data.attachmentUrl;
+    videoPreview.preload = "metadata";
+    videoPreview.playsInline = true;
+    videoPreview.controls = false;
+    videoPreview.muted = true;
+    videoPreview.className = "chat-attachment-video";
 
-        videoPlayer.className = "chat-attachment-video";
-        videoPlayer.setAttribute(
-            "aria-label",
-            data.attachmentName || "Chat video"
-        );
+    videoPreview.setAttribute(
+        "aria-label",
+        data.attachmentName || "Preview video"
+    );
 
-        Object.assign(videoPlayer.style, {
-            display: "block",
-            width: "100%",
-            maxWidth: "320px",
-            maxHeight: "320px",
-            height: "auto",
-            marginTop: "8px",
-            borderRadius: "10px",
-            backgroundColor: "#000",
-            objectFit: "contain"
+    Object.assign(videoPreview.style, {
+        display: "block",
+        width: "100%",
+        maxWidth: "320px",
+        maxHeight: "220px",
+        height: "auto",
+        marginTop: "8px",
+        borderRadius: "10px",
+        backgroundColor: "#000",
+        objectFit: "cover",
+        cursor: "pointer"
+    });
+
+    messageBubble.appendChild(videoPreview);
+
+    // Open the full video when the preview is tapped.
+    videoPreview.addEventListener("click", function () {
+        const videoOverlay = document.createElement("div");
+
+        Object.assign(videoOverlay.style, {
+            position: "fixed",
+            inset: "0",
+            backgroundColor: "rgba(0, 0, 0, 0.92)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: "100000",
+            padding: "20px",
+            boxSizing: "border-box"
         });
 
-        messageBubble.appendChild(videoPlayer);
-    }
+        const fullVideo = document.createElement("video");
+
+        fullVideo.src = data.attachmentUrl;
+        fullVideo.controls = true;
+        fullVideo.autoplay = true;
+        fullVideo.playsInline = true;
+        fullVideo.preload = "auto";
+
+        Object.assign(fullVideo.style, {
+            maxWidth: "100%",
+            maxHeight: "100%",
+            width: "auto",
+            height: "auto",
+            borderRadius: "10px",
+            backgroundColor: "#000"
+        });
+
+        videoOverlay.appendChild(fullVideo);
+        document.body.appendChild(videoOverlay);
+
+        function closeVideo() {
+            fullVideo.pause();
+            fullVideo.removeAttribute("src");
+            fullVideo.load();
+            videoOverlay.remove();
+            document.removeEventListener("keydown", closeOnEscape);
+        }
+
+        function closeOnEscape(event) {
+            if (event.key === "Escape") {
+                closeVideo();
+            }
+        }
+
+        videoOverlay.addEventListener("click", function (event) {
+            if (event.target === videoOverlay) {
+                closeVideo();
+            }
+        });
+
+        document.addEventListener("keydown", closeOnEscape);
+
+        fullVideo.play().catch(function () {
+            // The viewer can press Play if autoplay is blocked.
+        });
+    });
+}
+
     
     // Custom audio and voice-note players
     if (
