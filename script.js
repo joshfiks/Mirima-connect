@@ -1897,16 +1897,30 @@ const allowedTypes = [
     "image/webp",
     "application/pdf",
     "text/plain",
+
+    // Audio files
     "audio/mpeg",
     "audio/mp4",
     "audio/wav",
     "audio/x-wav",
     "audio/ogg",
-    "audio/flac"
+    "audio/flac",
+    "audio/webm",
+    "audio/aac",
+    "audio/3gpp",
+
+    // Video files
+    "video/mp4",
+    "video/webm",
+    "video/ogg",
+    "video/quicktime",
+    "video/x-msvideo",
+    "video/x-matroska",
+    "video/3gpp"
 ];
 
     if (!allowedTypes.includes(file.type)) {
-        alert("Choose a JPG, PNG, WebP, PDF, or TXT file.");
+        alert("Choose an image (JPG, PNG, WebP), a video (MP4, WebM, MOV, AVI, MKV, 3GP), an audio file, or a PDF/TXT document.");
         this.value = "";
         return;
     }
