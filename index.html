@@ -1197,6 +1197,45 @@ AIRPORT TRANSFER POPUP
         capture="environment"
         hidden
     >
+
+  
+<!-- Mirima Connect — Live Camera -->
+<div id="chatCameraModal" class="chat-camera-modal" hidden>
+    <div class="chat-camera-panel">
+        <div class="chat-camera-header">
+            <span>Take a photo</span>
+            <button
+                type="button"
+                id="chatCameraClose"
+                aria-label="Close camera"
+            >✕</button>
+        </div>
+
+        <video
+            id="chatCameraPreview"
+            autoplay
+            playsinline
+            muted
+        ></video>
+
+        <p id="chatCameraStatus">
+            Allow camera access when your browser asks.
+        </p>
+
+        <div class="chat-camera-actions">
+            <button type="button" id="chatTakePhoto">
+                Take Photo
+            </button>
+
+            <button type="button" id="chatCameraFallback">
+                Choose Image
+            </button>
+        </div>
+
+        <canvas id="chatCameraCanvas" hidden></canvas>
+    </div>
+</div>
+
  
 <!-- Compact Voice Note Preview -->
 <div id="chatVoicePreview" style="display: none;">
