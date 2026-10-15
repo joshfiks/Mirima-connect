@@ -2121,8 +2121,9 @@ if (file.size > 100 * 1024 * 1024) {
 });
 
 
+ 
  // ==========================================
- // MIRIMA CONNECT — CAMERA BUTTON
+ // MIRIMA CONNECT — LIVE CAMERA
  // ==========================================
 
 const chatCameraButton =
@@ -2131,11 +2132,172 @@ const chatCameraButton =
 const chatCameraInput =
     document.getElementById("chatCameraInput");
 
-if (chatCameraButton && chatCameraInput) {
+const chatCameraModal =
+    document.getElementById("chatCameraModal");
+
+const chatCameraPreview =
+    document.getElementById("chatCameraPreview");
+
+const chatCameraClose =
+    document.getElementById("chatCameraClose");
+
+const chatCameraStatus =
+    document.getElementById("chatCameraStatus");
+
+const chatTakePhoto =
+    document.getElementById("chatTakePhoto");
+
+const chatCameraFallback =
+    document.getElementById("chatCameraFallback");
+
+const chatCameraCanvas =
+    document.getElementById("chatCameraCanvas");
+
+let mirimaCameraStream = null;
+
+function closeMirimaCamera() {
+    if (mirimaCameraStream) {
+        mirimaCameraStream.getTracks().forEach(function (track) {
+            track.stop();
+        });
+
+        mirimaCameraStream = null;
+    }
+
+    chatCameraPreview.srcObject = null;
+    chatCameraModal.hidden = true;
+}
+
+async function openMirimaCamera() {
+    if (!navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia) {
+        chatCameraStatus.textContent =
+            "Live camera is unavailable. Please choose an image instead.";
+
+        chatCameraModal.hidden = false;
+        chatCameraFallback.focus();
+        return;
+    }
+
+    chatCameraModal.hidden = false;
+    chatCameraStatus.textContent = "Opening camera...";
+
+    try {
+        mirimaCameraStream =
+            await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: { ideal: "environment" } },
+                audio: false
+            });
+
+        chatCameraPreview.srcObject = mirimaCameraStream;
+
+        await chatCameraPreview.play();
+
+        chatCameraStatus.textContent =
+            "Position your camera and select Take Photo.";
+    } catch (error) {
+        console.error("Camera access error:", error);
+
+        chatCameraStatus.textContent =
+            "Could not open the camera. Choose an image instead.";
+    }
+}
+
+if (
+    chatCameraButton &&
+    chatCameraInput &&
+    chatCameraModal &&
+    chatCameraPreview &&
+    chatCameraClose &&
+    chatCameraStatus &&
+    chatTakePhoto &&
+    chatCameraFallback &&
+    chatCameraCanvas
+) {
     chatCameraButton.addEventListener("click", function () {
+        openMirimaCamera();
+    });
+
+    chatCameraClose.addEventListener("click", function () {
+        closeMirimaCamera();
+    });
+
+    chatCameraFallback.addEventListener("click", function () {
+        closeMirimaCamera();
         chatCameraInput.click();
     });
+
+    chatTakePhoto.addEventListener("click", function () {
+        if (!mirimaCameraStream ||
+            !chatCameraPreview.videoWidth) {
+            chatCameraStatus.textContent =
+                "Wait for the camera preview to appear.";
+            return;
+        }
+
+        chatCameraCanvas.width =
+            chatCameraPreview.videoWidth;
+
+        chatCameraCanvas.height =
+            chatCameraPreview.videoHeight;
+
+        const context =
+            chatCameraCanvas.getContext("2d");
+
+        context.drawImage(
+            chatCameraPreview,
+            0,
+            0,
+            chatCameraCanvas.width,
+            chatCameraCanvas.height
+        );
+
+        chatCameraCanvas.toBlob(function (blob) {
+            if (!blob) {
+                chatCameraStatus.textContent =
+                    "Could not capture the photo. Please try again.";
+                return;
+            }
+
+            const photoFile = new File(
+                [blob],
+                "mirima-photo-" + Date.now() + ".jpg",
+                { type: "image/jpeg" }
+            );
+
+            try {
+                const transfer = new DataTransfer();
+                transfer.items.add(photoFile);
+
+                chatCameraInput.files = transfer.files;
+
+                closeMirimaCamera();
+
+                chatCameraInput.dispatchEvent(
+                    new Event("change", { bubbles: true })
+                );
+            } catch (error) {
+                console.error("Photo preparation error:", error);
+
+                chatCameraStatus.textContent =
+                    "Could not prepare the photo. Please try again.";
+            }
+        }, "image/jpeg", 0.9);
+    });
+
+    chatCameraModal.addEventListener("click", function (event) {
+        if (event.target === chatCameraModal) {
+            closeMirimaCamera();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !chatCameraModal.hidden) {
+            closeMirimaCamera();
+        }
+    });
 }
+
 
 // ==========================================
 // SAVE FEEDBACK TO FIRESTORE
