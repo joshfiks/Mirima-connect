@@ -683,14 +683,19 @@ if (data.attachmentUrl) {
     }
 
  
+
 if (
     !data.attachmentType ||
-    !data.attachmentType.startsWith("audio/")
+    (
+        !data.attachmentType.startsWith("audio/") &&
+        !data.attachmentType.startsWith("image/")
+    )
 ) {
     attachmentLink.style.display = "block";
     attachmentLink.style.marginTop = "6px";
     messageBubble.appendChild(attachmentLink);
 }
+
 }            
 const messageTime =
     document.createElement("small");
