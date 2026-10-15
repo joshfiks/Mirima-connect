@@ -1046,12 +1046,22 @@ function showChatMessageActionMenu(
         );
 
     const attachmentLink =
-        messageElement.querySelector(
-            ".chat-attachment-link"
-        );
+    messageElement.querySelector(
+        ".chat-attachment-link"
+    );
 
-    const isAttachment =
-        !!attachmentLink;
+const attachmentImage =
+    messageElement.querySelector(
+        ".chat-attachment-image"
+    );
+
+const attachmentAudio =
+    messageElement.querySelector(
+        ".mirima-audio-player audio, audio"
+    );
+
+const isAttachment =
+    !!(attachmentLink || attachmentImage || attachmentAudio);
 
     const createdAt =
         Number(
