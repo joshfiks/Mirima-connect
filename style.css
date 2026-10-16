@@ -25233,8 +25233,10 @@ padding:22px !important;
 }
 /* Voice-note preview mode */
 .department-chat-input.voice-preview-active {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 44px 44px;
     gap: 8px;
+    align-items: center;
 }
 
 /* Hide attachment, camera, and message text input */
@@ -25247,11 +25249,10 @@ padding:22px !important;
 /* Give the voice preview its own full-width row */
 .department-chat-input.voice-preview-active #chatVoicePreview {
     display: flex !important;
-    flex: 1 1 100%;
+    grid-column: 1 / -1;
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    order: 1;
 }
 
 /* Keep the recording indicator hidden after recording stops */
