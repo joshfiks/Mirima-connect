@@ -2196,6 +2196,7 @@ if (isRegularAudio) {
         );
 
 const isPhoto = file.type.startsWith("image/");
+const isVideo = file.type.startsWith("video/");
 
 await updateDoc(conversationRef, {
     guestMessageCount: increment(1),
