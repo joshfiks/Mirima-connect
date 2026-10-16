@@ -25268,3 +25268,20 @@ padding:22px !important;
 .department-chat-input.voice-preview-active #departmentChatSend {
     order: 3;
 }
+/* Align voice-note action buttons neatly */
+.department-chat-input.voice-preview-active #chatVoiceNote {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+}
+
+.department-chat-input.voice-preview-active #departmentChatSend {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: center;
+}
+
+/* Keep the preview on the first row */
+.department-chat-input.voice-preview-active #chatVoicePreview {
+    grid-row: 1;
+}
