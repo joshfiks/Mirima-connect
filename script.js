@@ -2156,7 +2156,24 @@ if (isRegularAudio) {
         alert("You have reached your limit of 2 audio/music files for this 8-hour period. Please try again when your limit resets.");
         return;
     }
-}      
+}   
+
+        // Limit videos to 1 per 8-hour period.
+const isVideo = file.type.startsWith("video/");
+
+if (isVideo) {
+    const conversationSnapshot = await getDoc(conversationRef);
+    const conversationData = conversationSnapshot.data();
+
+    const videoCount = Number(
+        conversationData.guestVideoCount || 0
+    );
+
+    if (videoCount >= 1) {
+        alert("You have reached your limit of 1 video for this 8-hour period. Please try again when your limit resets.");
+        return;
+    }
+}
         const uploadData = new FormData();
         uploadData.append("file", file);
         uploadData.append(
