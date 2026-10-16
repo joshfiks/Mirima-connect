@@ -25235,7 +25235,8 @@ padding:22px !important;
 .department-chat-input.voice-preview-active {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 44px 44px;
-    gap: 8px;
+    row-gap: 0;
+    column-gap: 8px;
     align-items: center;
 }
 
