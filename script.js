@@ -2140,11 +2140,11 @@ if (file.type.startsWith("image/")) {
 }
 
   // Limit regular audio/music files to 2 per 8-hour period.
-const isVoiceNote = file.name === "voice-note.webm";
 
 const isRegularAudio =
-    file.type.startsWith("audio/") && !isVoiceNote;
-
+    file.type.startsWith("audio/") &&
+    file.name !== "voice-note.webm";
+        
 if (isRegularAudio) {
     const conversationSnapshot = await getDoc(conversationRef);
     const conversationData = conversationSnapshot.data();
