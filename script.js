@@ -96,6 +96,58 @@ async function getOrCreateChatConversation(department) {
     return conversationRef;
 }
 
+
+const GUEST_LIMIT_WINDOW_MS = 8 * 60 * 60 * 1000;
+
+async function checkGuestMessageLimit(conversationRef) {
+    const conversationSnapshot = await getDoc(conversationRef);
+
+    if (!conversationSnapshot.exists()) {
+        return {
+            allowed: false,
+            reason: "no-conversation"
+        };
+    }
+
+    const conversation = conversationSnapshot.data();
+    const now = Date.now();
+
+    let resetAt = Number(conversation.guestLimitResetAt || 0);
+    let messageCount = Number(conversation.guestMessageCount || 0);
+
+    // Start a new 8-hour period on the first message,
+    // or reset the counters when the period expires.
+    if (!resetAt || now - resetAt >= GUEST_LIMIT_WINDOW_MS) {
+        resetAt = now;
+        messageCount = 0;
+
+        await updateDoc(conversationRef, {
+            guestMessageCount: 0,
+            guestPhotoCount: 0,
+            guestVideoCount: 0,
+            guestAudioCount: 0,
+            guestVoiceNoteCount: 0,
+            guestDocumentCount: 0,
+            guestLimitResetAt: resetAt
+        });
+    }
+
+    if (messageCount >= 10) {
+        return {
+            allowed: false,
+            reason: "limit-reached",
+            messageCount,
+            resetAt
+        };
+    }
+
+    return {
+        allowed: true,
+        messageCount,
+        resetAt
+    };
+}
+
 // ==========================================
 // SEND GUEST CHAT MESSAGE
 // ==========================================
@@ -126,26 +178,19 @@ async function sendGuestChatMessage(
             reason: "no-conversation"
         };
     }
+       
+const limitCheck =
+    await checkGuestMessageLimit(conversationRef);
 
-    const conversationSnapshot =
-        await getDoc(conversationRef);
+if (!limitCheck.allowed) {
+    return {
+        success: false,
+        reason: limitCheck.reason
+    };
+}
 
-    const conversation =
-        conversationSnapshot.data();
+const guestMessageCount = limitCheck.messageCount;
 
-    const guestMessageCount =
-        Number(
-            conversation.guestMessageCount || 0
-        );
-
-    if (guestMessageCount >= 10) {
-
-        return {
-            success: false,
-            reason: "limit-reached"
-        };
-
-    }
 
     await addDoc(
         collection(
@@ -2059,13 +2104,26 @@ if (file.size > 100 * 1024 * 1024) {
             return;
         }
 
-        const conversationRef =
-            await getOrCreateChatConversation(department);
+        
+const conversationRef =
+    await getOrCreateChatConversation(department);
 
-        if (!conversationRef) {
-            alert("Could not open the chat conversation.");
-            return;
-        }
+if (!conversationRef) {
+    alert("Could not open the chat conversation.");
+    return;
+}
+
+const limitCheck =
+    await checkGuestMessageLimit(conversationRef);
+
+if (!limitCheck.allowed) {
+    if (limitCheck.reason === "limit-reached") {
+        alert("You have reached the 10 message limit for this conversation. Please try again when your 8-hour limit resets.");
+    } else {
+        alert("Could not verify your message limit. Please try again.");
+    }
+    return;
+}
 
         const uploadData = new FormData();
         uploadData.append("file", file);
@@ -4378,14 +4436,40 @@ document.getElementById("departmentChatSend")
 if (chatVoiceBlob) {
     const sendButton = document.getElementById("departmentChatSend");
     sendButton.disabled = true;
-    
+
     try {
-        const sendButton = document.getElementById("departmentChatSend");
-        const conversationRef = await getOrCreateChatConversation(department);
+        const conversationRef =
+            await getOrCreateChatConversation(department);
 
         if (!conversationRef) {
             throw new Error("Could not open the chat conversation.");
         }
+
+        const limitCheck =
+            await checkGuestMessageLimit(conversationRef);
+
+        if (!limitCheck.allowed) {
+            if (limitCheck.reason === "limit-reached") {
+                alert("You have reached the 10 message limit. Please try again when your 8-hour limit resets.");
+            } else {
+                alert("Could not verify your message limit. Please try again.");
+            }
+
+            return;
+        }
+
+
+const conversationSnapshot = await getDoc(conversationRef);
+const conversationData = conversationSnapshot.data();
+const voiceNoteCount = Number(
+    conversationData.guestVoiceNoteCount || 0
+);
+
+if (voiceNoteCount >= 5) {
+    alert("You have reached your limit of 5 voice notes for this 8-hour period. Please try again when your limit resets.");
+    return;
+}
+        // Keep your existing Cloudinary upload code below this point.
 
         const uploadData = new FormData();
         uploadData.append("file", chatVoiceBlob, "voice-note.webm");
@@ -4417,10 +4501,11 @@ if (chatVoiceBlob) {
             createdAt: serverTimestamp()
         });
 
-        await updateDoc(conversationRef, {
-            guestMessageCount: increment(1),
-            updatedAt: serverTimestamp()
-        });
+    await updateDoc(conversationRef, {
+    guestMessageCount: increment(1),
+    guestVoiceNoteCount: increment(1),
+    updatedAt: serverTimestamp()
+   });
 
         const preview = document.getElementById("chatVoicePreview");
         const player = document.getElementById("chatVoicePreviewPlayer");
