@@ -2125,6 +2125,38 @@ if (!limitCheck.allowed) {
     return;
 }
 
+        // Limit photos to 3 per 8-hour period.
+if (file.type.startsWith("image/")) {
+    const conversationSnapshot = await getDoc(conversationRef);
+    const conversationData = conversationSnapshot.data();
+    const photoCount = Number(
+        conversationData.guestPhotoCount || 0
+    );
+
+    if (photoCount >= 3) {
+        alert("You have reached your limit of 3 photos for this 8-hour period. Please try again when your limit resets.");
+        return;
+    }
+}
+
+  // Limit regular audio/music files to 2 per 8-hour period.
+const isVoiceNote = file.name === "voice-note.webm";
+
+const isRegularAudio =
+    file.type.startsWith("audio/") && !isVoiceNote;
+
+if (isRegularAudio) {
+    const conversationSnapshot = await getDoc(conversationRef);
+    const conversationData = conversationSnapshot.data();
+    const audioCount = Number(
+        conversationData.guestAudioCount || 0
+    );
+
+    if (audioCount >= 2) {
+        alert("You have reached your limit of 2 audio/music files for this 8-hour period. Please try again when your limit resets.");
+        return;
+    }
+}      
         const uploadData = new FormData();
         uploadData.append("file", file);
         uploadData.append(
@@ -2163,11 +2195,42 @@ if (!limitCheck.allowed) {
             }
         );
 
-        await updateDoc(conversationRef, {
-            guestMessageCount: increment(1),
-            updatedAt: serverTimestamp()
-        });
+const isPhoto = file.type.startsWith("image/");
 
+const isVoiceNote = file.name === "voice-note.webm";
+
+const isRegularAudio =
+    file.type.startsWith("audio/") && !isVoiceNote;
+
+const isVideo = file.type.startsWith("video/");
+
+const isDocument =
+    file.type === "application/pdf" ||
+    file.type.startsWith("text/") ||
+    file.type.includes("document") ||
+    file.type.includes("word") ||
+    file.type.includes("spreadsheet") ||
+    file.type.includes("presentation") ||
+    file.type === "application/msword" ||
+    file.type === "application/vnd.ms-excel" ||
+    file.type === "application/vnd.ms-powerpoint";
+
+await updateDoc(conversationRef, {
+    guestMessageCount: increment(1),
+    ...(isPhoto
+        ? { guestPhotoCount: increment(1) }
+        : {}),
+    ...(isRegularAudio
+        ? { guestAudioCount: increment(1) }
+        : {}),
+    ...(isVideo
+        ? { guestVideoCount: increment(1) }
+        : {}),
+    ...(isDocument
+        ? { guestDocumentCount: increment(1) }
+        : {}),
+    updatedAt: serverTimestamp()
+});
         alert("File uploaded successfully.");
 
     } catch (error) {
@@ -4469,6 +4532,51 @@ if (voiceNoteCount >= 5) {
     alert("You have reached your limit of 5 voice notes for this 8-hour period. Please try again when your limit resets.");
     return;
 }
+
+// Limit videos to 1 per 8-hour period.
+const isVideo = file.type.startsWith("video/");
+
+if (isVideo) {
+    const conversationSnapshot = await getDoc(conversationRef);
+    const conversationData = conversationSnapshot.data();
+    const videoCount = Number(
+        conversationData.guestVideoCount || 0
+    );
+
+    if (videoCount >= 1) {
+        alert("You have reached your limit of 1 video for this 8-hour period. Please try again when your limit resets.");
+        return;
+    }
+}
+
+// Limit documents to 1 per 8-hour period.
+const isDocument =
+    file.type === "application/pdf" ||
+    file.type.startsWith("text/") ||
+    file.type.includes("document") ||
+    file.type.includes("word") ||
+    file.type.includes("spreadsheet") ||
+    file.type.includes("presentation") ||
+    file.type === "application/msword" ||
+    file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    file.type === "application/vnd.ms-excel" ||
+    file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+    file.type === "application/vnd.ms-powerpoint" ||
+    file.type === "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+
+if (isDocument) {
+    const conversationSnapshot = await getDoc(conversationRef);
+    const conversationData = conversationSnapshot.data();
+    const documentCount = Number(
+        conversationData.guestDocumentCount || 0
+    );
+
+    if (documentCount >= 1) {
+        alert("You have reached your limit of 1 document for this 8-hour period. Please try again when your limit resets.");
+        return;
+    }
+}
+        
         // Keep your existing Cloudinary upload code below this point.
 
         const uploadData = new FormData();
