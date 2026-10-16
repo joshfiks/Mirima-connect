@@ -1761,6 +1761,8 @@ const chatVoicePreviewPlayer = document.getElementById("chatVoicePreviewPlayer")
 if (chatVoicePreview && chatVoicePreviewPlayer && chatVoiceBlob.size > 0) {
     chatVoicePreviewPlayer.src = chatVoicePreviewUrl;
     chatVoicePreview.style.display = "block";
+    chatVoicePreview.closest(".department-chat-input")
+    .classList.add("voice-preview-active");
 
     console.log("Voice preview shown");
 console.log("Send button:", document.getElementById("departmentChatSend"));
@@ -1795,6 +1797,8 @@ chatVoicePreviewPlayer.removeAttribute("src");
 chatVoicePreviewPlayer.load();
 
 chatVoicePreview.style.display = "none";
+chatVoicePreview.closest(".department-chat-input")
+.classList.remove("voice-preview-active");
 chatVoiceChunks = [];
 chatVoiceSeconds = 0;
 chatVoiceRecording = false;
