@@ -24613,9 +24613,9 @@ padding:22px !important;
     display: none;
     align-items: center;
     gap: 10px;
-    flex: 1 1 0;
-    width: auto;
-    max-width: none;
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
     padding: 8px 12px;
@@ -24625,7 +24625,6 @@ padding:22px !important;
     border-radius: 12px;
     position: relative;
 }
-
 /* Play/pause button */
 #chatVoicePlayPause {
     display: flex;
