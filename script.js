@@ -2198,7 +2198,18 @@ if (isRegularAudio) {
 const isPhoto = file.type.startsWith("image/");
 const isVideo = file.type.startsWith("video/");
 
-await updateDoc(conversationRef, {
+const isDocument =
+    file.type === "application/pdf" ||
+    file.type.startsWith("text/") ||
+    file.type.includes("document") ||
+    file.type.includes("word") ||
+    file.type.includes("spreadsheet") ||
+    file.type.includes("presentation") ||
+    file.type === "application/msword" ||
+    file.type === "application/vnd.ms-excel" ||
+    file.type === "application/vnd.ms-powerpoint";
+
+    await updateDoc(conversationRef, {
     guestMessageCount: increment(1),
 
     ...(isPhoto
