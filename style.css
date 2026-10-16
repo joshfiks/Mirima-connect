@@ -25231,3 +25231,39 @@ padding:22px !important;
         gap: 8px;
     }
 }
+/* Voice-note preview mode */
+.department-chat-input.voice-preview-active {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Hide attachment, camera, and message text input */
+.department-chat-input.voice-preview-active #chatAttachFile,
+.department-chat-input.voice-preview-active #chatCamera,
+.department-chat-input.voice-preview-active #departmentChatInput {
+    display: none !important;
+}
+
+/* Give the voice preview its own full-width row */
+.department-chat-input.voice-preview-active #chatVoicePreview {
+    display: flex !important;
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    order: 1;
+}
+
+/* Keep the recording indicator hidden after recording stops */
+.department-chat-input.voice-preview-active #chatVoiceRecordingIndicator {
+    display: none !important;
+}
+
+/* Keep microphone and Send button visible */
+.department-chat-input.voice-preview-active #chatVoiceNote {
+    order: 2;
+}
+
+.department-chat-input.voice-preview-active #departmentChatSend {
+    order: 3;
+}
