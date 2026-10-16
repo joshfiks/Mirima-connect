@@ -2159,9 +2159,9 @@ if (isRegularAudio) {
 }   
 
         // Limit videos to 1 per 8-hour period.
-const isVideo = file.type.startsWith("video/");
+const isVideoForLimit = file.type.startsWith("video/");
 
-if (isVideo) {
+if (isVideoForLimit) {
     const conversationSnapshot = await getDoc(conversationRef);
     const conversationData = conversationSnapshot.data();
 
