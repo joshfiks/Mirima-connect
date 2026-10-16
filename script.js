@@ -2220,6 +2220,16 @@ await updateDoc(conversationRef, {
     updatedAt: serverTimestamp()
 });
 
+        alert("File uploaded successfully.");
+
+    } catch (error) {
+        console.error("Attachment upload error:", error);
+        alert("Could not upload the file. Please try again.");
+    } finally {
+        this.value = "";
+    }
+});
+
 
  
  // ==========================================
