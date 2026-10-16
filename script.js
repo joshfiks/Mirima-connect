@@ -217,7 +217,7 @@ const guestMessageCount = limitCheck.messageCount;
                 serverTimestamp()
         }
     );
-
+updateGuestChatMessageCount(guestMessageCount + 1);
     return {
         success: true,
         messageCount:
@@ -225,6 +225,14 @@ const guestMessageCount = limitCheck.messageCount;
     };
 }
 
+
+function updateGuestChatMessageCount(messageCount) {
+    const counter = document.getElementById("guestChatMessageCount");
+
+    if (!counter) return;
+
+    counter.textContent = `${messageCount} / 10`;
+}
 
 // ==========================================
 // EDIT GUEST CHAT MESSAGE
