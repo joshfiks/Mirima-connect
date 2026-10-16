@@ -4534,50 +4534,7 @@ if (voiceNoteCount >= 5) {
     return;
 }
 
-// Limit videos to 1 per 8-hour period.
-const isVideo = file.type.startsWith("video/");
 
-if (isVideo) {
-    const conversationSnapshot = await getDoc(conversationRef);
-    const conversationData = conversationSnapshot.data();
-    const videoCount = Number(
-        conversationData.guestVideoCount || 0
-    );
-
-    if (videoCount >= 1) {
-        alert("You have reached your limit of 1 video for this 8-hour period. Please try again when your limit resets.");
-        return;
-    }
-}
-
-// Limit documents to 1 per 8-hour period.
-const isDocument =
-    file.type === "application/pdf" ||
-    file.type.startsWith("text/") ||
-    file.type.includes("document") ||
-    file.type.includes("word") ||
-    file.type.includes("spreadsheet") ||
-    file.type.includes("presentation") ||
-    file.type === "application/msword" ||
-    file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-    file.type === "application/vnd.ms-excel" ||
-    file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
-    file.type === "application/vnd.ms-powerpoint" ||
-    file.type === "application/vnd.openxmlformats-officedocument.presentationml.presentation";
-
-if (isDocument) {
-    const conversationSnapshot = await getDoc(conversationRef);
-    const conversationData = conversationSnapshot.data();
-    const documentCount = Number(
-        conversationData.guestDocumentCount || 0
-    );
-
-    if (documentCount >= 1) {
-        alert("You have reached your limit of 1 document for this 8-hour period. Please try again when your limit resets.");
-        return;
-    }
-}
-        
         // Keep your existing Cloudinary upload code below this point.
 
         const uploadData = new FormData();
