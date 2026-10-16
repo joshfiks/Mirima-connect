@@ -2197,48 +2197,27 @@ if (isRegularAudio) {
 
 const isPhoto = file.type.startsWith("image/");
 
-const isVoiceNote = file.name === "voice-note.webm";
-
-const isRegularAudio =
-    file.type.startsWith("audio/") && !isVoiceNote;
-
-const isVideo = file.type.startsWith("video/");
-
-const isDocument =
-    file.type === "application/pdf" ||
-    file.type.startsWith("text/") ||
-    file.type.includes("document") ||
-    file.type.includes("word") ||
-    file.type.includes("spreadsheet") ||
-    file.type.includes("presentation") ||
-    file.type === "application/msword" ||
-    file.type === "application/vnd.ms-excel" ||
-    file.type === "application/vnd.ms-powerpoint";
-
 await updateDoc(conversationRef, {
     guestMessageCount: increment(1),
+
     ...(isPhoto
         ? { guestPhotoCount: increment(1) }
         : {}),
-    ...(isRegularAudio
+
+    ...(file.type.startsWith("audio/") &&
+        file.name !== "voice-note.webm"
         ? { guestAudioCount: increment(1) }
         : {}),
+
     ...(isVideo
         ? { guestVideoCount: increment(1) }
         : {}),
+
     ...(isDocument
         ? { guestDocumentCount: increment(1) }
         : {}),
-    updatedAt: serverTimestamp()
-});
-        alert("File uploaded successfully.");
 
-    } catch (error) {
-        console.error("Attachment upload error:", error);
-        alert("Could not upload the file. Please try again.");
-    } finally {
-        this.value = "";
-    }
+    updatedAt: serverTimestamp()
 });
 
 
