@@ -24081,6 +24081,16 @@ padding:22px !important;
     border-radius: 50%;
 }
 
+.department-chat-avatar {
+    cursor: pointer;
+}
+
+.department-chat-avatar svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 .department-chat-avatar span {
     display: inline-flex;
     align-items: center;
