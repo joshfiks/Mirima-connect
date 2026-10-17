@@ -4499,7 +4499,51 @@ loadDepartmentChatMessages(
 
 });
 
+// Department chat profile picture preview
+const departmentChatAvatar =
+    document.querySelector(".department-chat-avatar");
 
+const departmentChatAvatarInput =
+    document.getElementById("departmentChatAvatarInput");
+
+const departmentChatAvatarImage =
+    document.getElementById("departmentChatAvatarImage");
+
+const departmentChatAvatarIcon =
+    document.getElementById("departmentChatAvatarIcon");
+
+if (
+    departmentChatAvatar &&
+    departmentChatAvatarInput &&
+    departmentChatAvatarImage &&
+    departmentChatAvatarIcon
+) {
+    departmentChatAvatar.addEventListener("click", () => {
+        departmentChatAvatarInput.click();
+    });
+
+    departmentChatAvatarInput.addEventListener("change", () => {
+        const file = departmentChatAvatarInput.files[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+            alert("Please select an image.");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            departmentChatAvatarImage.src = reader.result;
+            departmentChatAvatarImage.style.display = "block";
+            departmentChatAvatarIcon.style.display = "none";
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
+    
 // ==========================================
 // SEND CHAT MESSAGE
 // ==========================================
