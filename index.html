@@ -1074,43 +1074,44 @@ AIRPORT TRANSFER POPUP
 
 </div>
 
-  <!-- ==========================================
+<!-- ==========================================
      DEPARTMENT CHAT POPUP
-========================================== -->
+  ========================================== -->
 
-<div id="departmentChatPopup" class="popup">
+<!-- Chat Header -->
+<div class="department-chat-header">
 
-    <div class="department-chat-window">
+    <button
+        type="button"
+        id="backToDepartments"
+        class="chat-back-button"
+    >
+        ‹
+    </button>
 
-        <!-- Chat Header -->
-        <div class="department-chat-header">
+    <div class="department-chat-avatar" id="departmentChatAvatar">
+        <img
+            id="departmentChatAvatarImage"
+            src=""
+            alt="Department profile picture"
+            style="display: none;"
+        >
+        <span id="departmentChatAvatarIcon">💬</span>
+    </div>
 
-            <button
-                type="button"
-                id="backToDepartments"
-                class="chat-back-button"
-            >
-                ‹
-            </button>
+    <div class="department-chat-info">
 
-            <div class="department-chat-avatar">
-                💬
-            </div>
+        <strong id="departmentChatName">
+            Reception
+        </strong>
 
-            <div class="department-chat-info">
+        <small id="departmentChatStatus">
+            Online
+        </small>
 
-                <strong id="departmentChatName">
-                    Reception
-                </strong>
+    </div>
 
-                <small>
-                    Online
-                </small>
-
-            </div>
-
-        </div>
-
+</div>
 
         <!-- Messages -->
         <div
