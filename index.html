@@ -1092,16 +1092,35 @@ AIRPORT TRANSFER POPUP
             >
                 ‹
             </button>
-
-            
-          <div class="department-chat-avatar">
-        <img
+           
+<div
+    class="department-chat-avatar"
+    title="Click to add a profile picture"
+    role="button"
+    tabindex="0"
+    aria-label="Click to add a profile picture"
+>
+    <img
         id="departmentChatAvatarImage"
         alt="Department profile picture"
         style="display: none;"
-     >
-          <span id="departmentChatAvatarIcon">💬</span>
-     </div>
+    >
+
+    <svg
+        id="departmentChatAvatarIcon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 48 48"
+        aria-hidden="true"
+    >
+        <circle cx="24" cy="24" r="24" fill="#dfe5e7"/>
+        <circle cx="24" cy="17" r="8" fill="#8696a0"/>
+        <path
+            d="M8 43c1-10 7-15 16-15s15 5 16 15"
+            fill="#8696a0"
+        />
+    </svg>
+</div>
+         
 
 <input
     type="file"
