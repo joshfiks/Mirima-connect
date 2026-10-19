@@ -414,7 +414,8 @@ async function saveRequestToFirestore(
 
     }
 }
-
+let departmentChatMessagesUnsubscribe = null;
+let departmentChatLoadRequest = 0;
 // ==========================================
 // LOAD DEPARTMENT CHAT MESSAGES
 // ==========================================
@@ -422,7 +423,12 @@ async function saveRequestToFirestore(
 async function loadDepartmentChatMessages(
     department
 ) {
+const loadRequest = ++departmentChatLoadRequest;
 
+if (departmentChatMessagesUnsubscribe) {
+    departmentChatMessagesUnsubscribe();
+    departmentChatMessagesUnsubscribe = null;
+}
     const conversationRef =
         await getOrCreateChatConversation(
             department
@@ -432,7 +438,7 @@ async function loadDepartmentChatMessages(
         return;
     }
 
-   onSnapshot(
+   departmentChatMessagesUnsubscribe = onSnapshot(
     collection(
         conversationRef,
         "messages"
@@ -445,6 +451,13 @@ async function loadDepartmentChatMessages(
         );
 
    if (!messagesContainer) {
+    return;
+}
+       if (
+    loadRequest !== departmentChatLoadRequest ||
+    departmentChatPopup.style.display !== "flex" ||
+    departmentChatPopup.dataset.department !== department
+) {
     return;
 }
 
