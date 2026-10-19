@@ -4760,7 +4760,7 @@ if (chatVoicePreviewPlayer) {
 }
 
 if (chatVoicePreview) {
-    chatVoicePreview.style.display = "none";
+    chatVoicePreview.style.setProperty("display", "none", "important");
 console.log(
     "VOICE PREVIEW VISIBILITY:",
     "inline display =", chatVoicePreview.style.display,
