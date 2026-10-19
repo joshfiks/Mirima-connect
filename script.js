@@ -4786,7 +4786,7 @@ chatVoiceSeconds = 0;
 input.value = "";
 
 await loadDepartmentChatMessages(department);
-   
+   console.log("VOICE SEND: reached end of try block");
     } catch (error) {
         console.error("Voice note send error:", error);
         alert("Could not send the voice note. Please try again.");
