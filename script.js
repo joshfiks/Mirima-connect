@@ -4706,6 +4706,7 @@ if (voiceNoteCount >= 5) {
     guestVoiceNoteCount: increment(1),
     updatedAt: serverTimestamp()
    });
+        console.log("VOICE SEND: Firestore update completed");
 
         const preview = document.getElementById("chatVoicePreview");
         const player = document.getElementById("chatVoicePreviewPlayer");
