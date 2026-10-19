@@ -4744,7 +4744,7 @@ if (recordingIndicator) {
     recordingIndicator.style.display = "none";
 }
 
-
+console.log("VOICE SEND: reached preview cleanup");
        // Clear the voice-note preview after successful sending.
 const chatVoicePreview =
     document.getElementById("chatVoicePreview");
