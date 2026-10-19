@@ -444,13 +444,23 @@ async function loadDepartmentChatMessages(
             "departmentChatMessages"
         );
 
-    if (!messagesContainer) {
-        return;
-    }
+   if (!messagesContainer) {
+    return;
+}
 
-    messagesContainer.innerHTML = "";
+// Remember the current scroll position before rebuilding messages.
+const previousScrollTop = messagesContainer.scrollTop;
+const previousScrollHeight = messagesContainer.scrollHeight;
+const scrollDistanceFromBottom =
+    previousScrollHeight -
+    messagesContainer.scrollTop -
+    messagesContainer.clientHeight;
 
-     let previousMessageDate = "";
+const wasNearBottom = scrollDistanceFromBottom < 100;
+
+messagesContainer.innerHTML = "";
+
+let previousMessageDate = "";
         
     messagesSnapshot.docs
         .sort(function (a, b) {
@@ -1172,9 +1182,18 @@ messageBubble.appendChild(messageTime);
 
         });
 
-        messagesContainer.scrollTop =
+        if (wasNearBottom) {
+    // Keep the chat at the bottom if the guest was already there.
+    messagesContainer.scrollTop =
         messagesContainer.scrollHeight;
+} else {
+    // Preserve the guest's position when reading older messages.
+    const newScrollHeight = messagesContainer.scrollHeight;
 
+    messagesContainer.scrollTop =
+        previousScrollTop +
+        (newScrollHeight - previousScrollHeight);
+}
     }
 );
 }
