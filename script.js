@@ -4761,12 +4761,12 @@ if (chatVoicePreviewPlayer) {
 
 if (chatVoicePreview) {
     chatVoicePreview.style.display = "none";
-    console.log(
-    "VOICE PREVIEW CLEANUP:",
-    chatVoicePreview.style.display,
-    chatVoicePreview.isConnected
+console.log(
+    "VOICE PREVIEW VISIBILITY:",
+    "inline display =", chatVoicePreview.style.display,
+    "computed display =", getComputedStyle(chatVoicePreview).display,
+    "class =", chatVoicePreview.className
 );
-
     const inputContainer =
         chatVoicePreview.closest(".department-chat-input");
 
