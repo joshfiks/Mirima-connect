@@ -469,6 +469,18 @@ async function loadDepartmentChatMessages(
             const data =
                 messageDoc.data();
 
+ // Mark Reception messages as delivered to the guest website.
+if (data.sender === "reception" && !data.guestDeliveredAt) {
+    updateDoc(
+        doc(conversationRef, "messages", messageDoc.id),
+        {
+            guestDeliveredAt: serverTimestamp()
+        }
+    ).catch(function (error) {
+        console.error("Could not mark message as delivered:", error);
+    });
+}
+
             const messageTimestamp = data.createdAt
     ? data.createdAt.toDate()
     : null;
