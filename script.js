@@ -4760,6 +4760,11 @@ if (chatVoicePreviewPlayer) {
 
 if (chatVoicePreview) {
     chatVoicePreview.style.display = "none";
+    console.log(
+    "VOICE PREVIEW CLEANUP:",
+    chatVoicePreview.style.display,
+    chatVoicePreview.isConnected
+);
 
     const inputContainer =
         chatVoicePreview.closest(".department-chat-input");
