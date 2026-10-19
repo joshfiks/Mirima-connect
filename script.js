@@ -490,6 +490,23 @@ if (data.sender === "reception" && !data.guestDeliveredAt) {
         console.error("Could not mark message as delivered:", error);
     });
 }
+// Mark Reception messages as read only when this department chat is visible.
+if (
+    data.sender === "reception" &&
+    !data.guestReadAt &&
+    departmentChatPopup.style.display === "flex" &&
+    departmentChatPopup.dataset.department === department &&
+    document.visibilityState === "visible"
+) {
+    updateDoc(
+        doc(conversationRef, "messages", messageDoc.id),
+        {
+            guestReadAt: serverTimestamp()
+        }
+    ).catch(function (error) {
+        console.error("Could not mark message as read:", error);
+    });
+}
 
             const messageTimestamp = data.createdAt
     ? data.createdAt.toDate()
