@@ -4745,15 +4745,42 @@ if (recordingIndicator) {
 }
 
 
-        if (chatVoicePreviewUrl) {
-            URL.revokeObjectURL(chatVoicePreviewUrl);
-            chatVoicePreviewUrl = null;
-        }
+       // Clear the voice-note preview after successful sending.
+const chatVoicePreview =
+    document.getElementById("chatVoicePreview");
 
-        input.value = "";
+const chatVoicePreviewPlayer =
+    document.getElementById("chatVoicePreviewPlayer");
 
-        await loadDepartmentChatMessages(department);
+if (chatVoicePreviewPlayer) {
+    chatVoicePreviewPlayer.pause();
+    chatVoicePreviewPlayer.removeAttribute("src");
+    chatVoicePreviewPlayer.load();
+}
 
+if (chatVoicePreview) {
+    chatVoicePreview.style.display = "none";
+
+    const inputContainer =
+        chatVoicePreview.closest(".department-chat-input");
+
+    if (inputContainer) {
+        inputContainer.classList.remove("voice-preview-active");
+    }
+}
+
+if (chatVoicePreviewUrl) {
+    URL.revokeObjectURL(chatVoicePreviewUrl);
+    chatVoicePreviewUrl = null;
+}
+
+chatVoiceBlob = null;
+chatVoiceChunks = [];
+chatVoiceSeconds = 0;
+
+input.value = "";
+
+await loadDepartmentChatMessages(department);
    
     } catch (error) {
         console.error("Voice note send error:", error);
